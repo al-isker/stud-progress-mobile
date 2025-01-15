@@ -1,11 +1,9 @@
 import { Text, View } from 'react-native';
 
-const Page = () => {
+export const Profile = () => {
 	return (
 		<View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-			<Text>App</Text>
+			<Text>Профиль</Text>
 		</View>
 	);
 };
-
-export default Page;

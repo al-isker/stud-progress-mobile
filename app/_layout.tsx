@@ -1,7 +1,1 @@
-import { Slot } from 'expo-router';
-
-const RootLayout = () => {
-	return <Slot />;
-};
-
-export default RootLayout;
+export { RootLayout as default } from '@/app/root-layout';

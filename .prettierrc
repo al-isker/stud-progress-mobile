@@ -18,6 +18,5 @@
 		"^@/shared/(.*)$",
 		"(^[../])|(^[./])"
 	],
-	"importOrderSeparation": true,
 	"importOrderSortSpecifiers": true
 }
