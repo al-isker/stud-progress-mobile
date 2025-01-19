@@ -6,7 +6,7 @@ import {
 	StatsIcon
 } from '@/shared/assets/icons';
 import { Routes } from '@/shared/config/routes';
-import { COLORS } from '@/shared/constants/theme';
+import { COLORS, FONT_FAMILY } from '@/shared/constants/theme';
 
 export const Tabs = () => {
 	return (
@@ -26,7 +26,8 @@ export const Tabs = () => {
 					backgroundColor: COLORS.paper
 				},
 				tabBarLabelStyle: {
-					fontSize: 11
+					fontSize: 11,
+					fontFamily: FONT_FAMILY['golos-medium']
 				}
 			}}
 		>
