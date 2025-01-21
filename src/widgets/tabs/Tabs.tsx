@@ -5,7 +5,7 @@ import {
 	ProfileIcon,
 	StatsIcon
 } from '@/shared/assets/icons';
-import { Routes } from '@/shared/config/routes';
+import { Routes } from '@/shared/config/navigation';
 import { COLORS, FONT_FAMILY } from '@/shared/constants/theme';
 
 export const Tabs = () => {

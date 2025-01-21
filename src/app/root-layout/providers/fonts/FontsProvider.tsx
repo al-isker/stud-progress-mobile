@@ -1,13 +1,11 @@
-import { useEffect } from 'react';
+import { ReactNode, useEffect } from 'react';
 import { useFonts } from 'expo-font';
-import { Slot, SplashScreen } from 'expo-router';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { SplashScreen } from 'expo-router';
 import * as Fonts from '@/shared/assets/fonts';
-import './tailwind.css';
 
 SplashScreen.preventAutoHideAsync();
 
-export const RootLayout = () => {
+export const FontsProvider = ({ children }: { children: ReactNode }) => {
 	const [fontsLoaded] = useFonts(Fonts);
 
 	useEffect(() => {
@@ -20,9 +18,5 @@ export const RootLayout = () => {
 		return null;
 	}
 
-	return (
-		<SafeAreaView className='h-full'>
-			<Slot />
-		</SafeAreaView>
-	);
+	return children;
 };
