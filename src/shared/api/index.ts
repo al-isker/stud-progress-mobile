@@ -1,1 +1,1 @@
-export { api } from './config/api';
+export { api } from './api';
