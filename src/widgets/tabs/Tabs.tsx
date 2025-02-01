@@ -1,4 +1,5 @@
 import { Tabs as ExpoTabs } from 'expo-router';
+import { useStyles } from 'react-native-unistyles';
 import {
 	GradeIcon,
 	HomeIcon,
@@ -6,28 +7,29 @@ import {
 	StatsIcon
 } from '@/shared/assets/icons';
 import { Routes } from '@/shared/config/navigation';
-import { COLORS, FONT_FAMILY } from '@/shared/constants/theme';
 
 export const Tabs = () => {
+	const { theme } = useStyles();
+
 	return (
 		<ExpoTabs
 			screenOptions={{
 				animation: 'shift',
 				headerShown: false,
 				sceneStyle: {
-					backgroundColor: COLORS.background
+					backgroundColor: theme.colors.background
 				},
-				tabBarActiveTintColor: COLORS.primary,
-				tabBarInactiveTintColor: COLORS.action,
+				tabBarActiveTintColor: theme.colors.primary,
+				tabBarInactiveTintColor: theme.colors.action,
 				tabBarStyle: {
 					height: 60,
 					paddingTop: 5,
 					paddingBottom: 5,
-					backgroundColor: COLORS.paper
+					backgroundColor: theme.colors.paper
 				},
 				tabBarLabelStyle: {
 					fontSize: 11,
-					fontFamily: FONT_FAMILY['golos-medium']
+					fontFamily: theme.typography.fontFamily.GolosTextMedium
 				}
 			}}
 		>

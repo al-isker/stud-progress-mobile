@@ -1,17 +1,19 @@
-import { Fragment } from 'react';
+import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { Text, View } from 'react-native';
-import { COLORS } from '@/shared/constants/theme';
+import { useStyles } from 'react-native-unistyles';
+import { stylesheet } from './header.stylesheet';
 
 export const Header = () => {
+	const { styles, theme } = useStyles(stylesheet);
+
 	return (
-		<Fragment>
-			<StatusBar backgroundColor={COLORS.primary} style='light' />
-			<View className='elevation-lg z-10 bg-primary px-4 pb-4 pt-2'>
-				<Text className='font-golos-bold text-3xl text-white'>
-					Stud Progress
-				</Text>
+		<>
+			<StatusBar style='light' backgroundColor={theme.colors.primary} />
+
+			<View style={styles.header}>
+				<Text style={styles.title}>Stud Progress</Text>
 			</View>
-		</Fragment>
+		</>
 	);
 };
