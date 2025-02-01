@@ -6,7 +6,7 @@ import {
 	ProfileIcon,
 	StatsIcon
 } from '@/shared/assets/icons';
-import { Routes } from '@/shared/config/navigation';
+import { TabNames } from '@/shared/config/navigation';
 
 export const Tabs = () => {
 	const { theme } = useStyles();
@@ -34,28 +34,28 @@ export const Tabs = () => {
 			}}
 		>
 			<ExpoTabs.Screen
-				name={Routes.HOME}
+				name={TabNames.HOME}
 				options={{
 					title: 'Главная',
 					tabBarIcon: HomeIcon
 				}}
 			/>
 			<ExpoTabs.Screen
-				name={Routes.GRADE}
+				name={TabNames.GRADE}
 				options={{
 					title: 'Сессия',
 					tabBarIcon: GradeIcon
 				}}
 			/>
 			<ExpoTabs.Screen
-				name={Routes.STATS}
+				name={TabNames.STATS}
 				options={{
 					title: 'Статистика',
 					tabBarIcon: StatsIcon
 				}}
 			/>
 			<ExpoTabs.Screen
-				name={Routes.PROFILE}
+				name={TabNames.PROFILE}
 				options={{
 					title: 'Профиль',
 					tabBarIcon: ProfileIcon

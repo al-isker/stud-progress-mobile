@@ -1,1 +1,2 @@
-export { Routes } from './routes';
+export { routes } from './routes';
+export { TabNames } from './tab-names';

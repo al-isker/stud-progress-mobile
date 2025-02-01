@@ -1,9 +1,9 @@
 import { Text, View } from 'react-native';
 
-export const SignIn = () => {
+export const LoginMain = () => {
 	return (
 		<View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-			<Text>Вход</Text>
+			<Text>Вход - главная</Text>
 		</View>
 	);
 };

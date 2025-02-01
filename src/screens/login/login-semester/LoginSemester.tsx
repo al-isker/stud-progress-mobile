@@ -1,12 +1,9 @@
-import { useRouter } from 'expo-router';
 import { Text, View } from 'react-native';
 
-export const Grade = () => {
-	const router = useRouter();
-
+export const LoginSemester = () => {
 	return (
 		<View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-			<Text>Сессия</Text>
+			<Text>Вход - семестер</Text>
 		</View>
 	);
 };
