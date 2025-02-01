@@ -4,11 +4,11 @@ import { StoreProvider } from '../providers/store/StoreProvider';
 import { UnistylesProvider } from '../providers/unistyles/UnistylesProvider';
 
 export const RootLayout = () => (
-	<UnistylesProvider>
-		<StoreProvider>
-			<FontsProvider>
+	<StoreProvider>
+		<FontsProvider>
+			<UnistylesProvider>
 				<Navigation />
-			</FontsProvider>
-		</StoreProvider>
-	</UnistylesProvider>
+			</UnistylesProvider>
+		</FontsProvider>
+	</StoreProvider>
 );
