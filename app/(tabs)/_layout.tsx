@@ -1,1 +1,1 @@
-export { TabsLayout as default } from '@/app/tabs-layout';
+export { TabsAppLayout as default } from '@/app/tabs-app-layout';
