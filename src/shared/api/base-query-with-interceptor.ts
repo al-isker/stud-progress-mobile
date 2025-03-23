@@ -1,33 +1,38 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { BaseQueryApi } from '@reduxjs/toolkit/query/react';
-import { Routes } from '@/shared/config/navigation';
+import { router } from 'expo-router';
+import { routes } from '@/shared/config/navigation';
 import { ACCESS_TOKEN_STORAGE_KEY } from '../constants/storage';
 import { baseQuery } from './base-query';
+import { IExtraOptions } from './types/extra-options';
+import { IRefreshTokenResponse } from './types/refresh-token-response';
 
 export const baseQueryWithInterceptor = async (
 	args: any,
 	api: BaseQueryApi,
-	extraOptions: {}
+	extraOptions: IExtraOptions = {}
 ) => {
 	let response = await baseQuery(args, api, extraOptions);
 
-	if (window.location.pathname !== Routes.SIGN_IN) {
-		if (response.error && response.error.status === 401) {
-			const refreshResponse = await baseQuery(
+	const { loginQuery } = extraOptions;
+
+	if (!loginQuery) {
+		if (response.error?.status === 401) {
+			const refreshTokenResponse = await baseQuery(
 				{ url: 'auth/refresh-token', method: 'POST' },
 				api,
 				{}
 			);
 
-			if (refreshResponse.data) {
+			if (refreshTokenResponse) {
 				await AsyncStorage.setItem(
 					ACCESS_TOKEN_STORAGE_KEY,
-					(refreshResponse.data as any).accessToken
+					(refreshTokenResponse.data as IRefreshTokenResponse).accessToken
 				);
 
 				response = await baseQuery(args, api, extraOptions);
 			} else {
-				window.location.href = Routes.SIGN_IN;
+				router.replace(routes.loginSemester);
 			}
 		}
 	}
