@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleProp, View, ViewStyle } from 'react-native';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
 import { LogoIcon } from '@/shared/assets/icons';
-import { APP_TITLE } from '@/shared/constants/app-data';
+import { APP_TITLE } from '@/shared/config/app-data';
 import { Typography } from '@/shared/ui/typography';
 
 interface LoginFormHeaderProps {

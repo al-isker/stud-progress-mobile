@@ -1,13 +1,14 @@
 import { TabNames } from './tab-names';
 
 class Routes {
-	loginMain = () => '/login/main';
-	loginSemester = () => '/login/semester';
+	loginSemester = '/login/semester';
+	loginMain = '/login/main';
+	loginLoading = '/login/loading';
 
-	home = () => '/';
-	grade = () => '/' + TabNames.GRADE;
-	stats = () => '/' + TabNames.STATS;
-	profile = () => '/' + TabNames.PROFILE;
+	home = '/';
+	grade = '/' + TabNames.GRADE;
+	stats = '/' + TabNames.STATS;
+	profile = '/' + TabNames.PROFILE;
 }
 
 export const routes = new Routes();

@@ -1,7 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { SERVER_URL } from '../constants/environments';
-import { ACCESS_TOKEN_STORAGE_KEY } from '../constants/storage';
+import { SERVER_URL } from '../config/environments';
+import { ACCESS_TOKEN_STORAGE_KEY } from '../config/storage';
 import { QUERY_TIMEOUT } from './const/query-timeout';
 
 const prepareHeaders = async (headers: Headers) => {

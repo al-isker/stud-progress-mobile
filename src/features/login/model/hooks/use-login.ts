@@ -3,7 +3,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useRouter } from 'expo-router';
 import { parseErrorResponse } from '@/shared/api';
 import { routes } from '@/shared/config/navigation';
-import { ACCESS_TOKEN_STORAGE_KEY } from '@/shared/constants/storage';
+import { ACCESS_TOKEN_STORAGE_KEY } from '@/shared/config/storage';
 import { useProgressAnimation } from '@/shared/lib/animations';
 import { useAsyncEffect } from '@/shared/lib/react-sugar';
 import { useLoginMutation } from '../../api/use-login-mutation';

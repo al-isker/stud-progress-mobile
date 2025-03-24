@@ -2,7 +2,7 @@ import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { View } from 'react-native';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
-import { APP_TITLE } from '@/shared/constants/app-data';
+import { APP_TITLE } from '@/shared/config/app-data';
 import { Typography } from '@/shared/ui/typography';
 
 export const Header = () => {
