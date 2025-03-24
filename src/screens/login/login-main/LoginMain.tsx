@@ -1,9 +1,32 @@
-import { Text, View } from 'react-native';
+import React from 'react';
+import { View } from 'react-native';
+import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import { LoginMainForm } from '@/features/login';
+import { Typography } from '@/shared/ui/typography';
 
 export const LoginMain = () => {
+	const { styles } = useStyles(stylesheet);
+
 	return (
-		<View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-			<Text>Вход - главная</Text>
+		<View style={styles.container}>
+			<Typography variant='t2' style={styles.description}>
+				Введи учётные данные для личного кабинета ДГМУ
+			</Typography>
+
+			<LoginMainForm />
 		</View>
 	);
 };
+
+const stylesheet = createStyleSheet(theme => ({
+	container: {
+		flex: 1,
+		paddingHorizontal: theme.spacing.container * 1.5
+	},
+	description: {
+		width: 280,
+		marginBottom: 24,
+		alignSelf: 'center',
+		textAlign: 'center'
+	}
+}));

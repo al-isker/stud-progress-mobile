@@ -1,9 +1,6 @@
-import { useRouter } from 'expo-router';
 import { Text, View } from 'react-native';
 
 export const Grade = () => {
-	const router = useRouter();
-
 	return (
 		<View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
 			<Text>Сессия</Text>
