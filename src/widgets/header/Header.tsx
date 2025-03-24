@@ -1,8 +1,9 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { Text, View } from 'react-native';
-import { useStyles } from 'react-native-unistyles';
-import { stylesheet } from './header.stylesheet';
+import { View } from 'react-native';
+import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import { APP_TITLE } from '@/shared/constants/app-data';
+import { Typography } from '@/shared/ui/typography';
 
 export const Header = () => {
 	const { styles, theme } = useStyles(stylesheet);
@@ -12,8 +13,21 @@ export const Header = () => {
 			<StatusBar style='light' backgroundColor={theme.colors.primary} />
 
 			<View style={styles.header}>
-				<Text style={styles.title}>Stud Progress</Text>
+				<Typography variant='h1' colorOnPrimary>
+					{APP_TITLE}
+				</Typography>
 			</View>
 		</>
 	);
 };
+
+const stylesheet = createStyleSheet(theme => ({
+	header: {
+		zIndex: theme.zIndex.header,
+		elevation: 8,
+		backgroundColor: theme.colors.primary,
+		paddingTop: 8,
+		paddingInline: 16,
+		paddingBottom: 16
+	}
+}));
