@@ -17,15 +17,15 @@ export const Tabs = () => {
 				animation: 'shift',
 				headerShown: false,
 				sceneStyle: {
-					backgroundColor: theme.colors.background
+					backgroundColor: theme.colors.bgBase
 				},
 				tabBarActiveTintColor: theme.colors.primary,
-				tabBarInactiveTintColor: theme.colors.action,
+				tabBarInactiveTintColor: theme.colors.blackAlpha(0.4),
 				tabBarStyle: {
 					height: 60,
 					paddingTop: 5,
 					paddingBottom: 5,
-					backgroundColor: theme.colors.paper
+					backgroundColor: theme.colors.bgPaper
 				},
 				tabBarLabelStyle: {
 					fontSize: 11,
