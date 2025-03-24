@@ -1,0 +1,1 @@
+export { multiple } from './multiple';
