@@ -1,6 +1,6 @@
+import { router } from 'expo-router';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { BaseQueryApi } from '@reduxjs/toolkit/query/react';
-import { router } from 'expo-router';
 import { routes } from '@/shared/config/navigation';
 import { ACCESS_TOKEN_STORAGE_KEY } from '../config/storage';
 import { baseQuery } from './base-query';
