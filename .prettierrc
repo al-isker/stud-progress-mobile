@@ -8,7 +8,8 @@
 	"arrowParens": "avoid",
 	"plugins": ["@trivago/prettier-plugin-sort-imports"],
 	"importOrder": [
-		"^(next/(.*)$)|^(next$)|^(react$)",
+		"^(react$)",
+		"^(expo(.*)$)",
 		"<THIRD_PARTY_MODULES>",
 		"^@/app/(.*)$",
 		"^@/screens/(.*)$",
