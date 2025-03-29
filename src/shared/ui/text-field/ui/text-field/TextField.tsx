@@ -22,14 +22,16 @@ import {
 } from '../text-input-base/TextInputBase';
 import { stylesheet } from './text-field.stylesheet';
 
-export interface TextFieldProps
-	extends Omit<TextInputBaseProps, 'size' | 'style' | 'placeholder'> {
+export type TextFieldProps = Omit<
+	TextInputBaseProps,
+	'size' | 'style' | 'placeholder'
+> & {
 	inputRef?: Ref<NativeTextInput>;
 	size: 'large';
 	style?: StyleProp<ViewStyle>;
 	label: string;
 	errorText?: ReactNode;
-}
+};
 
 export const TextField = forwardRef<View, TextFieldProps>(function TextField(
 	{

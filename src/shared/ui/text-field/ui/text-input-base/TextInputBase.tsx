@@ -2,9 +2,9 @@ import React, { forwardRef } from 'react';
 import { TextInput, TextInputProps } from 'react-native';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
 
-export interface TextInputBaseProps extends TextInputProps {
+export type TextInputBaseProps = TextInputProps & {
 	size: 'large';
-}
+};
 
 export const TextInputBase = forwardRef<TextInput, TextInputBaseProps>(
 	function TextInputBase(props, ref) {

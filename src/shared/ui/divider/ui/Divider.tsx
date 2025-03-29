@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import { View, ViewProps } from 'react-native';
 import {
 	UnistylesVariants,
@@ -6,18 +6,16 @@ import {
 	useStyles
 } from 'react-native-unistyles';
 
-type DividerProps = ViewProps & UnistylesVariants<typeof stylesheet>;
+export type DividerProps = ViewProps & UnistylesVariants<typeof stylesheet>;
 
-export const Divider = ({
-	orientation = 'horizontal',
-	size = 'medium',
-	style,
-	...props
-}: DividerProps) => {
+export const Divider = forwardRef<View, DividerProps>(function Divider(
+	{ orientation = 'horizontal', size = 'medium', style, ...props },
+	ref
+) {
 	const { styles } = useStyles(stylesheet, { orientation, size });
 
-	return <View style={[styles.divider, style]} {...props} />;
-};
+	return <View ref={ref} style={[styles.divider, style]} {...props} />;
+});
 
 const stylesheet = createStyleSheet(() => ({
 	divider: {

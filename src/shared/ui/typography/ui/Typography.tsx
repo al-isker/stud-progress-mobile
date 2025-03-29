@@ -8,16 +8,17 @@ import {
 
 export type TypographyProps = TextProps & UnistylesVariants<typeof stylesheet>;
 
-export const Typography = forwardRef<Text, TypographyProps>(
-	({ variant = 'h1', colorOnPrimary = false, style, ...props }, ref) => {
-		const { styles } = useStyles(stylesheet, {
-			variant,
-			colorOnPrimary
-		});
+export const Typography = forwardRef<Text, TypographyProps>(function Typography(
+	{ variant = 'h1', colorOnPrimary = false, style, ...props },
+	ref
+) {
+	const { styles } = useStyles(stylesheet, {
+		variant,
+		colorOnPrimary
+	});
 
-		return <Text ref={ref} style={[styles.text, style]} {...props} />;
-	}
-);
+	return <Text ref={ref} style={[styles.text, style]} {...props} />;
+});
 
 const stylesheet = createStyleSheet(theme => ({
 	text: {
@@ -31,6 +32,11 @@ const stylesheet = createStyleSheet(theme => ({
 				h2: {
 					color: theme.colors.blackAlpha(0.9),
 					fontSize: 24,
+					fontFamily: theme.typography.fontFamily.GolosTextSemiBold
+				},
+				h3: {
+					color: theme.colors.blackAlpha(0.9),
+					fontSize: 22,
 					fontFamily: theme.typography.fontFamily.GolosTextSemiBold
 				},
 				t1: {

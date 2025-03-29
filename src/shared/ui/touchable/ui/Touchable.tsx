@@ -9,7 +9,7 @@ import { useStyles } from 'react-native-unistyles';
 import { TouchableProps, TouchableRef } from './touchable.type';
 
 export const Touchable = forwardRef<TouchableRef, TouchableProps>(
-	(
+	function Touchable(
 		{
 			androidFeedbackColor,
 			iOSActiveOpacity,
@@ -22,7 +22,7 @@ export const Touchable = forwardRef<TouchableRef, TouchableProps>(
 			...viewProps
 		},
 		ref
-	) => {
+	) {
 		const { theme } = useStyles();
 
 		const touchableEventProps = {

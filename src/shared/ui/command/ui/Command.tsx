@@ -1,37 +1,42 @@
 import React, { FC, forwardRef } from 'react';
 import { ImageStyle, StyleProp, Text, View, ViewStyle } from 'react-native';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import {
+	UnistylesVariants,
+	createStyleSheet,
+	useStyles
+} from 'react-native-unistyles';
 import { Touchable, TouchableProps } from '@/shared/ui/touchable';
 
-export interface CommandProps extends Omit<TouchableProps, 'children'> {
-	size?: 'large' | 'medium';
-	title?: string;
-	StartIcon?: FC<{ style: StyleProp<ViewStyle | ImageStyle> }>;
-	EndIcon?: FC<{ style: StyleProp<ViewStyle | ImageStyle> }>;
-}
+export type CommandProps = Omit<TouchableProps, 'children'> &
+	UnistylesVariants<typeof stylesheet> & {
+		title?: string;
+		StartIcon?: FC<{ style: StyleProp<ViewStyle | ImageStyle> }>;
+		EndIcon?: FC<{ style: StyleProp<ViewStyle | ImageStyle> }>;
+	};
 
-export const Command = forwardRef<View, CommandProps>(
-	({ size = 'medium', style, title, StartIcon, EndIcon, ...props }, ref) => {
-		const { styles } = useStyles(stylesheet, { size });
+export const Command = forwardRef<View, CommandProps>(function Command(
+	{ size = 'medium', style, title, StartIcon, EndIcon, ...props },
+	ref
+) {
+	const { styles } = useStyles(stylesheet, { size });
 
-		return (
-			<View ref={ref} style={[styles.container, style]}>
-				<Touchable
-					style={styles.command}
-					androidFeedbackColor={styles.command.androidFeedbackColor}
-					iOSActiveOpacity={styles.command.iOSActiveOpacity}
-					{...props}
-				>
-					{StartIcon && <StartIcon style={styles.icon} />}
+	return (
+		<View ref={ref} style={[styles.container, style]}>
+			<Touchable
+				style={styles.command}
+				androidFeedbackColor={styles.command.androidFeedbackColor}
+				iOSActiveOpacity={styles.command.iOSActiveOpacity}
+				{...props}
+			>
+				{StartIcon && <StartIcon style={styles.icon} />}
 
-					<Text style={styles.title}>{title}</Text>
+				<Text style={styles.title}>{title}</Text>
 
-					{EndIcon && <EndIcon style={[styles.icon, styles.endIcon]} />}
-				</Touchable>
-			</View>
-		);
-	}
-);
+				{EndIcon && <EndIcon style={[styles.icon, styles.endIcon]} />}
+			</Touchable>
+		</View>
+	);
+});
 
 const stylesheet = createStyleSheet(theme => ({
 	container: {

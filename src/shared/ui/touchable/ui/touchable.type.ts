@@ -14,7 +14,8 @@ type TouchableEventProps = Pick<
 	'onPress' | 'onPressIn' | 'onPressOut' | 'onLongPress' | 'onFocus' | 'onBlur'
 >;
 
-export interface TouchableProps extends ViewProps, TouchableEventProps {
-	androidFeedbackColor?: string;
-	iOSActiveOpacity?: number;
-}
+export type TouchableProps = ViewProps &
+	TouchableEventProps & {
+		androidFeedbackColor?: string;
+		iOSActiveOpacity?: number;
+	};

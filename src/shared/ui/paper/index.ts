@@ -1,1 +1,1 @@
-export { Paper } from './ui/Paper';
+export { Paper, PaperProps } from './ui/Paper';

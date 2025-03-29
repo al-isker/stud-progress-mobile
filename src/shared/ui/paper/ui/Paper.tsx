@@ -2,7 +2,7 @@ import React, { forwardRef } from 'react';
 import { Platform, View, ViewProps } from 'react-native';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
 
-export interface PaperProps extends ViewProps {}
+export type PaperProps = ViewProps;
 
 export const Paper = forwardRef<View, PaperProps>(function Paper(
 	{ style, ...props },
