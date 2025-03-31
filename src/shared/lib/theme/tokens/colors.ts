@@ -1,22 +1,17 @@
-const createRGB = (channel: string) => {
-	return `rgb(${channel})`;
-};
+import { makeRGB } from '../utils/make-rgb';
+import { makeRGBWithAlpha } from '../utils/make-rgb-with-alpha';
 
-const createRGBWithAlpha = (channel: string) => {
-	return (alpha: number) => `rgba(${channel} / ${alpha})`;
-};
-
-const primaryLightChannel = '75 10 255';
-const primaryDarkChannel = '115 115 227';
-const blackChannel = '0 0 0';
-const whiteChannel = '255 255 255';
+const primaryLightChannel = '75, 10, 255';
+const primaryDarkChannel = '115, 115, 227';
+const blackChannel = '0, 0, 0';
+const whiteChannel = '255, 255, 255';
 
 const BASE_COLORS = {
-	alwaysBlack: createRGB(blackChannel),
-	alwaysWhite: createRGB(whiteChannel),
+	alwaysBlack: makeRGB(blackChannel),
+	alwaysWhite: makeRGB(whiteChannel),
 
-	alwaysBlackAlpha: createRGBWithAlpha(blackChannel),
-	alwaysWhiteAlpha: createRGBWithAlpha(whiteChannel),
+	alwaysBlackAlpha: makeRGBWithAlpha(blackChannel),
+	alwaysWhiteAlpha: makeRGBWithAlpha(whiteChannel),
 
 	success: 'green',
 	warning: 'yellow',
@@ -28,13 +23,13 @@ const BASE_COLORS = {
 const LIGHT_COLORS = {
 	...BASE_COLORS,
 
-	primary: createRGB(primaryLightChannel),
-	primaryAlpha: createRGBWithAlpha(primaryLightChannel),
+	primary: makeRGB(primaryLightChannel),
+	primaryAlpha: makeRGBWithAlpha(primaryLightChannel),
 
-	black: createRGB(blackChannel),
-	white: createRGB(whiteChannel),
-	blackAlpha: createRGBWithAlpha(blackChannel),
-	whiteAlpha: createRGBWithAlpha(whiteChannel),
+	black: makeRGB(blackChannel),
+	white: makeRGB(whiteChannel),
+	blackAlpha: makeRGBWithAlpha(blackChannel),
+	whiteAlpha: makeRGBWithAlpha(whiteChannel),
 
 	bgBase: '#F0F0F0',
 	bgPaper: '#FFFFFF'
@@ -43,13 +38,13 @@ const LIGHT_COLORS = {
 const DARK_COLORS = {
 	...BASE_COLORS,
 
-	primary: createRGB(primaryDarkChannel),
-	primaryAlpha: createRGBWithAlpha(primaryDarkChannel),
+	primary: makeRGB(primaryDarkChannel),
+	primaryAlpha: makeRGBWithAlpha(primaryDarkChannel),
 
-	black: createRGB(whiteChannel),
-	white: createRGB(blackChannel),
-	blackAlpha: createRGBWithAlpha(whiteChannel),
-	whiteAlpha: createRGBWithAlpha(blackChannel),
+	black: makeRGB(whiteChannel),
+	white: makeRGB(blackChannel),
+	blackAlpha: makeRGBWithAlpha(whiteChannel),
+	whiteAlpha: makeRGBWithAlpha(blackChannel),
 
 	bgBase: '#F0F0F0',
 	bgPaper: '#191919'
