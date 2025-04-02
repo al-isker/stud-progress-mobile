@@ -4,23 +4,25 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { parseErrorResponse } from '@/shared/api';
 import { routes } from '@/shared/config/navigation';
 import { ACCESS_TOKEN_STORAGE_KEY } from '@/shared/config/storage';
-import { useProgressAnimation } from '@/shared/lib/animations';
 import { useAsyncEffect } from '@/shared/lib/react-sugar';
 import { useLoginMutation } from '../../api/use-login-mutation';
 import { useLoginContext } from '../selectors/use-login-context';
 
-export const useLogin = () => {
+type LoginEvents = {
+	onStart?: () => void;
+	onSuccess?: () => void;
+	onError?: () => void;
+};
+
+export const useLogin = ({ onStart, onSuccess, onError }: LoginEvents = {}) => {
 	const router = useRouter();
 
 	const loginContext = useLoginContext();
 
 	const [login, { data, error, isSuccess, isError }] = useLoginMutation();
 
-	const { progress, animationStart, animationComplete } =
-		useProgressAnimation();
-
 	useEffect(() => {
-		animationStart();
+		onStart?.();
 
 		const formValues = loginContext.formValuesRef.current;
 
@@ -33,7 +35,7 @@ export const useLogin = () => {
 
 	useAsyncEffect(async () => {
 		if (isSuccess) {
-			animationComplete();
+			onSuccess?.();
 
 			await AsyncStorage.setItem(ACCESS_TOKEN_STORAGE_KEY, data.accessToken);
 
@@ -43,6 +45,8 @@ export const useLogin = () => {
 
 	useEffect(() => {
 		if (isError) {
+			onError?.();
+
 			const parsedErrorResponse = parseErrorResponse(error);
 
 			loginContext.setErrorMutation(parsedErrorResponse);
@@ -50,6 +54,4 @@ export const useLogin = () => {
 			router.back();
 		}
 	}, [isError]);
-
-	return { progress };
 };
