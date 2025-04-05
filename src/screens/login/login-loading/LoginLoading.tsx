@@ -1,7 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
-import { LoginLoader } from '@/features/login';
+import { LoginProgressLoader } from '@/features/login';
 import { LogoIcon } from '@/shared/assets/icons';
 import { APP_TITLE } from '@/shared/config/app-data';
 import { Typography } from '@/shared/ui/typography';
@@ -20,7 +20,7 @@ export const LoginLoading = () => {
 					</Typography>
 				</View>
 
-				<LoginLoader />
+				<LoginProgressLoader colorOnPrimary />
 			</View>
 		</>
 	);
@@ -43,7 +43,6 @@ const stylesheet = createStyleSheet(theme => ({
 		aspectRatio: 1
 	},
 	title: {
-		fontFamily: theme.typography.fontFamily.GolosTextBold,
 		fontSize: 30
 	}
 }));

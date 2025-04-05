@@ -45,7 +45,7 @@ const stylesheet = createStyleSheet(theme => ({
 		variants: {
 			colorOnPrimary: {
 				true: {
-					color: theme.colors.alwaysWhite
+					backgroundColor: theme.colors.alwaysWhite
 				}
 			}
 		}
