@@ -7,14 +7,16 @@ import { GolosTextSemiBold } from '@/shared/assets/fonts';
 type ProgressTextProps = {
 	radius: number;
 	value: SharedValue<number>;
-	format?: (value: number) => string;
+	formatValue?: (value: number) => string;
 };
 
-export const ProgressText = (progressTextProps: ProgressTextProps) => {
-	const font = useFont(GolosTextSemiBold, 26);
+export const ProgressText = (props: ProgressTextProps) => {
+	const fontSize = props.radius / 2;
+
+	const font = useFont(GolosTextSemiBold, fontSize);
 
 	if (font) {
-		return <ProgressTextWithFont font={font} {...progressTextProps} />;
+		return <ProgressTextWithFont font={font} {...props} />;
 	}
 };
 
@@ -26,12 +28,12 @@ const ProgressTextWithFont = ({
 	font,
 	radius,
 	value,
-	format
+	formatValue
 }: ProgressTextWithFontProps) => {
 	const { theme } = useStyles();
 
 	const text = useDerivedValue(() => {
-		return (format ?? String)(value.value);
+		return (formatValue ?? String)(value.value);
 	}, []);
 
 	const x = useDerivedValue(() => {

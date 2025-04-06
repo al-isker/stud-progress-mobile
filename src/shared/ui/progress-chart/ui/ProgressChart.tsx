@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Canvas, Group, Path, Skia } from '@shopify/react-native-skia';
-import { View } from 'react-native';
+import { View, ViewProps } from 'react-native';
 import {
 	useDerivedValue,
 	useSharedValue,
@@ -10,23 +10,25 @@ import { useStyles } from 'react-native-unistyles';
 import { animationTimingConfig } from '../model/config/animation-timing-config';
 import { ProgressText } from './ProgressText';
 
-export type ProgressChartProps = {
+export type ProgressChartProps = ViewProps & {
 	diameter: number;
 	value: number;
 	maxValue: number;
-	formatText?: (value: number) => string;
+	formatValue?: (value: number) => string;
 };
 
 export const ProgressChart = ({
 	diameter,
+	style,
 	value,
 	maxValue,
-	formatText
+	formatValue,
+	...props
 }: ProgressChartProps) => {
 	const { theme } = useStyles();
 
 	const radius = diameter / 2;
-	const strokeWidth = radius / 4.5;
+	const strokeWidth = radius / 3.5;
 	const innerRadius = radius - strokeWidth / 2;
 
 	const path = Skia.Path.Make().addCircle(radius, radius, innerRadius);
@@ -42,7 +44,7 @@ export const ProgressChart = ({
 	}, [value]);
 
 	return (
-		<View style={{ width: diameter, height: diameter }}>
+		<View style={[{ width: diameter, height: diameter }, style]} {...props}>
 			<Canvas style={{ flex: 1 }}>
 				<Group
 					transform={[{ rotate: -Math.PI / 2 }]}
@@ -68,7 +70,11 @@ export const ProgressChart = ({
 					/>
 				</Group>
 
-				<ProgressText radius={radius} value={sharedValue} format={formatText} />
+				<ProgressText
+					radius={radius}
+					value={sharedValue}
+					formatValue={formatValue}
+				/>
 			</Canvas>
 		</View>
 	);
