@@ -10,8 +10,8 @@ import { stylesheet } from './button.stylesheet';
 export type ButtonProps = Omit<TouchableProps, 'children'> &
 	UnistylesVariants<typeof stylesheet> & {
 		title?: string;
-		StartIcon?: FC<{ style: StyleProp<ViewStyle | ImageStyle> }>;
-		EndIcon?: FC<{ style: StyleProp<ViewStyle | ImageStyle> }>;
+		StartSlot?: FC<{ style: StyleProp<ViewStyle | ImageStyle> }>;
+		EndSlot?: FC<{ style: StyleProp<ViewStyle | ImageStyle> }>;
 	};
 
 export const Button = forwardRef<View, ButtonProps>(function Button(
@@ -20,8 +20,8 @@ export const Button = forwardRef<View, ButtonProps>(function Button(
 		size = 'medium',
 		style,
 		title,
-		StartIcon,
-		EndIcon,
+		StartSlot,
+		EndSlot,
 		onPressIn,
 		onPressOut,
 		...touchableProps
@@ -47,11 +47,11 @@ export const Button = forwardRef<View, ButtonProps>(function Button(
 				onPressOut={multiple(animationOut, onPressOut)}
 				{...touchableProps}
 			>
-				{StartIcon && <StartIcon style={styles.icon} />}
+				{StartSlot && <StartSlot style={styles.slot} />}
 
 				<Text style={styles.title}>{title}</Text>
 
-				{EndIcon && <EndIcon style={styles.icon} />}
+				{EndSlot && <EndSlot style={styles.slot} />}
 			</Touchable>
 		</Animated.View>
 	);

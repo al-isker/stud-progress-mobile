@@ -27,8 +27,10 @@ export const LoginSemesterForm = ({ style }: LoginSemesterFormProps) => {
 					<Link key={index} href={routes.loginMain} asChild>
 						<Command
 							title={option.label}
-							StartIcon={props => <Text {...props}>{option.value}</Text>}
-							EndIcon={ArrowRightIcon}
+							StartSlot={({ style }) => (
+								<Text style={[style, styles.number]}>{option.value}</Text>
+							)}
+							EndSlot={ArrowRightIcon}
 							onPress={() => selectSemester(option.value)}
 						/>
 					</Link>
@@ -38,12 +40,16 @@ export const LoginSemesterForm = ({ style }: LoginSemesterFormProps) => {
 	);
 };
 
-const stylesheet = createStyleSheet(() => ({
+const stylesheet = createStyleSheet(theme => ({
 	divider: {
 		marginBottom: 2
 	},
 	scrollViewContent: {
 		flexDirection: 'column',
 		rowGap: 2
+	},
+	number: {
+		fontFamily: theme.typography.fontFamily.GolosTextRegular,
+		fontSize: 14
 	}
 }));

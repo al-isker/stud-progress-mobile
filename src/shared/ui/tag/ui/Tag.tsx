@@ -16,23 +16,31 @@ import {
 export type TagProps = Omit<ViewProps, 'children'> &
 	UnistylesVariants<typeof stylesheet> & {
 		title?: string;
-		StartIcon?: FC<{ style: StyleProp<ViewStyle | ImageStyle> }>;
-		EndIcon?: FC<{ style: StyleProp<ViewStyle | ImageStyle> }>;
+		StartSlot?: FC<{ style: StyleProp<ViewStyle | ImageStyle> }>;
+		EndSlot?: FC<{ style: StyleProp<ViewStyle | ImageStyle> }>;
 	};
 
 export const Tag = forwardRef<View, TagProps>(function Tag(
-	{ variant = 'black', size, style, title, StartIcon, EndIcon, ...props },
+	{
+		variant = 'black',
+		size = 'medium',
+		style,
+		title,
+		StartSlot,
+		EndSlot,
+		...props
+	},
 	ref
 ) {
 	const { styles } = useStyles(stylesheet, { variant, size });
 
 	return (
 		<View ref={ref} style={[styles.tag, style]} {...props}>
-			{StartIcon && <StartIcon style={styles.icon} />}
+			{StartSlot && <StartSlot style={styles.slot} />}
 
 			<Text style={styles.title}>{title}</Text>
 
-			{EndIcon && <EndIcon style={styles.icon} />}
+			{EndSlot && <EndSlot style={styles.slot} />}
 		</View>
 	);
 });
@@ -53,6 +61,11 @@ const stylesheet = createStyleSheet(theme => ({
 				}
 			},
 			size: {
+				medium: {
+					paddingVertical: 2,
+					paddingHorizontal: 10,
+					borderRadius: 8
+				},
 				small: {
 					paddingVertical: 2,
 					paddingHorizontal: 8,
@@ -75,13 +88,16 @@ const stylesheet = createStyleSheet(theme => ({
 				}
 			},
 			size: {
+				medium: {
+					fontSize: 14
+				},
 				small: {
 					fontSize: 12
 				}
 			}
 		}
 	},
-	icon: {
+	slot: {
 		aspectRatio: 1,
 
 		variants: {
@@ -94,6 +110,9 @@ const stylesheet = createStyleSheet(theme => ({
 				}
 			},
 			size: {
+				medium: {
+					height: 14
+				},
 				small: {
 					height: 12
 				}

@@ -10,12 +10,12 @@ import { Touchable, TouchableProps } from '@/shared/ui/touchable';
 export type CommandProps = Omit<TouchableProps, 'children'> &
 	UnistylesVariants<typeof stylesheet> & {
 		title?: string;
-		StartIcon?: FC<{ style: StyleProp<ViewStyle | ImageStyle> }>;
-		EndIcon?: FC<{ style: StyleProp<ViewStyle | ImageStyle> }>;
+		StartSlot?: FC<{ style: StyleProp<ViewStyle | ImageStyle> }>;
+		EndSlot?: FC<{ style: StyleProp<ViewStyle | ImageStyle> }>;
 	};
 
 export const Command = forwardRef<View, CommandProps>(function Command(
-	{ size = 'medium', style, title, StartIcon, EndIcon, ...props },
+	{ size = 'medium', style, title, StartSlot, EndSlot, ...props },
 	ref
 ) {
 	const { styles } = useStyles(stylesheet, { size });
@@ -28,11 +28,11 @@ export const Command = forwardRef<View, CommandProps>(function Command(
 				iOSActiveOpacity={styles.command.iOSActiveOpacity}
 				{...props}
 			>
-				{StartIcon && <StartIcon style={styles.icon} />}
+				{StartSlot && <StartSlot style={styles.slot} />}
 
 				<Text style={styles.title}>{title}</Text>
 
-				{EndIcon && <EndIcon style={[styles.icon, styles.endIcon]} />}
+				{EndSlot && <EndSlot style={[styles.slot, styles.endSlot]} />}
 			</Touchable>
 		</View>
 	);
@@ -79,25 +79,22 @@ const stylesheet = createStyleSheet(theme => ({
 			}
 		}
 	},
-	icon: {
+	slot: {
 		aspectRatio: 1,
 		color: theme.colors.blackAlpha(0.8),
-		fontFamily: theme.typography.fontFamily.GolosTextRegular,
 
 		variants: {
 			size: {
 				large: {
-					height: 18,
-					fontSize: 15
+					height: 18
 				},
 				medium: {
-					height: 16,
-					fontSize: 14
+					height: 16
 				}
 			}
 		}
 	},
-	endIcon: {
+	endSlot: {
 		marginLeft: 'auto'
 	}
 }));

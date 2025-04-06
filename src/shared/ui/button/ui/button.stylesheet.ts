@@ -66,7 +66,7 @@ export const stylesheet = createStyleSheet(theme => ({
 			}
 		}
 	},
-	icon: {
+	slot: {
 		aspectRatio: 1,
 
 		variants: {
