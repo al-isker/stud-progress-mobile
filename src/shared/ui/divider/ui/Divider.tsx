@@ -17,10 +17,11 @@ export const Divider = forwardRef<View, DividerProps>(function Divider(
 	return <View ref={ref} style={[styles.divider, style]} {...props} />;
 });
 
-const stylesheet = createStyleSheet(() => ({
+const stylesheet = createStyleSheet(theme => ({
 	divider: {
 		borderWidth: 0,
 		borderStyle: 'solid',
+		borderColor: theme.colors.blackAlpha(0.2),
 
 		borderTopWidth: 0,
 		borderLeftWidth: 0,
