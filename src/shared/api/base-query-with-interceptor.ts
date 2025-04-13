@@ -24,7 +24,7 @@ export const baseQueryWithInterceptor = async (
 				{}
 			);
 
-			if (refreshTokenResponse) {
+			if (refreshTokenResponse.data) {
 				await AsyncStorage.setItem(
 					ACCESS_TOKEN_STORAGE_KEY,
 					(refreshTokenResponse.data as IRefreshTokenResponse).accessToken
