@@ -5,6 +5,8 @@ const primaryLightChannel = '75, 10, 255';
 const primaryDarkChannel = '115, 115, 227';
 const blackChannel = '0, 0, 0';
 const whiteChannel = '255, 255, 255';
+const redChannel = '255, 0, 0';
+const greenChannel = '0, 200, 30';
 
 const BASE_COLORS = {
 	alwaysBlack: makeRGB(blackChannel),
@@ -13,9 +15,10 @@ const BASE_COLORS = {
 	alwaysBlackAlpha: makeRGBWithAlpha(blackChannel),
 	alwaysWhiteAlpha: makeRGBWithAlpha(whiteChannel),
 
-	success: 'green',
-	warning: 'yellow',
-	error: 'red',
+	red: makeRGB(redChannel),
+	green: makeRGB(greenChannel),
+	redAlpha: makeRGBWithAlpha(redChannel),
+	greenAlpha: makeRGBWithAlpha(greenChannel),
 
 	transparent: 'transparent'
 };

@@ -37,6 +37,7 @@ const stylesheet = createStyleSheet(theme => ({
 				h3: {
 					color: theme.colors.blackAlpha(0.9),
 					fontSize: 22,
+					lineHeight: 24,
 					fontFamily: theme.typography.fontFamily.GolosTextSemiBold
 				},
 				t1: {
@@ -50,7 +51,7 @@ const stylesheet = createStyleSheet(theme => ({
 					fontFamily: theme.typography.fontFamily.GolosTextRegular
 				},
 				error: {
-					color: theme.colors.error,
+					color: theme.colors.red,
 					fontSize: 14,
 					fontFamily: theme.typography.fontFamily.GolosTextRegular
 				}
