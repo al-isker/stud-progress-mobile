@@ -1,5 +1,5 @@
 export enum ControlType {
-	TEST,
-	GRADED_TEST,
-	EXAM
+	TEST = 'TEST',
+	GRADED_TEST = 'GRADED_TEST',
+	EXAM = 'EXAM'
 }
