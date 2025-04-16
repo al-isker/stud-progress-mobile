@@ -4,8 +4,8 @@ import { Paper } from '@/shared/ui/paper';
 import { ProgressChart } from '@/shared/ui/progress-chart';
 import { Tag } from '@/shared/ui/tag';
 import { Typography } from '@/shared/ui/typography';
+import { controlTypeDisplay } from '../../model/const/control-type-display';
 import { progressFormatValue } from '../../model/format/progress-format-value';
-import { ControlType } from '../../model/types/control-type';
 import { ISubjectRating } from '../../model/types/subject-rating';
 import { Rating } from './Rating';
 
@@ -23,12 +23,6 @@ export const SubjectRating = ({
 	const { styles } = useStyles(stylesheet);
 
 	const windowWidth = Dimensions.get('window').width;
-
-	const controlTypeDisplay = {
-		[ControlType.TEST]: 'зачёт',
-		[ControlType.GRADED_TEST]: 'диф зачёт',
-		[ControlType.EXAM]: 'экзамен'
-	};
 
 	return (
 		<Paper style={styles.paper}>

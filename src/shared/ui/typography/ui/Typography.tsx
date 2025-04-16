@@ -36,7 +36,7 @@ const stylesheet = createStyleSheet(theme => ({
 				},
 				h3: {
 					color: theme.colors.blackAlpha(0.9),
-					fontSize: 22,
+					fontSize: 20,
 					lineHeight: 24,
 					fontFamily: theme.typography.fontFamily.GolosTextSemiBold
 				},

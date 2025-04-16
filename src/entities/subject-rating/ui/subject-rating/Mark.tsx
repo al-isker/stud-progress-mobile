@@ -1,7 +1,6 @@
 import React from 'react';
 import { StyleProp, Text, View, ViewStyle } from 'react-native';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
-import { PulseIndicator } from '@/shared/ui/pulse-indicator';
 import { RatingItem } from '../../model/types/rating-item';
 import { RatingStatus } from '../../model/types/rating-status';
 
@@ -24,7 +23,7 @@ export const Mark = ({ style, status, mark, isNew }: Props) => {
 		<View style={[styles.container, style]}>
 			<Text style={styles.text}>{statusDisplay[status]}</Text>
 
-			{isNew && <PulseIndicator style={styles.pulseIndicator} />}
+			{/* {isNew && <PulseIndicator style={styles.pulseIndicator} />} */}
 		</View>
 	);
 };

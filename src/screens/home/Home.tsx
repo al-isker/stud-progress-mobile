@@ -1,9 +1,14 @@
-import { Text, View } from 'react-native';
+import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import { SubjectRatingList } from '@/entities/subject-rating';
 
 export const Home = () => {
-	return (
-		<View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-			<Text>Главная</Text>
-		</View>
-	);
+	const { styles } = useStyles(stylesheet);
+
+	return <SubjectRatingList style={styles.subjectRatingList} />;
 };
+
+const stylesheet = createStyleSheet(theme => ({
+	subjectRatingList: {
+		padding: theme.spacing.container
+	}
+}));
