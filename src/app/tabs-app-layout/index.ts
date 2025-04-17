@@ -1,1 +1,0 @@
-export { TabsAppLayout } from './TabsAppLayout';

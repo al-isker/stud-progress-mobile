@@ -1,8 +1,8 @@
 import { Stack } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { FontsProvider } from '../providers/fonts/FontsProvider';
-import { StoreProvider } from '../providers/store/StoreProvider';
-import { UnistylesProvider } from '../providers/unistyles/UnistylesProvider';
+import { FontsProvider } from '../../providers/fonts-provider/FontsProvider';
+import { StoreProvider } from '../../providers/store-provider/StoreProvider';
+import { UnistylesProvider } from '../../providers/unistyles-provider/UnistylesProvider';
 
 export const RootAppLayout = () => (
 	<StoreProvider>
