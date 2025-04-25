@@ -1,1 +1,1 @@
-export { SERVER_URL } from './environments';
+export { API_URL } from './environments';

@@ -1,22 +1,18 @@
 import { ReactNode, useEffect } from 'react';
 import { useFonts } from 'expo-font';
 import { SplashScreen } from 'expo-router';
-import * as Fonts from '@/shared/assets/fonts/fonts';
+import * as Fonts from '@/shared/assets/fonts';
 
 SplashScreen.preventAutoHideAsync();
 
 export const FontsProvider = ({ children }: { children: ReactNode }) => {
-	const [fontsLoaded] = useFonts(Fonts);
+	const [isFontsLoaded] = useFonts(Fonts);
 
 	useEffect(() => {
-		if (fontsLoaded) {
+		if (isFontsLoaded) {
 			SplashScreen.hideAsync();
 		}
-	}, [fontsLoaded]);
+	}, [isFontsLoaded]);
 
-	if (!fontsLoaded) {
-		return null;
-	}
-
-	return children;
+	return isFontsLoaded && children;
 };

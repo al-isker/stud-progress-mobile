@@ -1,11 +1,11 @@
 import { Stack } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { FontsProvider } from '../../providers/fonts-provider/FontsProvider';
-import { StoreProvider } from '../../providers/store-provider/StoreProvider';
+import { QueryProvider } from '../../providers/query-provider/QueryProvider';
 import { UnistylesProvider } from '../../providers/unistyles-provider/UnistylesProvider';
 
 export const RootAppLayout = () => (
-	<StoreProvider>
+	<QueryProvider>
 		<FontsProvider>
 			<UnistylesProvider>
 				<SafeAreaView style={{ height: '100%' }}>
@@ -13,5 +13,5 @@ export const RootAppLayout = () => (
 				</SafeAreaView>
 			</UnistylesProvider>
 		</FontsProvider>
-	</StoreProvider>
+	</QueryProvider>
 );

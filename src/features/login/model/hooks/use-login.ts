@@ -1,57 +1,54 @@
 import { useEffect } from 'react';
 import { useRouter } from 'expo-router';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { parseErrorResponse } from '@/shared/api';
+import { ILoginResponse } from '@/features/login/model/types/login-response';
+import { IApiError } from '@/shared/api';
 import { routes } from '@/shared/config/navigation';
 import { ACCESS_TOKEN_STORAGE_KEY } from '@/shared/config/storage';
-import { useAsyncEffect } from '@/shared/lib/react-sugar';
+import { useProgressAnimation } from '@/shared/lib/animations';
 import { useLoginMutation } from '../../api/use-login-mutation';
-import { useLoginContext } from '../selectors/use-login-context';
+import { useLoginContext } from './use-login-context';
 
-type LoginEvents = {
-	onStart?: () => void;
-	onSuccess?: () => void;
-	onError?: () => void;
-};
-
-export const useLogin = ({ onStart, onSuccess, onError }: LoginEvents = {}) => {
+export const useLogin = () => {
 	const router = useRouter();
 
 	const loginContext = useLoginContext();
 
-	const [login, { data, error, isSuccess, isError }] = useLoginMutation();
+	const loginMutation = useLoginMutation();
+
+	const { progress, animationStart, animationComplete } =
+		useProgressAnimation();
+
+	const handleSuccess = async (data: ILoginResponse) => {
+		animationComplete();
+
+		await AsyncStorage.setItem(ACCESS_TOKEN_STORAGE_KEY, data.accessToken);
+
+		router.replace(routes.home);
+	};
+
+	const handleError = (error: IApiError) => {
+		loginContext.setMutationError(error);
+
+		router.back();
+	};
 
 	useEffect(() => {
-		onStart?.();
+		animationStart();
 
 		const formValues = loginContext.formValuesRef.current;
 
-		login({
+		const bodyMutation = {
 			fullName: formValues.fullName ?? '',
 			password: formValues.password ?? '',
 			semester: formValues.semester!
+		};
+
+		loginMutation.mutate(bodyMutation, {
+			onSuccess: handleSuccess,
+			onError: handleError
 		});
 	}, []);
 
-	useAsyncEffect(async () => {
-		if (isSuccess) {
-			onSuccess?.();
-
-			await AsyncStorage.setItem(ACCESS_TOKEN_STORAGE_KEY, data.accessToken);
-
-			router.replace(routes.home);
-		}
-	}, [isSuccess]);
-
-	useEffect(() => {
-		if (isError) {
-			onError?.();
-
-			const parsedErrorResponse = parseErrorResponse(error);
-
-			loginContext.setErrorMutation(parsedErrorResponse);
-
-			router.back();
-		}
-	}, [isError]);
+	return { progress };
 };

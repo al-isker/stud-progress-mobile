@@ -1,27 +1,20 @@
 import React from 'react';
-import { StyleProp, TextStyle } from 'react-native';
-import { useProgressAnimation } from '@/shared/lib/animations';
 import {
 	ProgressLoader,
 	ProgressLoaderProps
 } from '@/shared/ui/progress-loader';
 import { useLogin } from '../../model/hooks/use-login';
 
-type LoginProgressLoaderProps = Pick<ProgressLoaderProps, 'colorOnPrimary'> & {
-	style?: StyleProp<TextStyle>;
-};
+type LoginProgressLoaderProps = Pick<
+	ProgressLoaderProps,
+	'colorOnPrimary' | 'style'
+>;
 
 export const LoginProgressLoader = ({
 	style,
 	colorOnPrimary
 }: LoginProgressLoaderProps) => {
-	const { progress, animationStart, animationComplete } =
-		useProgressAnimation();
-
-	useLogin({
-		onStart: animationStart,
-		onSuccess: animationComplete
-	});
+	const { progress } = useLogin();
 
 	return (
 		<ProgressLoader

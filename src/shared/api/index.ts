@@ -1,4 +1,4 @@
 export { api } from './api';
-export { QUERY_TIMEOUT } from './const/query-timeout';
-export { parseErrorResponse } from './parse-error-response/parse-error-response';
-export { ParsedErrorResponse } from './types/parsed-error-response';
+export { API_TIMEOUT } from './config/api-timeout';
+export * from './const/query-keys';
+export { IApiError } from './types/api-error';

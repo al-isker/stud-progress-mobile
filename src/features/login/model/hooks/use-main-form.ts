@@ -1,4 +1,4 @@
-import { useLoginContext } from '../selectors/use-login-context';
+import { useLoginContext } from './use-login-context';
 
 export const useMainForm = () => {
 	const loginContext = useLoginContext();

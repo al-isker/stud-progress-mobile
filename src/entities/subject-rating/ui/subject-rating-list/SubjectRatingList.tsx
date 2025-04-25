@@ -1,8 +1,7 @@
 import { FlatList, StyleProp, Text, View, ViewStyle } from 'react-native';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
-import { parseErrorResponse } from '@/shared/api';
 import { CircularLoader } from '@/shared/ui/circular-loader';
-import { useSubjectRatingQuery } from '../../api/use-subject-rating-query';
+import { useSubjectRatingListQuery } from '../../api/use-subject-rating-list-query';
 import { SubjectRating } from '../subject-rating/SubjectRating';
 
 type Props = {
@@ -12,12 +11,11 @@ type Props = {
 export const SubjectRatingList = ({ style }: Props) => {
 	const { styles } = useStyles(stylesheet);
 
-	const { data, error, isLoading, isSuccess, isError } =
-		useSubjectRatingQuery();
+	const { data, isPending, isError } = useSubjectRatingListQuery();
 
-	if (isLoading) {
+	if (isPending) {
 		return (
-			<View style={[styles.loaderContainer, style]}>
+			<View style={[styles.centringContainer, style]}>
 				<CircularLoader />
 			</View>
 		);
@@ -25,28 +23,27 @@ export const SubjectRatingList = ({ style }: Props) => {
 
 	if (isError) {
 		return (
-			<View style={style}>
+			<View style={[styles.centringContainer, style]}>
 				<Text style={styles.error}>
-					{parseErrorResponse(error)?.message ?? 'Unknown error'}
+					Оценки не найдены, может вас отчислили?
 				</Text>
 			</View>
 		);
 	}
 
-	if (isSuccess) {
-		return (
-			<FlatList
-				contentContainerStyle={[styles.list, style]}
-				data={data}
-				keyExtractor={item => item.id.toString()}
-				renderItem={({ item }) => <SubjectRating {...item} />}
-			/>
-		);
-	}
+	return (
+		<FlatList
+			contentContainerStyle={[styles.list, style]}
+			showsVerticalScrollIndicator={false}
+			data={data}
+			keyExtractor={item => item.id.toString()}
+			renderItem={({ item }) => <SubjectRating {...item} />}
+		/>
+	);
 };
 
 const stylesheet = createStyleSheet(theme => ({
-	loaderContainer: {
+	centringContainer: {
 		flex: 1,
 		justifyContent: 'center',
 		alignItems: 'center'

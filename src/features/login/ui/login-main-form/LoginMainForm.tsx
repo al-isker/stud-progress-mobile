@@ -6,7 +6,7 @@ import { routes } from '@/shared/config/navigation';
 import { Button } from '@/shared/ui/button';
 import { TextField } from '@/shared/ui/text-field';
 import { useMainForm } from '../../model/hooks/use-main-form';
-import { ErrorMutation } from './ErrorMutation';
+import { MutationError } from './MutationError';
 
 interface LoginMainFormProps {
 	style?: StyleProp<ViewStyle>;
@@ -42,7 +42,7 @@ export const LoginMainForm = ({ style }: LoginMainFormProps) => {
 				onChangeText={handlePasswordChange}
 			/>
 
-			<ErrorMutation style={styles.formItem} />
+			<MutationError style={styles.formItem} />
 
 			<View style={styles.actions}>
 				<Link href={routes.loginLoading} asChild>
