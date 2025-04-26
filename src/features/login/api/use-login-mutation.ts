@@ -1,12 +1,6 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { api } from '@/shared/api';
+import { loginFn } from '@/shared/api';
 import { PROFILE_KEY, SUBJECT_KEY } from '@/shared/api/const/query-keys';
-import { ILoginForm } from '../model/types/login-form';
-import { ILoginResponse } from '../model/types/login-response';
-
-const loginMutationFn = async (body: ILoginForm) => {
-	return (await api.post<ILoginResponse>('auth/login', body)).data;
-};
 
 export const useLoginMutation = () => {
 	const queryClient = useQueryClient();
@@ -17,7 +11,7 @@ export const useLoginMutation = () => {
 	};
 
 	return useMutation({
-		mutationFn: loginMutationFn,
+		mutationFn: loginFn,
 		onSuccess: handleSuccess
 	});
 };

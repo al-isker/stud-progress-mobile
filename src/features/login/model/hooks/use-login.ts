@@ -1,8 +1,7 @@
 import { useEffect } from 'react';
 import { useRouter } from 'expo-router';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { ILoginResponse } from '@/features/login/model/types/login-response';
-import { IApiError } from '@/shared/api';
+import { IApiError, ILoginResponse } from '@/shared/api';
 import { routes } from '@/shared/config/navigation';
 import { ACCESS_TOKEN_STORAGE_KEY } from '@/shared/config/storage';
 import { useProgressAnimation } from '@/shared/lib/animations';

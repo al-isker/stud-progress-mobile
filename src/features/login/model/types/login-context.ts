@@ -1,6 +1,5 @@
 import { MutableRefObject } from 'react';
-import { IApiError } from '@/shared/api';
-import { ILoginForm } from './login-form';
+import { IApiError, ILoginForm } from '@/shared/api';
 
 export type LoginContextFormValues = Partial<ILoginForm>;
 export type LoginContextMutationError = IApiError | undefined;
