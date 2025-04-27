@@ -33,6 +33,15 @@
 					"root": "./app"
 				}
 			]
-		]
+		],
+		"extra": {
+			"router": {
+				"origin": false,
+				"root": "./app"
+			},
+			"eas": {
+				"projectId": "d36ef4e3-4a24-4458-aaf8-2e09a7c483eb"
+			}
+		}
 	}
 }
