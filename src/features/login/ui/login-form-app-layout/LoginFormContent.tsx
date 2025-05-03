@@ -4,10 +4,10 @@ import { createStyleSheet, useStyles } from 'react-native-unistyles';
 import { Paper } from '@/shared/ui/paper';
 import { Typography } from '@/shared/ui/typography';
 
-interface LoginFormContentProps {
+type LoginFormContentProps = {
 	children: ReactNode;
 	style?: StyleProp<ViewStyle>;
-}
+};
 
 export const LoginFormContent = ({
 	children,

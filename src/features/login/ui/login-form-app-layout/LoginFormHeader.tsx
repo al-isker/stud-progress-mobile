@@ -5,9 +5,9 @@ import { LogoIcon } from '@/shared/assets/icons';
 import { APP_TITLE } from '@/shared/config/app-data';
 import { Typography } from '@/shared/ui/typography';
 
-interface LoginFormHeaderProps {
+type LoginFormHeaderProps = {
 	style?: StyleProp<ViewStyle>;
-}
+};
 
 export const LoginFormHeader = ({ style }: LoginFormHeaderProps) => {
 	const { styles, theme } = useStyles(stylesheet);

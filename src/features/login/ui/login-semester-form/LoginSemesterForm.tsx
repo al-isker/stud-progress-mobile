@@ -9,9 +9,9 @@ import { Command } from '@/shared/ui/command';
 import { Divider } from '@/shared/ui/divider';
 import { useSemesterForm } from '../../model/hooks/use-semester-form';
 
-interface LoginSemesterFormProps {
+type LoginSemesterFormProps = {
 	style?: StyleProp<ViewStyle>;
-}
+};
 
 export const LoginSemesterForm = ({ style }: LoginSemesterFormProps) => {
 	const { styles } = useStyles(stylesheet);

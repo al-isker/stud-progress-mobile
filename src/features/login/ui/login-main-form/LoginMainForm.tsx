@@ -8,9 +8,9 @@ import { TextField } from '@/shared/ui/text-field';
 import { useMainForm } from '../../model/hooks/use-main-form';
 import { MutationError } from './MutationError';
 
-interface LoginMainFormProps {
+type LoginMainFormProps = {
 	style?: StyleProp<ViewStyle>;
-}
+};
 
 export const LoginMainForm = ({ style }: LoginMainFormProps) => {
 	const { styles } = useStyles(stylesheet);

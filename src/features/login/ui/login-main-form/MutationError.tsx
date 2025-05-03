@@ -5,11 +5,11 @@ import { useRerender } from '@/shared/lib/react-sugar';
 import { Typography } from '@/shared/ui/typography';
 import { useLoginContext } from '../../model/hooks/use-login-context';
 
-interface ErrorMutationProps {
+type MutationErrorProps = {
 	style?: StyleProp<TextStyle>;
-}
+};
 
-export const MutationError = ({ style }: ErrorMutationProps) => {
+export const MutationError = ({ style }: MutationErrorProps) => {
 	const rerender = useRerender();
 
 	const { mutationErrorRef } = useLoginContext();
