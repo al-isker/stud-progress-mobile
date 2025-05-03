@@ -14,7 +14,7 @@ export const Mark = ({ style, status, mark, isNew }: Props) => {
 
 	const statusDisplay = {
 		[RatingStatus.MARK]: mark,
-		[RatingStatus.EMPTY]: null,
+		[RatingStatus.EMPTY]: '−',
 		[RatingStatus.ABSENCE]: 'н/б',
 		[RatingStatus.UPWORKED]: 'н/б',
 		[RatingStatus.UPWORKED_WITH_MARK]: mark
@@ -49,10 +49,10 @@ const stylesheet = createStyleSheet(theme => ({
 					backgroundColor: theme.colors.redAlpha(0.1)
 				},
 				[RatingStatus.UPWORKED]: {
-					backgroundColor: theme.colors.greenAlpha(0.1)
+					backgroundColor: theme.colors.greenAlpha(0.15)
 				},
 				[RatingStatus.UPWORKED_WITH_MARK]: {
-					backgroundColor: theme.colors.greenAlpha(0.1)
+					backgroundColor: theme.colors.greenAlpha(0.15)
 				}
 			}
 		}
@@ -64,6 +64,11 @@ const stylesheet = createStyleSheet(theme => ({
 					color: theme.colors.black,
 					fontSize: 16,
 					fontFamily: theme.typography.fontFamily.GolosTextMedium
+				},
+				[RatingStatus.EMPTY]: {
+					color: theme.colors.black,
+					fontSize: 14,
+					fontFamily: theme.typography.fontFamily.GolosTextRegular
 				},
 				[RatingStatus.ABSENCE]: {
 					color: theme.colors.red,

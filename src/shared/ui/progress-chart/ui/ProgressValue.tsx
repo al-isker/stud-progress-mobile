@@ -4,32 +4,32 @@ import { SharedValue, useDerivedValue } from 'react-native-reanimated';
 import { useStyles } from 'react-native-unistyles';
 import { GolosTextSemiBold } from '@/shared/assets/fonts';
 
-type ProgressTextProps = {
+type ProgressValueProps = {
 	radius: number;
-	value: SharedValue<number>;
-	formatValue?: (value: number) => string;
+	value: SharedValue<number | null>;
+	formatValue?: (value: number | null) => string;
 };
 
-export const ProgressText = (props: ProgressTextProps) => {
+export const ProgressValue = (props: ProgressValueProps) => {
 	const fontSize = props.radius / 2;
 
 	const font = useFont(GolosTextSemiBold, fontSize);
 
 	if (font) {
-		return <ProgressTextWithFont font={font} {...props} />;
+		return <ProgressValueWithFont font={font} {...props} />;
 	}
 };
 
-type ProgressTextWithFontProps = ProgressTextProps & {
+type ProgressValueWithFontProps = ProgressValueProps & {
 	font: SkFont;
 };
 
-const ProgressTextWithFont = ({
+const ProgressValueWithFont = ({
 	font,
 	radius,
 	value,
 	formatValue
-}: ProgressTextWithFontProps) => {
+}: ProgressValueWithFontProps) => {
 	const { theme } = useStyles();
 
 	const text = useDerivedValue(() => {

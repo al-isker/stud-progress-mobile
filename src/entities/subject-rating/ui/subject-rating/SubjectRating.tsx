@@ -1,58 +1,76 @@
+import { forwardRef, useImperativeHandle } from 'react';
 import { Dimensions, View } from 'react-native';
+import { useSharedValue, withTiming } from 'react-native-reanimated';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
 import { Paper } from '@/shared/ui/paper';
 import { ProgressChart } from '@/shared/ui/progress-chart';
 import { Tag } from '@/shared/ui/tag';
 import { Typography } from '@/shared/ui/typography';
-import { controlTypeDisplay } from '../../model/const/control-type-display';
-import { progressFormatValue } from '../../model/format/progress-format-value';
+import { createAnimationTimingConfig } from '../../lib/config/create-animation-timing-config';
+import { CONTROL_TYPE_DISPLAY } from '../../lib/const/control-type-display';
+import { formatAverageMark } from '../../lib/format/format-average-mark';
+import { MAX_MARK } from '../../model/const/max-mark';
 import { ISubjectRating } from '../../model/types/subject-rating';
 import { Rating } from './Rating';
+
+export type SubjectRatingRef = {
+	focus: () => void;
+};
 
 type SubjectRatingProps = Pick<
 	ISubjectRating,
 	'name' | 'controlType' | 'averageMark' | 'rating'
 >;
 
-export const SubjectRating = ({
-	name,
-	controlType,
-	averageMark,
-	rating
-}: SubjectRatingProps) => {
-	const { styles } = useStyles(stylesheet);
+export const SubjectRating = forwardRef<SubjectRatingRef, SubjectRatingProps>(
+	function SubjectRating({ name, controlType, averageMark, rating }, ref) {
+		const { styles } = useStyles(stylesheet);
 
-	const windowWidth = Dimensions.get('window').width;
+		const sharedAverageMark = useSharedValue(averageMark === null ? null : 0);
 
-	return (
-		<Paper style={styles.paper}>
-			<ProgressChart
-				style={styles.chart}
-				diameter={windowWidth / 4}
-				value={averageMark ?? 0}
-				maxValue={5}
-				formatValue={progressFormatValue}
-			/>
+		const windowWidth = Dimensions.get('window').width;
 
-			<View style={styles.data}>
-				<Typography variant='h3' numberOfLines={2}>
-					{name}
-				</Typography>
+		const handleFocus = () => {
+			if (sharedAverageMark.value !== averageMark) {
+				sharedAverageMark.set(
+					withTiming(averageMark!, createAnimationTimingConfig(averageMark!))
+				);
+			}
+		};
 
-				<Tag
-					variant='primary'
-					size='small'
-					style={styles.tag}
-					title={controlTypeDisplay[controlType]}
+		useImperativeHandle(ref, () => ({ focus: handleFocus }), []);
+
+		return (
+			<Paper style={styles.paper}>
+				<ProgressChart
+					style={styles.chart}
+					diameter={windowWidth / 4}
+					value={sharedAverageMark}
+					maxValue={MAX_MARK}
+					showOnZero
+					formatValue={formatAverageMark}
 				/>
 
-				<View style={styles.ratingContainer}>
-					<Rating style={styles.rating} rating={rating} />
+				<View style={styles.data}>
+					<Typography variant='h3' numberOfLines={2}>
+						{name}
+					</Typography>
+
+					<Tag
+						variant='primary'
+						size='small'
+						style={styles.tag}
+						title={CONTROL_TYPE_DISPLAY[controlType]}
+					/>
+
+					<View style={styles.ratingContainer}>
+						<Rating style={styles.rating} rating={rating} />
+					</View>
 				</View>
-			</View>
-		</Paper>
-	);
-};
+			</Paper>
+		);
+	}
+);
 
 const stylesheet = createStyleSheet(theme => ({
 	paper: {

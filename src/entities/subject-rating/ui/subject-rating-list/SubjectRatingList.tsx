@@ -1,14 +1,14 @@
-import { FlatList, StyleProp, Text, View, ViewStyle } from 'react-native';
+import { StyleProp, Text, View, ViewStyle } from 'react-native';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
 import { CircularLoader } from '@/shared/ui/circular-loader';
 import { useSubjectRatingListQuery } from '../../api/use-subject-rating-list-query';
-import { SubjectRating } from '../subject-rating/SubjectRating';
+import { SubjectRatingFlatList } from './SubjectRatingFlatList';
 
-type Props = {
+type SubjectRatingListProps = {
 	style?: StyleProp<ViewStyle>;
 };
 
-export const SubjectRatingList = ({ style }: Props) => {
+export const SubjectRatingList = ({ style }: SubjectRatingListProps) => {
 	const { styles } = useStyles(stylesheet);
 
 	const { data, isPending, isError } = useSubjectRatingListQuery();
@@ -25,19 +25,16 @@ export const SubjectRatingList = ({ style }: Props) => {
 		return (
 			<View style={[styles.centringContainer, style]}>
 				<Text style={styles.error}>
-					Оценки не найдены, может вас отчислили?
+					Оценки не найдены, может тебя отчислили?
 				</Text>
 			</View>
 		);
 	}
 
 	return (
-		<FlatList
+		<SubjectRatingFlatList
 			contentContainerStyle={[styles.list, style]}
-			showsVerticalScrollIndicator={false}
 			data={data}
-			keyExtractor={item => item.id.toString()}
-			renderItem={({ item }) => <SubjectRating {...item} />}
 		/>
 	);
 };
