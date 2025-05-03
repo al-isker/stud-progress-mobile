@@ -14,7 +14,7 @@ import Animated, {
 } from 'react-native-reanimated';
 import { useStyles } from 'react-native-unistyles';
 import { multiple } from '@/shared/lib/function';
-import { animationTimingConfig } from '../../model/config/animation-timing-config';
+import { animationTimingConfig } from '../../lib/animation/animation-timing-config';
 import { ErrorText } from '../error-text/ErrorText';
 import {
 	TextInputBase,

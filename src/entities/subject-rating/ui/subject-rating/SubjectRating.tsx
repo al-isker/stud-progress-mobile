@@ -6,7 +6,7 @@ import { Paper } from '@/shared/ui/paper';
 import { ProgressChart } from '@/shared/ui/progress-chart';
 import { Tag } from '@/shared/ui/tag';
 import { Typography } from '@/shared/ui/typography';
-import { createAnimationTimingConfig } from '../../lib/config/create-animation-timing-config';
+import { createAnimationTimingConfig } from '../../lib/animation/create-animation-timing-config';
 import { CONTROL_TYPE_DISPLAY } from '../../lib/const/control-type-display';
 import { formatAverageMark } from '../../lib/format/format-average-mark';
 import { MAX_MARK } from '../../model/const/max-mark';

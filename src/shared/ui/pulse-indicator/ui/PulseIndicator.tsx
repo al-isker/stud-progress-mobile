@@ -8,8 +8,8 @@ import Animated, {
 	withTiming
 } from 'react-native-reanimated';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
-import { animationDelay } from '../model/config/animation-delay';
-import { animationTimingConfig } from '../model/config/animation-timing-config';
+import { animationDelay } from '../lib/animation/animation-delay';
+import { animationTimingConfig } from '../lib/animation/animation-timing-config';
 
 export type PulseIndicatorProps = ViewProps;
 
