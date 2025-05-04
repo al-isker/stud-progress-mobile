@@ -65,7 +65,7 @@ export const LoginMainForm = ({ style }: LoginMainFormProps) => {
 	);
 };
 
-const stylesheet = createStyleSheet(() => ({
+const stylesheet = createStyleSheet({
 	container: {
 		flex: 1
 	},
@@ -78,4 +78,4 @@ const stylesheet = createStyleSheet(() => ({
 	button: {
 		marginBottom: 8
 	}
-}));
+});
