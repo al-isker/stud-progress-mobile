@@ -11,7 +11,7 @@ import { CONTROL_TYPE_DISPLAY } from '../../lib/const/control-type-display';
 import { formatAverageMark } from '../../lib/format/format-average-mark';
 import { MAX_MARK } from '../../model/const/max-mark';
 import { ISubjectRating } from '../../model/types/subject-rating';
-import { Rating } from './Rating';
+import { EventList } from './EventList';
 
 export type SubjectRatingRef = {
 	focus: () => void;
@@ -19,12 +19,15 @@ export type SubjectRatingRef = {
 
 type SubjectRatingProps = Pick<
 	ISubjectRating,
-	'name' | 'controlType' | 'averageMark' | 'rating'
+	'name' | 'controlType' | 'ratingByCurrentSemester'
 >;
 
 export const SubjectRating = forwardRef<SubjectRatingRef, SubjectRatingProps>(
-	function SubjectRating({ name, controlType, averageMark, rating }, ref) {
+	function SubjectRating({ name, controlType, ratingByCurrentSemester }, ref) {
 		const { styles } = useStyles(stylesheet);
+
+		const averageMark = ratingByCurrentSemester?.averageMark ?? null;
+		const eventList = ratingByCurrentSemester?.eventList;
 
 		const sharedAverageMark = useSharedValue(averageMark === null ? null : 0);
 
@@ -63,9 +66,11 @@ export const SubjectRating = forwardRef<SubjectRatingRef, SubjectRatingProps>(
 						title={CONTROL_TYPE_DISPLAY[controlType]}
 					/>
 
-					<View style={styles.ratingContainer}>
-						<Rating style={styles.rating} rating={rating} />
-					</View>
+					{eventList && (
+						<View style={styles.eventListContainer}>
+							<EventList style={styles.eventList} eventList={eventList} />
+						</View>
+					)}
 				</View>
 			</Paper>
 		);
@@ -88,10 +93,10 @@ const stylesheet = createStyleSheet(theme => ({
 	tag: {
 		alignSelf: 'flex-start'
 	},
-	ratingContainer: {
+	eventListContainer: {
 		marginTop: 'auto'
 	},
-	rating: {
+	eventList: {
 		marginTop: 4,
 		marginRight: 4
 	}

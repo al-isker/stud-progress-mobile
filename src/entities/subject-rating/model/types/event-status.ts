@@ -1,4 +1,4 @@
-export enum RatingStatus {
+export enum EventStatusEnum {
 	MARK = 'MARK',
 	EMPTY = 'EMPTY',
 	ABSENCE = 'ABSENCE',

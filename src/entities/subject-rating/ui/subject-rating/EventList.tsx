@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { LayoutChangeEvent, StyleProp, View, ViewStyle } from 'react-native';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
-import { ISubjectRating } from '../../model/types/subject-rating';
-import { Mark } from './Mark';
+import { IRatingByCurrentSemester } from '../../model/types/subject-rating';
+import { Event } from './Event';
 
-type RatingProps = Pick<ISubjectRating, 'rating'> & {
+type EventListProps = Pick<IRatingByCurrentSemester, 'eventList'> & {
 	style?: StyleProp<ViewStyle>;
 };
 
-export const Rating = ({ style, rating }: RatingProps) => {
+export const EventList = ({ style, eventList }: EventListProps) => {
 	const { styles } = useStyles(stylesheet);
 
 	const [fitsItemsCount, setFitsItemsCount] = useState(0);
@@ -27,17 +27,17 @@ export const Rating = ({ style, rating }: RatingProps) => {
 
 	return (
 		<View style={[styles.container, style]} onLayout={handleLayout}>
-			{rating.slice(-fitsItemsCount).map(item => (
-				<Mark
-					key={item.id}
+			{eventList.slice(-fitsItemsCount).map(event => (
+				<Event
+					key={event.id}
 					style={styles.mark}
-					status={item.status}
-					mark={item.mark}
-					isNew={item.isNew}
+					status={event.status}
+					mark={event.mark}
+					isNew={event.isNew}
 				/>
 			))}
 
-			{Array.from({ length: fitsItemsCount - rating.length }).map(
+			{Array.from({ length: fitsItemsCount - eventList.length }).map(
 				(_, index) => (
 					<View key={index} style={styles.mark} />
 				)

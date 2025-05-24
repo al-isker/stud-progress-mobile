@@ -48,8 +48,7 @@ export const SubjectRatingFlatList = ({
 					ref={subjectRatingRefs[index]}
 					name={item.name}
 					controlType={item.controlType}
-					averageMark={item.averageMark}
-					rating={item.rating}
+					ratingByCurrentSemester={item.ratingByCurrentSemester}
 				/>
 			)}
 		/>

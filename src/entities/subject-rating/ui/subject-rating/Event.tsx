@@ -2,22 +2,22 @@ import React from 'react';
 import { StyleProp, Text, View, ViewStyle } from 'react-native';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
 import { PulseIndicator } from '@/shared/ui/pulse-indicator';
-import { RatingItem } from '../../model/types/rating-item';
-import { RatingStatus } from '../../model/types/rating-status';
+import { IEvent } from '../../model/types/event';
+import { EventStatusEnum } from '../../model/types/event-status';
 
-type Props = Pick<RatingItem, 'status' | 'mark' | 'isNew'> & {
+type Props = Pick<IEvent, 'status' | 'mark' | 'isNew'> & {
 	style?: StyleProp<ViewStyle>;
 };
 
-export const Mark = ({ style, status, mark, isNew }: Props) => {
+export const Event = ({ style, status, mark, isNew }: Props) => {
 	const { styles } = useStyles(stylesheet, { status });
 
 	const statusDisplay = {
-		[RatingStatus.MARK]: mark,
-		[RatingStatus.EMPTY]: '−',
-		[RatingStatus.ABSENCE]: 'н/б',
-		[RatingStatus.UPWORKED]: 'н/б',
-		[RatingStatus.UPWORKED_WITH_MARK]: mark
+		[EventStatusEnum.MARK]: mark,
+		[EventStatusEnum.EMPTY]: '−',
+		[EventStatusEnum.ABSENCE]: 'н/б',
+		[EventStatusEnum.UPWORKED]: 'н/б',
+		[EventStatusEnum.UPWORKED_WITH_MARK]: mark
 	};
 
 	return (
@@ -39,19 +39,19 @@ const stylesheet = createStyleSheet(theme => ({
 
 		variants: {
 			status: {
-				[RatingStatus.MARK]: {
+				[EventStatusEnum.MARK]: {
 					backgroundColor: theme.colors.blackAlpha(0.08)
 				},
-				[RatingStatus.EMPTY]: {
+				[EventStatusEnum.EMPTY]: {
 					backgroundColor: theme.colors.blackAlpha(0.08)
 				},
-				[RatingStatus.ABSENCE]: {
+				[EventStatusEnum.ABSENCE]: {
 					backgroundColor: theme.colors.redAlpha(0.1)
 				},
-				[RatingStatus.UPWORKED]: {
+				[EventStatusEnum.UPWORKED]: {
 					backgroundColor: theme.colors.greenAlpha(0.15)
 				},
-				[RatingStatus.UPWORKED_WITH_MARK]: {
+				[EventStatusEnum.UPWORKED_WITH_MARK]: {
 					backgroundColor: theme.colors.greenAlpha(0.15)
 				}
 			}
@@ -60,27 +60,27 @@ const stylesheet = createStyleSheet(theme => ({
 	text: {
 		variants: {
 			status: {
-				[RatingStatus.MARK]: {
+				[EventStatusEnum.MARK]: {
 					color: theme.colors.black,
 					fontSize: 16,
 					fontFamily: theme.typography.fontFamily.GolosTextMedium
 				},
-				[RatingStatus.EMPTY]: {
+				[EventStatusEnum.EMPTY]: {
 					color: theme.colors.black,
 					fontSize: 14,
 					fontFamily: theme.typography.fontFamily.GolosTextRegular
 				},
-				[RatingStatus.ABSENCE]: {
+				[EventStatusEnum.ABSENCE]: {
 					color: theme.colors.red,
 					fontSize: 11,
 					fontFamily: theme.typography.fontFamily.GolosTextSemiBold
 				},
-				[RatingStatus.UPWORKED]: {
+				[EventStatusEnum.UPWORKED]: {
 					color: theme.colors.green,
 					fontSize: 11,
 					fontFamily: theme.typography.fontFamily.GolosTextSemiBold
 				},
-				[RatingStatus.UPWORKED_WITH_MARK]: {
+				[EventStatusEnum.UPWORKED_WITH_MARK]: {
 					color: theme.colors.green,
 					fontSize: 16,
 					fontFamily: theme.typography.fontFamily.GolosTextMedium
