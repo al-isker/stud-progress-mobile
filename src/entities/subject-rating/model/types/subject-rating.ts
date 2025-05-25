@@ -7,10 +7,8 @@ export interface ISubjectRating {
 	id: number;
 	name: string;
 	controlType: ControlTypeEnum;
-	ratingByCurrentSemester: IRatingByCurrentSemester | null;
+	ratingByCurrentSemester: {
+		averageMark: number | null;
+		eventList: IEventList;
+	};
 }
-
-export type IRatingByCurrentSemester = {
-	averageMark: number | null;
-	eventList: IEventList;
-};

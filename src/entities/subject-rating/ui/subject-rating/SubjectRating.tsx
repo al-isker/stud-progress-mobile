@@ -26,12 +26,11 @@ export const SubjectRating = forwardRef<SubjectRatingRef, SubjectRatingProps>(
 	function SubjectRating({ name, controlType, ratingByCurrentSemester }, ref) {
 		const { styles } = useStyles(stylesheet);
 
-		const averageMark = ratingByCurrentSemester?.averageMark ?? null;
-		const eventList = ratingByCurrentSemester?.eventList;
+		const windowWidth = Dimensions.get('window').width;
+
+		const { averageMark, eventList } = ratingByCurrentSemester;
 
 		const sharedAverageMark = useSharedValue(averageMark === null ? null : 0);
-
-		const windowWidth = Dimensions.get('window').width;
 
 		const handleFocus = () => {
 			if (sharedAverageMark.value !== averageMark) {

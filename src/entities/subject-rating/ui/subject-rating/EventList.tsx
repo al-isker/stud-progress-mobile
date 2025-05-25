@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { LayoutChangeEvent, StyleProp, View, ViewStyle } from 'react-native';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
-import { IRatingByCurrentSemester } from '../../model/types/subject-rating';
+import { IEventList } from '../../model/types/event';
 import { Event } from './Event';
 
-type EventListProps = Pick<IRatingByCurrentSemester, 'eventList'> & {
+type EventListProps = {
 	style?: StyleProp<ViewStyle>;
+	eventList: IEventList;
 };
 
 export const EventList = ({ style, eventList }: EventListProps) => {
