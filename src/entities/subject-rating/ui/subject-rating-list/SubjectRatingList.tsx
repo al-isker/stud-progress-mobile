@@ -11,7 +11,8 @@ type SubjectRatingListProps = {
 export const SubjectRatingList = ({ style }: SubjectRatingListProps) => {
 	const { styles } = useStyles(stylesheet);
 
-	const { data, isPending, isError } = useSubjectRatingListQuery();
+	const { data, refetch, isPending, isError, isRefetching } =
+		useSubjectRatingListQuery();
 
 	if (isPending) {
 		return (
@@ -35,6 +36,8 @@ export const SubjectRatingList = ({ style }: SubjectRatingListProps) => {
 		<SubjectRatingFlatList
 			contentContainerStyle={[styles.list, style]}
 			data={data}
+			refreshing={isRefetching}
+			onRefresh={refetch}
 		/>
 	);
 };

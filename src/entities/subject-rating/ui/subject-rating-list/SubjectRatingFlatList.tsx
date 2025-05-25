@@ -1,5 +1,6 @@
 import { useRef } from 'react';
 import { FlatList, FlatListProps, StyleProp, ViewStyle } from 'react-native';
+import { RefreshControl } from '@/shared/ui/refresh-control';
 import {
 	ISubjectRating,
 	ISubjectRatingList
@@ -13,12 +14,16 @@ type SubjectRatingFlatListProps = {
 	contentContainerStyle?: StyleProp<ViewStyle>;
 	style?: StyleProp<ViewStyle>;
 	data: ISubjectRatingList;
+	refreshing: boolean;
+	onRefresh: () => void;
 };
 
 export const SubjectRatingFlatList = ({
 	contentContainerStyle,
 	style,
-	data
+	data,
+	refreshing,
+	onRefresh
 }: SubjectRatingFlatListProps) => {
 	const subjectRatingRefs = Array.from({ length: data.length }, () => {
 		return useRef<SubjectRatingRef>(null);
@@ -38,6 +43,9 @@ export const SubjectRatingFlatList = ({
 			contentContainerStyle={contentContainerStyle}
 			style={style}
 			showsVerticalScrollIndicator={false}
+			refreshControl={
+				<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+			}
 			data={data}
 			initialNumToRender={data.length}
 			viewabilityConfig={{ itemVisiblePercentThreshold: 50 }}
