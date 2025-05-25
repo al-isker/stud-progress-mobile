@@ -3,5 +3,5 @@ import { ILoginResponse } from '../model/types/login-response';
 import { authApi } from './auth-api';
 
 export const loginFn = async (form: ILoginForm) => {
-	return authApi.post<ILoginResponse>('auth/login', form).then(res => res.data);
+	return (await authApi.post<ILoginResponse>('auth/login', form)).data;
 };

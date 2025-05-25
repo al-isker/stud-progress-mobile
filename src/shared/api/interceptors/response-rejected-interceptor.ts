@@ -3,6 +3,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { HttpStatusCode } from 'axios';
 import { routes } from '@/shared/config/navigation';
 import { ACCESS_TOKEN_STORAGE_KEY } from '@/shared/config/storage';
+import { REFRESH_TOKEN_STORAGE_KEY } from '@/shared/config/storage/storage';
 import { api } from '../api';
 import { refreshTokenFn } from '../auth/api/refresh-token-fn';
 import { IApiError } from '../types/api-error';
@@ -12,13 +13,24 @@ export const responseRejectedInterceptor = async (error: IApiError) => {
 	const isUnauthorized = error.status === HttpStatusCode.Unauthorized;
 
 	if (originalRequest && isUnauthorized) {
-		try {
-			const { accessToken } = await refreshTokenFn();
+		const refreshToken = await AsyncStorage.getItem(REFRESH_TOKEN_STORAGE_KEY);
 
-			await AsyncStorage.setItem(ACCESS_TOKEN_STORAGE_KEY, accessToken);
+		if (refreshToken) {
+			try {
+				const refreshTokenResponse = await refreshTokenFn({ refreshToken });
 
-			return await api.request(originalRequest);
-		} catch {}
+				await AsyncStorage.setItem(
+					ACCESS_TOKEN_STORAGE_KEY,
+					refreshTokenResponse.accessToken
+				);
+				await AsyncStorage.setItem(
+					REFRESH_TOKEN_STORAGE_KEY,
+					refreshTokenResponse.refreshToken
+				);
+
+				return await api.request(originalRequest);
+			} catch {}
+		}
 
 		router.replace(routes.loginSemester);
 	}

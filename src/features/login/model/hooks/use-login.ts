@@ -4,6 +4,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { IApiError, ILoginResponse } from '@/shared/api';
 import { routes } from '@/shared/config/navigation';
 import { ACCESS_TOKEN_STORAGE_KEY } from '@/shared/config/storage';
+import { REFRESH_TOKEN_STORAGE_KEY } from '@/shared/config/storage/storage';
 import { useProgressAnimation } from '@/shared/lib/animations';
 import { useLoginMutation } from '../../api/use-login-mutation';
 import { useLoginContext } from './use-login-context';
@@ -22,6 +23,7 @@ export const useLogin = () => {
 		animationComplete();
 
 		await AsyncStorage.setItem(ACCESS_TOKEN_STORAGE_KEY, data.accessToken);
+		await AsyncStorage.setItem(REFRESH_TOKEN_STORAGE_KEY, data.refreshToken);
 
 		router.replace(routes.home);
 	};
