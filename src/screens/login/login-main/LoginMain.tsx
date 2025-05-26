@@ -10,7 +10,7 @@ export const LoginMain = () => {
 	return (
 		<View style={styles.container}>
 			<Typography variant='t2' style={styles.description}>
-				Введи учётные данные для личного кабинета ДГМУ
+				Введи свои учётные данные для личного кабинета
 			</Typography>
 
 			<LoginMainForm />

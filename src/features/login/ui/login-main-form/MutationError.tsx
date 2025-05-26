@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react';
 import { useFocusEffect } from 'expo-router';
 import { StyleProp, TextStyle } from 'react-native';
+import { apiMessage } from '@/shared/lib/api-message';
 import { useRerender } from '@/shared/lib/react-sugar';
 import { Typography } from '@/shared/ui/typography';
 import { useLoginContext } from '../../model/hooks/use-login-context';
@@ -14,7 +15,17 @@ export const MutationError = ({ style }: MutationErrorProps) => {
 
 	const { mutationErrorRef } = useLoginContext();
 
-	const message = mutationErrorRef.current?.response?.data.message;
+	const status = mutationErrorRef.current?.status;
+	const responseMessage = mutationErrorRef.current?.response?.data.message;
+
+	const strResponseMessage = Array.isArray(responseMessage)
+		? responseMessage.join(', ')
+		: responseMessage;
+
+	const message =
+		status && status >= 500 && status < 600
+			? apiMessage.lkServerError
+			: strResponseMessage;
 
 	useFocusEffect(
 		useCallback(() => {
@@ -27,7 +38,7 @@ export const MutationError = ({ style }: MutationErrorProps) => {
 	if (message) {
 		return (
 			<Typography variant='error' style={[{ textAlign: 'center' }, style]}>
-				{Array.isArray(message) ? message.join(', ') : message}
+				{message}
 			</Typography>
 		);
 	}
