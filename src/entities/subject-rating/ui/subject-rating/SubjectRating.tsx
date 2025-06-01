@@ -10,37 +10,44 @@ import { createAnimationTimingConfig } from '../../lib/animation/create-animatio
 import { CONTROL_TYPE_DISPLAY } from '../../lib/const/control-type-display';
 import { formatAverageMark } from '../../lib/format/format-average-mark';
 import { MAX_MARK } from '../../model/const/max-mark';
+import { useViewEventsMutation } from '../../model/hooks/use-view-events-mutation';
 import { ISubjectRating } from '../../model/types/subject-rating';
 import { EventList } from './EventList';
 
 export type SubjectRatingRef = {
-	focus: () => void;
+	view: () => void;
 };
 
-type SubjectRatingProps = Pick<
-	ISubjectRating,
-	'name' | 'controlType' | 'ratingByCurrentSemester'
->;
+type SubjectRatingProps = {
+	data: ISubjectRating;
+};
 
 export const SubjectRating = forwardRef<SubjectRatingRef, SubjectRatingProps>(
-	function SubjectRating({ name, controlType, ratingByCurrentSemester }, ref) {
+	function SubjectRating({ data }, ref) {
+		const {
+			id,
+			name,
+			controlType,
+			ratingByCurrentSemester: { averageMark, eventList }
+		} = data;
+
 		const { styles } = useStyles(stylesheet);
 
 		const windowWidth = Dimensions.get('window').width;
 
-		const { averageMark, eventList } = ratingByCurrentSemester;
+		const viewEventsMutation = useViewEventsMutation(id, eventList);
 
 		const sharedAverageMark = useSharedValue(averageMark === null ? null : 0);
 
-		const handleFocus = () => {
-			if (sharedAverageMark.value !== averageMark) {
-				sharedAverageMark.set(
-					withTiming(averageMark!, createAnimationTimingConfig(averageMark!))
-				);
-			}
+		const handleView = () => {
+			sharedAverageMark.set(
+				withTiming(averageMark!, createAnimationTimingConfig(averageMark!))
+			);
+
+			viewEventsMutation.mutate();
 		};
 
-		useImperativeHandle(ref, () => ({ focus: handleFocus }), []);
+		useImperativeHandle(ref, () => ({ view: handleView }), []);
 
 		return (
 			<Paper style={styles.paper}>

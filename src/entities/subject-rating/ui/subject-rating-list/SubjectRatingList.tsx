@@ -1,7 +1,7 @@
 import { StyleProp, Text, View, ViewStyle } from 'react-native';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
 import { CircularLoader } from '@/shared/ui/circular-loader';
-import { useSubjectRatingListQuery } from '../../api/use-subject-rating-list-query';
+import { useSubjectRatingListQuery } from '../../model/hooks/use-subject-rating-list-query';
 import { SubjectRatingFlatList } from './SubjectRatingFlatList';
 
 type SubjectRatingListProps = {

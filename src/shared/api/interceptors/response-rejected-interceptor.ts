@@ -2,8 +2,10 @@ import { router } from 'expo-router';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { HttpStatusCode } from 'axios';
 import { routes } from '@/shared/config/navigation';
-import { ACCESS_TOKEN_STORAGE_KEY } from '@/shared/config/storage';
-import { REFRESH_TOKEN_STORAGE_KEY } from '@/shared/config/storage/storage';
+import {
+	ACCESS_TOKEN_STORAGE_KEY,
+	REFRESH_TOKEN_STORAGE_KEY
+} from '@/shared/config/storage';
 import { api } from '../api';
 import { refreshTokenFn } from '../auth/api/refresh-token-fn';
 import { IApiError } from '../types/api-error';

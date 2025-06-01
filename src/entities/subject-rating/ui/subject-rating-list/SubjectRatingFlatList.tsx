@@ -29,11 +29,22 @@ export const SubjectRatingFlatList = ({
 		return useRef<SubjectRatingRef>(null);
 	});
 
+	const isViewedRefs = Array.from({ length: data.length }, () => {
+		return useRef(false);
+	});
+
 	const handleViewableItemsChanged: FlatListProps<ISubjectRating>['onViewableItemsChanged'] =
 		({ changed }) => {
 			for (const { index } of changed) {
 				if (index !== null) {
-					subjectRatingRefs[index].current!.focus();
+					const subjectRatingRef = subjectRatingRefs[index];
+					const isViewedRef = isViewedRefs[index];
+
+					if (!isViewedRef.current) {
+						isViewedRef.current = true;
+
+						subjectRatingRef.current!.view();
+					}
 				}
 			}
 		};
@@ -52,12 +63,7 @@ export const SubjectRatingFlatList = ({
 			onViewableItemsChanged={handleViewableItemsChanged}
 			keyExtractor={item => item.id.toString()}
 			renderItem={({ item, index }) => (
-				<SubjectRating
-					ref={subjectRatingRefs[index]}
-					name={item.name}
-					controlType={item.controlType}
-					ratingByCurrentSemester={item.ratingByCurrentSemester}
-				/>
+				<SubjectRating ref={subjectRatingRefs[index]} data={item} />
 			)}
 		/>
 	);

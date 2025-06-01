@@ -3,8 +3,10 @@ import { useRouter } from 'expo-router';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { IApiError, ILoginResponse } from '@/shared/api';
 import { routes } from '@/shared/config/navigation';
-import { ACCESS_TOKEN_STORAGE_KEY } from '@/shared/config/storage';
-import { REFRESH_TOKEN_STORAGE_KEY } from '@/shared/config/storage/storage';
+import {
+	ACCESS_TOKEN_STORAGE_KEY,
+	REFRESH_TOKEN_STORAGE_KEY
+} from '@/shared/config/storage';
 import { useProgressAnimation } from '@/shared/lib/animations';
 import { useLoginMutation } from '../../api/use-login-mutation';
 import { useLoginContext } from './use-login-context';
