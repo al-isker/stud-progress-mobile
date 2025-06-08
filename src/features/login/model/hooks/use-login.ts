@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useRouter } from 'expo-router';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { IApiError, ILoginResponse } from '@/shared/api';
+import { API_LONG_TIMEOUT, IApiError, ILoginResponse } from '@/shared/api';
 import { routes } from '@/shared/config/navigation';
 import {
 	ACCESS_TOKEN_STORAGE_KEY,
@@ -19,7 +19,7 @@ export const useLogin = () => {
 	const loginMutation = useLoginMutation();
 
 	const { progress, animationStart, animationComplete } =
-		useProgressAnimation();
+		useProgressAnimation(API_LONG_TIMEOUT);
 
 	const handleSuccess = async (data: ILoginResponse) => {
 		animationComplete();

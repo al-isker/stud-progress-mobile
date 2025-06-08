@@ -4,13 +4,12 @@ import {
 	withSequence,
 	withTiming
 } from 'react-native-reanimated';
-import { API_TIMEOUT } from '@/shared/api';
 
 const firstEasing = Easing.bezier(1, 0.1, 0.5, 1);
 const secondEasing = Easing.inOut(Easing.quad);
 const thirdEasing = Easing.out(Easing.poly(2));
 
-export const useProgressAnimation = (duration = API_TIMEOUT) => {
+export const useProgressAnimation = (duration: number) => {
 	const progress = useSharedValue(0);
 
 	const firstDuration = duration / 25;
