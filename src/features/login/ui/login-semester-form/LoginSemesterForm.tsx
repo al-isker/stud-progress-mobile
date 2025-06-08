@@ -1,10 +1,8 @@
 import React from 'react';
-import { Link } from 'expo-router';
 import { ScrollView, StyleProp, Text, View, ViewStyle } from 'react-native';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
 import { semesterOptions } from '@/entities/semester';
 import { ArrowRightIcon } from '@/shared/assets/icons';
-import { routes } from '@/shared/config/navigation';
 import { Command } from '@/shared/ui/command';
 import { Divider } from '@/shared/ui/divider';
 import { useSemesterForm } from '../../model/hooks/use-semester-form';
@@ -22,18 +20,20 @@ export const LoginSemesterForm = ({ style }: LoginSemesterFormProps) => {
 		<View style={style}>
 			<Divider style={styles.divider} />
 
-			<ScrollView contentContainerStyle={styles.scrollViewContent}>
+			<ScrollView
+				contentContainerStyle={styles.scrollViewContent}
+				showsVerticalScrollIndicator={false}
+			>
 				{semesterOptions.map((option, index) => (
-					<Link key={index} href={routes.loginMain} asChild>
-						<Command
-							title={option.label}
-							StartSlot={({ style }) => (
-								<Text style={[style, styles.number]}>{option.value}</Text>
-							)}
-							EndSlot={ArrowRightIcon}
-							onPress={() => selectSemester(option.value)}
-						/>
-					</Link>
+					<Command
+						key={index}
+						title={option.label}
+						StartSlot={({ style }) => (
+							<Text style={[style, styles.number]}>{option.value}</Text>
+						)}
+						EndSlot={ArrowRightIcon}
+						onPress={() => selectSemester(option.value)}
+					/>
 				))}
 			</ScrollView>
 		</View>

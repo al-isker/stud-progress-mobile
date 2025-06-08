@@ -14,7 +14,7 @@ import Animated, {
 } from 'react-native-reanimated';
 import { useStyles } from 'react-native-unistyles';
 import { multiple } from '@/shared/lib/function';
-import { animationTimingConfig } from '../../lib/animation/animation-timing-config';
+import { animationConfig } from '../../lib/animation/animation-config';
 import { ErrorText } from '../error-text/ErrorText';
 import {
 	TextInputBase,
@@ -42,9 +42,9 @@ export const TextField = forwardRef<View, TextFieldProps>(function TextField(
 		errorText,
 		value,
 		defaultValue,
-		onFocus: onFocusProp,
-		onBlur: onBlurProp,
-		onChangeText: onChangeTextProp,
+		onFocus,
+		onBlur,
+		onChangeText,
 		...props
 	},
 	ref
@@ -53,30 +53,32 @@ export const TextField = forwardRef<View, TextFieldProps>(function TextField(
 
 	const inputRef = useRef<NativeTextInput>(null);
 
-	const isFocus = useSharedValue(false);
-	const isValue = useSharedValue(!!(value ?? defaultValue)?.length);
+	const sharedIsFocus = useSharedValue(false);
+	const sharedIsThereValue = useSharedValue(!!(value ?? defaultValue)?.length);
 
 	const inputAnimatedStyles = useAnimatedStyle(() => ({
 		borderColor: withTiming(
-			isFocus.value ? theme.colors.primary : styles.textInput.borderColor,
-			animationTimingConfig
+			sharedIsFocus.value ? theme.colors.primary : styles.textInput.borderColor,
+			animationConfig
 		)
 	}));
 
 	const labelAnimatedStyles = useAnimatedStyle(() => ({
 		color: withTiming(
-			isFocus.value ? theme.colors.primary : styles.label.color,
-			animationTimingConfig
+			sharedIsFocus.value ? theme.colors.primary : styles.label.color,
+			animationConfig
 		),
 		top: withTiming(
-			isFocus.value || isValue.value ? styles.label.top / 2 : styles.label.top,
-			animationTimingConfig
+			sharedIsFocus.value || sharedIsThereValue.value
+				? styles.label.top / 2
+				: styles.label.top,
+			animationConfig
 		),
 		transform: [
 			{
 				scale: withTiming(
-					isFocus.value || isValue.value ? 0.75 : 1,
-					animationTimingConfig
+					sharedIsFocus.value || sharedIsThereValue.value ? 0.75 : 1,
+					animationConfig
 				)
 			}
 		]
@@ -84,17 +86,17 @@ export const TextField = forwardRef<View, TextFieldProps>(function TextField(
 
 	useEffect(() => {
 		if (typeof value === 'string') {
-			isValue.set(!!value.length);
+			sharedIsThereValue.set(!!value.length);
 		}
 	}, [value]);
 
 	const setInputFocus = () => inputRef.current!.focus();
 
-	const handleFocus = () => isFocus.set(true);
-	const handleOnBlur = () => isFocus.set(false);
+	const handleFocus = () => sharedIsFocus.set(true);
+	const handleBlur = () => sharedIsFocus.set(false);
 
 	const handleChangeText = (value: string) => {
-		isValue.set(!!value.length);
+		sharedIsThereValue.set(!!value.length);
 	};
 
 	return (
@@ -109,9 +111,9 @@ export const TextField = forwardRef<View, TextFieldProps>(function TextField(
 						size={size}
 						defaultValue={defaultValue}
 						value={value}
-						onFocus={multiple(handleFocus, onFocusProp)}
-						onBlur={multiple(handleOnBlur, onBlurProp)}
-						onChangeText={multiple(handleChangeText, onChangeTextProp)}
+						onFocus={multiple(handleFocus, onFocus)}
+						onBlur={multiple(handleBlur, onBlur)}
+						onChangeText={multiple(handleChangeText, onChangeText)}
 						{...props}
 					/>
 				</Animated.View>

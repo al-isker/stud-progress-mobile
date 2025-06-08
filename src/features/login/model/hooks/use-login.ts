@@ -7,7 +7,7 @@ import {
 	ACCESS_TOKEN_STORAGE_KEY,
 	REFRESH_TOKEN_STORAGE_KEY
 } from '@/shared/config/storage';
-import { useProgressAnimation } from '@/shared/lib/animations';
+import { useProgressAnimation } from '@/shared/lib/animation';
 import { useLoginMutation } from '../../api/use-login-mutation';
 import { useLoginContext } from './use-login-context';
 

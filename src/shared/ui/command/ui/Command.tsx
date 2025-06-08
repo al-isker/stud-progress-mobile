@@ -7,7 +7,10 @@ import {
 } from 'react-native-unistyles';
 import { Touchable, TouchableProps } from '@/shared/ui/touchable';
 
-export type CommandProps = Omit<TouchableProps, 'children'> &
+export type CommandProps = Omit<
+	TouchableProps,
+	'children' | 'feedbackColor' | 'contentContainerStyle'
+> &
 	UnistylesVariants<typeof stylesheet> & {
 		title?: string;
 		StartSlot?: FC<{ style: StyleProp<ViewStyle | ImageStyle> }>;
@@ -18,39 +21,35 @@ export const Command = forwardRef<View, CommandProps>(function Command(
 	{ size = 'medium', style, title, StartSlot, EndSlot, ...props },
 	ref
 ) {
-	const { styles } = useStyles(stylesheet, { size });
+	const { theme, styles } = useStyles(stylesheet, { size });
 
 	return (
-		<View ref={ref} style={[styles.container, style]}>
-			<Touchable
-				style={styles.command}
-				androidFeedbackColor={styles.command.androidFeedbackColor}
-				iOSActiveOpacity={styles.command.iOSActiveOpacity}
-				{...props}
-			>
-				{StartSlot && <StartSlot style={styles.slot} />}
+		<Touchable
+			ref={ref}
+			feedbackColor={theme.colors.blackAlpha(0.1)}
+			style={[styles.touchable, style]}
+			contentContainerStyle={styles.touchableContentContainer}
+			{...props}
+		>
+			{StartSlot && <StartSlot style={styles.slot} />}
 
-				<Text style={styles.title}>{title}</Text>
+			<Text style={styles.title}>{title}</Text>
 
-				{EndSlot && <EndSlot style={[styles.slot, styles.endSlot]} />}
-			</Touchable>
-		</View>
+			{EndSlot && <EndSlot style={[styles.slot, styles.endSlot]} />}
+		</Touchable>
 	);
 });
 
 const stylesheet = createStyleSheet(theme => ({
-	container: {
+	touchable: {
 		overflow: 'hidden',
 		borderRadius: 4
 	},
-	command: {
+	touchableContentContainer: {
 		flexDirection: 'row',
 		alignItems: 'center',
 		columnGap: 12,
-
 		backgroundColor: theme.colors.primaryAlpha(0.05),
-		androidFeedbackColor: theme.colors.blackAlpha(0.1),
-		iOSActiveOpacity: 0.6,
 
 		variants: {
 			size: {

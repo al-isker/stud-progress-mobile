@@ -6,7 +6,7 @@ import { Paper } from '@/shared/ui/paper';
 import { ProgressChart } from '@/shared/ui/progress-chart';
 import { Tag } from '@/shared/ui/tag';
 import { Typography } from '@/shared/ui/typography';
-import { createAnimationTimingConfig } from '../../lib/animation/create-animation-timing-config';
+import { createAnimationConfig } from '../../lib/animation/create-animation-config';
 import { CONTROL_TYPE_DISPLAY } from '../../lib/const/control-type-display';
 import { formatAverageMark } from '../../lib/format/format-average-mark';
 import { MAX_MARK } from '../../model/const/max-mark';
@@ -41,7 +41,7 @@ export const SubjectRating = forwardRef<SubjectRatingRef, SubjectRatingProps>(
 
 		const handleView = () => {
 			sharedAverageMark.set(
-				withTiming(averageMark!, createAnimationTimingConfig(averageMark!))
+				withTiming(averageMark!, createAnimationConfig(averageMark!))
 			);
 
 			viewEventsMutation.mutate();

@@ -8,8 +8,10 @@ import Animated, {
 	withTiming
 } from 'react-native-reanimated';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
-import { animationDelay } from '../lib/animation/animation-delay';
-import { animationTimingConfig } from '../lib/animation/animation-timing-config';
+import {
+	animationConfig,
+	animationDelay
+} from '../lib/animation/animation-config';
 
 export type PulseIndicatorProps = ViewProps;
 
@@ -24,8 +26,8 @@ export const PulseIndicator = ({ style, ...props }: PulseIndicatorProps) => {
 			withDelay(
 				animationDelay,
 				withSequence(
-					withTiming(0.5, animationTimingConfig),
-					withTiming(0, animationTimingConfig)
+					withTiming(0.5, animationConfig),
+					withTiming(0, animationConfig)
 				)
 			),
 			-1
@@ -35,8 +37,8 @@ export const PulseIndicator = ({ style, ...props }: PulseIndicatorProps) => {
 			withDelay(
 				animationDelay,
 				withSequence(
-					withTiming(1, animationTimingConfig),
-					withTiming(1.75, animationTimingConfig)
+					withTiming(1, animationConfig),
+					withTiming(1.75, animationConfig)
 				)
 			),
 			-1

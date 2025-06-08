@@ -1,13 +1,16 @@
 import React, { FC, forwardRef } from 'react';
 import { ImageStyle, StyleProp, Text, View, ViewStyle } from 'react-native';
-import Animated from 'react-native-reanimated';
-import { UnistylesVariants, useStyles } from 'react-native-unistyles';
-import { useBorderRadiusAnimation } from '@/shared/lib/animations/hooks/use-border-radius-animation';
-import { multiple } from '@/shared/lib/function';
+import {
+	UnistylesVariants,
+	createStyleSheet,
+	useStyles
+} from 'react-native-unistyles';
 import { Touchable, TouchableProps } from '@/shared/ui/touchable';
-import { stylesheet } from './button.stylesheet';
 
-export type ButtonProps = Omit<TouchableProps, 'children'> &
+export type ButtonProps = Omit<
+	TouchableProps,
+	'children' | 'feedbackColor' | 'contentContainerStyle'
+> &
 	UnistylesVariants<typeof stylesheet> & {
 		title?: string;
 		StartSlot?: FC<{ style: StyleProp<ViewStyle | ImageStyle> }>;
@@ -22,37 +25,114 @@ export const Button = forwardRef<View, ButtonProps>(function Button(
 		title,
 		StartSlot,
 		EndSlot,
-		onPressIn,
-		onPressOut,
 		...touchableProps
 	},
 	ref
 ) {
 	const { styles } = useStyles(stylesheet, { variant, size });
 
-	const { borderRadius, handleLayout, animationIn, animationOut } =
-		useBorderRadiusAnimation({ borderRadius: styles.wrapper.borderRadius });
-
 	return (
-		<Animated.View
+		<Touchable
 			ref={ref}
-			style={[styles.wrapper, { borderRadius }, style]}
-			onLayout={handleLayout}
+			feedbackColor={styles.touchableContentContainer.feedbackColor}
+			style={[styles.touchable, style]}
+			contentContainerStyle={styles.touchableContentContainer}
+			{...touchableProps}
 		>
-			<Touchable
-				style={styles.touchable}
-				androidFeedbackColor={styles.touchable.androidFeedbackColor}
-				iOSActiveOpacity={styles.touchable.iOSActiveOpacity}
-				onPressIn={multiple(animationIn, onPressIn)}
-				onPressOut={multiple(animationOut, onPressOut)}
-				{...touchableProps}
-			>
-				{StartSlot && <StartSlot style={styles.slot} />}
+			{StartSlot && <StartSlot style={styles.slot} />}
 
-				<Text style={styles.title}>{title}</Text>
+			<Text style={styles.title}>{title}</Text>
 
-				{EndSlot && <EndSlot style={styles.slot} />}
-			</Touchable>
-		</Animated.View>
+			{EndSlot && <EndSlot style={styles.slot} />}
+		</Touchable>
 	);
 });
+
+export const stylesheet = createStyleSheet(theme => ({
+	touchable: {
+		overflow: 'hidden',
+		borderRadius: theme.borderRadius / 2
+	},
+	touchableContentContainer: {
+		flexDirection: 'row',
+		justifyContent: 'center',
+		alignItems: 'center',
+		columnGap: 12,
+
+		variants: {
+			variant: {
+				primary: {
+					backgroundColor: theme.colors.primary,
+					feedbackColor: theme.colors.alwaysBlackAlpha(0.3)
+				},
+				secondary: {
+					backgroundColor: theme.colors.primaryAlpha(0.1),
+					feedbackColor: theme.colors.primaryAlpha(0.1)
+				},
+				text: {
+					backgroundColor: theme.colors.transparent,
+					feedbackColor: theme.colors.blackAlpha(0.1)
+				}
+			},
+			size: {
+				large: {
+					padding: 18
+				},
+				medium: {
+					padding: 12
+				}
+			}
+		}
+	},
+	title: {
+		textAlign: 'center',
+		fontFamily: theme.typography.fontFamily.GolosTextRegular,
+
+		variants: {
+			variant: {
+				primary: {
+					color: theme.colors.alwaysWhite
+				},
+				secondary: {
+					color: theme.colors.primary
+				},
+				text: {
+					color: theme.colors.blackAlpha(0.7)
+				}
+			},
+			size: {
+				large: {
+					fontSize: 15
+				},
+				medium: {
+					fontSize: 14
+				}
+			}
+		}
+	},
+	slot: {
+		aspectRatio: 1,
+
+		variants: {
+			variant: {
+				primary: {
+					color: theme.colors.alwaysWhite
+				},
+				secondary: {
+					color: theme.colors.primary
+				},
+				text: {
+					color: theme.colors.blackAlpha(0.7)
+				}
+			},
+			size: {
+				large: {
+					height: 18
+				},
+				medium: {
+					height: 16
+				}
+			}
+		}
+	}
+}));
