@@ -19,7 +19,7 @@ export type ButtonProps = Omit<
 
 export const Button = forwardRef<View, ButtonProps>(function Button(
 	{
-		variant,
+		variant = 'primary',
 		size = 'medium',
 		style,
 		title,

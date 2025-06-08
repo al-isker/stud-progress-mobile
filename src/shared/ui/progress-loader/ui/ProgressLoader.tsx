@@ -16,7 +16,10 @@ export type ProgressLoaderProps = ViewProps &
 	};
 
 export const ProgressLoader = forwardRef<View, ProgressLoaderProps>(
-	function ProgressLoader({ style, colorOnPrimary, value, ...props }, ref) {
+	function ProgressLoader(
+		{ colorOnPrimary = false, style, value, ...props },
+		ref
+	) {
 		const { styles } = useStyles(stylesheet, { colorOnPrimary });
 
 		const progressAnimatedStyle = useAnimatedStyle(() => ({

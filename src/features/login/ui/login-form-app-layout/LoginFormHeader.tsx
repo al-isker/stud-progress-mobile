@@ -16,7 +16,7 @@ export const LoginFormHeader = ({ style }: LoginFormHeaderProps) => {
 		<View style={[styles.header, style]}>
 			<LogoIcon color={theme.colors.alwaysWhite} style={styles.logo} />
 
-			<Typography variant='h1' colorOnPrimary style={styles.title}>
+			<Typography colorOnPrimary style={styles.title}>
 				{APP_TITLE}
 			</Typography>
 		</View>

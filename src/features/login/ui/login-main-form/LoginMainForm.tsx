@@ -46,12 +46,7 @@ export const LoginMainForm = ({ style }: LoginMainFormProps) => {
 
 			<View style={styles.actions}>
 				<Link href={routes.loginLoading} asChild>
-					<Button
-						variant='primary'
-						size='large'
-						style={styles.button}
-						title='Начать'
-					/>
+					<Button size='large' style={styles.button} title='Начать' />
 				</Link>
 
 				<Button

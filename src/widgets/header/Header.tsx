@@ -13,9 +13,7 @@ export const Header = () => {
 			<StatusBar style='light' backgroundColor={theme.colors.primary} />
 
 			<View style={styles.header}>
-				<Typography variant='h1' colorOnPrimary>
-					{APP_TITLE}
-				</Typography>
+				<Typography colorOnPrimary>{APP_TITLE}</Typography>
 			</View>
 		</>
 	);

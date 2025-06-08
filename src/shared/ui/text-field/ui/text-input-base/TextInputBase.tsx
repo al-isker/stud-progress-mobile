@@ -7,9 +7,7 @@ export type TextInputBaseProps = TextInputProps & {
 };
 
 export const TextInputBase = forwardRef<TextInput, TextInputBaseProps>(
-	function TextInputBase(props, ref) {
-		const { style, size, ...restProps } = props;
-
+	function TextInputBase({ size, style, ...props }, ref) {
 		const { styles, theme } = useStyles(stylesheet, { size });
 
 		return (
@@ -17,7 +15,7 @@ export const TextInputBase = forwardRef<TextInput, TextInputBaseProps>(
 				ref={ref}
 				style={[styles.textInputBase, style]}
 				placeholderTextColor={theme.colors.blackAlpha(0.2)}
-				{...restProps}
+				{...props}
 			/>
 		);
 	}

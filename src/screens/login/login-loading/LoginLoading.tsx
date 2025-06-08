@@ -15,7 +15,7 @@ export const LoginLoading = () => {
 				<View style={styles.appBanner}>
 					<LogoIcon style={styles.logo} color={theme.colors.alwaysWhite} />
 
-					<Typography variant='h1' colorOnPrimary style={styles.title}>
+					<Typography colorOnPrimary style={styles.title}>
 						{APP_TITLE}
 					</Typography>
 				</View>
