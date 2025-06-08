@@ -6,6 +6,7 @@ class Routes {
 	loginLoading = '/login/loading';
 
 	home = '/';
+	ratingById = (id: number) => `/rating/${id}`;
 	grade = '/' + TabNames.GRADE;
 	stats = '/' + TabNames.STATS;
 	profile = '/' + TabNames.PROFILE;

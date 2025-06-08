@@ -17,12 +17,13 @@ const stylesheet = createStyleSheet(theme => ({
 	paper: {
 		borderRadius: theme.borderRadius,
 		backgroundColor: theme.colors.bgPaper,
+		shadowColor: theme.colors.alwaysBlackAlpha(0.65),
+
 		...Platform.select({
 			android: {
 				elevation: 4
 			},
 			ios: {
-				shadowColor: theme.colors.alwaysBlack,
 				shadowOffset: {
 					width: 0,
 					height: 2
