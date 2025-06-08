@@ -7,12 +7,12 @@ export type CircularLoaderProps = ActivityIndicatorProps;
 export const CircularLoader = forwardRef<
 	ActivityIndicator,
 	CircularLoaderProps
->(function Loader({ size = 'large', ...props }, ref) {
+>(function Loader({ size = 'large', ...props }, forwardedRef) {
 	const { theme } = useStyles();
 
 	return (
 		<ActivityIndicator
-			ref={ref}
+			ref={forwardedRef}
 			size={size}
 			color={theme.colors.primary}
 			{...props}

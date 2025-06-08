@@ -18,7 +18,7 @@ export type ProgressLoaderProps = ViewProps &
 export const ProgressLoader = forwardRef<View, ProgressLoaderProps>(
 	function ProgressLoader(
 		{ colorOnPrimary = false, style, value, ...props },
-		ref
+		forwardedRef
 	) {
 		const { styles } = useStyles(stylesheet, { colorOnPrimary });
 
@@ -27,7 +27,7 @@ export const ProgressLoader = forwardRef<View, ProgressLoaderProps>(
 		}));
 
 		return (
-			<View ref={ref} style={[styles.loader, style]} {...props}>
+			<View ref={forwardedRef} style={[styles.loader, style]} {...props}>
 				<Animated.View style={[styles.progress, progressAnimatedStyle]} />
 			</View>
 		);

@@ -23,7 +23,7 @@ type SubjectRatingProps = {
 };
 
 export const SubjectRating = forwardRef<SubjectRatingRef, SubjectRatingProps>(
-	function SubjectRating({ data }, ref) {
+	function SubjectRating({ data }, forwardedRef) {
 		const {
 			id,
 			name,
@@ -47,7 +47,7 @@ export const SubjectRating = forwardRef<SubjectRatingRef, SubjectRatingProps>(
 			viewEventsMutation.mutate();
 		};
 
-		useImperativeHandle(ref, () => ({ view: handleView }), []);
+		useImperativeHandle(forwardedRef, () => ({ view: handleView }), []);
 
 		return (
 			<Paper style={styles.paper}>

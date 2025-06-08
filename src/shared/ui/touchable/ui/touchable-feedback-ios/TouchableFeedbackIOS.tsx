@@ -28,7 +28,7 @@ export const TouchableFeedbackIOS = forwardRef<
 		onFocus,
 		onBlur
 	},
-	ref
+	forwardedRef
 ) {
 	const animatedFeedbackOpacity = useAnimatedValue(INITIAL_FEEDBACK_OPACITY);
 
@@ -48,7 +48,7 @@ export const TouchableFeedbackIOS = forwardRef<
 
 	return (
 		<TouchableWithoutFeedback
-			ref={ref}
+			ref={forwardedRef}
 			onPress={onPress}
 			onPressIn={multiple(handlePressIn, onPressIn)}
 			onPressOut={multiple(handlePressOut, onPressOut)}

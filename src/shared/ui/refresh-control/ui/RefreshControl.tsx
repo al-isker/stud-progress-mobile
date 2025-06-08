@@ -10,7 +10,7 @@ export type RefreshControlProps = NativeRefreshControlProps;
 export const RefreshControl = forwardRef<
 	NativeRefreshControl,
 	RefreshControlProps
->(function RefreshControl({ refreshing, onRefresh, ...props }, ref) {
+>(function RefreshControl({ refreshing, onRefresh, ...props }, forwardedRef) {
 	const { theme } = useStyles();
 
 	const [localRefreshing, setLocalRefreshing] = useState(false);
@@ -25,7 +25,7 @@ export const RefreshControl = forwardRef<
 
 	return (
 		<NativeRefreshControl
-			ref={ref}
+			ref={forwardedRef}
 			colors={[theme.colors.primary]}
 			tintColor={theme.colors.primary}
 			refreshing={localRefreshing}

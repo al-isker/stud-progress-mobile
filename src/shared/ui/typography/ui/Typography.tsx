@@ -10,14 +10,14 @@ export type TypographyProps = TextProps & UnistylesVariants<typeof stylesheet>;
 
 export const Typography = forwardRef<Text, TypographyProps>(function Typography(
 	{ variant = 'h1', colorOnPrimary = false, style, ...props },
-	ref
+	forwardedRef
 ) {
 	const { styles } = useStyles(stylesheet, {
 		variant,
 		colorOnPrimary
 	});
 
-	return <Text ref={ref} style={[styles.text, style]} {...props} />;
+	return <Text ref={forwardedRef} style={[styles.text, style]} {...props} />;
 });
 
 const stylesheet = createStyleSheet(theme => ({

@@ -16,7 +16,7 @@ export type ProgressChartProps = ViewProps & {
 export const ProgressChart = forwardRef<View, ProgressChartProps>(
 	function ProgressChart(
 		{ diameter, style, value, maxValue, showOnZero, formatValue, ...props },
-		ref
+		forwardedRef
 	) {
 		const { theme } = useStyles();
 
@@ -40,7 +40,7 @@ export const ProgressChart = forwardRef<View, ProgressChartProps>(
 
 		return (
 			<View
-				ref={ref}
+				ref={forwardedRef}
 				style={[{ width: diameter, height: diameter }, style]}
 				{...props}
 			>

@@ -17,11 +17,11 @@ export const TouchableFeedbackAndroid = forwardRef<
 		onFocus,
 		onBlur
 	},
-	ref
+	forwardedRef
 ) {
 	return (
 		<TouchableNativeFeedback
-			ref={ref}
+			ref={forwardedRef}
 			background={TouchableNativeFeedback.Ripple(feedbackColor, false)}
 			onPress={onPress}
 			onPressIn={onPressIn}

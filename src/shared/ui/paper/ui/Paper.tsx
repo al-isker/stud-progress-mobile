@@ -6,11 +6,11 @@ export type PaperProps = ViewProps;
 
 export const Paper = forwardRef<View, PaperProps>(function Paper(
 	{ style, ...props },
-	ref
+	forwardedRef
 ) {
 	const { styles } = useStyles(stylesheet);
 
-	return <View ref={ref} style={[styles.paper, style]} {...props} />;
+	return <View ref={forwardedRef} style={[styles.paper, style]} {...props} />;
 });
 
 const stylesheet = createStyleSheet(theme => ({

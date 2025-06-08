@@ -18,7 +18,7 @@ export const Touchable = forwardRef<View, TouchableProps>(function Touchable(
 		onBlur,
 		...viewProps
 	},
-	ref
+	forwardedRef
 ) {
 	const touchableFeedbackProps = {
 		children,
@@ -33,7 +33,7 @@ export const Touchable = forwardRef<View, TouchableProps>(function Touchable(
 	};
 
 	return (
-		<View ref={ref} {...viewProps}>
+		<View ref={forwardedRef} {...viewProps}>
 			{Platform.select({
 				android: (
 					<TouchableFeedbackAndroid

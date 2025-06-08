@@ -47,7 +47,7 @@ export const TextField = forwardRef<View, TextFieldProps>(function TextField(
 		onChangeText,
 		...props
 	},
-	ref
+	forwardedRef
 ) {
 	const { styles, theme } = useStyles(stylesheet, { size });
 
@@ -100,7 +100,7 @@ export const TextField = forwardRef<View, TextFieldProps>(function TextField(
 	};
 
 	return (
-		<View ref={ref} style={[styles.textField, style]}>
+		<View ref={forwardedRef} style={[styles.textField, style]}>
 			<TouchableWithoutFeedback onPress={setInputFocus}>
 				<Animated.View style={[styles.textInput, inputAnimatedStyles]}>
 					<Animated.Text style={[styles.label, labelAnimatedStyles]}>

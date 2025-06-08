@@ -10,11 +10,11 @@ export type DividerProps = ViewProps & UnistylesVariants<typeof stylesheet>;
 
 export const Divider = forwardRef<View, DividerProps>(function Divider(
 	{ orientation = 'horizontal', size = 'medium', style, ...props },
-	ref
+	forwardedRef
 ) {
 	const { styles } = useStyles(stylesheet, { orientation, size });
 
-	return <View ref={ref} style={[styles.divider, style]} {...props} />;
+	return <View ref={forwardedRef} style={[styles.divider, style]} {...props} />;
 });
 
 const stylesheet = createStyleSheet(theme => ({

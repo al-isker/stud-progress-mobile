@@ -27,13 +27,13 @@ export const Button = forwardRef<View, ButtonProps>(function Button(
 		EndSlot,
 		...touchableProps
 	},
-	ref
+	forwardedRef
 ) {
 	const { styles } = useStyles(stylesheet, { variant, size });
 
 	return (
 		<Touchable
-			ref={ref}
+			ref={forwardedRef}
 			feedbackColor={styles.touchableContentContainer.feedbackColor}
 			style={[styles.touchable, style]}
 			contentContainerStyle={styles.touchableContentContainer}

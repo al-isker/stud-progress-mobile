@@ -30,12 +30,12 @@ export const Tag = forwardRef<View, TagProps>(function Tag(
 		EndSlot,
 		...props
 	},
-	ref
+	forwardedRef
 ) {
 	const { styles } = useStyles(stylesheet, { variant, size });
 
 	return (
-		<View ref={ref} style={[styles.tag, style]} {...props}>
+		<View ref={forwardedRef} style={[styles.tag, style]} {...props}>
 			{StartSlot && <StartSlot style={styles.slot} />}
 
 			<Text style={styles.title}>{title}</Text>

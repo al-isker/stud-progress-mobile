@@ -19,13 +19,13 @@ export type CommandProps = Omit<
 
 export const Command = forwardRef<View, CommandProps>(function Command(
 	{ size = 'medium', style, title, StartSlot, EndSlot, ...props },
-	ref
+	forwardedRef
 ) {
 	const { theme, styles } = useStyles(stylesheet, { size });
 
 	return (
 		<Touchable
-			ref={ref}
+			ref={forwardedRef}
 			feedbackColor={theme.colors.blackAlpha(0.1)}
 			style={[styles.touchable, style]}
 			contentContainerStyle={styles.touchableContentContainer}
