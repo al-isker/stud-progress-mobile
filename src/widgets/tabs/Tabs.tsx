@@ -1,4 +1,4 @@
-import { Tabs as ExpoTabs } from 'expo-router';
+import { Tabs as NativeTabs } from 'expo-router';
 import { useStyles } from 'react-native-unistyles';
 import {
 	GradeIcon,
@@ -6,13 +6,13 @@ import {
 	ProfileIcon,
 	StatsIcon
 } from '@/shared/assets/icons';
-import { TabNames } from '@/shared/config/navigation';
+import { getScreenName, routes } from '@/shared/config/navigation';
 
 export const Tabs = () => {
 	const { theme } = useStyles();
 
 	return (
-		<ExpoTabs
+		<NativeTabs
 			screenOptions={{
 				animation: 'shift',
 				headerShown: false,
@@ -33,34 +33,34 @@ export const Tabs = () => {
 				}
 			}}
 		>
-			<ExpoTabs.Screen
-				name={TabNames.HOME}
+			<NativeTabs.Screen
+				name={getScreenName(routes.home)}
 				options={{
 					title: 'Главная',
 					tabBarIcon: HomeIcon
 				}}
 			/>
-			<ExpoTabs.Screen
-				name={TabNames.GRADE}
+			<NativeTabs.Screen
+				name={getScreenName(routes.grade)}
 				options={{
 					title: 'Сессия',
 					tabBarIcon: GradeIcon
 				}}
 			/>
-			<ExpoTabs.Screen
-				name={TabNames.STATS}
+			<NativeTabs.Screen
+				name={getScreenName(routes.stats)}
 				options={{
 					title: 'Статистика',
 					tabBarIcon: StatsIcon
 				}}
 			/>
-			<ExpoTabs.Screen
-				name={TabNames.PROFILE}
+			<NativeTabs.Screen
+				name={getScreenName(routes.profile)}
 				options={{
 					title: 'Профиль',
 					tabBarIcon: ProfileIcon
 				}}
 			/>
-		</ExpoTabs>
+		</NativeTabs>
 	);
 };
