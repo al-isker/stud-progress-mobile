@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useRouter } from 'expo-router';
+import { Link, router } from 'expo-router';
 import { StyleProp, View, ViewStyle } from 'react-native';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
 import { routes } from '@/shared/config/navigation';
@@ -15,14 +15,16 @@ type LoginMainFormProps = {
 export const LoginMainForm = ({ style }: LoginMainFormProps) => {
 	const { styles } = useStyles(stylesheet);
 
-	const router = useRouter();
-
 	const {
 		defaultFullName,
 		defaultPassword,
 		handleFullNameChange,
 		handlePasswordChange
 	} = useMainForm();
+
+	const onBackPress = () => {
+		router.back();
+	};
 
 	return (
 		<View style={[styles.container, style]}>
@@ -53,7 +55,7 @@ export const LoginMainForm = ({ style }: LoginMainFormProps) => {
 					variant='text'
 					style={styles.button}
 					title='назад'
-					onPress={router.back}
+					onPress={onBackPress}
 				/>
 			</View>
 		</View>

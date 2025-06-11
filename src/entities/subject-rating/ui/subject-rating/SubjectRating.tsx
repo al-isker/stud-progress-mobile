@@ -1,5 +1,5 @@
 import { forwardRef, useImperativeHandle } from 'react';
-import { useRouter } from 'expo-router';
+import { router } from 'expo-router';
 import { Dimensions, View } from 'react-native';
 import { useSharedValue, withTiming } from 'react-native-reanimated';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
@@ -37,8 +37,6 @@ export const SubjectRating = forwardRef<SubjectRatingRef, SubjectRatingProps>(
 		const { styles, theme } = useStyles(stylesheet);
 
 		const windowWidth = Dimensions.get('window').width;
-
-		const router = useRouter();
 
 		const viewEventsMutation = useViewEventsMutation(id, eventList);
 

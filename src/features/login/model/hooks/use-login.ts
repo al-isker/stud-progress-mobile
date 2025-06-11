@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useRouter } from 'expo-router';
+import { router } from 'expo-router';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { API_LONG_TIMEOUT, IApiError, ILoginResponse } from '@/shared/api';
 import { routes } from '@/shared/config/navigation';
@@ -12,8 +12,6 @@ import { useLoginMutation } from '../../api/use-login-mutation';
 import { useLoginContext } from './use-login-context';
 
 export const useLogin = () => {
-	const router = useRouter();
-
 	const loginContext = useLoginContext();
 
 	const loginMutation = useLoginMutation();
