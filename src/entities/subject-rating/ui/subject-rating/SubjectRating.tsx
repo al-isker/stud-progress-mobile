@@ -79,7 +79,7 @@ export const SubjectRating = forwardRef<SubjectRatingRef, SubjectRatingProps>(
 					/>
 
 					<View style={styles.data}>
-						<Typography variant='h3' numberOfLines={2}>
+						<Typography variant='h3' style={styles.name} numberOfLines={1}>
 							{name}
 						</Typography>
 
@@ -117,6 +117,9 @@ const stylesheet = createStyleSheet(theme => ({
 	data: {
 		flex: 1,
 		rowGap: 6
+	},
+	name: {
+		lineHeight: 18
 	},
 	tag: {
 		alignSelf: 'flex-start'
