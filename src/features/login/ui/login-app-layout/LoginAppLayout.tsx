@@ -12,9 +12,7 @@ export const LoginAppLayout = () => {
 			<StatusBar style='light' backgroundColor={theme.colors.primary} />
 
 			<LoginContextProvider>
-				<Stack
-					screenOptions={{ headerShown: false, animation: 'fade_from_bottom' }}
-				/>
+				<Stack screenOptions={{ headerShown: false }} />
 			</LoginContextProvider>
 		</>
 	);

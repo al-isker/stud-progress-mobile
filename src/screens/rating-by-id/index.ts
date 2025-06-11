@@ -1,0 +1,1 @@
+export { RatingById } from './RatingById';
