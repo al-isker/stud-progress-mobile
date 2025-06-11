@@ -3,12 +3,15 @@ import { MAX_MARK } from '../../model/const/max-mark';
 
 const MAX_DURATION = 2000;
 
-const easing = Easing.out(Easing.poly(3));
+const easing = Easing.bezier(0.4, 0, 0.1, 1);
 
 export const createAnimationConfig = (
-	averageMark: number
+	currentAverageMark: number,
+	newAverageMark: number
 ): WithTimingConfig => {
-	const duration = (averageMark * MAX_DURATION) / MAX_MARK;
+	const differenceMarks = Math.abs(newAverageMark - currentAverageMark);
+
+	const duration = (differenceMarks / MAX_MARK) * MAX_DURATION;
 
 	return { duration, easing };
 };

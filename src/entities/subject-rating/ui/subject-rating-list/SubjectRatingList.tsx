@@ -2,7 +2,7 @@ import { StyleProp, Text, View, ViewStyle } from 'react-native';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
 import { CircularLoader } from '@/shared/ui/circular-loader';
 import { useSubjectRatingListQuery } from '../../model/hooks/use-subject-rating-list-query';
-import { SubjectRatingFlatList } from './SubjectRatingFlatList';
+import { SubjectRatingIOList } from './SubjectRatingIOList';
 
 type SubjectRatingListProps = {
 	style?: StyleProp<ViewStyle>;
@@ -33,7 +33,7 @@ export const SubjectRatingList = ({ style }: SubjectRatingListProps) => {
 	}
 
 	return (
-		<SubjectRatingFlatList
+		<SubjectRatingIOList
 			contentContainerStyle={[styles.list, style]}
 			data={data}
 			refreshing={isRefetching}

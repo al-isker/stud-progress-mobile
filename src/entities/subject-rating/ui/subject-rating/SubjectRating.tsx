@@ -18,7 +18,7 @@ import { ISubjectRating } from '../../model/types/subject-rating';
 import { EventList } from './EventList';
 
 export type SubjectRatingRef = {
-	view: () => void;
+	inView: () => void;
 };
 
 type SubjectRatingProps = {
@@ -42,12 +42,13 @@ export const SubjectRating = forwardRef<SubjectRatingRef, SubjectRatingProps>(
 
 		const sharedAverageMark = useSharedValue(averageMark === null ? null : 0);
 
-		useImperativeHandle(forwardedRef, () => ({ view: handleView }), []);
-
-		const handleView = () => {
-			sharedAverageMark.set(
-				withTiming(averageMark!, createAnimationConfig(averageMark!))
-			);
+		const handleInView = () => {
+			if (sharedAverageMark.value !== averageMark) {
+				sharedAverageMark.value = withTiming(
+					averageMark!,
+					createAnimationConfig(sharedAverageMark.value!, averageMark!)
+				);
+			}
 
 			viewEventsMutation.mutate();
 		};
@@ -55,6 +56,11 @@ export const SubjectRating = forwardRef<SubjectRatingRef, SubjectRatingProps>(
 		const handlePress = () => {
 			router.push(routes.ratingById(id));
 		};
+
+		useImperativeHandle(forwardedRef, () => ({ inView: handleInView }), [
+			averageMark,
+			eventList
+		]);
 
 		return (
 			<Paper style={styles.paper}>

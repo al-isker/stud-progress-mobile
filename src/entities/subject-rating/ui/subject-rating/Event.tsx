@@ -5,11 +5,11 @@ import { PulseIndicator } from '@/shared/ui/pulse-indicator';
 import { IEvent } from '../../model/types/event';
 import { EventStatusEnum } from '../../model/types/event-status';
 
-type Props = Pick<IEvent, 'status' | 'mark' | 'isNew'> & {
+type EventProps = Pick<IEvent, 'status' | 'mark' | 'isNew'> & {
 	style?: StyleProp<ViewStyle>;
 };
 
-export const Event = ({ style, status, mark, isNew }: Props) => {
+export const Event = ({ style, status, mark, isNew }: EventProps) => {
 	const { styles } = useStyles(stylesheet, { status });
 
 	const statusDisplay = {
