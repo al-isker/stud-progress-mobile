@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import { forwardRef } from 'react';
 import { Canvas, Group, Path, Skia } from '@shopify/react-native-skia';
 import { View, ViewProps } from 'react-native';
 import { SharedValue, useDerivedValue } from 'react-native-reanimated';

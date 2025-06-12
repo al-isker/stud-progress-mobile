@@ -1,4 +1,3 @@
-import React from 'react';
 import { Typography, TypographyProps } from '@/shared/ui/typography';
 
 export type ErrorTextProps = Omit<TypographyProps, 'variant'>;

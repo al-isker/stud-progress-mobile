@@ -1,4 +1,3 @@
-import React from 'react';
 import { ScrollView, StyleProp, Text, View, ViewStyle } from 'react-native';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
 import { semesterOptions } from '@/entities/semester';

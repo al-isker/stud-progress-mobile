@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import { forwardRef } from 'react';
 import { TouchableNativeFeedback, View } from 'react-native';
 import { TouchableFeedbackProps } from '../../model/types/touchable-props';
 

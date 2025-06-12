@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import { forwardRef } from 'react';
 import { TextInput, TextInputProps } from 'react-native';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
 

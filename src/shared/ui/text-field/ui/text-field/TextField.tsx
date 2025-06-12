@@ -1,4 +1,4 @@
-import React, { ReactNode, Ref, forwardRef, useEffect, useRef } from 'react';
+import { ReactNode, Ref, forwardRef, useEffect, useRef } from 'react';
 import { composeRefs } from '@radix-ui/react-compose-refs';
 import {
 	TextInput as NativeTextInput,

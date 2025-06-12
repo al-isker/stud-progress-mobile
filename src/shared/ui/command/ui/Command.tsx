@@ -1,4 +1,4 @@
-import React, { FC, forwardRef } from 'react';
+import { FC, forwardRef } from 'react';
 import { ImageStyle, StyleProp, Text, View, ViewStyle } from 'react-native';
 import {
 	UnistylesVariants,

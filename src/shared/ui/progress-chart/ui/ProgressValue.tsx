@@ -1,4 +1,3 @@
-import React from 'react';
 import { SkFont, Text, useFont } from '@shopify/react-native-skia';
 import { SharedValue, useDerivedValue } from 'react-native-reanimated';
 import { useStyles } from 'react-native-unistyles';

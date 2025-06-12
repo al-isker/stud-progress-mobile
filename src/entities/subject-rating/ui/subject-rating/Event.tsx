@@ -1,4 +1,3 @@
-import React from 'react';
 import { StyleProp, Text, View, ViewStyle } from 'react-native';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
 import { PulseIndicator } from '@/shared/ui/pulse-indicator';

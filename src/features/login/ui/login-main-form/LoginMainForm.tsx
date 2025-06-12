@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link, router } from 'expo-router';
 import { StyleProp, View, ViewStyle } from 'react-native';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';

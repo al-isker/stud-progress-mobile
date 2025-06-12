@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import { forwardRef } from 'react';
 import { ActivityIndicator, ActivityIndicatorProps } from 'react-native';
 import { useStyles } from 'react-native-unistyles';
 

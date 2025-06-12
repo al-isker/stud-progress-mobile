@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 import { useFocusEffect } from 'expo-router';
 import { StyleProp, TextStyle } from 'react-native';
 import { apiMessage } from '@/shared/lib/api-message';
