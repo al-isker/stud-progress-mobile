@@ -1,6 +1,6 @@
 import { forwardRef, useImperativeHandle } from 'react';
 import { router } from 'expo-router';
-import { Dimensions, View } from 'react-native';
+import { View } from 'react-native';
 import { useSharedValue, withTiming } from 'react-native-reanimated';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
 import { routes } from '@/shared/config/navigation';
@@ -36,8 +36,6 @@ export const SubjectRating = forwardRef<SubjectRatingRef, SubjectRatingProps>(
 
 		const { styles, theme } = useStyles(stylesheet);
 
-		const windowWidth = Dimensions.get('window').width;
-
 		const viewEventsMutation = useViewEventsMutation(id, eventList);
 
 		const sharedAverageMark = useSharedValue(averageMark === null ? null : 0);
@@ -71,7 +69,7 @@ export const SubjectRating = forwardRef<SubjectRatingRef, SubjectRatingProps>(
 				>
 					<ProgressChart
 						style={styles.chart}
-						diameter={windowWidth / 4}
+						diameter={theme.dimensions.window.width / 4}
 						value={sharedAverageMark}
 						maxValue={MAX_MARK}
 						showOnZero
