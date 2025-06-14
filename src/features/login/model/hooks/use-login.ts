@@ -25,7 +25,7 @@ export const useLogin = () => {
 		await AsyncStorage.setItem(ACCESS_TOKEN_STORAGE_KEY, data.accessToken);
 		await AsyncStorage.setItem(REFRESH_TOKEN_STORAGE_KEY, data.refreshToken);
 
-		router.replace(routes.home);
+		router.replace(routes.subjectRating);
 	};
 
 	const handleError = (error: IApiError) => {

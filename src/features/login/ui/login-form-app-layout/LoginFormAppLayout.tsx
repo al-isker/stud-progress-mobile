@@ -1,6 +1,7 @@
 import { Stack } from 'expo-router';
 import { View } from 'react-native';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import { ScreenNames } from '@/shared/config/navigation';
 import { LoginFormContent } from './LoginFormContent';
 import { LoginFormHeader } from './LoginFormHeader';
 
@@ -18,7 +19,10 @@ export const LoginFormAppLayout = () => {
 							headerShown: false,
 							contentStyle: { backgroundColor: theme.colors.bgPaper }
 						}}
-					/>
+					>
+						<Stack.Screen name={ScreenNames.LOGIN_FORM_SEMESTER} />
+						<Stack.Screen name={ScreenNames.LOGIN_FORM_MAIN} />
+					</Stack>
 				</LoginFormContent>
 			</View>
 		</>

@@ -1,2 +1,2 @@
-export { getScreenName } from './get-screen-name';
 export { routes } from './routes';
+export { ScreenNames } from './screen-names';

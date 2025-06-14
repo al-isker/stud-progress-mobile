@@ -1,7 +1,7 @@
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
 import { SubjectRatingList } from '@/entities/subject-rating';
 
-export const Home = () => {
+export const SubjectRating = () => {
 	const { styles } = useStyles(stylesheet);
 
 	return <SubjectRatingList style={styles.subjectRatingList} />;

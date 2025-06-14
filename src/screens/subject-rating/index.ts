@@ -1,0 +1,1 @@
+export { SubjectRating } from './SubjectRating';

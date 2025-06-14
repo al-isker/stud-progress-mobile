@@ -6,7 +6,7 @@ import {
 	ProfileIcon,
 	StatsIcon
 } from '@/shared/assets/icons';
-import { getScreenName, routes } from '@/shared/config/navigation';
+import { ScreenNames } from '@/shared/config/navigation';
 
 export const Tabs = () => {
 	const { theme } = useStyles();
@@ -34,28 +34,28 @@ export const Tabs = () => {
 			}}
 		>
 			<NativeTabs.Screen
-				name={getScreenName(routes.home)}
+				name={ScreenNames.TAB_SUBJECT_RATING}
 				options={{
 					title: 'Главная',
 					tabBarIcon: HomeIcon
 				}}
 			/>
 			<NativeTabs.Screen
-				name={getScreenName(routes.grade)}
+				name={ScreenNames.TAB_SUBJECT_GRADE}
 				options={{
 					title: 'Сессия',
 					tabBarIcon: GradeIcon
 				}}
 			/>
 			<NativeTabs.Screen
-				name={getScreenName(routes.stats)}
+				name={ScreenNames.TAB_SUBJECT_STATS}
 				options={{
 					title: 'Статистика',
 					tabBarIcon: StatsIcon
 				}}
 			/>
 			<NativeTabs.Screen
-				name={getScreenName(routes.profile)}
+				name={ScreenNames.TAB_PROFILE}
 				options={{
 					title: 'Профиль',
 					tabBarIcon: ProfileIcon

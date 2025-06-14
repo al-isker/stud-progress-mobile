@@ -1,9 +1,9 @@
 import { Text, View } from 'react-native';
 
-export const RatingById = () => {
+export const SubjectGrade = () => {
 	return (
 		<View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-			<Text>Рейтинг предмета</Text>
+			<Text>Сессия</Text>
 		</View>
 	);
 };

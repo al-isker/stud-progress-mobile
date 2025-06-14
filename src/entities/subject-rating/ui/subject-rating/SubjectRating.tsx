@@ -52,7 +52,7 @@ export const SubjectRating = forwardRef<SubjectRatingRef, SubjectRatingProps>(
 		};
 
 		const handlePress = () => {
-			router.push(routes.ratingById(id));
+			router.push(routes.subjectByIdRating(id));
 		};
 
 		useImperativeHandle(forwardedRef, () => ({ inView: handleInView }), [

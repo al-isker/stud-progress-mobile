@@ -3,11 +3,12 @@ class Routes {
 	loginMain = '/login/main';
 	loginLoading = '/login/loading';
 
-	home = '/';
-	ratingById = (id: number) => `/rating/${id}`;
-	grade = '/grade';
-	stats = '/stats';
+	subjectRating = '/subject/rating';
+	subjectGrade = '/subject/grade';
+	subjectStats = '/subject/stats';
 	profile = '/profile';
+
+	subjectByIdRating = (id: number) => `subject/${id}/rating`;
 }
 
 export const routes = new Routes();
