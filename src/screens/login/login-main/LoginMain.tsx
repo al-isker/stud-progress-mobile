@@ -20,11 +20,11 @@ export const LoginMain = () => {
 const stylesheet = createStyleSheet(theme => ({
 	container: {
 		flex: 1,
-		paddingHorizontal: theme.spacing.container * 1.5
+		paddingHorizontal: theme.spacing * 1.5
 	},
 	description: {
 		width: 280,
-		marginBottom: 24,
+		marginBottom: theme.spacing * 1.75,
 		alignSelf: 'center',
 		textAlign: 'center'
 	}

@@ -28,13 +28,13 @@ export const LoginFormContent = ({
 
 const stylesheet = createStyleSheet(theme => ({
 	paper: {
-		paddingTop: theme.spacing.container,
+		paddingTop: theme.spacing,
 		borderBottomLeftRadius: 0,
 		borderBottomRightRadius: 0
 	},
 	title: {
 		textAlign: 'center',
-		marginVertical: theme.spacing.container
+		marginVertical: theme.spacing
 	},
 	content: {
 		flex: 1

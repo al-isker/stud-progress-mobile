@@ -19,7 +19,7 @@ export const LoginProgressLoader = ({
 		<ProgressLoader
 			style={style}
 			colorOnPrimary={colorOnPrimary}
-			value={progress}
+			sharedValue={progress}
 		/>
 	);
 };

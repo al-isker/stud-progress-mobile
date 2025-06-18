@@ -12,18 +12,14 @@ import Animated, {
 	useSharedValue,
 	withTiming
 } from 'react-native-reanimated';
-import { useStyles } from 'react-native-unistyles';
+import { createStyleSheet, useStyles } from 'react-native-unistyles';
 import { multiple } from '@/shared/lib/function';
 import { animationConfig } from '../../lib/animation/animation-config';
 import { ErrorText } from '../error-text/ErrorText';
-import {
-	TextInputBase,
-	TextInputBaseProps
-} from '../text-input-base/TextInputBase';
-import { stylesheet } from './text-field.stylesheet';
+import { TextInput, TextInputProps } from '../text-input/TextInput';
 
 export type TextFieldProps = Omit<
-	TextInputBaseProps,
+	TextInputProps,
 	'size' | 'style' | 'placeholder'
 > & {
 	inputRef?: Ref<NativeTextInput>;
@@ -56,9 +52,11 @@ export const TextField = forwardRef<View, TextFieldProps>(function TextField(
 	const sharedIsFocus = useSharedValue(false);
 	const sharedIsThereValue = useSharedValue(!!(value ?? defaultValue)?.length);
 
-	const inputAnimatedStyles = useAnimatedStyle(() => ({
+	const textInputContainerStyles = useAnimatedStyle(() => ({
 		borderColor: withTiming(
-			sharedIsFocus.value ? theme.colors.primary : styles.textInput.borderColor,
+			sharedIsFocus.value
+				? theme.colors.primary
+				: styles.textInputContainer.borderColor,
 			animationConfig
 		)
 	}));
@@ -90,7 +88,9 @@ export const TextField = forwardRef<View, TextFieldProps>(function TextField(
 		}
 	}, [value]);
 
-	const setInputFocus = () => inputRef.current!.focus();
+	const handleTouchablePress = () => {
+		inputRef.current!.focus();
+	};
 
 	const handleFocus = () => sharedIsFocus.set(true);
 	const handleBlur = () => sharedIsFocus.set(false);
@@ -100,15 +100,18 @@ export const TextField = forwardRef<View, TextFieldProps>(function TextField(
 	};
 
 	return (
-		<View ref={forwardedRef} style={[styles.textField, style]}>
-			<TouchableWithoutFeedback onPress={setInputFocus}>
-				<Animated.View style={[styles.textInput, inputAnimatedStyles]}>
+		<View ref={forwardedRef} style={style}>
+			<TouchableWithoutFeedback onPress={handleTouchablePress}>
+				<Animated.View
+					style={[styles.textInputContainer, textInputContainerStyles]}
+				>
 					<Animated.Text style={[styles.label, labelAnimatedStyles]}>
 						{label}
 					</Animated.Text>
-					<TextInputBase
+					<TextInput
 						ref={composeRefs(inputRef, inputRefProp)}
 						size={size}
+						style={styles.textInput}
 						defaultValue={defaultValue}
 						value={value}
 						onFocus={multiple(handleFocus, onFocus)}
@@ -123,3 +126,61 @@ export const TextField = forwardRef<View, TextFieldProps>(function TextField(
 		</View>
 	);
 });
+
+const stylesheet = createStyleSheet(theme => ({
+	textInputContainer: {
+		position: 'relative',
+		borderWidth: 1,
+		borderColor: theme.colors.blackAlpha(0.1),
+		backgroundColor: theme.colors.primaryAlpha(0.05),
+
+		variants: {
+			size: {
+				large: {
+					height: 54,
+					borderRadius: theme.borderRadius * 1.35
+				}
+			}
+		}
+	},
+	label: {
+		position: 'absolute',
+		transformOrigin: 'top left',
+		color: theme.colors.blackAlpha(0.3),
+		fontFamily: theme.typography.fontFamily.GolosTextRegular,
+
+		variants: {
+			size: {
+				large: {
+					top: 17.5,
+					left: 17,
+					fontSize: 15
+				}
+			}
+		}
+	},
+	textInput: {
+		position: 'absolute',
+
+		variants: {
+			size: {
+				large: {
+					top: 24,
+					left: 17,
+					right: 17
+				}
+			}
+		}
+	},
+	errorText: {
+		marginTop: 2,
+
+		variants: {
+			size: {
+				large: {
+					marginHorizontal: 18
+				}
+			}
+		}
+	}
+}));

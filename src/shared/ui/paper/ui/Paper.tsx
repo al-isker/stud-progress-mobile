@@ -15,7 +15,7 @@ export const Paper = forwardRef<View, PaperProps>(function Paper(
 
 const stylesheet = createStyleSheet(theme => ({
 	paper: {
-		borderRadius: theme.borderRadius,
+		borderRadius: theme.borderRadius * 2,
 		backgroundColor: theme.colors.bgPaper,
 		shadowColor: theme.colors.alwaysBlackAlpha(0.65),
 

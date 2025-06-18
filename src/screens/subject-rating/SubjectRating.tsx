@@ -9,6 +9,6 @@ export const SubjectRating = () => {
 
 const stylesheet = createStyleSheet(theme => ({
 	subjectRatingList: {
-		padding: theme.spacing.container
+		padding: theme.spacing
 	}
 }));

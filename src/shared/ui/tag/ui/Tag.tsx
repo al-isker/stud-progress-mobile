@@ -49,7 +49,6 @@ const stylesheet = createStyleSheet(theme => ({
 	tag: {
 		flexDirection: 'row',
 		alignItems: 'center',
-		columnGap: 4,
 
 		variants: {
 			variant: {
@@ -62,14 +61,16 @@ const stylesheet = createStyleSheet(theme => ({
 			},
 			size: {
 				medium: {
-					paddingVertical: 2,
-					paddingHorizontal: 10,
-					borderRadius: 8
+					height: 20,
+					paddingHorizontal: 8,
+					columnGap: 6,
+					borderRadius: theme.borderRadius / 2
 				},
 				small: {
-					paddingVertical: 2,
-					paddingHorizontal: 8,
-					borderRadius: 6
+					height: 18,
+					paddingHorizontal: 7,
+					columnGap: 5,
+					borderRadius: theme.borderRadius / 2.2
 				}
 			}
 		}
@@ -89,7 +90,7 @@ const stylesheet = createStyleSheet(theme => ({
 			},
 			size: {
 				medium: {
-					fontSize: 14
+					fontSize: 13
 				},
 				small: {
 					fontSize: 12
@@ -111,7 +112,7 @@ const stylesheet = createStyleSheet(theme => ({
 			},
 			size: {
 				medium: {
-					height: 14
+					height: 13
 				},
 				small: {
 					height: 12

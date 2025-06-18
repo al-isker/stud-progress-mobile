@@ -51,13 +51,30 @@ export const Button = forwardRef<View, ButtonProps>(function Button(
 export const stylesheet = createStyleSheet(theme => ({
 	touchable: {
 		overflow: 'hidden',
-		borderRadius: theme.borderRadius / 2
+
+		variants: {
+			variant: {
+				primary: {},
+				secondary: {},
+				text: {}
+			},
+			size: {
+				large: {
+					borderRadius: theme.borderRadius * 1.35
+				},
+				medium: {
+					borderRadius: theme.borderRadius
+				},
+				small: {
+					borderRadius: theme.borderRadius * 0.8
+				}
+			}
+		}
 	},
 	touchableContentContainer: {
 		flexDirection: 'row',
 		justifyContent: 'center',
 		alignItems: 'center',
-		columnGap: 12,
 
 		variants: {
 			variant: {
@@ -66,8 +83,8 @@ export const stylesheet = createStyleSheet(theme => ({
 					feedbackColor: theme.colors.alwaysBlackAlpha(0.3)
 				},
 				secondary: {
-					backgroundColor: theme.colors.primaryAlpha(0.1),
-					feedbackColor: theme.colors.primaryAlpha(0.1)
+					backgroundColor: theme.colors.blackAlpha(0.08),
+					feedbackColor: theme.colors.blackAlpha(0.08)
 				},
 				text: {
 					backgroundColor: theme.colors.transparent,
@@ -76,10 +93,19 @@ export const stylesheet = createStyleSheet(theme => ({
 			},
 			size: {
 				large: {
-					padding: 18
+					height: 54,
+					paddingHorizontal: 18,
+					columnGap: 13
 				},
 				medium: {
-					padding: 12
+					height: 40,
+					paddingHorizontal: 16,
+					columnGap: 12
+				},
+				small: {
+					height: 32,
+					paddingHorizontal: 12,
+					columnGap: 8
 				}
 			}
 		}
@@ -94,7 +120,7 @@ export const stylesheet = createStyleSheet(theme => ({
 					color: theme.colors.alwaysWhite
 				},
 				secondary: {
-					color: theme.colors.primary
+					color: theme.colors.blackAlpha(0.7)
 				},
 				text: {
 					color: theme.colors.blackAlpha(0.7)
@@ -106,6 +132,9 @@ export const stylesheet = createStyleSheet(theme => ({
 				},
 				medium: {
 					fontSize: 14
+				},
+				small: {
+					fontSize: 13
 				}
 			}
 		}
@@ -119,7 +148,7 @@ export const stylesheet = createStyleSheet(theme => ({
 					color: theme.colors.alwaysWhite
 				},
 				secondary: {
-					color: theme.colors.primary
+					color: theme.colors.blackAlpha(0.7)
 				},
 				text: {
 					color: theme.colors.blackAlpha(0.7)
@@ -127,10 +156,13 @@ export const stylesheet = createStyleSheet(theme => ({
 			},
 			size: {
 				large: {
-					height: 18
+					height: 17
 				},
 				medium: {
-					height: 16
+					height: 15
+				},
+				small: {
+					height: 14
 				}
 			}
 		}

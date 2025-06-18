@@ -26,6 +26,7 @@ export const LoginSemesterForm = ({ style }: LoginSemesterFormProps) => {
 				{semesterOptions.map((option, index) => (
 					<Command
 						key={index}
+						style={index === semesterOptions.length - 1 && styles.lastCommand}
 						title={option.label}
 						StartSlot={({ style }) => (
 							<Text style={[style, styles.number]}>{option.value}</Text>
@@ -46,6 +47,10 @@ const stylesheet = createStyleSheet(theme => ({
 	scrollViewContent: {
 		flexDirection: 'column',
 		rowGap: 2
+	},
+	lastCommand: {
+		borderBottomStartRadius: theme.borderRadius,
+		borderBottomEndRadius: theme.borderRadius
 	},
 	number: {
 		fontFamily: theme.typography.fontFamily.GolosTextRegular,

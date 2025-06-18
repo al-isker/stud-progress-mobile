@@ -68,9 +68,11 @@ export const SubjectRating = forwardRef<SubjectRatingRef, SubjectRatingProps>(
 					onPress={handlePress}
 				>
 					<ProgressChart
-						style={styles.chart}
 						diameter={theme.dimensions.window.width / 4}
-						value={sharedAverageMark}
+						strokeWidth={theme.dimensions.window.width / 28}
+						fontSize={theme.dimensions.window.width / 16}
+						style={styles.chart}
+						sharedValue={sharedAverageMark}
 						maxValue={MAX_MARK}
 						showOnZero
 						formatValue={formatAverageMark}
@@ -106,8 +108,8 @@ const stylesheet = createStyleSheet(theme => ({
 	},
 	touchableContentContainer: {
 		flexDirection: 'row',
-		columnGap: theme.spacing.container,
-		padding: theme.spacing.container
+		columnGap: theme.spacing * 1.25,
+		padding: theme.spacing * 1.25
 	},
 	chart: {
 		alignSelf: 'center'

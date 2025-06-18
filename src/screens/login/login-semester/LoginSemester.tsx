@@ -20,12 +20,12 @@ export const LoginSemester = () => {
 const stylesheet = createStyleSheet(theme => ({
 	container: {
 		flex: 1,
-		paddingHorizontal: theme.spacing.container,
+		paddingHorizontal: theme.spacing,
 		justifyContent: 'space-between'
 	},
 	description: {
 		width: 280,
-		marginBottom: 24,
+		marginBottom: theme.spacing * 1.75,
 		alignSelf: 'center',
 		textAlign: 'center'
 	},

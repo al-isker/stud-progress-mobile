@@ -1,19 +1,22 @@
 import { forwardRef } from 'react';
-import { TextInput, TextInputProps } from 'react-native';
+import {
+	TextInput as NativeTextInput,
+	TextInputProps as NativeTextInputProps
+} from 'react-native';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
 
-export type TextInputBaseProps = TextInputProps & {
+export type TextInputProps = NativeTextInputProps & {
 	size: 'large';
 };
 
-export const TextInputBase = forwardRef<TextInput, TextInputBaseProps>(
-	function TextInputBase({ size, style, ...props }, forwardedRef) {
+export const TextInput = forwardRef<NativeTextInput, TextInputProps>(
+	function TextInput({ size, style, ...props }, forwardedRef) {
 		const { styles, theme } = useStyles(stylesheet, { size });
 
 		return (
-			<TextInput
+			<NativeTextInput
 				ref={forwardedRef}
-				style={[styles.textInputBase, style]}
+				style={[styles.textInput, style]}
 				placeholderTextColor={theme.colors.blackAlpha(0.2)}
 				{...props}
 			/>
@@ -22,7 +25,7 @@ export const TextInputBase = forwardRef<TextInput, TextInputBaseProps>(
 );
 
 const stylesheet = createStyleSheet(theme => ({
-	textInputBase: {
+	textInput: {
 		color: theme.colors.blackAlpha(0.8),
 		fontFamily: theme.typography.fontFamily.GolosTextRegular,
 

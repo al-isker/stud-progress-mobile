@@ -43,22 +43,24 @@ export const Command = forwardRef<View, CommandProps>(function Command(
 const stylesheet = createStyleSheet(theme => ({
 	touchable: {
 		overflow: 'hidden',
-		borderRadius: 4
+		borderRadius: theme.borderRadius / 4
 	},
 	touchableContentContainer: {
 		flexDirection: 'row',
 		alignItems: 'center',
-		columnGap: 12,
 		backgroundColor: theme.colors.primaryAlpha(0.05),
 
 		variants: {
 			size: {
 				large: {
-					padding: 18
+					height: 54,
+					paddingHorizontal: 18,
+					columnGap: 13
 				},
 				medium: {
-					paddingVertical: 12,
-					paddingHorizontal: 16
+					height: 40,
+					paddingHorizontal: 16,
+					columnGap: 12
 				}
 			}
 		}
@@ -85,10 +87,10 @@ const stylesheet = createStyleSheet(theme => ({
 		variants: {
 			size: {
 				large: {
-					height: 18
+					height: 17
 				},
 				medium: {
-					height: 16
+					height: 15
 				}
 			}
 		}

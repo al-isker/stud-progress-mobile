@@ -7,7 +7,12 @@ import { ProgressValue } from './ProgressValue';
 
 export type ProgressChartProps = ViewProps & {
 	diameter: number;
-	value: SharedValue<number | null>;
+	strokeWidth: number;
+	fontSize: number;
+	sharedValue:
+		| SharedValue<number | null>
+		| SharedValue<number>
+		| SharedValue<null>;
 	maxValue: number;
 	showOnZero?: boolean;
 	formatValue?: (value: number | null) => string;
@@ -15,24 +20,33 @@ export type ProgressChartProps = ViewProps & {
 
 export const ProgressChart = forwardRef<View, ProgressChartProps>(
 	function ProgressChart(
-		{ diameter, style, value, maxValue, showOnZero, formatValue, ...props },
+		{
+			diameter,
+			strokeWidth,
+			fontSize,
+			style,
+			sharedValue,
+			maxValue,
+			showOnZero,
+			formatValue,
+			...props
+		},
 		forwardedRef
 	) {
 		const { theme } = useStyles();
 
 		const radius = diameter / 2;
-		const strokeWidth = radius / 3.5;
 		const innerRadius = radius - strokeWidth / 2;
 
 		const path = Skia.Path.Make().addCircle(radius, radius, innerRadius);
 
 		const progressEnd = useDerivedValue(() => {
-			if (value.value !== null) {
-				if (showOnZero && value.value === 0) {
+			if (sharedValue.value !== null) {
+				if (showOnZero && sharedValue.value === 0) {
 					return 0.001;
 				}
 
-				return value.value / maxValue;
+				return sharedValue.value / maxValue;
 			}
 
 			return 0;
@@ -53,7 +67,7 @@ export const ProgressChart = forwardRef<View, ProgressChartProps>(
 							path={path}
 							strokeWidth={strokeWidth}
 							style='stroke'
-							color={theme.colors.blackAlpha(0.125)}
+							color={theme.colors.blackAlpha(0.1)}
 							start={0}
 							end={1}
 						/>
@@ -71,7 +85,8 @@ export const ProgressChart = forwardRef<View, ProgressChartProps>(
 
 					<ProgressValue
 						radius={radius}
-						value={value}
+						fontSize={fontSize}
+						sharedValue={sharedValue}
 						formatValue={formatValue}
 					/>
 				</Canvas>

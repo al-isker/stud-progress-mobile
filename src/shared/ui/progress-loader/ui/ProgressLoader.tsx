@@ -12,18 +12,18 @@ import {
 
 export type ProgressLoaderProps = ViewProps &
 	UnistylesVariants<typeof stylesheet> & {
-		value: SharedValue<number>;
+		sharedValue: SharedValue<number>;
 	};
 
 export const ProgressLoader = forwardRef<View, ProgressLoaderProps>(
 	function ProgressLoader(
-		{ colorOnPrimary = false, style, value, ...props },
+		{ colorOnPrimary = false, style, sharedValue, ...props },
 		forwardedRef
 	) {
 		const { styles } = useStyles(stylesheet, { colorOnPrimary });
 
 		const progressAnimatedStyle = useAnimatedStyle(() => ({
-			width: `${value.value}%`
+			width: `${sharedValue.value}%`
 		}));
 
 		return (

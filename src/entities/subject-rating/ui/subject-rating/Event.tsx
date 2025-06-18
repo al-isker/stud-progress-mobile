@@ -34,7 +34,7 @@ const stylesheet = createStyleSheet(theme => ({
 		position: 'relative',
 		justifyContent: 'center',
 		alignItems: 'center',
-		borderRadius: theme.borderRadius / 4,
+		borderRadius: theme.borderRadius / 1.4,
 
 		variants: {
 			status: {

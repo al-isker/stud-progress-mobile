@@ -1,3 +1,1 @@
-export const SPACING = {
-	container: 16
-};
+export const SPACING = 12;

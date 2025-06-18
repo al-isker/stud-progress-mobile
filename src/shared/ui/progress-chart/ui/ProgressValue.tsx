@@ -5,13 +5,15 @@ import { GolosTextSemiBold } from '@/shared/assets/fonts';
 
 type ProgressValueProps = {
 	radius: number;
-	value: SharedValue<number | null>;
+	fontSize: number;
+	sharedValue:
+		| SharedValue<number | null>
+		| SharedValue<number>
+		| SharedValue<null>;
 	formatValue?: (value: number | null) => string;
 };
 
-export const ProgressValue = (props: ProgressValueProps) => {
-	const fontSize = props.radius / 2;
-
+export const ProgressValue = ({ fontSize, ...props }: ProgressValueProps) => {
 	const font = useFont(GolosTextSemiBold, fontSize);
 
 	if (font) {
@@ -19,20 +21,20 @@ export const ProgressValue = (props: ProgressValueProps) => {
 	}
 };
 
-type ProgressValueWithFontProps = ProgressValueProps & {
+type ProgressValueWithFontProps = Omit<ProgressValueProps, 'fontSize'> & {
 	font: SkFont;
 };
 
 const ProgressValueWithFont = ({
-	font,
 	radius,
-	value,
+	font,
+	sharedValue,
 	formatValue
 }: ProgressValueWithFontProps) => {
 	const { theme } = useStyles();
 
 	const text = useDerivedValue(() => {
-		return (formatValue ?? String)(value.value);
+		return (formatValue ?? String)(sharedValue.value);
 	}, []);
 
 	const x = useDerivedValue(() => {

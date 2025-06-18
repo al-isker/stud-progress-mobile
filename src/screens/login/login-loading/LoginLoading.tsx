@@ -28,7 +28,7 @@ export const LoginLoading = () => {
 const stylesheet = createStyleSheet(theme => ({
 	container: {
 		flex: 1,
-		padding: theme.spacing.container * 1.5,
+		padding: theme.spacing * 2,
 		backgroundColor: theme.colors.primary
 	},
 	appBanner: {

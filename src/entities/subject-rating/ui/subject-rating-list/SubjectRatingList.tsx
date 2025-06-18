@@ -52,6 +52,6 @@ const stylesheet = createStyleSheet(theme => ({
 		color: theme.colors.red
 	},
 	list: {
-		rowGap: theme.spacing.container
+		rowGap: theme.spacing
 	}
 }));
