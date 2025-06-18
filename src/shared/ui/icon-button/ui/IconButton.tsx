@@ -1,5 +1,5 @@
 import { ReactElement, cloneElement, forwardRef } from 'react';
-import { ImageStyle, StyleProp, Text, View, ViewStyle } from 'react-native';
+import { ImageStyle, StyleProp, View, ViewStyle } from 'react-native';
 import {
 	UnistylesVariants,
 	createStyleSheet,
@@ -7,26 +7,16 @@ import {
 } from 'react-native-unistyles';
 import { Touchable, TouchableProps } from '@/shared/ui/touchable';
 
-export type ButtonProps = Omit<
+export type IconButtonProps = Omit<
 	TouchableProps,
 	'children' | 'feedbackColor' | 'contentContainerStyle'
 > &
 	UnistylesVariants<typeof stylesheet> & {
-		title?: string;
-		startSlot?: ReactElement<{ style: StyleProp<ViewStyle | ImageStyle> }>;
-		endSlot?: ReactElement<{ style: StyleProp<ViewStyle | ImageStyle> }>;
+		children: ReactElement<{ style: StyleProp<ViewStyle | ImageStyle> }>;
 	};
 
-export const Button = forwardRef<View, ButtonProps>(function Button(
-	{
-		variant = 'primary',
-		size = 'medium',
-		style,
-		title,
-		startSlot,
-		endSlot,
-		...touchableProps
-	},
+export const IconButton = forwardRef<View, IconButtonProps>(function IconButton(
+	{ children, variant = 'primary', size = 'medium', style, ...touchableProps },
 	forwardedRef
 ) {
 	const { styles } = useStyles(stylesheet, { variant, size });
@@ -39,17 +29,9 @@ export const Button = forwardRef<View, ButtonProps>(function Button(
 			contentContainerStyle={styles.touchableContentContainer}
 			{...touchableProps}
 		>
-			{startSlot &&
-				cloneElement(startSlot, {
-					style: [styles.slot, startSlot.props.style]
-				})}
-
-			<Text style={styles.title}>{title}</Text>
-
-			{endSlot &&
-				cloneElement(endSlot, {
-					style: [styles.slot, endSlot.props.style]
-				})}
+			{cloneElement(children, {
+				style: [styles.icon, children.props.style]
+			})}
 		</Touchable>
 	);
 });
@@ -78,7 +60,7 @@ export const stylesheet = createStyleSheet(theme => ({
 		}
 	},
 	touchableContentContainer: {
-		flexDirection: 'row',
+		aspectRatio: 1,
 		justifyContent: 'center',
 		alignItems: 'center',
 
@@ -99,53 +81,18 @@ export const stylesheet = createStyleSheet(theme => ({
 			},
 			size: {
 				large: {
-					height: 54,
-					paddingHorizontal: 18,
-					columnGap: 13
+					height: 54
 				},
 				medium: {
-					height: 40,
-					paddingHorizontal: 16,
-					columnGap: 12
+					height: 40
 				},
 				small: {
-					height: 32,
-					paddingHorizontal: 12,
-					columnGap: 8
+					height: 32
 				}
 			}
 		}
 	},
-	title: {
-		textAlign: 'center',
-		fontFamily: theme.typography.fontFamily.GolosTextRegular,
-
-		variants: {
-			variant: {
-				primary: {
-					color: theme.colors.alwaysWhite
-				},
-				secondary: {
-					color: theme.colors.blackAlpha(0.7)
-				},
-				text: {
-					color: theme.colors.blackAlpha(0.7)
-				}
-			},
-			size: {
-				large: {
-					fontSize: 15
-				},
-				medium: {
-					fontSize: 14
-				},
-				small: {
-					fontSize: 13
-				}
-			}
-		}
-	},
-	slot: {
+	icon: {
 		aspectRatio: 1,
 		height: '42.5%',
 

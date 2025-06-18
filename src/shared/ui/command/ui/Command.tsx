@@ -1,4 +1,4 @@
-import { FC, forwardRef } from 'react';
+import { ReactElement, cloneElement, forwardRef } from 'react';
 import { ImageStyle, StyleProp, Text, View, ViewStyle } from 'react-native';
 import {
 	UnistylesVariants,
@@ -13,12 +13,12 @@ export type CommandProps = Omit<
 > &
 	UnistylesVariants<typeof stylesheet> & {
 		title?: string;
-		StartSlot?: FC<{ style: StyleProp<ViewStyle | ImageStyle> }>;
-		EndSlot?: FC<{ style: StyleProp<ViewStyle | ImageStyle> }>;
+		startSlot?: ReactElement<{ style: StyleProp<ViewStyle | ImageStyle> }>;
+		endSlot?: ReactElement<{ style: StyleProp<ViewStyle | ImageStyle> }>;
 	};
 
 export const Command = forwardRef<View, CommandProps>(function Command(
-	{ size = 'medium', style, title, StartSlot, EndSlot, ...props },
+	{ size = 'medium', style, title, startSlot, endSlot, ...props },
 	forwardedRef
 ) {
 	const { theme, styles } = useStyles(stylesheet, { size });
@@ -31,11 +31,17 @@ export const Command = forwardRef<View, CommandProps>(function Command(
 			contentContainerStyle={styles.touchableContentContainer}
 			{...props}
 		>
-			{StartSlot && <StartSlot style={styles.slot} />}
+			{startSlot &&
+				cloneElement(startSlot, {
+					style: [styles.slot, startSlot.props.style]
+				})}
 
 			<Text style={styles.title}>{title}</Text>
 
-			{EndSlot && <EndSlot style={[styles.slot, styles.endSlot]} />}
+			{endSlot &&
+				cloneElement(endSlot, {
+					style: [styles.slot, styles.endSlot, endSlot.props.style]
+				})}
 		</Touchable>
 	);
 });
@@ -82,18 +88,8 @@ const stylesheet = createStyleSheet(theme => ({
 	},
 	slot: {
 		aspectRatio: 1,
-		color: theme.colors.blackAlpha(0.8),
-
-		variants: {
-			size: {
-				large: {
-					height: 17
-				},
-				medium: {
-					height: 15
-				}
-			}
-		}
+		height: '42.5%',
+		color: theme.colors.blackAlpha(0.8)
 	},
 	endSlot: {
 		marginLeft: 'auto'

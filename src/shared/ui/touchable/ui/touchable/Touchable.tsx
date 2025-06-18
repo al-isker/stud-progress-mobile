@@ -6,8 +6,8 @@ import { TouchableFeedbackIOS } from '../touchable-feedback-ios/TouchableFeedbac
 
 export const Touchable = forwardRef<View, TouchableProps>(function Touchable(
 	{
-		touchableFeedbackRef,
 		children,
+		touchableFeedbackRef,
 		feedbackColor,
 		contentContainerStyle,
 		onPress,

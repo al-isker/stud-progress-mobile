@@ -28,10 +28,8 @@ export const LoginSemesterForm = ({ style }: LoginSemesterFormProps) => {
 						key={index}
 						style={index === semesterOptions.length - 1 && styles.lastCommand}
 						title={option.label}
-						StartSlot={({ style }) => (
-							<Text style={[style, styles.number]}>{option.value}</Text>
-						)}
-						EndSlot={ArrowRightIcon}
+						startSlot={<Text style={styles.number}>{option.value}</Text>}
+						endSlot={<ArrowRightIcon />}
 						onPress={() => selectSemester(option.value)}
 					/>
 				))}

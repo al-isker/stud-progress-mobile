@@ -1,4 +1,4 @@
-import { FC, forwardRef } from 'react';
+import { ReactElement, cloneElement, forwardRef } from 'react';
 import {
 	ImageStyle,
 	StyleProp,
@@ -16,8 +16,8 @@ import {
 export type TagProps = Omit<ViewProps, 'children'> &
 	UnistylesVariants<typeof stylesheet> & {
 		title?: string;
-		StartSlot?: FC<{ style: StyleProp<ViewStyle | ImageStyle> }>;
-		EndSlot?: FC<{ style: StyleProp<ViewStyle | ImageStyle> }>;
+		startSlot?: ReactElement<{ style: StyleProp<ViewStyle | ImageStyle> }>;
+		endSlot?: ReactElement<{ style: StyleProp<ViewStyle | ImageStyle> }>;
 	};
 
 export const Tag = forwardRef<View, TagProps>(function Tag(
@@ -26,8 +26,8 @@ export const Tag = forwardRef<View, TagProps>(function Tag(
 		size = 'medium',
 		style,
 		title,
-		StartSlot,
-		EndSlot,
+		startSlot,
+		endSlot,
 		...props
 	},
 	forwardedRef
@@ -36,11 +36,17 @@ export const Tag = forwardRef<View, TagProps>(function Tag(
 
 	return (
 		<View ref={forwardedRef} style={[styles.tag, style]} {...props}>
-			{StartSlot && <StartSlot style={styles.slot} />}
+			{startSlot &&
+				cloneElement(startSlot, {
+					style: [styles.slot, startSlot.props.style]
+				})}
 
 			<Text style={styles.title}>{title}</Text>
 
-			{EndSlot && <EndSlot style={styles.slot} />}
+			{endSlot &&
+				cloneElement(endSlot, {
+					style: [styles.slot, endSlot.props.style]
+				})}
 		</View>
 	);
 });
