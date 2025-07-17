@@ -1,23 +1,17 @@
-import { ReactElement, cloneElement, forwardRef } from 'react';
-import {
-	ImageStyle,
-	StyleProp,
-	Text,
-	View,
-	ViewProps,
-	ViewStyle
-} from 'react-native';
+import { ReactElement, forwardRef } from 'react';
+import { Text, View, ViewProps } from 'react-native';
 import {
 	UnistylesVariants,
 	createStyleSheet,
 	useStyles
 } from 'react-native-unistyles';
+import { SlotProps, renderSlot } from '@/shared/lib/slot';
 
 export type TagProps = Omit<ViewProps, 'children'> &
 	UnistylesVariants<typeof stylesheet> & {
 		title?: string;
-		startSlot?: ReactElement<{ style: StyleProp<ViewStyle | ImageStyle> }>;
-		endSlot?: ReactElement<{ style: StyleProp<ViewStyle | ImageStyle> }>;
+		startSlot?: ReactElement<SlotProps>;
+		endSlot?: ReactElement<SlotProps>;
 	};
 
 export const Tag = forwardRef<View, TagProps>(function Tag(
@@ -36,17 +30,17 @@ export const Tag = forwardRef<View, TagProps>(function Tag(
 
 	return (
 		<View ref={forwardedRef} style={[styles.tag, style]} {...props}>
-			{startSlot &&
-				cloneElement(startSlot, {
-					style: [styles.slot, startSlot.props.style]
-				})}
+			{renderSlot(startSlot, {
+				style: styles.slot,
+				color: styles.styleProps.color
+			})}
 
 			<Text style={styles.title}>{title}</Text>
 
-			{endSlot &&
-				cloneElement(endSlot, {
-					style: [styles.slot, endSlot.props.style]
-				})}
+			{renderSlot(startSlot, {
+				style: styles.slot,
+				color: styles.styleProps.color
+			})}
 		</View>
 	);
 });
@@ -109,12 +103,8 @@ const stylesheet = createStyleSheet(theme => ({
 
 		variants: {
 			variant: {
-				black: {
-					color: theme.colors.blackAlpha(0.7)
-				},
-				primary: {
-					color: theme.colors.primary
-				}
+				black: {},
+				primary: {}
 			},
 			size: {
 				medium: {
@@ -123,6 +113,24 @@ const stylesheet = createStyleSheet(theme => ({
 				small: {
 					height: 12
 				}
+			}
+		}
+	},
+	styleProps: {
+		color: '',
+
+		variants: {
+			variant: {
+				black: {
+					color: theme.colors.blackAlpha(0.7)
+				},
+				primary: {
+					color: theme.colors.primary
+				}
+			},
+			size: {
+				medium: {},
+				small: {}
 			}
 		}
 	}

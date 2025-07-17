@@ -1,10 +1,11 @@
-import { ReactElement, cloneElement, forwardRef } from 'react';
-import { ImageStyle, StyleProp, View, ViewStyle } from 'react-native';
+import { ReactElement, forwardRef } from 'react';
+import { View } from 'react-native';
 import {
 	UnistylesVariants,
 	createStyleSheet,
 	useStyles
 } from 'react-native-unistyles';
+import { SlotProps, renderSlot } from '@/shared/lib/slot';
 import { Touchable, TouchableProps } from '@/shared/ui/touchable';
 
 export type IconButtonProps = Omit<
@@ -12,11 +13,11 @@ export type IconButtonProps = Omit<
 	'children' | 'feedbackColor' | 'contentContainerStyle'
 > &
 	UnistylesVariants<typeof stylesheet> & {
-		children: ReactElement<{ style: StyleProp<ViewStyle | ImageStyle> }>;
+		children: ReactElement<SlotProps>;
 	};
 
 export const IconButton = forwardRef<View, IconButtonProps>(function IconButton(
-	{ children, variant = 'primary', size = 'medium', style, ...touchableProps },
+	{ children, variant = 'primary', size = 'medium', style, ...props },
 	forwardedRef
 ) {
 	const { styles } = useStyles(stylesheet, { variant, size });
@@ -24,13 +25,14 @@ export const IconButton = forwardRef<View, IconButtonProps>(function IconButton(
 	return (
 		<Touchable
 			ref={forwardedRef}
-			feedbackColor={styles.touchableContentContainer.feedbackColor}
+			feedbackColor={styles.styleProps.feedbackColor}
 			style={[styles.touchable, style]}
 			contentContainerStyle={styles.touchableContentContainer}
-			{...touchableProps}
+			{...props}
 		>
-			{cloneElement(children, {
-				style: [styles.icon, children.props.style]
+			{renderSlot(children, {
+				style: styles.icon,
+				color: styles.styleProps.color
 			})}
 		</Touchable>
 	);
@@ -39,6 +41,7 @@ export const IconButton = forwardRef<View, IconButtonProps>(function IconButton(
 export const stylesheet = createStyleSheet(theme => ({
 	touchable: {
 		overflow: 'hidden',
+		aspectRatio: 1,
 
 		variants: {
 			variant: {
@@ -48,64 +51,66 @@ export const stylesheet = createStyleSheet(theme => ({
 			},
 			size: {
 				large: {
+					height: 54,
 					borderRadius: theme.borderRadius * 1.35
 				},
 				medium: {
+					height: 40,
 					borderRadius: theme.borderRadius
 				},
 				small: {
+					height: 32,
 					borderRadius: theme.borderRadius * 0.8
 				}
 			}
 		}
 	},
 	touchableContentContainer: {
-		aspectRatio: 1,
+		height: '100%',
+		width: '100%',
 		justifyContent: 'center',
 		alignItems: 'center',
 
 		variants: {
 			variant: {
 				primary: {
-					backgroundColor: theme.colors.primary,
-					feedbackColor: theme.colors.alwaysBlackAlpha(0.3)
+					backgroundColor: theme.colors.primary
 				},
 				secondary: {
-					backgroundColor: theme.colors.blackAlpha(0.08),
-					feedbackColor: theme.colors.blackAlpha(0.08)
+					backgroundColor: theme.colors.blackAlpha(0.08)
 				},
 				text: {
-					backgroundColor: theme.colors.transparent,
-					feedbackColor: theme.colors.blackAlpha(0.1)
+					backgroundColor: theme.colors.transparent
 				}
 			},
 			size: {
-				large: {
-					height: 54
-				},
-				medium: {
-					height: 40
-				},
-				small: {
-					height: 32
-				}
+				large: {},
+				medium: {},
+				small: {}
 			}
 		}
 	},
 	icon: {
 		aspectRatio: 1,
-		height: '42.5%',
+		height: '42.5%'
+	},
+	styleProps: {
+		color: '',
+		feedbackColor: '',
 
 		variants: {
 			variant: {
 				primary: {
-					color: theme.colors.alwaysWhite
+					color: theme.colors.alwaysWhite,
+					feedbackColor: theme.colors.alwaysBlackAlpha(0.3)
 				},
 				secondary: {
-					color: theme.colors.blackAlpha(0.7)
+					color: theme.colors.blackAlpha(0.7),
+					feedbackColor: theme.colors.blackAlpha(0.08)
 				},
 				text: {
-					color: theme.colors.blackAlpha(0.7)
+					color: theme.colors.blackAlpha(0.7),
+					feedbackColor: theme.colors.blackAlpha(0.1)
 				}
 			},
 			size: {

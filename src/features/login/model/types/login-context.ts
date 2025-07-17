@@ -1,12 +1,12 @@
 import { MutableRefObject } from 'react';
-import { IApiError, ILoginForm } from '@/shared/api';
+import { ApiErrorType, LoginBodyType } from '@/shared/api';
 
-export type LoginContextFormValues = Partial<ILoginForm>;
-export type LoginContextMutationError = IApiError | undefined;
+export type LoginContextFormValuesType = Partial<LoginBodyType>;
+export type LoginContextMutationErrorType = ApiErrorType | undefined;
 
-export interface ILoginContext {
-	formValuesRef: MutableRefObject<LoginContextFormValues>;
-	mutationErrorRef: MutableRefObject<LoginContextMutationError>;
-	setFormValues: (values: LoginContextFormValues) => void;
-	setMutationError: (error: LoginContextMutationError) => void;
-}
+export type LoginContextType = {
+	formValuesRef: MutableRefObject<LoginContextFormValuesType>;
+	mutationErrorRef: MutableRefObject<LoginContextMutationErrorType>;
+	setFormValues: (values: LoginContextFormValuesType) => void;
+	setMutationError: (error: LoginContextMutationErrorType) => void;
+};

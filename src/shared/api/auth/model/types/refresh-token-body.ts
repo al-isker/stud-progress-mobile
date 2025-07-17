@@ -1,3 +1,3 @@
-export interface IRefreshTokenBody {
+export type RefreshTokenBodyType = {
 	refreshToken: string;
-}
+};

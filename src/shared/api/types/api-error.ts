@@ -1,9 +1,7 @@
 import { AxiosError } from 'axios';
 
-interface IApiErrorResponseData {
+export type ApiErrorType = AxiosError<{
 	error?: string;
 	message: string[] | string;
 	statusCode: number;
-}
-
-export interface IApiError extends AxiosError<IApiErrorResponseData> {}
+}>;

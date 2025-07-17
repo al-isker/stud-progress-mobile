@@ -4,10 +4,13 @@ export const queryClient = new QueryClient({
 	defaultOptions: {
 		queries: {
 			retry: 0,
-			refetchOnWindowFocus: false
+			refetchOnWindowFocus: false,
+			staleTime: Infinity,
+			gcTime: Infinity
 		},
 		mutations: {
-			retry: 0
+			retry: 0,
+			gcTime: 0
 		}
 	}
 });

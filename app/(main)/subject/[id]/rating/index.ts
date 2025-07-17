@@ -1,1 +1,1 @@
-export { SubjectByIdRating as default } from '@/screens/subject-by-id-rating';
+export { SubjectRatingDetails as default } from '@/screens/subject-rating-details';

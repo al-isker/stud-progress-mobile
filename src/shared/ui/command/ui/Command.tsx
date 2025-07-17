@@ -1,10 +1,11 @@
-import { ReactElement, cloneElement, forwardRef } from 'react';
-import { ImageStyle, StyleProp, Text, View, ViewStyle } from 'react-native';
+import { ReactElement, forwardRef } from 'react';
+import { Text, View } from 'react-native';
 import {
 	UnistylesVariants,
 	createStyleSheet,
 	useStyles
 } from 'react-native-unistyles';
+import { SlotProps, renderSlot } from '@/shared/lib/slot';
 import { Touchable, TouchableProps } from '@/shared/ui/touchable';
 
 export type CommandProps = Omit<
@@ -13,8 +14,8 @@ export type CommandProps = Omit<
 > &
 	UnistylesVariants<typeof stylesheet> & {
 		title?: string;
-		startSlot?: ReactElement<{ style: StyleProp<ViewStyle | ImageStyle> }>;
-		endSlot?: ReactElement<{ style: StyleProp<ViewStyle | ImageStyle> }>;
+		startSlot?: ReactElement<SlotProps>;
+		endSlot?: ReactElement<SlotProps>;
 	};
 
 export const Command = forwardRef<View, CommandProps>(function Command(
@@ -31,17 +32,17 @@ export const Command = forwardRef<View, CommandProps>(function Command(
 			contentContainerStyle={styles.touchableContentContainer}
 			{...props}
 		>
-			{startSlot &&
-				cloneElement(startSlot, {
-					style: [styles.slot, startSlot.props.style]
-				})}
+			{renderSlot(startSlot, {
+				style: styles.slot,
+				color: styles.styleProps.color
+			})}
 
 			<Text style={styles.title}>{title}</Text>
 
-			{endSlot &&
-				cloneElement(endSlot, {
-					style: [styles.slot, styles.endSlot, endSlot.props.style]
-				})}
+			{renderSlot(endSlot, {
+				style: [styles.slot, styles.endSlot],
+				color: styles.styleProps.color
+			})}
 		</Touchable>
 	);
 });
@@ -49,9 +50,21 @@ export const Command = forwardRef<View, CommandProps>(function Command(
 const stylesheet = createStyleSheet(theme => ({
 	touchable: {
 		overflow: 'hidden',
-		borderRadius: theme.borderRadius / 4
+		borderRadius: theme.borderRadius / 4,
+		variants: {
+			size: {
+				large: {
+					height: 54
+				},
+				medium: {
+					height: 40
+				}
+			}
+		}
 	},
 	touchableContentContainer: {
+		height: '100%',
+		width: '100%',
 		flexDirection: 'row',
 		alignItems: 'center',
 		backgroundColor: theme.colors.primaryAlpha(0.05),
@@ -59,12 +72,10 @@ const stylesheet = createStyleSheet(theme => ({
 		variants: {
 			size: {
 				large: {
-					height: 54,
 					paddingHorizontal: 18,
 					columnGap: 13
 				},
 				medium: {
-					height: 40,
 					paddingHorizontal: 16,
 					columnGap: 12
 				}
@@ -88,10 +99,12 @@ const stylesheet = createStyleSheet(theme => ({
 	},
 	slot: {
 		aspectRatio: 1,
-		height: '42.5%',
-		color: theme.colors.blackAlpha(0.8)
+		height: '42.5%'
 	},
 	endSlot: {
 		marginLeft: 'auto'
+	},
+	styleProps: {
+		color: theme.colors.blackAlpha(0.8)
 	}
 }));

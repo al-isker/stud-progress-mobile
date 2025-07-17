@@ -1,1 +1,0 @@
-export { SubjectByIdRating } from './SubjectByIdRating';

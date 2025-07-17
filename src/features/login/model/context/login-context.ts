@@ -1,4 +1,4 @@
 import { createContext } from 'react';
-import { ILoginContext } from '../types/login-context';
+import { LoginContextType } from '../types/login-context';
 
-export const LoginContext = createContext({} as ILoginContext);
+export const LoginContext = createContext({} as LoginContextType);

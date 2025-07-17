@@ -7,10 +7,10 @@ import {
 	REFRESH_TOKEN_STORAGE_KEY
 } from '@/shared/config/storage';
 import { api } from '../api';
-import { refreshTokenFn } from '../auth/api/refresh-token-fn';
-import { IApiError } from '../types/api-error';
+import { authApi } from '../auth/api/auth-api';
+import { ApiErrorType } from '../types/api-error';
 
-export const responseRejectedInterceptor = async (error: IApiError) => {
+export const responseRejectedInterceptor = async (error: ApiErrorType) => {
 	const originalRequest = error.config;
 	const isUnauthorized = error.status === HttpStatusCode.Unauthorized;
 
@@ -19,7 +19,9 @@ export const responseRejectedInterceptor = async (error: IApiError) => {
 
 		if (refreshToken) {
 			try {
-				const refreshTokenResponse = await refreshTokenFn({ refreshToken });
+				const refreshTokenResponse = await authApi.refreshToken({
+					refreshToken
+				});
 
 				await AsyncStorage.setItem(
 					ACCESS_TOKEN_STORAGE_KEY,

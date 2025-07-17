@@ -1,0 +1,109 @@
+import { useEffect } from 'react';
+import { StyleProp, Text, View, ViewStyle } from 'react-native';
+import { useSharedValue, withTiming } from 'react-native-reanimated';
+import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import { MedalStarIcon } from '@/shared/assets/icons';
+import { formatPercent } from '@/shared/lib/animation';
+import { Paper } from '@/shared/ui/paper';
+import {
+	ProgressChart,
+	createProgressAnimationConfig
+} from '@/shared/ui/progress-chart';
+
+type StudentPercentWithBelowAverageMarkProps = {
+	style?: StyleProp<ViewStyle>;
+	value: number | null;
+};
+
+export const StudentPercentWithBelowAverageMark = ({
+	style,
+	value
+}: StudentPercentWithBelowAverageMarkProps) => {
+	const { styles, theme } = useStyles(stylesheet);
+
+	const sharedValue = useSharedValue(value);
+
+	useEffect(() => {
+		if (sharedValue.value !== value) {
+			if (value === null) {
+				sharedValue.value = null;
+			} else {
+				sharedValue.value = withTiming(
+					value,
+					createProgressAnimationConfig(sharedValue.value, value, 100)
+				);
+			}
+		}
+	}, [value]);
+
+	return (
+		<Paper style={[styles.container, style]}>
+			<View style={styles.leftContent}>
+				<View style={styles.header}>
+					<MedalStarIcon style={styles.icon} color={theme.colors.primary} />
+					<Text style={styles.title}>Статус</Text>
+				</View>
+				<View style={styles.main}>
+					<Text style={styles.description}>
+						твой средний балл выше, чем у {value}% студентов по данной
+						дисциплине
+					</Text>
+				</View>
+			</View>
+
+			<View style={styles.rightContent}>
+				<ProgressChart
+					style={styles.progressChart}
+					diameter={80}
+					fontSize={16}
+					maxValue={100}
+					sharedValue={sharedValue}
+					strokeWidth={10}
+					formatValue={formatPercent}
+				/>
+			</View>
+		</Paper>
+	);
+};
+
+const stylesheet = createStyleSheet(theme => ({
+	container: {
+		flexDirection: 'row',
+		justifyContent: 'space-between'
+	},
+	leftContent: {
+		flex: 1,
+		padding: theme.spacing * 1.5,
+		justifyContent: 'space-between',
+		rowGap: 8
+	},
+	header: {
+		flexDirection: 'row',
+		alignItems: 'center',
+		columnGap: 5
+	},
+	title: {
+		fontFamily: theme.typography.fontFamily.GolosTextRegular,
+		fontSize: 14,
+		color: theme.colors.blackAlpha(0.85)
+	},
+	icon: {
+		width: 20,
+		height: 20
+	},
+	main: {
+		marginRight: -14
+	},
+	description: {
+		fontFamily: theme.typography.fontFamily.GolosTextRegular,
+		fontSize: 12,
+		color: theme.colors.blackAlpha(0.65)
+	},
+	rightContent: {
+		flex: 1,
+		padding: theme.spacing * 1.5
+	},
+	progressChart: {
+		margin: 'auto'
+	}
+}));

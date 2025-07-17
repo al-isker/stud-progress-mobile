@@ -1,19 +1,19 @@
 import { ReactNode, useMemo, useRef } from 'react';
 import { LoginContext } from '../../model/context/login-context';
 import {
-	LoginContextFormValues,
-	LoginContextMutationError
+	LoginContextFormValuesType,
+	LoginContextMutationErrorType
 } from '../../model/types/login-context';
 
 export const LoginContextProvider = ({ children }: { children: ReactNode }) => {
-	const formValuesRef = useRef<LoginContextFormValues>({});
-	const mutationErrorRef = useRef<LoginContextMutationError>();
+	const formValuesRef = useRef<LoginContextFormValuesType>({});
+	const mutationErrorRef = useRef<LoginContextMutationErrorType>();
 
-	const setFormValues = (values: LoginContextFormValues) => {
+	const setFormValues = (values: LoginContextFormValuesType) => {
 		formValuesRef.current = Object.assign(formValuesRef.current, values);
 	};
 
-	const setMutationError = (error: LoginContextMutationError) => {
+	const setMutationError = (error: LoginContextMutationErrorType) => {
 		mutationErrorRef.current = error;
 	};
 

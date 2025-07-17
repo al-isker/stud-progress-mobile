@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { loginFn } from '@/shared/api';
+import { LoginBodyType, authApi } from '@/shared/api';
 
 export const useLoginMutation = () => {
 	const queryClient = useQueryClient();
@@ -9,7 +9,7 @@ export const useLoginMutation = () => {
 	};
 
 	return useMutation({
-		mutationFn: loginFn,
+		mutationFn: (body: LoginBodyType) => authApi.login(body),
 		onSuccess: handleSuccess
 	});
 };

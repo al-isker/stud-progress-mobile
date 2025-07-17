@@ -1,10 +1,11 @@
-import { ReactElement, cloneElement, forwardRef } from 'react';
-import { ImageStyle, StyleProp, Text, View, ViewStyle } from 'react-native';
+import { ReactElement, forwardRef } from 'react';
+import { Text, View } from 'react-native';
 import {
 	UnistylesVariants,
 	createStyleSheet,
 	useStyles
 } from 'react-native-unistyles';
+import { SlotProps, renderSlot } from '@/shared/lib/slot';
 import { Touchable, TouchableProps } from '@/shared/ui/touchable';
 
 export type ButtonProps = Omit<
@@ -13,8 +14,8 @@ export type ButtonProps = Omit<
 > &
 	UnistylesVariants<typeof stylesheet> & {
 		title?: string;
-		startSlot?: ReactElement<{ style: StyleProp<ViewStyle | ImageStyle> }>;
-		endSlot?: ReactElement<{ style: StyleProp<ViewStyle | ImageStyle> }>;
+		startSlot?: ReactElement<SlotProps>;
+		endSlot?: ReactElement<SlotProps>;
 	};
 
 export const Button = forwardRef<View, ButtonProps>(function Button(
@@ -25,7 +26,7 @@ export const Button = forwardRef<View, ButtonProps>(function Button(
 		title,
 		startSlot,
 		endSlot,
-		...touchableProps
+		...props
 	},
 	forwardedRef
 ) {
@@ -37,19 +38,19 @@ export const Button = forwardRef<View, ButtonProps>(function Button(
 			feedbackColor={styles.touchableContentContainer.feedbackColor}
 			style={[styles.touchable, style]}
 			contentContainerStyle={styles.touchableContentContainer}
-			{...touchableProps}
+			{...props}
 		>
-			{startSlot &&
-				cloneElement(startSlot, {
-					style: [styles.slot, startSlot.props.style]
-				})}
+			{renderSlot(startSlot, {
+				style: styles.slot,
+				color: styles.styleProps.color
+			})}
 
 			<Text style={styles.title}>{title}</Text>
 
-			{endSlot &&
-				cloneElement(endSlot, {
-					style: [styles.slot, endSlot.props.style]
-				})}
+			{renderSlot(endSlot, {
+				style: styles.slot,
+				color: styles.styleProps.color
+			})}
 		</Touchable>
 	);
 });
@@ -66,18 +67,23 @@ export const stylesheet = createStyleSheet(theme => ({
 			},
 			size: {
 				large: {
+					height: 54,
 					borderRadius: theme.borderRadius * 1.35
 				},
 				medium: {
+					height: 40,
 					borderRadius: theme.borderRadius
 				},
 				small: {
+					height: 32,
 					borderRadius: theme.borderRadius * 0.8
 				}
 			}
 		}
 	},
 	touchableContentContainer: {
+		height: '100%',
+		width: '100%',
 		flexDirection: 'row',
 		justifyContent: 'center',
 		alignItems: 'center',
@@ -99,17 +105,14 @@ export const stylesheet = createStyleSheet(theme => ({
 			},
 			size: {
 				large: {
-					height: 54,
 					paddingHorizontal: 18,
 					columnGap: 13
 				},
 				medium: {
-					height: 40,
 					paddingHorizontal: 16,
 					columnGap: 12
 				},
 				small: {
-					height: 32,
 					paddingHorizontal: 12,
 					columnGap: 8
 				}
@@ -147,7 +150,10 @@ export const stylesheet = createStyleSheet(theme => ({
 	},
 	slot: {
 		aspectRatio: 1,
-		height: '42.5%',
+		height: '42.5%'
+	},
+	styleProps: {
+		color: '',
 
 		variants: {
 			variant: {

@@ -1,7 +1,12 @@
+export { AltArrowDownIcon } from './ui/AltArrowDownIcon';
+export { AltArrowUpIcon } from './ui/AltArrowUpIcon';
 export { ArrowLeftIcon } from './ui/ArrowLeftIcon';
 export { ArrowRightIcon } from './ui/ArrowRightIcon';
 export { GradeIcon } from './ui/GradeIcon';
+export { GraphUpIcon } from './ui/GraphUpIcon';
 export { HomeIcon } from './ui/HomeIcon';
 export { LogoIcon } from './ui/LogoIcon';
+export { MedalStarIcon } from './ui/MedalStarIcon';
 export { ProfileIcon } from './ui/ProfileIcon';
 export { StatsIcon } from './ui/StatsIcon';
+export { StopwatchIcon } from './ui/StopwatchIcon';

@@ -1,7 +1,31 @@
-import { ReactNode } from 'react';
-import { QueryClientProvider } from '@tanstack/react-query';
+import { ReactNode, useEffect } from 'react';
+import NetInfo from '@react-native-community/netinfo';
+import {
+	QueryClientProvider,
+	focusManager,
+	onlineManager
+} from '@tanstack/react-query';
+import { AppState } from 'react-native';
 import { queryClient } from './query-client';
 
-export const QueryProvider = ({ children }: { children: ReactNode }) => (
-	<QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
-);
+export const QueryProvider = ({ children }: { children: ReactNode }) => {
+	useEffect(() => {
+		const subscription = AppState.addEventListener('change', status => {
+			focusManager.setFocused(status === 'active');
+		});
+
+		return subscription.remove;
+	}, []);
+
+	useEffect(() => {
+		return NetInfo.addEventListener(state => {
+			onlineManager.setOnline(
+				!!state.isConnected && !!state.isInternetReachable
+			);
+		});
+	}, []);
+
+	return (
+		<QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+	);
+};

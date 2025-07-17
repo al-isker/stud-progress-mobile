@@ -21,7 +21,7 @@ const stylesheet = createStyleSheet(theme => ({
 	divider: {
 		borderWidth: 0,
 		borderStyle: 'solid',
-		borderColor: theme.colors.blackAlpha(0.2),
+		borderColor: theme.colors.blackAlpha(0.12),
 
 		borderTopWidth: 0,
 		borderLeftWidth: 0,
@@ -36,14 +36,11 @@ const stylesheet = createStyleSheet(theme => ({
 				}
 			},
 			size: {
-				large: {
-					borderWidth: 1.5
-				},
 				medium: {
 					borderWidth: 1
 				},
 				small: {
-					borderWidth: 0.75
+					borderWidth: 0.8
 				}
 			}
 		}
