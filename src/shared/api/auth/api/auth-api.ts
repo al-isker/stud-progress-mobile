@@ -9,9 +9,9 @@ import { RefreshTokenResponseType } from '../model/types/refresh-token-response'
 class AuthApi {
 	private internalApi = axios.create(API_CONFIG);
 
-	async login(form: LoginBodyType) {
+	async login(body: LoginBodyType) {
 		return (
-			await this.internalApi.post<LoginResponseType>('auth/login', form, {
+			await this.internalApi.post<LoginResponseType>('auth/login', body, {
 				timeout: API_LONG_TIMEOUT
 			})
 		).data;

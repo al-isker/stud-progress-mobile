@@ -1,7 +1,7 @@
 import { View } from 'react-native';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
 import { Fragment } from 'react/jsx-runtime';
-import { EventStatusEnum } from '@/entities/subject/model/types/event-status';
+import { EventStatusEnum } from '@/entities/subject';
 import { Divider } from '@/shared/ui/divider';
 import { Paper } from '@/shared/ui/paper';
 import { Typography } from '@/shared/ui/typography';
