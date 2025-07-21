@@ -1,4 +1,4 @@
-import { ReactElement, ReactNode } from 'react';
+import { ReactElement, ReactNode, forwardRef } from 'react';
 import { Text, View } from 'react-native';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
 import { SlotProps, renderSlot } from '@/shared/lib/slot';
@@ -12,19 +12,14 @@ export type NumberStatProps = PaperProps & {
 	mainStartSlot?: ReactElement<SlotProps>;
 };
 
-export const NumberStat = ({
-	style,
-	title,
-	value,
-	valueHint,
-	headerStartSlot,
-	mainStartSlot,
-	...props
-}: NumberStatProps) => {
+export const NumberStat = forwardRef<View, NumberStatProps>(function NumberStat(
+	{ style, title, value, valueHint, headerStartSlot, mainStartSlot, ...props },
+	forwardedRef
+) {
 	const { styles, theme } = useStyles(stylesheet);
 
 	return (
-		<Paper style={[styles.paper, style]} {...props}>
+		<Paper ref={forwardedRef} style={[styles.paper, style]} {...props}>
 			<View style={styles.header}>
 				{renderSlot(headerStartSlot, {
 					style: styles.headerStartSlot,
@@ -43,12 +38,12 @@ export const NumberStat = ({
 			</View>
 		</Paper>
 	);
-};
+});
 
 const stylesheet = createStyleSheet(theme => ({
 	paper: {
 		flex: 1,
-		rowGap: theme.spacing * 1.5,
+		rowGap: theme.spacing * 1.2,
 		padding: theme.spacing * 1.5
 	},
 	header: {

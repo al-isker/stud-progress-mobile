@@ -1,14 +1,13 @@
 import { Text, View } from 'react-native';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
 import { CircularLoader } from '@/shared/ui/circular-loader';
-import { useSubjectRatingList } from '../../model/hooks/use-subject-rating-list';
-import { IOList } from '../io-list/IOList';
+import { useProfile } from '../../model/hooks/use-profile';
+import { Content } from '../content/Content';
 
-export const SubjectRatingList = () => {
+export const Profile = () => {
 	const { styles } = useStyles(stylesheet);
 
-	const { data, refetch, isLoading, isError, isRefetching } =
-		useSubjectRatingList();
+	const { data, refetch, isLoading, isError, isRefetching } = useProfile();
 
 	if (isLoading) {
 		return (
@@ -22,7 +21,7 @@ export const SubjectRatingList = () => {
 		return (
 			<View style={[styles.centringContainer, styles.container]}>
 				<Text style={styles.error}>
-					Баллы не найдены, может тебя отчислили?
+					Профиль не найден, может тебя отчислили?
 				</Text>
 			</View>
 		);
@@ -30,9 +29,9 @@ export const SubjectRatingList = () => {
 
 	if (data) {
 		return (
-			<IOList
+			<Content
 				contentContainerStyle={styles.container}
-				subjectRatingList={data}
+				profile={data}
 				refreshing={isRefetching}
 				onRefresh={refetch}
 			/>

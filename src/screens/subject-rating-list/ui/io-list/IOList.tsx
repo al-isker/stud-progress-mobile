@@ -1,5 +1,6 @@
 import { StyleProp, ViewStyle } from 'react-native';
 import { IOScrollView } from 'react-native-intersection-observer';
+import { useStyles } from 'react-native-unistyles';
 import { SubjectRatingListType } from '@/entities/subject';
 import { RefreshControl } from '@/shared/ui/refresh-control';
 import { IOCard } from '../io-card/IOCard';
@@ -19,10 +20,12 @@ export const IOList = ({
 	refreshing,
 	onRefresh
 }: IOListProps) => {
+	const { theme } = useStyles();
+
 	return (
 		<IOScrollView
 			rootMargin={{ top: -50, bottom: -50 }}
-			contentContainerStyle={contentContainerStyle}
+			contentContainerStyle={[{ rowGap: theme.spacing }, contentContainerStyle]}
 			style={style}
 			showsVerticalScrollIndicator={false}
 			refreshControl={

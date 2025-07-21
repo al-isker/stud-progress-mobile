@@ -32,14 +32,14 @@ export const Tag = forwardRef<View, TagProps>(function Tag(
 		<View ref={forwardedRef} style={[styles.tag, style]} {...props}>
 			{renderSlot(startSlot, {
 				style: styles.slot,
-				color: styles.styleProps.color
+				color: styles.slotProps.color
 			})}
 
 			<Text style={styles.title}>{title}</Text>
 
-			{renderSlot(startSlot, {
+			{renderSlot(endSlot, {
 				style: styles.slot,
-				color: styles.styleProps.color
+				color: styles.slotProps.color
 			})}
 		</View>
 	);
@@ -102,10 +102,7 @@ const stylesheet = createStyleSheet(theme => ({
 		aspectRatio: 1,
 
 		variants: {
-			variant: {
-				black: {},
-				primary: {}
-			},
+			variant: {},
 			size: {
 				medium: {
 					height: 13
@@ -116,7 +113,7 @@ const stylesheet = createStyleSheet(theme => ({
 			}
 		}
 	},
-	styleProps: {
+	slotProps: {
 		color: '',
 
 		variants: {
@@ -128,10 +125,7 @@ const stylesheet = createStyleSheet(theme => ({
 					color: theme.colors.primary
 				}
 			},
-			size: {
-				medium: {},
-				small: {}
-			}
+			size: {}
 		}
 	}
 }));

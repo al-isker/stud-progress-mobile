@@ -28,7 +28,7 @@ type CardContentProps = {
 };
 
 export const CardContent = forwardRef<CardContentRef, CardContentProps>(
-	function Card({ subjectRating }, forwardedRef) {
+	function CardContent({ subjectRating }, forwardedRef) {
 		const {
 			id,
 			name,

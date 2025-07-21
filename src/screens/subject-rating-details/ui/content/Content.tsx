@@ -27,7 +27,7 @@ export const Content = ({
 
 	return (
 		<ScrollView
-			contentContainerStyle={contentContainerStyle}
+			contentContainerStyle={[{ rowGap: theme.spacing }, contentContainerStyle]}
 			style={style}
 			showsVerticalScrollIndicator={false}
 			contentOffset={{

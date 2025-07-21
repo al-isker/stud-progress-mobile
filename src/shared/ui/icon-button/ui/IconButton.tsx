@@ -25,14 +25,14 @@ export const IconButton = forwardRef<View, IconButtonProps>(function IconButton(
 	return (
 		<Touchable
 			ref={forwardedRef}
-			feedbackColor={styles.styleProps.feedbackColor}
+			feedbackColor={styles.feedback.color}
 			style={[styles.touchable, style]}
 			contentContainerStyle={styles.touchableContentContainer}
 			{...props}
 		>
 			{renderSlot(children, {
 				style: styles.icon,
-				color: styles.styleProps.color
+				color: styles.slotProps.color
 			})}
 		</Touchable>
 	);
@@ -83,41 +83,61 @@ export const stylesheet = createStyleSheet(theme => ({
 					backgroundColor: theme.colors.transparent
 				}
 			},
-			size: {
-				large: {},
-				medium: {},
-				small: {}
-			}
+			size: {}
 		}
 	},
 	icon: {
 		aspectRatio: 1,
-		height: '42.5%'
+
+		variants: {
+			variant: {},
+			size: {
+				large: {
+					height: 20
+				},
+				medium: {
+					height: 16
+				},
+				small: {
+					height: 13
+				}
+			}
+		}
 	},
-	styleProps: {
+	slotProps: {
 		color: '',
-		feedbackColor: '',
 
 		variants: {
 			variant: {
 				primary: {
-					color: theme.colors.alwaysWhite,
-					feedbackColor: theme.colors.alwaysBlackAlpha(0.3)
+					color: theme.colors.alwaysWhite
 				},
 				secondary: {
-					color: theme.colors.blackAlpha(0.7),
-					feedbackColor: theme.colors.blackAlpha(0.08)
+					color: theme.colors.blackAlpha(0.7)
 				},
 				text: {
-					color: theme.colors.blackAlpha(0.7),
-					feedbackColor: theme.colors.blackAlpha(0.1)
+					color: theme.colors.blackAlpha(0.7)
 				}
 			},
-			size: {
-				large: {},
-				medium: {},
-				small: {}
-			}
+			size: {}
+		}
+	},
+	feedback: {
+		color: '',
+
+		variants: {
+			variant: {
+				primary: {
+					color: theme.colors.alwaysBlackAlpha(0.3)
+				},
+				secondary: {
+					color: theme.colors.blackAlpha(0.08)
+				},
+				text: {
+					color: theme.colors.blackAlpha(0.1)
+				}
+			},
+			size: {}
 		}
 	}
 }));

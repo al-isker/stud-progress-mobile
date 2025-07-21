@@ -19,29 +19,39 @@ export type CommandProps = Omit<
 	};
 
 export const Command = forwardRef<View, CommandProps>(function Command(
-	{ size = 'medium', style, title, startSlot, endSlot, ...props },
+	{
+		variant = 'primary',
+		size = 'medium',
+		style,
+		title,
+		startSlot,
+		endSlot,
+		...props
+	},
 	forwardedRef
 ) {
-	const { theme, styles } = useStyles(stylesheet, { size });
+	const { styles } = useStyles(stylesheet, { variant, size });
 
 	return (
 		<Touchable
 			ref={forwardedRef}
-			feedbackColor={theme.colors.blackAlpha(0.1)}
+			feedbackColor={styles.feedback.color}
 			style={[styles.touchable, style]}
 			contentContainerStyle={styles.touchableContentContainer}
 			{...props}
 		>
 			{renderSlot(startSlot, {
 				style: styles.slot,
-				color: styles.styleProps.color
+				color: styles.slotProps.color
 			})}
 
-			<Text style={styles.title}>{title}</Text>
+			<Text style={styles.title} numberOfLines={1}>
+				{title}
+			</Text>
 
 			{renderSlot(endSlot, {
 				style: [styles.slot, styles.endSlot],
-				color: styles.styleProps.color
+				color: styles.slotProps.color
 			})}
 		</Touchable>
 	);
@@ -50,8 +60,9 @@ export const Command = forwardRef<View, CommandProps>(function Command(
 const stylesheet = createStyleSheet(theme => ({
 	touchable: {
 		overflow: 'hidden',
-		borderRadius: theme.borderRadius / 4,
+
 		variants: {
+			variant: {},
 			size: {
 				large: {
 					height: 54
@@ -67,9 +78,19 @@ const stylesheet = createStyleSheet(theme => ({
 		width: '100%',
 		flexDirection: 'row',
 		alignItems: 'center',
-		backgroundColor: theme.colors.primaryAlpha(0.05),
 
 		variants: {
+			variant: {
+				primary: {
+					backgroundColor: theme.colors.primaryAlpha(0.05)
+				},
+				danger: {
+					backgroundColor: theme.colors.transparent
+				},
+				text: {
+					backgroundColor: theme.colors.transparent
+				}
+			},
 			size: {
 				large: {
 					paddingHorizontal: 18,
@@ -83,10 +104,21 @@ const stylesheet = createStyleSheet(theme => ({
 		}
 	},
 	title: {
-		color: theme.colors.blackAlpha(0.8),
+		flex: 1,
 		fontFamily: theme.typography.fontFamily.GolosTextRegular,
 
 		variants: {
+			variant: {
+				primary: {
+					color: theme.colors.blackAlpha(0.8)
+				},
+				danger: {
+					color: theme.colors.red
+				},
+				text: {
+					color: theme.colors.blackAlpha(0.8)
+				}
+			},
 			size: {
 				large: {
 					fontSize: 15
@@ -99,12 +131,56 @@ const stylesheet = createStyleSheet(theme => ({
 	},
 	slot: {
 		aspectRatio: 1,
-		height: '42.5%'
+
+		variants: {
+			variant: {},
+			size: {
+				large: {
+					height: 20
+				},
+				medium: {
+					height: 16
+				}
+			}
+		}
 	},
 	endSlot: {
 		marginLeft: 'auto'
 	},
-	styleProps: {
-		color: theme.colors.blackAlpha(0.8)
+	slotProps: {
+		color: '',
+
+		variants: {
+			variant: {
+				primary: {
+					color: theme.colors.blackAlpha(0.7)
+				},
+				danger: {
+					color: theme.colors.red
+				},
+				text: {
+					color: theme.colors.blackAlpha(0.7)
+				}
+			},
+			size: {}
+		}
+	},
+	feedback: {
+		color: '',
+
+		variants: {
+			variant: {
+				primary: {
+					color: theme.colors.blackAlpha(0.1)
+				},
+				danger: {
+					color: theme.colors.redAlpha(0.1)
+				},
+				text: {
+					color: theme.colors.blackAlpha(0.1)
+				}
+			},
+			size: {}
+		}
 	}
 }));

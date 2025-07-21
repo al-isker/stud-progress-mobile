@@ -31,7 +31,7 @@ export const SubjectRatingDetails = () => {
 	if (data) {
 		return (
 			<Content
-				contentContainerStyle={[styles.list, styles.container]}
+				contentContainerStyle={styles.container}
 				subjectRatingDetails={data}
 				refreshing={isRefetching}
 				onRefresh={refetch}
@@ -51,8 +51,5 @@ const stylesheet = createStyleSheet(theme => ({
 	},
 	error: {
 		color: theme.colors.red
-	},
-	list: {
-		rowGap: theme.spacing
 	}
 }));

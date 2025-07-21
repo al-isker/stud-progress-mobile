@@ -1,4 +1,4 @@
-import { ScrollView, StyleProp, Text, View, ViewStyle } from 'react-native';
+import { ScrollView, StyleProp, View, ViewStyle } from 'react-native';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
 import { semesterOptions } from '@/entities/semester';
 import { ArrowRightIcon } from '@/shared/assets/icons';
@@ -26,9 +26,11 @@ export const LoginSemesterForm = ({ style }: LoginSemesterFormProps) => {
 				{semesterOptions.map((option, index) => (
 					<Command
 						key={index}
-						style={index === semesterOptions.length - 1 && styles.lastCommand}
+						style={[
+							styles.command,
+							index === semesterOptions.length - 1 && styles.lastCommand
+						]}
 						title={option.label}
-						startSlot={<Text style={styles.number}>{option.value}</Text>}
 						endSlot={<ArrowRightIcon />}
 						onPress={() => selectSemester(option.value)}
 					/>
@@ -44,14 +46,14 @@ const stylesheet = createStyleSheet(theme => ({
 	},
 	scrollViewContent: {
 		flexDirection: 'column',
-		rowGap: 2
+		rowGap: 2,
+		paddingBottom: theme.spacing
+	},
+	command: {
+		borderRadius: 2
 	},
 	lastCommand: {
 		borderBottomStartRadius: theme.borderRadius,
 		borderBottomEndRadius: theme.borderRadius
-	},
-	number: {
-		fontFamily: theme.typography.fontFamily.GolosTextRegular,
-		fontSize: 14
 	}
 }));

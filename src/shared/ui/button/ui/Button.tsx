@@ -35,21 +35,23 @@ export const Button = forwardRef<View, ButtonProps>(function Button(
 	return (
 		<Touchable
 			ref={forwardedRef}
-			feedbackColor={styles.touchableContentContainer.feedbackColor}
+			feedbackColor={styles.feedback.color}
 			style={[styles.touchable, style]}
 			contentContainerStyle={styles.touchableContentContainer}
 			{...props}
 		>
 			{renderSlot(startSlot, {
 				style: styles.slot,
-				color: styles.styleProps.color
+				color: styles.slotProps.color
 			})}
 
-			<Text style={styles.title}>{title}</Text>
+			<Text style={styles.title} numberOfLines={1}>
+				{title}
+			</Text>
 
 			{renderSlot(endSlot, {
 				style: styles.slot,
-				color: styles.styleProps.color
+				color: styles.slotProps.color
 			})}
 		</Touchable>
 	);
@@ -60,11 +62,7 @@ export const stylesheet = createStyleSheet(theme => ({
 		overflow: 'hidden',
 
 		variants: {
-			variant: {
-				primary: {},
-				secondary: {},
-				text: {}
-			},
+			variant: {},
 			size: {
 				large: {
 					height: 54,
@@ -91,16 +89,13 @@ export const stylesheet = createStyleSheet(theme => ({
 		variants: {
 			variant: {
 				primary: {
-					backgroundColor: theme.colors.primary,
-					feedbackColor: theme.colors.alwaysBlackAlpha(0.3)
+					backgroundColor: theme.colors.primary
 				},
 				secondary: {
-					backgroundColor: theme.colors.blackAlpha(0.08),
-					feedbackColor: theme.colors.blackAlpha(0.08)
+					backgroundColor: theme.colors.blackAlpha(0.08)
 				},
 				text: {
-					backgroundColor: theme.colors.transparent,
-					feedbackColor: theme.colors.blackAlpha(0.1)
+					backgroundColor: theme.colors.transparent
 				}
 			},
 			size: {
@@ -120,6 +115,7 @@ export const stylesheet = createStyleSheet(theme => ({
 		}
 	},
 	title: {
+		flex: 1,
 		textAlign: 'center',
 		fontFamily: theme.typography.fontFamily.GolosTextRegular,
 
@@ -150,9 +146,23 @@ export const stylesheet = createStyleSheet(theme => ({
 	},
 	slot: {
 		aspectRatio: 1,
-		height: '42.5%'
+
+		variants: {
+			variant: {},
+			size: {
+				large: {
+					height: 20
+				},
+				medium: {
+					height: 16
+				},
+				small: {
+					height: 13
+				}
+			}
+		}
 	},
-	styleProps: {
+	slotProps: {
 		color: '',
 
 		variants: {
@@ -167,11 +177,25 @@ export const stylesheet = createStyleSheet(theme => ({
 					color: theme.colors.blackAlpha(0.7)
 				}
 			},
-			size: {
-				large: {},
-				medium: {},
-				small: {}
-			}
+			size: {}
+		}
+	},
+	feedback: {
+		color: '',
+
+		variants: {
+			variant: {
+				primary: {
+					color: theme.colors.alwaysBlackAlpha(0.3)
+				},
+				secondary: {
+					color: theme.colors.blackAlpha(0.08)
+				},
+				text: {
+					color: theme.colors.blackAlpha(0.1)
+				}
+			},
+			size: {}
 		}
 	}
 }));
