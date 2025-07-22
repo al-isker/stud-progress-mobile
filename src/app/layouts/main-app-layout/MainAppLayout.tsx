@@ -18,6 +18,12 @@ export const MainAppLayout = () => (
 					animation: 'fade_from_bottom'
 				}}
 			/>
+			<Stack.Screen
+				name={ScreenNames.PRIVACY_POLICY}
+				options={{
+					animation: 'default'
+				}}
+			/>
 		</Stack>
 	</>
 );
