@@ -1,5 +1,6 @@
 import { MutableRefObject } from 'react';
-import { ApiErrorType, LoginBodyType } from '@/shared/api';
+import { LoginBodyType } from '@/entities/auth';
+import { ApiErrorType } from '@/shared/api';
 
 export type LoginContextFormValuesType = Partial<LoginBodyType>;
 export type LoginContextMutationErrorType = ApiErrorType | undefined;

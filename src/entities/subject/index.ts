@@ -4,7 +4,7 @@ export { formatAverageMark } from './lib/format/format-average-mark';
 export { MAX_MARK } from './model/const/max-mark';
 export { ControlTypeEnum } from './model/types/control-type';
 export { EventStatusEnum } from './model/types/event-status';
-export { SubjectRatingDetailsType } from './model/types/subject-by-id-rating';
+export { SubjectRatingDetailsType } from './model/types/subject-rating-details';
 export {
 	SubjectRatingListItemType,
 	SubjectRatingListType

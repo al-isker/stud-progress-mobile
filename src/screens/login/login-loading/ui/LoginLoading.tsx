@@ -1,9 +1,9 @@
 import { View } from 'react-native';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
-import { LoginProgressLoader } from '@/features/login';
 import { LogoIcon } from '@/shared/assets/icons';
 import { APP_TITLE } from '@/shared/config/app-data';
 import { Typography } from '@/shared/ui/typography';
+import { LoginProgressLoader } from './LoginProgressLoader';
 
 export const LoginLoading = () => {
 	const { styles, theme } = useStyles(stylesheet);
@@ -19,7 +19,7 @@ export const LoginLoading = () => {
 					</Typography>
 				</View>
 
-				<LoginProgressLoader colorOnPrimary />
+				<LoginProgressLoader />
 			</View>
 		</>
 	);

@@ -1,16 +1,20 @@
 import { api } from '@/shared/api';
-import { SubjectRatingDetailsType } from '../model/types/subject-by-id-rating';
+import { SubjectRatingDetailsType } from '../model/types/subject-rating-details';
 import { SubjectRatingListType } from '../model/types/subject-rating-list';
 
 class SubjectApi {
 	async getRatingList() {
-		return (await api.get<SubjectRatingListType>('subject/rating')).data;
+		const response = await api.get<SubjectRatingListType>('subject/rating');
+
+		return response.data;
 	}
 
 	async getRatingDetails(subjectId: number) {
-		return (
-			await api.get<SubjectRatingDetailsType>(`subject/${subjectId}/rating`)
-		).data;
+		const response = await api.get<SubjectRatingDetailsType>(
+			`subject/${subjectId}/rating`
+		);
+
+		return response.data;
 	}
 }
 

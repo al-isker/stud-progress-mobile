@@ -1,18 +1,14 @@
-import { useEffect } from 'react';
 import { router } from 'expo-router';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {
-	API_LONG_TIMEOUT,
-	ApiErrorType,
-	LoginResponseType
-} from '@/shared/api';
+import { LoginResponseType } from '@/entities/auth';
+import { useLoginMutation } from '@/entities/auth/api/use-login-mutation';
+import { API_LONG_TIMEOUT, ApiErrorType } from '@/shared/api';
 import { routes } from '@/shared/config/navigation';
 import {
 	ACCESS_TOKEN_STORAGE_KEY,
 	REFRESH_TOKEN_STORAGE_KEY
 } from '@/shared/config/storage';
 import { useProgressAnimation } from '@/shared/lib/animation';
-import { useLoginMutation } from '../../api/use-login-mutation';
 import { useLoginContext } from './use-login-context';
 
 export const useLogin = () => {
@@ -38,7 +34,7 @@ export const useLogin = () => {
 		router.back();
 	};
 
-	useEffect(() => {
+	const login = () => {
 		animationStart();
 
 		const formValues = loginContext.formValuesRef.current;
@@ -53,7 +49,7 @@ export const useLogin = () => {
 			onSuccess: handleSuccess,
 			onError: handleError
 		});
-	}, []);
+	};
 
-	return { progress };
+	return { progress, login };
 };

@@ -1,16 +1,15 @@
 import { router } from 'expo-router';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { HttpStatusCode } from 'axios';
+import { ApiErrorType, api } from '@/shared/api';
 import { routes } from '@/shared/config/navigation';
 import {
 	ACCESS_TOKEN_STORAGE_KEY,
 	REFRESH_TOKEN_STORAGE_KEY
 } from '@/shared/config/storage';
-import { api } from '../api';
-import { authApi } from '../auth/api/auth-api';
-import { ApiErrorType } from '../types/api-error';
+import { authApi } from '../../api/auth-api';
 
-export const responseRejectedInterceptor = async (error: ApiErrorType) => {
+export const handleResponseRejected = async (error: ApiErrorType) => {
 	const originalRequest = error.config;
 	const isUnauthorized = error.status === HttpStatusCode.Unauthorized;
 

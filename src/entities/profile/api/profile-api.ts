@@ -4,15 +4,19 @@ import { UpdateSemesterBodyType } from '../model/types/update-semester-body';
 
 class ProfileApi {
 	async get() {
-		return (await api.get<ProfileType>('profile')).data;
+		const response = await api.get<ProfileType>('profile');
+
+		return response.data;
 	}
 
 	async updateSemester(body: UpdateSemesterBodyType) {
-		return (
-			await api.patch<ProfileType>('profile/update-semester', body, {
-				timeout: API_LONG_TIMEOUT
-			})
-		).data;
+		const response = await api.patch<ProfileType>(
+			'profile/update-semester',
+			body,
+			{ timeout: API_LONG_TIMEOUT }
+		);
+
+		return response.data;
 	}
 }
 

@@ -1,1 +1,1 @@
-export { LoginLoading } from './LoginLoading';
+export { LoginLoading } from './ui/LoginLoading';

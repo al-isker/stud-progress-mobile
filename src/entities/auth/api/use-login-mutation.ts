@@ -1,5 +1,6 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { LoginBodyType, authApi } from '@/shared/api';
+import { LoginBodyType } from '../model/types/login-body';
+import { authApi } from './auth-api';
 
 export const useLoginMutation = () => {
 	const queryClient = useQueryClient();
