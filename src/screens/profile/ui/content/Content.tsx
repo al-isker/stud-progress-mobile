@@ -5,7 +5,7 @@ import { ProfileIcon } from '@/shared/assets/icons';
 import { Paper } from '@/shared/ui/paper';
 import { RefreshControl } from '@/shared/ui/refresh-control';
 import { Typography } from '@/shared/ui/typography';
-import { SettingsSection } from '../settings-section/SettingsSection';
+import { MenuSection } from '../menu-section/MenuSection';
 import { StatsSection } from '../stats-section/StatsSection';
 
 type ContentProps = {
@@ -44,7 +44,7 @@ export const Content = ({
 
 			<StatsSection course={profile.course} semester={profile.semester} />
 
-			<SettingsSection />
+			<MenuSection />
 		</ScrollView>
 	);
 };

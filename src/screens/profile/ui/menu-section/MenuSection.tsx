@@ -1,14 +1,14 @@
 import {
 	ArrowRightIcon,
-	ExitIcon,
 	FileTextIcon,
 	SmartphoneUpdateIcon
 } from '@/shared/assets/icons';
 import { Command } from '@/shared/ui/command';
 import { Divider } from '@/shared/ui/divider';
 import { Paper } from '@/shared/ui/paper';
+import { MenuLogout } from './MenuLogout';
 
-export const SettingsSection = () => {
+export const MenuSection = () => {
 	return (
 		<Paper style={{ overflow: 'hidden' }}>
 			<Command
@@ -31,13 +31,7 @@ export const SettingsSection = () => {
 
 			<Divider />
 
-			<Command
-				variant='danger'
-				size='large'
-				title='Выйти'
-				startSlot={<ExitIcon />}
-				endSlot={<ArrowRightIcon />}
-			/>
+			<MenuLogout />
 		</Paper>
 	);
 };
