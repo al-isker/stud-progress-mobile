@@ -1,1 +1,1 @@
-export { SubjectStats as default } from '@/screens/subject-stats';
+export { SubjectStatsScreen as default } from '@/screens/subject-stats';

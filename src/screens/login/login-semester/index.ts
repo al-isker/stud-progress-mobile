@@ -1,1 +1,0 @@
-export { LoginSemester } from './LoginSemester';

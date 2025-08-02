@@ -4,7 +4,7 @@ import { semesterOptions } from '@/entities/semester';
 import { ArrowRightIcon } from '@/shared/assets/icons';
 import { Command } from '@/shared/ui/command';
 import { Divider } from '@/shared/ui/divider';
-import { useSemesterForm } from '../../model/hooks/use-semester-form';
+import { useLoginSemesterForm } from '../../model/hooks/use-login-semester-form';
 
 type LoginSemesterFormProps = {
 	style?: StyleProp<ViewStyle>;
@@ -13,14 +13,14 @@ type LoginSemesterFormProps = {
 export const LoginSemesterForm = ({ style }: LoginSemesterFormProps) => {
 	const { styles } = useStyles(stylesheet);
 
-	const { selectSemester } = useSemesterForm();
+	const { selectSemester } = useLoginSemesterForm();
 
 	return (
 		<View style={style}>
 			<Divider style={styles.divider} />
 
 			<ScrollView
-				contentContainerStyle={styles.scrollViewContent}
+				contentContainerStyle={styles.scrollViewContentContainer}
 				showsVerticalScrollIndicator={false}
 			>
 				{semesterOptions.map((option, index) => (
@@ -44,10 +44,10 @@ const stylesheet = createStyleSheet(theme => ({
 	divider: {
 		marginBottom: 2
 	},
-	scrollViewContent: {
+	scrollViewContentContainer: {
 		flexDirection: 'column',
-		rowGap: 2,
-		paddingBottom: theme.spacing
+		paddingBottom: theme.spacing,
+		rowGap: 2
 	},
 	command: {
 		borderRadius: 2

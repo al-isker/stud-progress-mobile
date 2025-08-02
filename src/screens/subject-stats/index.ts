@@ -1,1 +1,1 @@
-export { SubjectStats } from './SubjectStats';
+export { SubjectStatsScreen } from './SubjectStatsScreen';

@@ -1,1 +1,1 @@
-export { SubjectRatingDetails } from './ui/subject-rating-details/SubjectRatingDetails';
+export { SubjectRatingDetailsScreen } from './ui/subject-rating-details-screen/SubjectRatingDetailsScreen';

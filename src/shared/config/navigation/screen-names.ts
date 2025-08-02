@@ -1,11 +1,15 @@
 export enum ScreenNames {
 	MAIN = '(main)',
-	LOGIN = 'login',
 
+	LOGIN = 'login',
 	LOGIN_FORM = '(form)',
+	LOGIN_SEMESTER_FORM = 'semester-form/index',
+	LOGIN_MAIN_FORM = 'main-form/index',
 	LOGIN_LOADING = 'loading/index',
-	LOGIN_FORM_SEMESTER = 'semester/index',
-	LOGIN_FORM_MAIN = 'main/index',
+
+	UPDATE_SEMESTER = 'update-semester',
+	UPDATE_SEMESTER_FORM = 'form/index',
+	UPDATE_SEMESTER_LOADING = 'loading/index',
 
 	TABS = '(tabs)',
 	TAB_SUBJECT_RATING = 'subject/rating/index',

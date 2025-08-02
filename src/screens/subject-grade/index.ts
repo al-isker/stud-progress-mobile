@@ -1,0 +1,1 @@
+export { SubjectGradeScreen } from './SubjectGradeScreen';

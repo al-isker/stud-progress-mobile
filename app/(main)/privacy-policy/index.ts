@@ -1,1 +1,1 @@
-export { PrivacyPolicy as default } from '@/screens/privacy-policy';
+export { PrivacyPolicyScreen as default } from '@/screens/privacy-policy';

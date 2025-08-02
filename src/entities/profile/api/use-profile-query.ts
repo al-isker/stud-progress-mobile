@@ -5,6 +5,6 @@ import { profileApi } from './profile-api';
 export const useProfileQuery = () => {
 	return useQuery({
 		queryKey: [PROFILE_KEY],
-		queryFn: () => profileApi.get()
+		queryFn: ({}) => profileApi.get()
 	});
 };

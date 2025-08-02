@@ -1,17 +1,13 @@
 import { Link, router } from 'expo-router';
-import { StyleProp, View, ViewStyle } from 'react-native';
+import { View } from 'react-native';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
 import { routes } from '@/shared/config/navigation';
 import { Button } from '@/shared/ui/button';
 import { TextField } from '@/shared/ui/text-field';
-import { useMainForm } from '../../model/hooks/use-main-form';
+import { useLoginMainForm } from '../../model/hooks/use-login-main-form';
 import { MutationError } from './MutationError';
 
-type LoginMainFormProps = {
-	style?: StyleProp<ViewStyle>;
-};
-
-export const LoginMainForm = ({ style }: LoginMainFormProps) => {
+export const LoginMainForm = () => {
 	const { styles } = useStyles(stylesheet);
 
 	const {
@@ -19,14 +15,14 @@ export const LoginMainForm = ({ style }: LoginMainFormProps) => {
 		defaultPassword,
 		handleFullNameChange,
 		handlePasswordChange
-	} = useMainForm();
+	} = useLoginMainForm();
 
 	const onBackPress = () => {
 		router.back();
 	};
 
 	return (
-		<View style={[styles.container, style]}>
+		<View style={styles.container}>
 			<TextField
 				size='large'
 				style={styles.formItem}
@@ -43,7 +39,7 @@ export const LoginMainForm = ({ style }: LoginMainFormProps) => {
 				onChangeText={handlePasswordChange}
 			/>
 
-			<MutationError style={styles.formItem} />
+			<MutationError style={[styles.formItem, styles.mutationError]} />
 
 			<View style={styles.actions}>
 				<Link href={routes.loginLoading} asChild>
@@ -67,6 +63,9 @@ const stylesheet = createStyleSheet({
 	},
 	formItem: {
 		marginBottom: 16
+	},
+	mutationError: {
+		textAlign: 'center'
 	},
 	actions: {
 		marginTop: 'auto'

@@ -37,7 +37,7 @@ export const MutationError = ({ style }: MutationErrorProps) => {
 
 	if (message) {
 		return (
-			<Typography variant='error' style={[{ textAlign: 'center' }, style]}>
+			<Typography variant='error' style={style}>
 				{message}
 			</Typography>
 		);

@@ -1,1 +1,1 @@
-export { Root as default } from '@/screens/root';
+export { RootScreen as default } from '@/screens/root';

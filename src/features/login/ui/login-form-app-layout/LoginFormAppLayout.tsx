@@ -1,44 +1,33 @@
 import { Stack } from 'expo-router';
-import { View } from 'react-native';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import { useStyles } from 'react-native-unistyles';
 import { ScreenNames } from '@/shared/config/navigation';
-import { LoginFormContent } from './LoginFormContent';
-import { LoginFormHeader } from './LoginFormHeader';
+import { OutsideMainLayout } from '@/shared/ui/outside-main-layout';
+import { Typography } from '@/shared/ui/typography';
 
 export const LoginFormAppLayout = () => {
-	const { styles, theme } = useStyles(stylesheet);
+	const { theme } = useStyles();
 
 	return (
-		<>
-			<View style={styles.layout}>
-				<LoginFormHeader style={styles.header} />
+		<OutsideMainLayout>
+			<Typography
+				variant='h2'
+				style={{
+					textAlign: 'center',
+					marginVertical: theme.spacing
+				}}
+			>
+				Вход
+			</Typography>
 
-				<LoginFormContent style={styles.content}>
-					<Stack
-						screenOptions={{
-							headerShown: false,
-							contentStyle: { backgroundColor: theme.colors.bgPaper }
-						}}
-					>
-						<Stack.Screen name={ScreenNames.LOGIN_FORM_SEMESTER} />
-						<Stack.Screen name={ScreenNames.LOGIN_FORM_MAIN} />
-					</Stack>
-				</LoginFormContent>
-			</View>
-		</>
+			<Stack
+				screenOptions={{
+					headerShown: false,
+					contentStyle: { backgroundColor: theme.colors.bgPaper }
+				}}
+			>
+				<Stack.Screen name={ScreenNames.LOGIN_SEMESTER_FORM} />
+				<Stack.Screen name={ScreenNames.LOGIN_MAIN_FORM} />
+			</Stack>
+		</OutsideMainLayout>
 	);
 };
-
-const stylesheet = createStyleSheet(theme => ({
-	layout: {
-		flex: 1,
-		backgroundColor: theme.colors.primary
-	},
-	header: {
-		flex: 0.3,
-		flexShrink: 1
-	},
-	content: {
-		flex: 0.7
-	}
-}));

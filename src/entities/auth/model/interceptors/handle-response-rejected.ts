@@ -35,7 +35,7 @@ export const handleResponseRejected = async (error: ApiErrorType) => {
 			} catch {}
 		}
 
-		router.replace(routes.loginSemester);
+		router.replace(routes.loginSemesterForm);
 	}
 
 	throw error;

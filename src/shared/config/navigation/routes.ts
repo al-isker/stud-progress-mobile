@@ -1,7 +1,10 @@
 class Routes {
-	loginSemester = '/login/semester';
-	loginMain = '/login/main';
+	loginSemesterForm = '/login/semester-form';
+	loginMainForm = '/login/main-form';
 	loginLoading = '/login/loading';
+
+	updateSemesterForm = '/update-semester/form';
+	updateSemesterLoading = '/update-semester/loading';
 
 	subjectRating = '/subject/rating';
 	subjectGrade = '/subject/grade';

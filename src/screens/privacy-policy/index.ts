@@ -1,1 +1,1 @@
-export { PrivacyPolicy } from './ui/PrivacyPolicy';
+export { PrivacyPolicyScreen } from './PrivacyPolicyScreen';

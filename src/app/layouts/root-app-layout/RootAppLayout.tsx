@@ -16,6 +16,7 @@ export const RootAppLayout = () => (
 					<Stack screenOptions={{ headerShown: false }}>
 						<Stack.Screen name={ScreenNames.MAIN} />
 						<Stack.Screen name={ScreenNames.LOGIN} />
+						<Stack.Screen name={ScreenNames.UPDATE_SEMESTER} />
 					</Stack>
 				</SafeAreaView>
 			</UnistylesProvider>

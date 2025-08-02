@@ -11,7 +11,7 @@ export const useLogout = () => {
 		AsyncStorage.removeItem(ACCESS_TOKEN_STORAGE_KEY);
 		AsyncStorage.removeItem(REFRESH_TOKEN_STORAGE_KEY);
 
-		router.dismissTo(routes.loginSemester);
+		router.dismissTo(routes.loginSemesterForm);
 	};
 
 	return { logout };

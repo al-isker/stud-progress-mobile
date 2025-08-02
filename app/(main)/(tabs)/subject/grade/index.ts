@@ -1,1 +1,1 @@
-export { SubjectGradeList as default } from '@/screens/subject-grade-list';
+export { SubjectGradeScreen as default } from '@/screens/subject-grade';
