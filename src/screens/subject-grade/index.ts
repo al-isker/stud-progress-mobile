@@ -1,1 +1,1 @@
-export { SubjectGradeScreen } from './SubjectGradeScreen';
+export { SubjectGradeScreen } from './ui/subject-grade-screen/SubjectGradeScreen';

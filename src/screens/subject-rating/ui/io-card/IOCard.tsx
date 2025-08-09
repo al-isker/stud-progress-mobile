@@ -2,14 +2,14 @@ import { useRef } from 'react';
 import { InView } from 'react-native-intersection-observer';
 import { SubjectRatingListItemType } from '@/entities/subject';
 import { useUnmountEffect } from '@/shared/lib/react-sugar';
-import { CardContent, CardContentRef } from './CardContent';
+import { IOCardContent, IOCardContentRef } from './IOCardContent';
 
 type IOCardProps = {
-	data: SubjectRatingListItemType;
+	subjectRating: SubjectRatingListItemType;
 };
 
-export const IOCard = ({ data }: IOCardProps) => {
-	const ref = useRef<CardContentRef>(null);
+export const IOCard = ({ subjectRating }: IOCardProps) => {
+	const ref = useRef<IOCardContentRef>(null);
 	const isInViewRef = useRef(false);
 	const isWasInViewRef = useRef(false);
 
@@ -29,11 +29,11 @@ export const IOCard = ({ data }: IOCardProps) => {
 		} else {
 			isWasInViewRef.current = false;
 		}
-	}, [data]);
+	}, [subjectRating]);
 
 	return (
 		<InView onChange={handleInViewChange}>
-			<CardContent ref={ref} subjectRating={data} />
+			<IOCardContent ref={ref} subjectRating={subjectRating} />
 		</InView>
 	);
 };

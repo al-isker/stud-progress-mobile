@@ -27,8 +27,8 @@ export const Content = ({
 
 	return (
 		<ScrollView
-			contentContainerStyle={[{ rowGap: theme.spacing }, contentContainerStyle]}
 			style={style}
+			contentContainerStyle={[{ rowGap: theme.spacing }, contentContainerStyle]}
 			showsVerticalScrollIndicator={false}
 			refreshControl={
 				<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />

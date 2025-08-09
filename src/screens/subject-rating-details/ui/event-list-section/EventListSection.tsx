@@ -31,7 +31,6 @@ export const EventListSection = ({ eventList }: EventListSectionProps) => {
 					{eventList.map((event, index) => (
 						<Fragment key={event.id}>
 							<EventWithDate
-								id={event.id}
 								status={event.status}
 								date={event.date}
 								mark={event.mark}

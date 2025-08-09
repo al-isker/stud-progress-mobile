@@ -32,7 +32,8 @@ export const Event = ({ style, status, mark, isNew }: EventProps) => {
 
 const stylesheet = createStyleSheet(theme => ({
 	container: {
-		aspectRatio: 1,
+		width: 30,
+		height: 30,
 		position: 'relative',
 		justifyContent: 'center',
 		alignItems: 'center',
@@ -41,19 +42,19 @@ const stylesheet = createStyleSheet(theme => ({
 		variants: {
 			status: {
 				[EventStatusEnum.MARK]: {
-					backgroundColor: theme.colors.blackAlpha(0.08)
+					backgroundColor: theme.colors.blackAlpha(0.07)
 				},
 				[EventStatusEnum.EMPTY]: {
-					backgroundColor: theme.colors.blackAlpha(0.08)
+					backgroundColor: theme.colors.blackAlpha(0.07)
 				},
 				[EventStatusEnum.ABSENCE]: {
 					backgroundColor: theme.colors.redAlpha(0.1)
 				},
 				[EventStatusEnum.UPWORKED]: {
-					backgroundColor: theme.colors.greenAlpha(0.15)
+					backgroundColor: theme.colors.blackAlpha(0.07)
 				},
 				[EventStatusEnum.UPWORKED_WITH_MARK]: {
-					backgroundColor: theme.colors.greenAlpha(0.15)
+					backgroundColor: theme.colors.blackAlpha(0.07)
 				}
 			}
 		}
@@ -77,12 +78,12 @@ const stylesheet = createStyleSheet(theme => ({
 					fontFamily: theme.typography.fontFamily.GolosTextSemiBold
 				},
 				[EventStatusEnum.UPWORKED]: {
-					color: theme.colors.green,
+					color: theme.colors.black,
 					fontSize: 11,
 					fontFamily: theme.typography.fontFamily.GolosTextSemiBold
 				},
 				[EventStatusEnum.UPWORKED_WITH_MARK]: {
-					color: theme.colors.green,
+					color: theme.colors.black,
 					fontSize: 16,
 					fontFamily: theme.typography.fontFamily.GolosTextMedium
 				}

@@ -21,10 +21,10 @@ export const EventList = ({ style, eventList }: EventListProps) => {
 	const handleLayout = (e: LayoutChangeEvent) => {
 		const containerWidth = e.nativeEvent.layout.width;
 		const containerGap = styles.container.columnGap;
-		const markWidth = styles.mark.width;
+		const eventWidth = styles.event.width;
 
 		const calculatedFitsItemsCount = Math.floor(
-			containerWidth / (markWidth + containerGap)
+			containerWidth / (eventWidth + containerGap)
 		);
 
 		setFitsItemsCount(calculatedFitsItemsCount);
@@ -35,7 +35,7 @@ export const EventList = ({ style, eventList }: EventListProps) => {
 			{eventList.slice(-fitsItemsCount).map(event => (
 				<Event
 					key={event.id}
-					style={styles.mark}
+					style={styles.event}
 					status={event.status}
 					mark={event.mark}
 					isNew={event.isNew}
@@ -44,7 +44,7 @@ export const EventList = ({ style, eventList }: EventListProps) => {
 
 			{Array.from({ length: fitsItemsCount - eventList.length }).map(
 				(_, index) => (
-					<View key={index} style={styles.mark} />
+					<View key={index} style={styles.event} />
 				)
 			)}
 		</View>
@@ -53,11 +53,11 @@ export const EventList = ({ style, eventList }: EventListProps) => {
 
 const stylesheet = createStyleSheet({
 	container: {
+		width: '100%',
 		flexDirection: 'row',
-		justifyContent: 'space-between',
-		columnGap: 6
+		columnGap: 10
 	},
-	mark: {
+	event: {
 		width: 30
 	}
 });
