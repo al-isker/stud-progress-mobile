@@ -44,3 +44,6 @@ yarn-error.*
 
 # vscode 
 .vscode
+
+# firebase
+google-services.json

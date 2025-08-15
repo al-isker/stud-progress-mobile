@@ -21,7 +21,8 @@
 				"foregroundImage": "./assets/adaptive-icon.png",
 				"backgroundColor": "#ffffff"
 			},
-			"package": "com.anonymous.studprogressmobile"
+			"package": "com.alisker.studprogress",
+			"googleServicesFile": "./google-services.json"
 		},
 		"web": {
 			"favicon": "./assets/favicon.png"

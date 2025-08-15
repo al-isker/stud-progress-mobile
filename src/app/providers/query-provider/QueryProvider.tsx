@@ -18,11 +18,13 @@ export const QueryProvider = ({ children }: { children: ReactNode }) => {
 	}, []);
 
 	useEffect(() => {
-		return NetInfo.addEventListener(state => {
+		const unsubscribe = NetInfo.addEventListener(state => {
 			onlineManager.setOnline(
 				!!state.isConnected && !!state.isInternetReachable
 			);
 		});
+
+		return unsubscribe;
 	}, []);
 
 	return (
