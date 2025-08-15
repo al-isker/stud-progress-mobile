@@ -23,8 +23,6 @@ const stylesheet = createStyleSheet(theme => ({
 		zIndex: theme.zIndex.header,
 		elevation: 8,
 		backgroundColor: theme.colors.primary,
-		paddingTop: 8,
-		paddingInline: 16,
-		paddingBottom: 16
+		padding: theme.spacing
 	}
 }));
