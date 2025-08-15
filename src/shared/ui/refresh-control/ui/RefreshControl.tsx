@@ -1,4 +1,4 @@
-import { forwardRef, useState } from 'react';
+import { forwardRef, useEffect, useState } from 'react';
 import {
 	RefreshControl as NativeRefreshControl,
 	RefreshControlProps as NativeRefreshControlProps
@@ -13,15 +13,18 @@ export const RefreshControl = forwardRef<
 >(function RefreshControl({ refreshing, onRefresh, ...props }, forwardedRef) {
 	const { theme } = useStyles();
 
-	const [localRefreshing, setLocalRefreshing] = useState(false);
+	const [localRefreshing, setLocalRefreshing] = useState(refreshing);
 
-	const localRefresh = () => {
-		setLocalRefreshing(true);
-
-		onRefresh?.();
-
-		setLocalRefreshing(false);
+	const handleRefresh = () => {
+		if (onRefresh) {
+			setLocalRefreshing(true);
+			onRefresh();
+		}
 	};
+
+	useEffect(() => {
+		setLocalRefreshing(refreshing);
+	}, [refreshing]);
 
 	return (
 		<NativeRefreshControl
@@ -29,7 +32,7 @@ export const RefreshControl = forwardRef<
 			colors={[theme.colors.primary]}
 			tintColor={theme.colors.primary}
 			refreshing={localRefreshing}
-			onRefresh={localRefresh}
+			onRefresh={handleRefresh}
 			{...props}
 		/>
 	);

@@ -19,16 +19,16 @@ import { Touchable } from '@/shared/ui/touchable';
 import { Typography } from '@/shared/ui/typography';
 import { EventList } from './EventList';
 
-export type CardContentRef = {
+export type IOCardContentRef = {
 	inView: () => void;
 };
 
-type CardContentProps = {
+type IOCardContentProps = {
 	subjectRating: SubjectRatingListItemType;
 };
 
-export const CardContent = forwardRef<CardContentRef, CardContentProps>(
-	function CardContent({ subjectRating }, forwardedRef) {
+export const IOCardContent = forwardRef<IOCardContentRef, IOCardContentProps>(
+	function IOCardContent({ subjectRating }, forwardedRef) {
 		const {
 			id,
 			name,
@@ -120,7 +120,7 @@ const stylesheet = createStyleSheet(theme => ({
 	},
 	data: {
 		flex: 1,
-		rowGap: 6
+		rowGap: 4
 	},
 	name: {
 		lineHeight: 18

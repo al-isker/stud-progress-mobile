@@ -1,30 +1,28 @@
-import { StyleProp, ViewStyle } from 'react-native';
-import { IOScrollView } from 'react-native-intersection-observer';
+import { ScrollView, StyleProp, ViewStyle } from 'react-native';
 import { useStyles } from 'react-native-unistyles';
-import { SubjectRatingListType } from '@/entities/subject';
+import { SubjectGradeListType } from '@/entities/subject';
 import { RefreshControl } from '@/shared/ui/refresh-control';
-import { IOCard } from '../io-card/IOCard';
+import { Card } from '../card/Card';
 
-type IOListProps = {
+type ListProps = {
 	contentContainerStyle?: StyleProp<ViewStyle>;
 	style?: StyleProp<ViewStyle>;
-	subjectRatingList: SubjectRatingListType;
+	subjectGradeList: SubjectGradeListType;
 	refreshing: boolean;
 	onRefresh: () => void;
 };
 
-export const IOList = ({
+export const List = ({
 	contentContainerStyle,
 	style,
-	subjectRatingList,
+	subjectGradeList,
 	refreshing,
 	onRefresh
-}: IOListProps) => {
+}: ListProps) => {
 	const { theme } = useStyles();
 
 	return (
-		<IOScrollView
-			rootMargin={{ top: -50, bottom: -50 }}
+		<ScrollView
 			style={style}
 			contentContainerStyle={[{ rowGap: theme.spacing }, contentContainerStyle]}
 			showsVerticalScrollIndicator={false}
@@ -32,9 +30,9 @@ export const IOList = ({
 				<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
 			}
 		>
-			{subjectRatingList.map(subjectRating => (
-				<IOCard key={subjectRating.id} subjectRating={subjectRating} />
+			{subjectGradeList.map(subjectGrade => (
+				<Card key={subjectGrade.id} subjectGrade={subjectGrade} />
 			))}
-		</IOScrollView>
+		</ScrollView>
 	);
 };

@@ -53,7 +53,7 @@ const stylesheet = createStyleSheet(theme => ({
 	caption: {
 		marginBottom: 12,
 		textAlign: 'center',
-		color: theme.colors.alwaysWhiteAlpha(0.95),
+		color: theme.colors.alwaysWhite,
 		fontSize: 13,
 		fontFamily: theme.typography.fontFamily.GolosTextRegular
 	}
