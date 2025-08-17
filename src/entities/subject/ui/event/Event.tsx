@@ -17,8 +17,7 @@ export const Event = ({ style, status, mark, isNew }: EventProps) => {
 		[EventStatusEnum.MARK]: mark,
 		[EventStatusEnum.EMPTY]: '−',
 		[EventStatusEnum.ABSENCE]: 'н/б',
-		[EventStatusEnum.UPWORKED]: 'н/б',
-		[EventStatusEnum.UPWORKED_WITH_MARK]: mark
+		[EventStatusEnum.UPWORKED]: 'н/б'
 	};
 
 	return (
@@ -52,9 +51,6 @@ const stylesheet = createStyleSheet(theme => ({
 				},
 				[EventStatusEnum.UPWORKED]: {
 					backgroundColor: theme.colors.blackAlpha(0.07)
-				},
-				[EventStatusEnum.UPWORKED_WITH_MARK]: {
-					backgroundColor: theme.colors.blackAlpha(0.07)
 				}
 			}
 		}
@@ -81,11 +77,6 @@ const stylesheet = createStyleSheet(theme => ({
 					color: theme.colors.black,
 					fontSize: 11,
 					fontFamily: theme.typography.fontFamily.GolosTextSemiBold
-				},
-				[EventStatusEnum.UPWORKED_WITH_MARK]: {
-					color: theme.colors.black,
-					fontSize: 16,
-					fontFamily: theme.typography.fontFamily.GolosTextMedium
 				}
 			}
 		}
