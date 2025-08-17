@@ -1,8 +1,7 @@
 import { makeRGB } from '../utils/make-rgb';
 import { makeRGBWithAlpha } from '../utils/make-rgb-with-alpha';
 
-const primaryLightChannel = '75, 10, 255';
-const primaryDarkChannel = '115, 115, 227';
+const primaryChannel = '75, 10, 255';
 const blackChannel = '0, 0, 0';
 const whiteChannel = '255, 255, 255';
 const redChannel = '255, 0, 0';
@@ -23,11 +22,11 @@ const BASE_COLORS = {
 	transparent: 'transparent'
 };
 
-const LIGHT_COLORS = {
+export const LIGHT_COLORS = {
 	...BASE_COLORS,
 
-	primary: makeRGB(primaryLightChannel),
-	primaryAlpha: makeRGBWithAlpha(primaryLightChannel),
+	primary: makeRGB(primaryChannel),
+	primaryAlpha: makeRGBWithAlpha(primaryChannel),
 
 	black: makeRGB(blackChannel),
 	white: makeRGB(whiteChannel),
@@ -37,20 +36,3 @@ const LIGHT_COLORS = {
 	bgBase: '#F0F0F0',
 	bgPaper: '#FFFFFF'
 };
-
-const DARK_COLORS = {
-	...BASE_COLORS,
-
-	primary: makeRGB(primaryDarkChannel),
-	primaryAlpha: makeRGBWithAlpha(primaryDarkChannel),
-
-	black: makeRGB(whiteChannel),
-	white: makeRGB(blackChannel),
-	blackAlpha: makeRGBWithAlpha(whiteChannel),
-	whiteAlpha: makeRGBWithAlpha(blackChannel),
-
-	bgBase: '#F0F0F0',
-	bgPaper: '#191919'
-};
-
-export { DARK_COLORS, LIGHT_COLORS };

@@ -5,13 +5,17 @@ import { FONT_FAMILY } from './tokens/font-family';
 import { SPACING } from './tokens/spacing';
 import { Z_INDEX } from './tokens/z-index';
 
-export const lightTheme = {
+const BASE_THEME = {
 	borderRadius: BORDER_RADIUS,
-	colors: LIGHT_COLORS,
 	dimensions: DIMENSIONS,
 	spacing: SPACING,
 	typography: {
 		fontFamily: FONT_FAMILY
 	},
 	zIndex: Z_INDEX
-} as const;
+};
+
+export const LIGHT_THEME = {
+	...BASE_THEME,
+	colors: LIGHT_COLORS
+};
