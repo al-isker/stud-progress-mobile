@@ -1,7 +1,7 @@
 {
 	"expo": {
-		"name": "stud-progress-mobile",
-		"slug": "stud-progress-mobile",
+		"name": "Stud Progress",
+		"slug": "stud-progress",
 		"scheme": "stud-progress",
 		"version": "1.0.0",
 		"orientation": "portrait",
@@ -41,8 +41,9 @@
 				"root": "./app"
 			},
 			"eas": {
-				"projectId": "d36ef4e3-4a24-4458-aaf8-2e09a7c483eb"
+				"projectId": "013a1449-dd23-47b2-9b90-2bcf54eec682"
 			}
-		}
+		},
+		"owner": "al-isker"
 	}
 }
