@@ -10,13 +10,14 @@
 		"newArchEnabled": true,
 		"splash": {
 			"image": "./assets/splash-icon.png",
+			"imageWidth": 500,
 			"resizeMode": "contain",
-			"backgroundColor": "#ffffff"
+			"backgroundColor": "#4b0aff"
 		},
 		"android": {
 			"adaptiveIcon": {
 				"foregroundImage": "./assets/adaptive-icon.png",
-				"backgroundColor": "#ffffff"
+				"backgroundColor": "#4b0aff"
 			},
 			"package": "com.alisker.studprogress",
 			"googleServicesFile": "./google-services.json"
@@ -24,9 +25,6 @@
 		"ios": {
 			"supportsTablet": true,
 			"googleServicesFile": "./GoogleService-Info.plist"
-		},
-		"web": {
-			"favicon": "./assets/favicon.png"
 		},
 		"plugins": [
 			[
