@@ -3,6 +3,7 @@ export { AltArrowUpIcon } from './ui/AltArrowUpIcon';
 export { ArrowLeftIcon } from './ui/ArrowLeftIcon';
 export { ArrowRightIcon } from './ui/ArrowRightIcon';
 export { ChatSquireIcon } from './ui/ChatSquireIcon';
+export { CupFirstIcon } from './ui/CupFirstIcon';
 export { ExitIcon } from './ui/ExitIcon';
 export { FileTextIcon } from './ui/FileTextIcon';
 export { GradeIcon } from './ui/GradeIcon';
