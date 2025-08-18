@@ -17,6 +17,5 @@ export enum ScreenNames {
 	TAB_SUBJECT_STATS = 'subject/stats/index',
 	TAB_PROFILE = 'profile/index',
 
-	SUBJECT_BY_ID_RATING = 'subject/[id]/rating/index',
-	PRIVACY_POLICY = 'privacy-policy/index'
+	SUBJECT_BY_ID_RATING = 'subject/[id]/rating/index'
 }

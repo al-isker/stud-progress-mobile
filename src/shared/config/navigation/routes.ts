@@ -12,7 +12,6 @@ class Routes {
 	profile = '/profile';
 
 	subjectByIdRating = (id: number) => `subject/${id}/rating`;
-	privacyPolicy = '/privacy-policy';
 }
 
 export const routes = new Routes();
