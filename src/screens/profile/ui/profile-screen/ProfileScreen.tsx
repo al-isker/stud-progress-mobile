@@ -1,6 +1,7 @@
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
 import { CircularLoader } from '@/shared/ui/circular-loader';
+import { ErrorDisplay } from '@/shared/ui/error-display';
 import { useProfile } from '../../model/hooks/use-profile';
 import { Content } from '../content/Content';
 
@@ -19,11 +20,12 @@ export const ProfileScreen = () => {
 
 	if (isError) {
 		return (
-			<View style={[styles.centringContainer, styles.container]}>
-				<Text style={styles.error}>
-					Профиль не найден, может тебя отчислили?
-				</Text>
-			</View>
+			<ErrorDisplay
+				style={styles.container}
+				title='Ошибка'
+				text='профиль не найден, попробуй позже или обратись в поддержку'
+				onRefresh={refetch}
+			/>
 		);
 	}
 

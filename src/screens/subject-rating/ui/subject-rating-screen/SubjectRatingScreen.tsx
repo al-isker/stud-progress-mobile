@@ -1,6 +1,7 @@
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
 import { CircularLoader } from '@/shared/ui/circular-loader';
+import { ErrorDisplay } from '@/shared/ui/error-display';
 import { useSubjectRatingList } from '../../model/hooks/use-subject-rating-list';
 import { IOList } from '../io-list/IOList';
 
@@ -20,11 +21,12 @@ export const SubjectRatingScreen = () => {
 
 	if (isError) {
 		return (
-			<View style={[styles.centringContainer, styles.container]}>
-				<Text style={styles.error}>
-					Баллы не найдены, может тебя отчислили?
-				</Text>
-			</View>
+			<ErrorDisplay
+				style={styles.container}
+				title='Ошибка'
+				text='баллы не найдены, попробуй позже или обратись в поддержку'
+				onRefresh={refetch}
+			/>
 		);
 	}
 
