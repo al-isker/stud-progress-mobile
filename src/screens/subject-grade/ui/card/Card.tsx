@@ -40,6 +40,11 @@ export const Card = ({ subjectGrade }: CardProps) => {
 					{ratingBySemesterList.map(ratingBySemester => (
 						<RatingBySemester
 							key={ratingBySemester.id}
+							semester={
+								ratingBySemesterList.length > 1
+									? ratingBySemester.semester
+									: undefined
+							}
 							averageMark={ratingBySemester.averageMark}
 						/>
 					))}
