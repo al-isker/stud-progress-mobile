@@ -7,22 +7,19 @@ export const MainAppLayout = () => {
 	useRequestNotificationPermissions();
 
 	return (
-		<>
-			<Header />
-			<Stack screenOptions={{ headerShown: false }}>
-				<Stack.Screen
-					name={ScreenNames.TABS}
-					options={{
-						animation: 'none'
-					}}
-				/>
-				<Stack.Screen
-					name={ScreenNames.SUBJECT_BY_ID_RATING}
-					options={{
-						animation: 'fade_from_bottom'
-					}}
-				/>
-			</Stack>
-		</>
+		<Stack screenOptions={{ header: () => <Header /> }}>
+			<Stack.Screen
+				name={ScreenNames.TABS}
+				options={{
+					animation: 'none'
+				}}
+			/>
+			<Stack.Screen
+				name={ScreenNames.SUBJECT_BY_ID_RATING}
+				options={{
+					animation: 'fade_from_bottom'
+				}}
+			/>
+		</Stack>
 	);
 };

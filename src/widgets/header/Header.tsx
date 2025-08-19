@@ -18,10 +18,9 @@ export const Header = () => {
 
 const stylesheet = createStyleSheet(theme => ({
 	header: {
-		zIndex: theme.zIndex.header,
 		elevation: 8,
-		backgroundColor: theme.colors.primary,
-		padding: theme.spacing
+		padding: theme.spacing,
+		backgroundColor: theme.colors.primary
 	},
 	title: {
 		color: theme.colors.alwaysWhite,
