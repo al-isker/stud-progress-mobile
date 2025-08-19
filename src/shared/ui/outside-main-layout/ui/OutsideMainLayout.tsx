@@ -21,7 +21,9 @@ export const OutsideMainLayout = ({
 				<Image style={styles.appIcon} source={AppIcon} />
 			</View>
 
-			<Paper style={[styles.paper, contentContainerStyle]}>{children}</Paper>
+			<Paper disableAndroidBorder style={[styles.paper, contentContainerStyle]}>
+				{children}
+			</Paper>
 		</View>
 	);
 };
