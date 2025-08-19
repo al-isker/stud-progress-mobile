@@ -1,30 +1,29 @@
 import { Text, View } from 'react-native';
 import { SharedValue } from 'react-native-reanimated';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
-import { LogoIcon } from '@/shared/assets/icons';
-import { APP_TITLE } from '@/shared/config/app-data';
-import { Typography } from '@/shared/ui/typography';
 import { ProgressLoader } from '../../progress-loader';
+import { Typography } from '../../typography';
 
 export type LoadingScreenProps = {
 	progress: SharedValue<number>;
-	caption?: string;
+	description?: string;
 };
 
-export const LoadingScreen = ({ progress, caption }: LoadingScreenProps) => {
+export const LoadingScreen = ({
+	progress,
+	description
+}: LoadingScreenProps) => {
 	const { styles, theme } = useStyles(stylesheet);
 
 	return (
 		<View style={styles.container}>
 			<View style={styles.appBanner}>
-				<LogoIcon style={styles.logo} color={theme.colors.alwaysWhite} />
-
 				<Typography colorOnPrimary style={styles.title}>
-					{APP_TITLE}
+					Stud Progress
 				</Typography>
 			</View>
 
-			{caption && <Text style={styles.caption}>{caption}</Text>}
+			{description && <Text style={styles.description}>{description}</Text>}
 
 			<ProgressLoader colorOnPrimary sharedValue={progress} />
 		</View>
@@ -38,19 +37,21 @@ const stylesheet = createStyleSheet(theme => ({
 		backgroundColor: theme.colors.primary
 	},
 	appBanner: {
+		width: '100%',
 		margin: 'auto',
 		justifyContent: 'center',
 		alignItems: 'center',
 		rowGap: 4
 	},
-	logo: {
-		width: '50%',
+	appIcon: {
+		width: '60%',
+		height: 'auto',
 		aspectRatio: 1
 	},
 	title: {
 		fontSize: 30
 	},
-	caption: {
+	description: {
 		marginBottom: 12,
 		textAlign: 'center',
 		color: theme.colors.alwaysWhite,

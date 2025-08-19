@@ -1,9 +1,7 @@
-import { StyleProp, View, ViewProps, ViewStyle } from 'react-native';
+import { Image, StyleProp, View, ViewProps, ViewStyle } from 'react-native';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
-import { LogoIcon } from '@/shared/assets/icons';
-import { APP_TITLE } from '@/shared/config/app-data';
+import { AppIcon } from '@/shared/assets/images';
 import { Paper } from '../../paper/ui/Paper';
-import { Typography } from '../../typography';
 
 export type OutsideMainLayoutProps = ViewProps & {
 	contentContainerStyle?: StyleProp<ViewStyle>;
@@ -20,11 +18,7 @@ export const OutsideMainLayout = ({
 	return (
 		<View style={[styles.layout, style]} {...props}>
 			<View style={styles.header}>
-				<LogoIcon color={theme.colors.alwaysWhite} style={styles.logo} />
-
-				<Typography colorOnPrimary style={styles.title}>
-					{APP_TITLE}
-				</Typography>
+				<Image style={styles.appIcon} source={AppIcon} />
 			</View>
 
 			<Paper style={[styles.paper, contentContainerStyle]}>{children}</Paper>
@@ -42,16 +36,10 @@ const stylesheet = createStyleSheet(theme => ({
 		flexShrink: 1,
 		rowGap: 4,
 		justifyContent: 'center',
-		alignItems: 'center',
-		backgroundColor: theme.colors.primary
+		alignItems: 'center'
 	},
-	backButton: {
-		position: 'absolute',
-		top: theme.spacing / 2,
-		left: theme.spacing
-	},
-	logo: {
-		height: '50%',
+	appIcon: {
+		height: '85%',
 		aspectRatio: 1
 	},
 	title: {

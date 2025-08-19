@@ -10,7 +10,6 @@ export { GraphUpIcon } from './ui/GraphUpIcon';
 export { HashtagSquireIcon } from './ui/HashtagSquareIcon';
 export { HeartBrokenIcon } from './ui/HeartBrokenIcon';
 export { HomeIcon } from './ui/HomeIcon';
-export { LogoIcon } from './ui/LogoIcon';
 export { MedalStarIcon } from './ui/MedalStarIcon';
 export { ProfileIcon } from './ui/ProfileIcon';
 export { SettingsIcon } from './ui/SettingsIcon';

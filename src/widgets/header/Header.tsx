@@ -1,7 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { View } from 'react-native';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
-import { APP_TITLE } from '@/shared/config/app-data';
 import { Typography } from '@/shared/ui/typography';
 
 export const Header = () => {
@@ -12,7 +11,7 @@ export const Header = () => {
 			<StatusBar style='light' backgroundColor={theme.colors.primary} />
 
 			<View style={styles.header}>
-				<Typography colorOnPrimary>{APP_TITLE}</Typography>
+				<Typography colorOnPrimary>Stud Progress</Typography>
 			</View>
 		</>
 	);

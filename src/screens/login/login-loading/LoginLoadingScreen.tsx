@@ -11,7 +11,7 @@ export const LoginLoadingScreen = () => {
 
 	return (
 		<LoadingScreen
-			caption='загружаем данные, это займёт около минуты...'
+			description='загружаем данные, это займёт около минуты...'
 			progress={progress}
 		/>
 	);
