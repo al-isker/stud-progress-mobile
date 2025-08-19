@@ -13,6 +13,7 @@ export { HomeIcon } from './ui/HomeIcon';
 export { LogoIcon } from './ui/LogoIcon';
 export { MedalStarIcon } from './ui/MedalStarIcon';
 export { ProfileIcon } from './ui/ProfileIcon';
+export { SettingsIcon } from './ui/SettingsIcon';
 export { SmartphoneUpdateIcon } from './ui/SmartphoneUpdateIcon';
 export { StatsIcon } from './ui/StatsIcon';
 export { StopwatchIcon } from './ui/StopwatchIcon';

@@ -2,6 +2,7 @@ import { Divider } from '@/shared/ui/divider';
 import { Paper } from '@/shared/ui/paper';
 import { MenuLogout } from './MenuLogout';
 import { MenuNotificationPermissions } from './MenuNotificationPermissions';
+import { MenuSupport } from './MenuSupport';
 import { MenuUpdateSemester } from './MenuUpdateSemester';
 
 export const MenuSection = () => {
@@ -10,6 +11,8 @@ export const MenuSection = () => {
 			<MenuNotificationPermissions />
 			<Divider />
 			<MenuUpdateSemester />
+			<Divider />
+			<MenuSupport />
 			<Divider />
 			<MenuLogout />
 		</Paper>
