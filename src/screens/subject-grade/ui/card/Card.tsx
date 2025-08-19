@@ -1,4 +1,4 @@
-import { View } from 'react-native';
+import { Text, View } from 'react-native';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
 import {
 	ControlType,
@@ -7,7 +7,6 @@ import {
 } from '@/entities/subject';
 import { Divider } from '@/shared/ui/divider';
 import { Paper } from '@/shared/ui/paper';
-import { Typography } from '@/shared/ui/typography';
 import { RatingBySemester } from './RatingBySemester';
 
 type CardProps = {
@@ -22,9 +21,9 @@ export const Card = ({ subjectGrade }: CardProps) => {
 	return (
 		<Paper style={styles.paper}>
 			<View style={styles.top}>
-				<Typography variant='h3' style={styles.name} numberOfLines={1}>
+				<Text style={styles.name} numberOfLines={1}>
 					{name}
-				</Typography>
+				</Text>
 
 				<ControlType
 					style={styles.controlType}
@@ -68,7 +67,10 @@ const stylesheet = createStyleSheet(theme => ({
 		rowGap: 4
 	},
 	name: {
-		lineHeight: 18
+		lineHeight: 18,
+		color: theme.colors.blackAlpha(0.9),
+		fontSize: 18,
+		fontFamily: theme.typography.fontFamily.GolosTextSemiBold
 	},
 	controlType: {
 		alignSelf: 'flex-start'

@@ -1,13 +1,24 @@
-import { Typography, TypographyProps } from '@/shared/ui/typography';
+import { Text, TextProps } from 'react-native';
+import { createStyleSheet, useStyles } from 'react-native-unistyles';
 
-export type ErrorTextProps = Omit<TypographyProps, 'variant'>;
+export type ErrorTextProps = TextProps;
 
 export const ErrorText = ({ children, style, ...props }: ErrorTextProps) => {
+	const { styles } = useStyles(stylesheet);
+
 	if (children) {
 		return (
-			<Typography variant='error' style={[{ fontSize: 12 }, style]} {...props}>
+			<Text style={[styles.text, style]} {...props}>
 				{children}
-			</Typography>
+			</Text>
 		);
 	}
 };
+
+const stylesheet = createStyleSheet(theme => ({
+	text: {
+		color: theme.colors.red,
+		fontSize: 12,
+		fontFamily: theme.typography.fontFamily.GolosTextRegular
+	}
+}));

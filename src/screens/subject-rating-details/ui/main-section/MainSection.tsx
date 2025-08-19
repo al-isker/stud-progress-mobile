@@ -1,7 +1,7 @@
+import { Text } from 'react-native';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
 import { ControlType, ControlTypeEnum } from '@/entities/subject';
 import { Paper } from '@/shared/ui/paper';
-import { Typography } from '@/shared/ui/typography';
 
 type MainSectionProps = {
 	name: string;
@@ -13,7 +13,7 @@ export const MainSection = ({ name, controlType }: MainSectionProps) => {
 
 	return (
 		<Paper style={styles.paper}>
-			<Typography variant='h2'>{name}</Typography>
+			<Text style={styles.name}>{name}</Text>
 
 			<ControlType variant='primary' controlType={controlType} />
 		</Paper>
@@ -25,5 +25,10 @@ const stylesheet = createStyleSheet(theme => ({
 		alignItems: 'flex-start',
 		padding: theme.spacing * 1.5,
 		rowGap: 12
+	},
+	name: {
+		color: theme.colors.blackAlpha(0.9),
+		fontSize: 24,
+		fontFamily: theme.typography.fontFamily.GolosTextSemiBold
 	}
 }));

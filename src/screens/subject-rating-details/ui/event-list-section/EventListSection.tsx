@@ -1,10 +1,9 @@
-import { View } from 'react-native';
+import { Text, View } from 'react-native';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
 import { Fragment } from 'react/jsx-runtime';
 import { EventStatusEnum } from '@/entities/subject';
 import { Divider } from '@/shared/ui/divider';
 import { Paper } from '@/shared/ui/paper';
-import { Typography } from '@/shared/ui/typography';
 import { EventWithDate } from './EventWithDate';
 
 type EventListSectionProps = {
@@ -23,9 +22,7 @@ export const EventListSection = ({ eventList }: EventListSectionProps) => {
 	return (
 		<View>
 			<Paper style={styles.container}>
-				<Typography variant='h3' style={styles.title}>
-					Баллы
-				</Typography>
+				<Text style={styles.title}>Баллы</Text>
 
 				<View style={styles.list}>
 					{eventList.map((event, index) => (
@@ -51,7 +48,10 @@ const stylesheet = createStyleSheet(theme => ({
 		padding: theme.spacing * 1.5
 	},
 	title: {
-		marginBottom: 12
+		marginBottom: 12,
+		color: theme.colors.blackAlpha(0.9),
+		fontSize: 18,
+		fontFamily: theme.typography.fontFamily.GolosTextSemiBold
 	},
 	list: {
 		rowGap: 6

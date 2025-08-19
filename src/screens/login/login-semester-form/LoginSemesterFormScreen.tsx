@@ -1,16 +1,15 @@
-import { View } from 'react-native';
+import { Text, View } from 'react-native';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
 import { LoginSemesterForm } from '@/features/login';
-import { Typography } from '@/shared/ui/typography';
 
 export const LoginSemesterFormScreen = () => {
 	const { styles } = useStyles(stylesheet);
 
 	return (
 		<View style={styles.container}>
-			<Typography variant='t2' style={styles.description}>
+			<Text style={styles.description}>
 				Выбери семестр, на котором ты учишься
-			</Typography>
+			</Text>
 
 			<LoginSemesterForm style={styles.form} />
 		</View>
@@ -26,7 +25,10 @@ const stylesheet = createStyleSheet(theme => ({
 		maxWidth: 280,
 		marginBottom: theme.spacing * 1.75,
 		alignSelf: 'center',
-		textAlign: 'center'
+		textAlign: 'center',
+		color: theme.colors.blackAlpha(0.9),
+		fontSize: 24,
+		fontFamily: theme.typography.fontFamily.GolosTextSemiBold
 	},
 	form: {
 		flex: 1

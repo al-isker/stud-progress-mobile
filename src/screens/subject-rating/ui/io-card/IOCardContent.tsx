@@ -1,6 +1,6 @@
 import { forwardRef, useImperativeHandle } from 'react';
 import { router } from 'expo-router';
-import { View } from 'react-native';
+import { Text, View } from 'react-native';
 import { useSharedValue, withTiming } from 'react-native-reanimated';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
 import {
@@ -16,7 +16,6 @@ import {
 	createProgressAnimationConfig
 } from '@/shared/ui/progress-chart';
 import { Touchable } from '@/shared/ui/touchable';
-import { Typography } from '@/shared/ui/typography';
 import { EventList } from './EventList';
 
 export type IOCardContentRef = {
@@ -83,9 +82,9 @@ export const IOCardContent = forwardRef<IOCardContentRef, IOCardContentProps>(
 					/>
 
 					<View style={styles.data}>
-						<Typography variant='h3' style={styles.name} numberOfLines={1}>
+						<Text style={styles.name} numberOfLines={1}>
 							{name}
-						</Typography>
+						</Text>
 
 						<ControlType
 							variant='primary'
@@ -123,7 +122,10 @@ const stylesheet = createStyleSheet(theme => ({
 		rowGap: 4
 	},
 	name: {
-		lineHeight: 18
+		lineHeight: 18,
+		color: theme.colors.blackAlpha(0.9),
+		fontSize: 18,
+		fontFamily: theme.typography.fontFamily.GolosTextSemiBold
 	},
 	controlType: {
 		alignSelf: 'flex-start'

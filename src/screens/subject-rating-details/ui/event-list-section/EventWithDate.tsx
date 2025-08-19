@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
-import { View } from 'react-native';
+import { Text, View } from 'react-native';
+import { createStyleSheet, useStyles } from 'react-native-unistyles';
 import { Event, EventStatusEnum } from '@/entities/subject';
-import { Typography } from '@/shared/ui/typography';
 
 type EventWithDateProps = {
 	status: EventStatusEnum;
@@ -16,17 +16,26 @@ export const EventWithDate = ({
 	mark,
 	isNew
 }: EventWithDateProps) => {
+	const { styles } = useStyles(stylesheet);
+
 	return (
-		<View
-			style={{
-				flexDirection: 'row',
-				alignItems: 'center',
-				justifyContent: 'space-between'
-			}}
-		>
-			<Typography variant='t1'>{dayjs(date).format('DD MMMM YYYY')}</Typography>
+		<View style={styles.container}>
+			<Text style={styles.date}>{dayjs(date).format('DD MMMM YYYY')}</Text>
 
 			<Event status={status} mark={mark} isNew={isNew} />
 		</View>
 	);
 };
+
+const stylesheet = createStyleSheet(theme => ({
+	container: {
+		flexDirection: 'row',
+		alignItems: 'center',
+		justifyContent: 'space-between'
+	},
+	date: {
+		color: theme.colors.blackAlpha(0.8),
+		fontSize: 14,
+		fontFamily: theme.typography.fontFamily.GolosTextRegular
+	}
+}));

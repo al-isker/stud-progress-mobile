@@ -1,10 +1,9 @@
-import { ScrollView, StyleProp, ViewStyle } from 'react-native';
+import { ScrollView, StyleProp, Text, ViewStyle } from 'react-native';
 import { useStyles } from 'react-native-unistyles';
 import { ProfileType } from '@/entities/profile';
 import { ProfileIcon } from '@/shared/assets/icons';
 import { Paper } from '@/shared/ui/paper';
 import { RefreshControl } from '@/shared/ui/refresh-control';
-import { Typography } from '@/shared/ui/typography';
 import { MenuSection } from '../menu-section/MenuSection';
 import { StatsSection } from '../stats-section/StatsSection';
 
@@ -39,7 +38,15 @@ export const Content = ({
 			</Paper>
 
 			<Paper style={{ padding: theme.spacing * 1.5 }}>
-				<Typography variant='h2'>{profile.fullName}</Typography>
+				<Text
+					style={{
+						color: theme.colors.blackAlpha(0.9),
+						fontSize: 24,
+						fontFamily: theme.typography.fontFamily.GolosTextSemiBold
+					}}
+				>
+					{profile.fullName}
+				</Text>
 			</Paper>
 
 			<StatsSection course={profile.course} semester={profile.semester} />

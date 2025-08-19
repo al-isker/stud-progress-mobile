@@ -2,7 +2,6 @@ import { Text, View } from 'react-native';
 import { SharedValue } from 'react-native-reanimated';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
 import { ProgressLoader } from '../../progress-loader';
-import { Typography } from '../../typography';
 
 export type LoadingScreenProps = {
 	progress: SharedValue<number>;
@@ -18,9 +17,7 @@ export const LoadingScreen = ({
 	return (
 		<View style={styles.container}>
 			<View style={styles.appBanner}>
-				<Typography colorOnPrimary style={styles.title}>
-					Stud Progress
-				</Typography>
+				<Text style={styles.title}>Stud Progress</Text>
 			</View>
 
 			{description && <Text style={styles.description}>{description}</Text>}
@@ -49,7 +46,9 @@ const stylesheet = createStyleSheet(theme => ({
 		aspectRatio: 1
 	},
 	title: {
-		fontSize: 30
+		color: theme.colors.alwaysWhite,
+		fontSize: 30,
+		fontFamily: theme.typography.fontFamily.GolosTextBold
 	},
 	description: {
 		marginBottom: 12,

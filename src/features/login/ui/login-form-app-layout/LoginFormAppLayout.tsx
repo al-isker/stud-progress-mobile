@@ -1,23 +1,15 @@
 import { Stack } from 'expo-router';
-import { useStyles } from 'react-native-unistyles';
+import { Text } from 'react-native';
+import { createStyleSheet, useStyles } from 'react-native-unistyles';
 import { ScreenNames } from '@/shared/config/navigation';
 import { OutsideMainLayout } from '@/shared/ui/outside-main-layout';
-import { Typography } from '@/shared/ui/typography';
 
 export const LoginFormAppLayout = () => {
-	const { theme } = useStyles();
+	const { styles, theme } = useStyles(stylesheet);
 
 	return (
 		<OutsideMainLayout>
-			<Typography
-				variant='h2'
-				style={{
-					textAlign: 'center',
-					marginVertical: theme.spacing
-				}}
-			>
-				Вход
-			</Typography>
+			<Text style={styles.title}>Вход</Text>
 
 			<Stack
 				screenOptions={{
@@ -31,3 +23,13 @@ export const LoginFormAppLayout = () => {
 		</OutsideMainLayout>
 	);
 };
+
+const stylesheet = createStyleSheet(theme => ({
+	title: {
+		marginVertical: theme.spacing,
+		textAlign: 'center',
+		color: theme.colors.blackAlpha(0.9),
+		fontSize: 24,
+		fontFamily: theme.typography.fontFamily.GolosTextSemiBold
+	}
+}));
