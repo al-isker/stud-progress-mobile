@@ -49,8 +49,5 @@ const stylesheet = createStyleSheet(theme => ({
 		flex: 1,
 		justifyContent: 'center',
 		alignItems: 'center'
-	},
-	error: {
-		color: theme.colors.red
 	}
 }));
