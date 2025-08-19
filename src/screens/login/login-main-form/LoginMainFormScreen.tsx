@@ -26,8 +26,8 @@ const stylesheet = createStyleSheet(theme => ({
 		marginBottom: theme.spacing * 1.75,
 		alignSelf: 'center',
 		textAlign: 'center',
-		color: theme.colors.blackAlpha(0.9),
-		fontSize: 24,
-		fontFamily: theme.typography.fontFamily.GolosTextSemiBold
+		color: theme.colors.blackAlpha(0.5),
+		fontSize: 14,
+		fontFamily: theme.typography.fontFamily.GolosTextRegular
 	}
 }));
