@@ -27,34 +27,39 @@ export const Grade = ({
 
 	return (
 		<View style={[styles.container, style]}>
-			{date && (
-				<View style={[styles.block, styles.topBlock]}>
-					<Text style={[styles.topText, styles.coloredText]}>
-						{dayjs(date).format('DD MMMM YYYY')}
-					</Text>
-				</View>
-			)}
-
-			<View style={[styles.block, styles.bottomBlock]}>
-				{status === GradeStatusEnum.EMPTY ? (
-					<Text style={styles.emptyText}>−</Text>
-				) : controlType === ControlTypeEnum.TEST ? (
-					<Text style={[styles.testText, styles.coloredText]}>
-						{TEST_STATUS_DISPLAY[status]}
-					</Text>
-				) : (
-					<Text style={[styles.mark, styles.coloredText]}>{mark}</Text>
+			<View style={styles.blockContainer}>
+				{date && (
+					<View style={[styles.block, styles.topBlock]}>
+						<Text style={[styles.topText, styles.coloredText]}>
+							{dayjs(date).format('DD MMMM YYYY')}
+						</Text>
+					</View>
 				)}
+
+				<View style={[styles.block, styles.bottomBlock]}>
+					{status === GradeStatusEnum.EMPTY ? (
+						<Text style={styles.emptyText}>−</Text>
+					) : controlType === ControlTypeEnum.TEST ? (
+						<Text style={[styles.testText, styles.coloredText]}>
+							{TEST_STATUS_DISPLAY[status]}
+						</Text>
+					) : (
+						<Text style={[styles.mark, styles.coloredText]}>{mark}</Text>
+					)}
+				</View>
 			</View>
 
-			{isNew && <PulseIndicator style={styles.pulseIndicator} />}
+			{!isNew && <PulseIndicator style={styles.pulseIndicator} />}
 		</View>
 	);
 };
 
 const stylesheet = createStyleSheet(theme => ({
 	container: {
-		position: 'relative',
+		position: 'relative'
+	},
+	blockContainer: {
+		flex: 1,
 		overflow: 'hidden',
 		minWidth: 140,
 		rowGap: 1.2,
