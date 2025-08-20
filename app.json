@@ -15,16 +15,20 @@
 			"backgroundColor": "#4b0aff"
 		},
 		"android": {
+			"package": "com.alisker.studprogress",
 			"adaptiveIcon": {
 				"foregroundImage": "./assets/app-adaptive-icon.png",
 				"backgroundColor": "#4b0aff"
 			},
-			"package": "com.alisker.studprogress",
 			"googleServicesFile": "./google-services.json"
 		},
 		"ios": {
+			"bundleIdentifier": "com.alisker.studprogress",
 			"supportsTablet": true,
-			"googleServicesFile": "./GoogleService-Info.plist"
+			"googleServicesFile": "./GoogleService-Info.plist",
+			"infoPlist": {
+				"ITSAppUsesNonExemptEncryption": false
+			}
 		},
 		"plugins": [
 			[

@@ -49,7 +49,7 @@ export const Grade = ({
 				</View>
 			</View>
 
-			{!isNew && <PulseIndicator style={styles.pulseIndicator} />}
+			{isNew && <PulseIndicator style={styles.pulseIndicator} />}
 		</View>
 	);
 };

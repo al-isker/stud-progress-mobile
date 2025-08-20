@@ -4,7 +4,7 @@ import { makeRGBWithAlpha } from '../utils/make-rgb-with-alpha';
 const primaryChannel = '75, 10, 255';
 const blackChannel = '0, 0, 0';
 const whiteChannel = '255, 255, 255';
-const redChannel = '255, 0, 0';
+const redChannel = '255, 49, 49';
 const greenChannel = '0, 200, 30';
 
 const BASE_COLORS = {

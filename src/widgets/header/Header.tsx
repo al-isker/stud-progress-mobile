@@ -18,6 +18,7 @@ export const Header = () => {
 
 const stylesheet = createStyleSheet(theme => ({
 	header: {
+		zIndex: theme.zIndex.header,
 		elevation: 8,
 		padding: theme.spacing,
 		backgroundColor: theme.colors.primary
