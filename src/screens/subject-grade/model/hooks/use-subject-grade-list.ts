@@ -1,10 +1,10 @@
 import { useSubjectGradeListQuery } from '@/entities/subject';
 
 export const useSubjectGradeList = () => {
-	const { data, refetch, isLoading, isRefetching, ...query } =
+	const { data, refetch, isLoading, isSuccess, isError, isRefetching } =
 		useSubjectGradeListQuery();
 
-	const isError = query.isError || data?.length === 0;
+	const isEmptyList = isSuccess && data.length === 0;
 
-	return { data, refetch, isLoading, isError, isRefetching };
+	return { data, refetch, isLoading, isEmptyList, isError, isRefetching };
 };
