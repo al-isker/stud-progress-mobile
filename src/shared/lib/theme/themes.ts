@@ -3,6 +3,7 @@ import { LIGHT_COLORS } from './tokens/colors';
 import { DIMENSIONS } from './tokens/dimensions';
 import { FONT_FAMILY } from './tokens/font-family';
 import { SPACING } from './tokens/spacing';
+import { Z_INDEX } from './tokens/z-index';
 
 const BASE_THEME = {
 	borderRadius: BORDER_RADIUS,
@@ -10,7 +11,8 @@ const BASE_THEME = {
 	spacing: SPACING,
 	typography: {
 		fontFamily: FONT_FAMILY
-	}
+	},
+	zIndex: Z_INDEX
 };
 
 export const LIGHT_THEME = {
