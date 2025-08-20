@@ -40,11 +40,7 @@ export const Card = ({ subjectGrade }: CardProps) => {
 					{ratingBySemesterList.map(ratingBySemester => (
 						<RatingBySemester
 							key={ratingBySemester.id}
-							semester={
-								ratingBySemesterList.length > 1
-									? ratingBySemester.semester
-									: undefined
-							}
+							semester={ratingBySemester.semester}
 							averageMark={ratingBySemester.averageMark}
 						/>
 					))}
@@ -92,6 +88,6 @@ const stylesheet = createStyleSheet(theme => ({
 		gap: 10
 	},
 	grade: {
-		height: 65
+		maxHeight: 74
 	}
 }));

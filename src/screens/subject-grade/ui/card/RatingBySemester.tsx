@@ -9,7 +9,7 @@ import {
 } from '@/shared/ui/progress-chart';
 
 type RatingBySemesterProps = {
-	semester?: number;
+	semester: number;
 	averageMark: number | null;
 };
 
@@ -40,13 +40,12 @@ export const RatingBySemester = ({
 
 	return (
 		<View style={styles.container}>
-			{semester && <Text style={styles.semester}>{semester}</Text>}
+			<Text style={styles.semester}>{`${semester} семестр`}</Text>
 
 			<ProgressChart
-				style={{ marginLeft: 0 }}
-				diameter={65}
-				strokeWidth={8}
-				fontSize={18}
+				diameter={60}
+				strokeWidth={7}
+				fontSize={17}
 				sharedValue={sharedAverageMark}
 				maxValue={MAX_MARK}
 				showOnZero
@@ -58,13 +57,12 @@ export const RatingBySemester = ({
 
 const stylesheet = createStyleSheet(theme => ({
 	container: {
-		position: 'relative'
+		alignItems: 'center',
+		rowGap: 4
 	},
 	semester: {
-		position: 'absolute',
-		top: 0,
-		left: 0,
-		color: theme.colors.blackAlpha(0.75),
+		textAlign: 'center',
+		color: theme.colors.blackAlpha(0.7),
 		lineHeight: 10,
 		fontSize: 10,
 		fontFamily: theme.typography.fontFamily.GolosTextMedium
