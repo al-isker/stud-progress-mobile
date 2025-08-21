@@ -6,6 +6,7 @@ export { BellIcon } from './ui/BellIcon';
 export { ChatSquireIcon } from './ui/ChatSquireIcon';
 export { ExitIcon } from './ui/ExitIcon';
 export { FileTextIcon } from './ui/FileTextIcon';
+export { FolderOpenIcon } from './ui/FolderOpenIcon';
 export { GradeIcon } from './ui/GradeIcon';
 export { GraphUpIcon } from './ui/GraphUpIcon';
 export { HashtagSquireIcon } from './ui/HashtagSquareIcon';

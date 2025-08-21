@@ -9,10 +9,8 @@ export const useSubjectRatingDetails = () => {
 
 	const subjectId = Number(localSearchParams.id);
 
-	const { data, isLoading, isRefetching, ...query } =
+	const { data, isLoading, isSuccess, isRefetching, ...query } =
 		useSubjectRatingDetailsQuery(subjectId);
-
-	const isError = query.isError || !query.isSuccess;
 
 	const refetch = () => {
 		queryClient.invalidateQueries({
@@ -24,5 +22,5 @@ export const useSubjectRatingDetails = () => {
 		return query.refetch();
 	};
 
-	return { data, refetch, isLoading, isError, isRefetching };
+	return { data, refetch, isLoading, isSuccess, isRefetching };
 };

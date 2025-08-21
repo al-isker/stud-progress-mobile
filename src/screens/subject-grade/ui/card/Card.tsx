@@ -88,6 +88,6 @@ const stylesheet = createStyleSheet(theme => ({
 		gap: 10
 	},
 	grade: {
-		maxHeight: 74
+		height: 74
 	}
 }));

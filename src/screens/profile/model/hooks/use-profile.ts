@@ -1,10 +1,8 @@
 import { useProfileQuery } from '@/entities/profile';
 
 export const useProfile = () => {
-	const { data, refetch, isLoading, isRefetching, ...query } =
+	const { data, refetch, isLoading, isSuccess, isRefetching, ...query } =
 		useProfileQuery();
 
-	const isError = query.isError || !query.isSuccess;
-
-	return { data, refetch, isLoading, isError, isRefetching };
+	return { data, refetch, isLoading, isSuccess, isRefetching };
 };

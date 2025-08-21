@@ -5,7 +5,7 @@ import { SUBJECT_RATING_KEY } from '@/shared/api';
 export const useSubjectRatingList = () => {
 	const queryClient = useQueryClient();
 
-	const { data, isLoading, isSuccess, isError, isRefetching, ...query } =
+	const { data, isLoading, isSuccess, isRefetching, ...query } =
 		useSubjectRatingListQuery();
 
 	const isEmptyList = isSuccess && data.length === 0;
@@ -20,5 +20,5 @@ export const useSubjectRatingList = () => {
 		return query.refetch();
 	};
 
-	return { data, refetch, isLoading, isEmptyList, isError, isRefetching };
+	return { data, refetch, isLoading, isEmptyList, isSuccess, isRefetching };
 };

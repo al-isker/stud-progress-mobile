@@ -1,42 +1,36 @@
-import { Link } from 'expo-router';
+import { ReactElement, ReactNode } from 'react';
 import { StyleProp, Text, View, ViewStyle } from 'react-native';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
-import { HeartBrokenIcon } from '@/shared/assets/icons';
-import { links } from '@/shared/config/navigation';
-import { Button } from '../../button';
+import { SlotProps, renderSlot } from '@/shared/lib/slot';
 
-export type ErrorDisplayProps = {
+export type StatusScreenProps = {
 	style?: StyleProp<ViewStyle>;
+	iconSlot?: ReactElement<SlotProps>;
 	title?: string;
-	text?: string;
-	onRefresh?: () => void;
+	description?: string;
+	actions?: ReactNode;
 };
 
-export const ErrorDisplay = ({
+export const StatusScreen = ({
 	style,
+	iconSlot,
 	title,
-	text,
-	onRefresh
-}: ErrorDisplayProps) => {
-	const { styles, theme } = useStyles(stylesheet);
+	description,
+	actions
+}: StatusScreenProps) => {
+	const { styles } = useStyles(stylesheet);
 
 	return (
 		<View style={[styles.container, style]}>
-			<HeartBrokenIcon style={styles.icon} color={theme.colors.red} />
+			{renderSlot(iconSlot, { style: styles.icon })}
 
 			<View style={styles.contentContainer}>
-				<Text style={styles.title}>{title}</Text>
+				{title && <Text style={styles.title}>{title}</Text>}
 
-				<Text style={styles.text}>{text}</Text>
+				{description && <Text style={styles.description}>{description}</Text>}
 			</View>
 
-			<View style={styles.actions}>
-				<Link href={links.supportTelegram} asChild>
-					<Button variant='secondary' title='поддержка' />
-				</Link>
-
-				{onRefresh && <Button title='обновить' onPress={onRefresh} />}
-			</View>
+			{actions && <View style={styles.actions}>{actions}</View>}
 		</View>
 	);
 };
@@ -64,7 +58,7 @@ const stylesheet = createStyleSheet(theme => ({
 		fontSize: 20,
 		fontFamily: theme.typography.fontFamily.GolosTextSemiBold
 	},
-	text: {
+	description: {
 		textAlign: 'center',
 		color: theme.colors.blackAlpha(0.65),
 		fontSize: 14,

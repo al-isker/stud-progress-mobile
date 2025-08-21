@@ -1,14 +1,18 @@
+import { Link } from 'expo-router';
 import { View } from 'react-native';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import { HeartBrokenIcon } from '@/shared/assets/icons';
+import { links } from '@/shared/config/navigation';
+import { Button } from '@/shared/ui/button';
 import { CircularLoader } from '@/shared/ui/circular-loader';
-import { ErrorDisplay } from '@/shared/ui/error-display';
+import { StatusScreen } from '@/shared/ui/status-screen';
 import { useSubjectGradeList } from '../../model/hooks/use-subject-grade-list';
 import { List } from '../list/List';
 
 export const SubjectGradeScreen = () => {
-	const { styles } = useStyles(stylesheet);
+	const { styles, theme } = useStyles(stylesheet);
 
-	const { data, refetch, isLoading, isError, isRefetching } =
+	const { data, refetch, isLoading, isSuccess, isRefetching } =
 		useSubjectGradeList();
 
 	if (isLoading) {
@@ -19,27 +23,34 @@ export const SubjectGradeScreen = () => {
 		);
 	}
 
-	if (isError) {
-		return (
-			<ErrorDisplay
-				style={styles.container}
-				title='Ошибка'
-				text='баллы не найдены, попробуй позже или обратись в поддержку'
-				onRefresh={refetch}
-			/>
-		);
-	}
-
-	if (data) {
+	if (isSuccess) {
 		return (
 			<List
 				contentContainerStyle={styles.container}
-				subjectGradeList={data}
+				subjectGradeList={data!}
 				refreshing={isRefetching}
 				onRefresh={refetch}
 			/>
 		);
 	}
+
+	return (
+		<StatusScreen
+			style={styles.container}
+			iconSlot={<HeartBrokenIcon color={theme.colors.red} />}
+			title='Ошибка'
+			description='сессия не найдена, попробуй позже или обратись в поддержку'
+			actions={
+				<>
+					<Link href={links.supportTelegram} asChild>
+						<Button variant='secondary' title='поддержка' />
+					</Link>
+
+					<Button title='обновить' onPress={() => refetch()} />
+				</>
+			}
+		/>
+	);
 };
 
 const stylesheet = createStyleSheet(theme => ({
