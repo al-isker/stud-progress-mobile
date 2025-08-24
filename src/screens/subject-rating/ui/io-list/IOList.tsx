@@ -1,6 +1,7 @@
 import { StyleProp, ViewStyle } from 'react-native';
 import { IOScrollView } from 'react-native-intersection-observer';
 import { useStyles } from 'react-native-unistyles';
+import { useRequestNotificationPermissions } from '@/entities/push-notification';
 import { SubjectRatingListType } from '@/entities/subject';
 import { RefreshControl } from '@/shared/ui/refresh-control';
 import { IOCard } from '../io-card/IOCard';
@@ -21,6 +22,8 @@ export const IOList = ({
 	onRefresh
 }: IOListProps) => {
 	const { theme } = useStyles();
+
+	useRequestNotificationPermissions();
 
 	return (
 		<IOScrollView
