@@ -11,7 +11,7 @@ export const UpdateSemesterLoadingScreen = () => {
 
 	return (
 		<LoadingScreen
-			description='загружаем данные, это займёт около минуты...'
+			description='не выходи с приложения, это займёт около минуты...'
 			progress={progress}
 		/>
 	);
