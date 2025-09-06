@@ -58,7 +58,7 @@ export const SubjectRatingScreen = () => {
 			description='баллы не найдены, попробуй позже или обратись в поддержку'
 			actions={
 				<>
-					<Link href={links.supportTelegram} asChild>
+					<Link href={links.telegramSupport} asChild>
 						<Button variant='secondary' title='поддержка' />
 					</Link>
 

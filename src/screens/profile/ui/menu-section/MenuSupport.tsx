@@ -5,7 +5,7 @@ import { Command } from '@/shared/ui/command';
 
 export const MenuSupport = () => {
 	return (
-		<Link href={links.supportTelegram} asChild>
+		<Link href={links.telegramSupport} asChild>
 			<Command
 				variant='text'
 				size='large'

@@ -1,3 +1,4 @@
 export const links = {
-	supportTelegram: 'https://google.com'
+	telegramChannel: 'https://t.me/stud_progress',
+	telegramSupport: 'https://t.me/stud_progress_support'
 };
