@@ -39,9 +39,9 @@ export const AverageMarkSection = ({
 	return (
 		<Paper style={styles.paper}>
 			<ProgressChart
-				diameter={theme.dimensions.window.width / 2}
-				fontSize={36}
+				diameter={200}
 				strokeWidth={22}
+				fontSize={38}
 				sharedValue={sharedAverageMark}
 				maxValue={MAX_MARK}
 				showOnZero

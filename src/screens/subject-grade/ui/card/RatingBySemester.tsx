@@ -44,8 +44,8 @@ export const RatingBySemester = ({
 
 			<ProgressChart
 				diameter={60}
-				strokeWidth={7}
-				fontSize={17}
+				strokeWidth={8}
+				fontSize={16}
 				sharedValue={sharedAverageMark}
 				maxValue={MAX_MARK}
 				showOnZero

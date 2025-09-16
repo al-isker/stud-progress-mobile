@@ -71,9 +71,9 @@ export const IOCardContent = forwardRef<IOCardContentRef, IOCardContentProps>(
 					onPress={handlePress}
 				>
 					<ProgressChart
-						diameter={theme.dimensions.window.width / 4}
-						strokeWidth={theme.dimensions.window.width / 28}
-						fontSize={theme.dimensions.window.width / 16}
+						diameter={90}
+						strokeWidth={12}
+						fontSize={22}
 						style={styles.chart}
 						sharedValue={sharedAverageMark}
 						maxValue={MAX_MARK}
@@ -131,10 +131,10 @@ const stylesheet = createStyleSheet(theme => ({
 		alignSelf: 'flex-start'
 	},
 	eventListContainer: {
-		marginTop: 'auto'
+		marginTop: 'auto',
+		marginRight: -4
 	},
 	eventList: {
-		marginTop: 4,
-		marginRight: 4
+		marginTop: 4
 	}
 }));

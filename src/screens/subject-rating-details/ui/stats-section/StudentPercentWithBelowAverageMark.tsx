@@ -53,12 +53,12 @@ export const StudentPercentWithBelowAverageMark = ({
 
 			<View style={styles.rightContent}>
 				<ProgressChart
-					style={styles.progressChart}
 					diameter={80}
+					strokeWidth={10}
 					fontSize={16}
+					style={styles.progressChart}
 					maxValue={100}
 					sharedValue={sharedValue}
-					strokeWidth={10}
 					formatValue={formatPercent}
 				/>
 			</View>
