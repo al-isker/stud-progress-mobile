@@ -32,7 +32,7 @@ export const EventList = ({ style, eventList }: EventListProps) => {
 
 	return (
 		<View style={[styles.container, style]} onLayout={handleLayout}>
-			{eventList.slice(-fitsItemsCount).map(event => (
+			{eventList.slice(0, fitsItemsCount).map(event => (
 				<Event
 					key={event.id}
 					style={styles.event}
