@@ -1,4 +1,4 @@
-import { ScrollView, StyleProp, ViewStyle } from 'react-native';
+import { ScrollView, StyleProp, View, ViewStyle } from 'react-native';
 import { useStyles } from 'react-native-unistyles';
 import { SubjectRatingDetailsType } from '@/entities/subject';
 import { RefreshControl } from '@/shared/ui/refresh-control';
@@ -61,6 +61,7 @@ export const Content = ({
 			<EventListSection
 				eventList={subjectRatingDetails.ratingByCurrentSemester.eventList}
 			/>
+			<View style={{ marginBottom: theme.dimensions.window.height / 3 }} />
 		</ScrollView>
 	);
 };
