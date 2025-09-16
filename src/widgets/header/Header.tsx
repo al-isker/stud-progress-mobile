@@ -21,6 +21,7 @@ const stylesheet = createStyleSheet(theme => ({
 		zIndex: theme.zIndex.header,
 		elevation: 8,
 		padding: theme.spacing,
+		paddingTop: theme.spacing * 1.5,
 		backgroundColor: theme.colors.primary
 	},
 	title: {
