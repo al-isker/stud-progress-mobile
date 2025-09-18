@@ -1,17 +1,18 @@
 import { StatusBar } from 'expo-status-bar';
-import { Text, View } from 'react-native';
+import { Text } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
 
 export const Header = () => {
-	const { styles, theme } = useStyles(stylesheet);
+	const { styles } = useStyles(stylesheet);
 
 	return (
 		<>
-			<StatusBar style='light' backgroundColor={theme.colors.primary} />
+			<StatusBar style='light' />
 
-			<View style={styles.header}>
+			<SafeAreaView edges={['top']} style={styles.header}>
 				<Text style={styles.title}>Stud Progress</Text>
-			</View>
+			</SafeAreaView>
 		</>
 	);
 };
