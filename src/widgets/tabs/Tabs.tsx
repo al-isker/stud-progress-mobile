@@ -30,6 +30,13 @@ export const Tabs = () => {
 				tabBarLabelStyle: {
 					fontSize: 11,
 					fontFamily: theme.typography.fontFamily.GolosTextMedium
+				},
+				transitionSpec: {
+					animation: 'spring',
+					config: {
+						overshootClamping: true,
+						mass: 0.1
+					}
 				}
 			}}
 		>
