@@ -11,11 +11,11 @@ import {
 } from '@/entities/subject';
 import { routes } from '@/shared/config/navigation';
 import { Paper } from '@/shared/ui/paper';
+import { Pressable } from '@/shared/ui/pressable';
 import {
 	ProgressChart,
 	createProgressAnimationConfig
 } from '@/shared/ui/progress-chart';
-import { Touchable } from '@/shared/ui/touchable';
 import { EventList } from './EventList';
 
 export type IOCardContentRef = {
@@ -65,9 +65,9 @@ export const IOCardContent = forwardRef<IOCardContentRef, IOCardContentProps>(
 
 		return (
 			<Paper style={styles.paper}>
-				<Touchable
+				<Pressable
 					feedbackColor={theme.colors.primaryAlpha(0.05)}
-					contentContainerStyle={styles.touchableContentContainer}
+					style={styles.pressable}
 					onPress={handlePress}
 				>
 					<ProgressChart
@@ -99,7 +99,7 @@ export const IOCardContent = forwardRef<IOCardContentRef, IOCardContentProps>(
 							</View>
 						)}
 					</View>
-				</Touchable>
+				</Pressable>
 			</Paper>
 		);
 	}
@@ -109,7 +109,7 @@ const stylesheet = createStyleSheet(theme => ({
 	paper: {
 		overflow: 'hidden'
 	},
-	touchableContentContainer: {
+	pressable: {
 		flexDirection: 'row',
 		columnGap: theme.spacing * 1.25,
 		padding: theme.spacing * 1.25

@@ -6,10 +6,10 @@ import {
 	useStyles
 } from 'react-native-unistyles';
 import { SlotProps, renderSlot } from '@/shared/lib/slot';
-import { Touchable, TouchableProps } from '@/shared/ui/touchable';
+import { Pressable, PressableProps } from '@/shared/ui/pressable';
 
 export type CommandProps = Omit<
-	TouchableProps,
+	PressableProps,
 	'children' | 'feedbackColor' | 'contentContainerStyle'
 > &
 	UnistylesVariants<typeof stylesheet> & {
@@ -33,11 +33,10 @@ export const Command = forwardRef<View, CommandProps>(function Command(
 	const { styles } = useStyles(stylesheet, { variant, size });
 
 	return (
-		<Touchable
+		<Pressable
 			ref={forwardedRef}
 			feedbackColor={styles.feedback.color}
-			style={[styles.touchable, style]}
-			contentContainerStyle={styles.touchableContentContainer}
+			style={[styles.pressable, style]}
 			{...props}
 		>
 			{renderSlot(startSlot, {
@@ -53,29 +52,12 @@ export const Command = forwardRef<View, CommandProps>(function Command(
 				style: [styles.slot, styles.endSlot],
 				color: styles.slotProps.color
 			})}
-		</Touchable>
+		</Pressable>
 	);
 });
 
 const stylesheet = createStyleSheet(theme => ({
-	touchable: {
-		overflow: 'hidden',
-
-		variants: {
-			variant: {},
-			size: {
-				large: {
-					height: 54
-				},
-				medium: {
-					height: 40
-				}
-			}
-		}
-	},
-	touchableContentContainer: {
-		height: '100%',
-		width: '100%',
+	pressable: {
 		flexDirection: 'row',
 		alignItems: 'center',
 
@@ -93,10 +75,12 @@ const stylesheet = createStyleSheet(theme => ({
 			},
 			size: {
 				large: {
+					height: 54,
 					paddingHorizontal: 18,
 					columnGap: 13
 				},
 				medium: {
+					height: 40,
 					paddingHorizontal: 16,
 					columnGap: 12
 				}

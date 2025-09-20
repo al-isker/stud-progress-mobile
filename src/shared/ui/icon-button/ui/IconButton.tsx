@@ -6,10 +6,10 @@ import {
 	useStyles
 } from 'react-native-unistyles';
 import { SlotProps, renderSlot } from '@/shared/lib/slot';
-import { Touchable, TouchableProps } from '@/shared/ui/touchable';
+import { Pressable, PressableProps } from '@/shared/ui/pressable';
 
 export type IconButtonProps = Omit<
-	TouchableProps,
+	PressableProps,
 	'children' | 'feedbackColor' | 'contentContainerStyle'
 > &
 	UnistylesVariants<typeof stylesheet> & {
@@ -23,51 +23,23 @@ export const IconButton = forwardRef<View, IconButtonProps>(function IconButton(
 	const { styles } = useStyles(stylesheet, { variant, size });
 
 	return (
-		<Touchable
+		<Pressable
 			ref={forwardedRef}
 			feedbackColor={styles.feedback.color}
-			style={[styles.touchable, style]}
-			contentContainerStyle={styles.touchableContentContainer}
+			style={[styles.pressable, style]}
 			{...props}
 		>
 			{renderSlot(children, {
 				style: styles.icon,
 				color: styles.slotProps.color
 			})}
-		</Touchable>
+		</Pressable>
 	);
 });
 
 export const stylesheet = createStyleSheet(theme => ({
-	touchable: {
-		overflow: 'hidden',
+	pressable: {
 		aspectRatio: 1,
-
-		variants: {
-			variant: {
-				primary: {},
-				secondary: {},
-				text: {}
-			},
-			size: {
-				large: {
-					height: 54,
-					borderRadius: theme.borderRadius * 1.35
-				},
-				medium: {
-					height: 40,
-					borderRadius: theme.borderRadius
-				},
-				small: {
-					height: 32,
-					borderRadius: theme.borderRadius * 0.8
-				}
-			}
-		}
-	},
-	touchableContentContainer: {
-		height: '100%',
-		width: '100%',
 		justifyContent: 'center',
 		alignItems: 'center',
 
@@ -83,7 +55,20 @@ export const stylesheet = createStyleSheet(theme => ({
 					backgroundColor: theme.colors.transparent
 				}
 			},
-			size: {}
+			size: {
+				large: {
+					height: 54,
+					borderRadius: theme.borderRadius * 1.35
+				},
+				medium: {
+					height: 40,
+					borderRadius: theme.borderRadius
+				},
+				small: {
+					height: 32,
+					borderRadius: theme.borderRadius * 0.8
+				}
+			}
 		}
 	},
 	icon: {

@@ -6,10 +6,10 @@ import {
 	useStyles
 } from 'react-native-unistyles';
 import { SlotProps, renderSlot } from '@/shared/lib/slot';
-import { Touchable, TouchableProps } from '@/shared/ui/touchable';
+import { Pressable, PressableProps } from '@/shared/ui/pressable';
 
 export type ButtonProps = Omit<
-	TouchableProps,
+	PressableProps,
 	'children' | 'feedbackColor' | 'contentContainerStyle'
 > &
 	UnistylesVariants<typeof stylesheet> & {
@@ -33,11 +33,10 @@ export const Button = forwardRef<View, ButtonProps>(function Button(
 	const { styles } = useStyles(stylesheet, { variant, size });
 
 	return (
-		<Touchable
+		<Pressable
 			ref={forwardedRef}
 			feedbackColor={styles.feedback.color}
-			style={[styles.touchable, style]}
-			contentContainerStyle={styles.touchableContentContainer}
+			style={[styles.pressable, style]}
 			{...props}
 		>
 			{renderSlot(startSlot, {
@@ -53,35 +52,12 @@ export const Button = forwardRef<View, ButtonProps>(function Button(
 				style: styles.slot,
 				color: styles.slotProps.color
 			})}
-		</Touchable>
+		</Pressable>
 	);
 });
 
 export const stylesheet = createStyleSheet(theme => ({
-	touchable: {
-		overflow: 'hidden',
-
-		variants: {
-			variant: {},
-			size: {
-				large: {
-					height: 54,
-					borderRadius: theme.borderRadius * 1.35
-				},
-				medium: {
-					height: 40,
-					borderRadius: theme.borderRadius
-				},
-				small: {
-					height: 32,
-					borderRadius: theme.borderRadius * 0.8
-				}
-			}
-		}
-	},
-	touchableContentContainer: {
-		height: '100%',
-		width: '100%',
+	pressable: {
 		flexDirection: 'row',
 		justifyContent: 'center',
 		alignItems: 'center',
@@ -100,16 +76,22 @@ export const stylesheet = createStyleSheet(theme => ({
 			},
 			size: {
 				large: {
+					height: 54,
 					paddingHorizontal: 18,
-					columnGap: 13
+					columnGap: 13,
+					borderRadius: theme.borderRadius * 1.35
 				},
 				medium: {
+					height: 40,
 					paddingHorizontal: 16,
-					columnGap: 12
+					columnGap: 12,
+					borderRadius: theme.borderRadius
 				},
 				small: {
+					height: 32,
 					paddingHorizontal: 12,
-					columnGap: 8
+					columnGap: 8,
+					borderRadius: theme.borderRadius * 0.8
 				}
 			}
 		}
