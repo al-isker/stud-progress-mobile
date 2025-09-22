@@ -7,6 +7,7 @@ import {
 	StatsIcon
 } from '@/shared/assets/icons';
 import { ScreenNames } from '@/shared/config/navigation';
+import { Pressable } from '@/shared/ui/pressable';
 
 export const Tabs = () => {
 	const { theme } = useStyles();
@@ -15,28 +16,31 @@ export const Tabs = () => {
 		<NativeTabs
 			screenOptions={{
 				animation: 'shift',
-				headerShown: false,
-				sceneStyle: {
-					backgroundColor: theme.colors.bgBase
-				},
-				tabBarActiveTintColor: theme.colors.primary,
-				tabBarInactiveTintColor: theme.colors.blackAlpha(0.4),
-				tabBarStyle: {
-					height: 60,
-					paddingTop: 5,
-					paddingBottom: 5,
-					backgroundColor: theme.colors.bgPaper
-				},
-				tabBarLabelStyle: {
-					fontSize: 11,
-					fontFamily: theme.typography.fontFamily.GolosTextMedium
-				},
 				transitionSpec: {
 					animation: 'spring',
 					config: {
 						overshootClamping: true,
 						mass: 0.1
 					}
+				},
+				headerShown: false,
+				sceneStyle: {
+					backgroundColor: theme.colors.bgBase
+				},
+				tabBarStyle: {
+					backgroundColor: theme.colors.bgPaper
+				},
+				tabBarButton: ({ ref, android_ripple, ...props }) => (
+					<Pressable
+						feedbackColor={theme.colors.primaryAlpha(0.1)}
+						{...props}
+					/>
+				),
+				tabBarActiveTintColor: theme.colors.primary,
+				tabBarInactiveTintColor: theme.colors.blackAlpha(0.4),
+				tabBarLabelStyle: {
+					fontSize: 11,
+					fontFamily: theme.typography.fontFamily.GolosTextMedium
 				}
 			}}
 		>

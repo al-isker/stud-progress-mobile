@@ -7,7 +7,7 @@ export const RootSafeArea = ({ children }: { children: ReactNode }) => {
 
 	return (
 		<SafeAreaView
-			edges={['left', 'right', 'bottom']}
+			edges={['left', 'right']}
 			style={{
 				flex: 1,
 				backgroundColor: theme.colors.white
