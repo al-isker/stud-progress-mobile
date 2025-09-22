@@ -28,10 +28,12 @@ export const Tabs = () => {
 					backgroundColor: theme.colors.bgBase
 				},
 				tabBarStyle: {
+					height: 60,
 					backgroundColor: theme.colors.bgPaper
 				},
-				tabBarButton: ({ ref, android_ripple, ...props }) => (
+				tabBarButton: ({ ref, android_ripple, style, ...props }) => (
 					<Pressable
+						style={[{ paddingVertical: 9 }, style]}
 						feedbackColor={theme.colors.primaryAlpha(0.1)}
 						{...props}
 					/>
