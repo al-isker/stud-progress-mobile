@@ -26,6 +26,7 @@ export const TextInput = forwardRef<NativeTextInput, TextInputProps>(
 
 const stylesheet = createStyleSheet(theme => ({
 	textInput: {
+		padding: 0,
 		color: theme.colors.blackAlpha(0.8),
 		fontFamily: theme.typography.fontFamily.GolosTextRegular,
 
