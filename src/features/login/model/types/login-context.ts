@@ -1,13 +1,13 @@
-import { MutableRefObject } from 'react';
+import { RefObject } from 'react';
 import { LoginBodyType } from '@/entities/auth';
 import { ApiErrorType } from '@/shared/api';
 
 export type LoginContextFormValuesType = Partial<LoginBodyType>;
-export type LoginContextMutationErrorType = ApiErrorType | undefined;
+export type LoginContextMutationErrorType = ApiErrorType | null;
 
 export type LoginContextType = {
-	formValuesRef: MutableRefObject<LoginContextFormValuesType>;
-	mutationErrorRef: MutableRefObject<LoginContextMutationErrorType>;
+	formValuesRef: RefObject<LoginContextFormValuesType>;
+	mutationErrorRef: RefObject<LoginContextMutationErrorType>;
 	setFormValues: (values: LoginContextFormValuesType) => void;
 	setMutationError: (error: LoginContextMutationErrorType) => void;
 };

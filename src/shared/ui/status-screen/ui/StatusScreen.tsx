@@ -1,10 +1,10 @@
-import { ReactElement, ReactNode } from 'react';
-import { StyleProp, Text, View, ViewStyle } from 'react-native';
+import { ReactElement, ReactNode, Ref } from 'react';
+import { Text, View, ViewProps } from 'react-native';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
 import { SlotProps, renderSlot } from '@/shared/lib/slot';
 
-export type StatusScreenProps = {
-	style?: StyleProp<ViewStyle>;
+export type StatusScreenProps = ViewProps & {
+	ref?: Ref<View>;
 	iconSlot?: ReactElement<SlotProps>;
 	title?: string;
 	description?: string;
@@ -16,12 +16,13 @@ export const StatusScreen = ({
 	iconSlot,
 	title,
 	description,
-	actions
+	actions,
+	...props
 }: StatusScreenProps) => {
 	const { styles } = useStyles(stylesheet);
 
 	return (
-		<View style={[styles.container, style]}>
+		<View style={[styles.container, style]} {...props}>
 			{renderSlot(iconSlot, { style: styles.icon })}
 
 			<View style={styles.contentContainer}>

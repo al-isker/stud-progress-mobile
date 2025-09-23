@@ -1,4 +1,4 @@
-import { ReactElement, forwardRef } from 'react';
+import { ReactElement, Ref } from 'react';
 import { Text, View, ViewProps } from 'react-native';
 import {
 	UnistylesVariants,
@@ -9,27 +9,25 @@ import { SlotProps, renderSlot } from '@/shared/lib/slot';
 
 export type TagProps = Omit<ViewProps, 'children'> &
 	UnistylesVariants<typeof stylesheet> & {
+		ref?: Ref<View>;
 		title?: string;
 		startSlot?: ReactElement<SlotProps>;
 		endSlot?: ReactElement<SlotProps>;
 	};
 
-export const Tag = forwardRef<View, TagProps>(function Tag(
-	{
-		variant = 'black',
-		size = 'medium',
-		style,
-		title,
-		startSlot,
-		endSlot,
-		...props
-	},
-	forwardedRef
-) {
+export const Tag = ({
+	variant = 'black',
+	size = 'medium',
+	style,
+	title,
+	startSlot,
+	endSlot,
+	...props
+}: TagProps) => {
 	const { styles } = useStyles(stylesheet, { variant, size });
 
 	return (
-		<View ref={forwardedRef} style={[styles.tag, style]} {...props}>
+		<View style={[styles.tag, style]} {...props}>
 			{renderSlot(startSlot, {
 				style: styles.slot,
 				color: styles.slotProps.color
@@ -43,7 +41,7 @@ export const Tag = forwardRef<View, TagProps>(function Tag(
 			})}
 		</View>
 	);
-});
+};
 
 const stylesheet = createStyleSheet(theme => ({
 	tag: {

@@ -1,4 +1,4 @@
-import { forwardRef } from 'react';
+import { Ref } from 'react';
 import { Platform, View, ViewProps } from 'react-native';
 import {
 	UnistylesVariants,
@@ -6,16 +6,20 @@ import {
 	useStyles
 } from 'react-native-unistyles';
 
-export type PaperProps = ViewProps & UnistylesVariants<typeof stylesheet>;
+export type PaperProps = ViewProps &
+	UnistylesVariants<typeof stylesheet> & {
+		ref?: Ref<View>;
+	};
 
-export const Paper = forwardRef<View, PaperProps>(function Paper(
-	{ style, disableAndroidBorder = false, ...props },
-	forwardedRef
-) {
+export const Paper = ({
+	style,
+	disableAndroidBorder = false,
+	...props
+}: PaperProps) => {
 	const { styles } = useStyles(stylesheet, { disableAndroidBorder });
 
-	return <View ref={forwardedRef} style={[styles.paper, style]} {...props} />;
-});
+	return <View style={[styles.paper, style]} {...props} />;
+};
 
 const stylesheet = createStyleSheet(theme => ({
 	paper: {

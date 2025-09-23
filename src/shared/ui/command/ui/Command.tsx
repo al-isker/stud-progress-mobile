@@ -1,4 +1,4 @@
-import { ReactElement, forwardRef } from 'react';
+import { ReactElement, Ref } from 'react';
 import { Text, View } from 'react-native';
 import {
 	UnistylesVariants,
@@ -13,28 +13,25 @@ export type CommandProps = Omit<
 	'children' | 'feedbackColor' | 'contentContainerStyle'
 > &
 	UnistylesVariants<typeof stylesheet> & {
+		ref?: Ref<View>;
 		title?: string;
 		startSlot?: ReactElement<SlotProps>;
 		endSlot?: ReactElement<SlotProps>;
 	};
 
-export const Command = forwardRef<View, CommandProps>(function Command(
-	{
-		variant = 'primary',
-		size = 'medium',
-		style,
-		title,
-		startSlot,
-		endSlot,
-		...props
-	},
-	forwardedRef
-) {
+export const Command = ({
+	variant = 'primary',
+	size = 'medium',
+	style,
+	title,
+	startSlot,
+	endSlot,
+	...props
+}: CommandProps) => {
 	const { styles } = useStyles(stylesheet, { variant, size });
 
 	return (
 		<Pressable
-			ref={forwardedRef}
 			feedbackColor={styles.feedback.color}
 			style={[styles.pressable, style]}
 			{...props}
@@ -54,7 +51,7 @@ export const Command = forwardRef<View, CommandProps>(function Command(
 			})}
 		</Pressable>
 	);
-});
+};
 
 const stylesheet = createStyleSheet(theme => ({
 	pressable: {

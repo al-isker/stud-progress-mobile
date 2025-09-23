@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { Ref, useEffect } from 'react';
 import { View, ViewProps } from 'react-native';
 import Animated, {
 	useSharedValue,
@@ -13,7 +13,9 @@ import {
 	animationDelay
 } from '../lib/animation/animation-config';
 
-export type PulseIndicatorProps = ViewProps;
+export type PulseIndicatorProps = ViewProps & {
+	ref?: Ref<View>;
+};
 
 export const PulseIndicator = ({ style, ...props }: PulseIndicatorProps) => {
 	const { styles } = useStyles(stylesheet);

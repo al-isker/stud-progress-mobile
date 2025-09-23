@@ -1,8 +1,9 @@
-import { ReactNode, Ref, forwardRef, useEffect, useRef } from 'react';
+import { ReactNode, Ref, useEffect, useRef } from 'react';
 import { composeRefs } from '@radix-ui/react-compose-refs';
 import {
-	TextInput as NativeTextInput,
 	StyleProp,
+	TextInput,
+	TextInputProps,
 	TouchableWithoutFeedback,
 	View,
 	ViewStyle
@@ -16,38 +17,33 @@ import { createStyleSheet, useStyles } from 'react-native-unistyles';
 import { multiple } from '@/shared/lib/function';
 import { animationConfig } from '../../lib/animation/animation-config';
 import { ErrorText } from '../error-text/ErrorText';
-import { TextInput, TextInputProps } from '../text-input/TextInput';
 
-export type TextFieldProps = Omit<
-	TextInputProps,
-	'size' | 'style' | 'placeholder'
-> & {
-	inputRef?: Ref<NativeTextInput>;
+export type TextFieldProps = Omit<TextInputProps, 'style' | 'placeholder'> & {
+	ref?: Ref<View>;
+	inputRef?: Ref<TextInput>;
 	size: 'large';
 	style?: StyleProp<ViewStyle>;
 	label: string;
 	errorText?: ReactNode;
 };
 
-export const TextField = forwardRef<View, TextFieldProps>(function TextField(
-	{
-		inputRef: inputRefProp,
-		size,
-		style,
-		label,
-		errorText,
-		value,
-		defaultValue,
-		onFocus,
-		onBlur,
-		onChangeText,
-		...props
-	},
-	forwardedRef
-) {
+export const TextField = ({
+	ref,
+	inputRef: inputRefProp,
+	size,
+	style,
+	label,
+	errorText,
+	value,
+	defaultValue,
+	onFocus,
+	onBlur,
+	onChangeText,
+	...props
+}: TextFieldProps) => {
 	const { styles, theme } = useStyles(stylesheet, { size });
 
-	const inputRef = useRef<NativeTextInput>(null);
+	const inputRef = useRef<TextInput>(null);
 
 	const sharedIsFocus = useSharedValue(false);
 	const sharedIsThereValue = useSharedValue(!!(value ?? defaultValue)?.length);
@@ -82,12 +78,6 @@ export const TextField = forwardRef<View, TextFieldProps>(function TextField(
 		]
 	}));
 
-	useEffect(() => {
-		if (typeof value === 'string') {
-			sharedIsThereValue.set(!!value.length);
-		}
-	}, [value]);
-
 	const handleTouchablePress = () => {
 		inputRef.current!.focus();
 	};
@@ -99,8 +89,14 @@ export const TextField = forwardRef<View, TextFieldProps>(function TextField(
 		sharedIsThereValue.set(!!value.length);
 	};
 
+	useEffect(() => {
+		if (typeof value === 'string') {
+			sharedIsThereValue.set(!!value.length);
+		}
+	}, [value]);
+
 	return (
-		<View ref={forwardedRef} style={style}>
+		<View ref={ref} style={style}>
 			<TouchableWithoutFeedback onPress={handleTouchablePress}>
 				<Animated.View
 					style={[styles.textInputContainer, textInputContainerStyles]}
@@ -108,10 +104,11 @@ export const TextField = forwardRef<View, TextFieldProps>(function TextField(
 					<Animated.Text style={[styles.label, labelAnimatedStyles]}>
 						{label}
 					</Animated.Text>
+
 					<TextInput
 						ref={composeRefs(inputRef, inputRefProp)}
-						size={size}
-						style={styles.textInput}
+						style={[styles.textInput, style]}
+						placeholderTextColor={theme.colors.blackAlpha(0.2)}
 						defaultValue={defaultValue}
 						value={value}
 						onFocus={multiple(handleFocus, onFocus)}
@@ -125,7 +122,7 @@ export const TextField = forwardRef<View, TextFieldProps>(function TextField(
 			<ErrorText style={styles.errorText}>{errorText}</ErrorText>
 		</View>
 	);
-});
+};
 
 const stylesheet = createStyleSheet(theme => ({
 	textInputContainer: {
@@ -161,13 +158,17 @@ const stylesheet = createStyleSheet(theme => ({
 	},
 	textInput: {
 		position: 'absolute',
+		padding: 0,
+		color: theme.colors.blackAlpha(0.8),
+		fontFamily: theme.typography.fontFamily.GolosTextRegular,
 
 		variants: {
 			size: {
 				large: {
 					top: 24,
 					left: 17,
-					right: 17
+					right: 17,
+					fontSize: 15
 				}
 			}
 		}

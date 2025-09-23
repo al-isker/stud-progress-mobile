@@ -11,7 +11,7 @@ export const UpdateSemesterContextProvider = ({
 	children: ReactNode;
 }) => {
 	const formValuesRef = useRef<UpdateSemesterContextFormValuesType>({});
-	const mutationErrorRef = useRef<UpdateSemesterContextMutationErrorType>();
+	const mutationErrorRef = useRef<UpdateSemesterContextMutationErrorType>(null);
 
 	const setFormValues = (values: UpdateSemesterContextFormValuesType) => {
 		formValuesRef.current = Object.assign(formValuesRef.current, values);

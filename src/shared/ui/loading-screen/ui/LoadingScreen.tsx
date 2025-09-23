@@ -1,21 +1,25 @@
-import { Text, View } from 'react-native';
+import { Ref } from 'react';
+import { Text, View, ViewProps } from 'react-native';
 import { SharedValue } from 'react-native-reanimated';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
 import { ProgressLoader } from '../../progress-loader';
 
-export type LoadingScreenProps = {
+export type LoadingScreenProps = ViewProps & {
+	ref?: Ref<View>;
 	progress: SharedValue<number>;
 	description?: string;
 };
 
 export const LoadingScreen = ({
+	style,
 	progress,
-	description
+	description,
+	...props
 }: LoadingScreenProps) => {
-	const { styles, theme } = useStyles(stylesheet);
+	const { styles } = useStyles(stylesheet);
 
 	return (
-		<View style={styles.container}>
+		<View style={[styles.container, style]} {...props}>
 			<View style={styles.appBanner}>
 				<Text style={styles.title}>Stud Progress</Text>
 			</View>

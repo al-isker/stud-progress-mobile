@@ -1,4 +1,4 @@
-import { ReactElement, forwardRef } from 'react';
+import { ReactElement, Ref } from 'react';
 import { View } from 'react-native';
 import {
 	UnistylesVariants,
@@ -14,17 +14,20 @@ export type IconButtonProps = Omit<
 > &
 	UnistylesVariants<typeof stylesheet> & {
 		children: ReactElement<SlotProps>;
+		ref?: Ref<View>;
 	};
 
-export const IconButton = forwardRef<View, IconButtonProps>(function IconButton(
-	{ children, variant = 'primary', size = 'medium', style, ...props },
-	forwardedRef
-) {
+export const IconButton = ({
+	children,
+	variant = 'primary',
+	size = 'medium',
+	style,
+	...props
+}: IconButtonProps) => {
 	const { styles } = useStyles(stylesheet, { variant, size });
 
 	return (
 		<Pressable
-			ref={forwardedRef}
 			feedbackColor={styles.feedback.color}
 			style={[styles.pressable, style]}
 			{...props}
@@ -35,7 +38,7 @@ export const IconButton = forwardRef<View, IconButtonProps>(function IconButton(
 			})}
 		</Pressable>
 	);
-});
+};
 
 export const stylesheet = createStyleSheet(theme => ({
 	pressable: {

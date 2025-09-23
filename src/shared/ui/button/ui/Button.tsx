@@ -1,4 +1,4 @@
-import { ReactElement, forwardRef } from 'react';
+import { ReactElement, Ref } from 'react';
 import { Text, View } from 'react-native';
 import {
 	UnistylesVariants,
@@ -13,28 +13,25 @@ export type ButtonProps = Omit<
 	'children' | 'feedbackColor' | 'contentContainerStyle'
 > &
 	UnistylesVariants<typeof stylesheet> & {
+		ref?: Ref<View>;
 		title?: string;
 		startSlot?: ReactElement<SlotProps>;
 		endSlot?: ReactElement<SlotProps>;
 	};
 
-export const Button = forwardRef<View, ButtonProps>(function Button(
-	{
-		variant = 'primary',
-		size = 'medium',
-		style,
-		title,
-		startSlot,
-		endSlot,
-		...props
-	},
-	forwardedRef
-) {
+export const Button = ({
+	variant = 'primary',
+	size = 'medium',
+	style,
+	title,
+	startSlot,
+	endSlot,
+	...props
+}: ButtonProps) => {
 	const { styles } = useStyles(stylesheet, { variant, size });
 
 	return (
 		<Pressable
-			ref={forwardedRef}
 			feedbackColor={styles.feedback.color}
 			style={[styles.pressable, style]}
 			{...props}
@@ -54,7 +51,7 @@ export const Button = forwardRef<View, ButtonProps>(function Button(
 			})}
 		</Pressable>
 	);
-});
+};
 
 export const stylesheet = createStyleSheet(theme => ({
 	pressable: {

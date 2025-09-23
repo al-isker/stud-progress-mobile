@@ -1,4 +1,4 @@
-import { forwardRef } from 'react';
+import { Ref } from 'react';
 import { View, ViewProps } from 'react-native';
 import Animated, {
 	SharedValue,
@@ -12,27 +12,28 @@ import {
 
 export type ProgressLoaderProps = ViewProps &
 	UnistylesVariants<typeof stylesheet> & {
+		ref?: Ref<View>;
 		sharedValue: SharedValue<number>;
 	};
 
-export const ProgressLoader = forwardRef<View, ProgressLoaderProps>(
-	function ProgressLoader(
-		{ colorOnPrimary = false, style, sharedValue, ...props },
-		forwardedRef
-	) {
-		const { styles } = useStyles(stylesheet, { colorOnPrimary });
+export const ProgressLoader = ({
+	colorOnPrimary = false,
+	style,
+	sharedValue,
+	...props
+}: ProgressLoaderProps) => {
+	const { styles } = useStyles(stylesheet, { colorOnPrimary });
 
-		const progressAnimatedStyle = useAnimatedStyle(() => ({
-			width: `${sharedValue.value}%`
-		}));
+	const progressAnimatedStyle = useAnimatedStyle(() => ({
+		width: `${sharedValue.value}%`
+	}));
 
-		return (
-			<View ref={forwardedRef} style={[styles.loader, style]} {...props}>
-				<Animated.View style={[styles.progress, progressAnimatedStyle]} />
-			</View>
-		);
-	}
-);
+	return (
+		<View style={[styles.loader, style]} {...props}>
+			<Animated.View style={[styles.progress, progressAnimatedStyle]} />
+		</View>
+	);
+};
 
 const stylesheet = createStyleSheet(theme => ({
 	loader: {

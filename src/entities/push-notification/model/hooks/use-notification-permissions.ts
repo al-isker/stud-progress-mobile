@@ -12,7 +12,7 @@ import { useAsyncEffect } from '@/shared/lib/react-sugar';
 export const useNotificationPermissions = () => {
 	const [status, setStatus] = useState<PermissionStatus>();
 
-	const permissionsRef = useRef<NotificationPermissionsStatus>();
+	const permissionsRef = useRef<NotificationPermissionsStatus | null>(null);
 
 	const updatePermissions = (newPermissions: NotificationPermissionsStatus) => {
 		permissionsRef.current = newPermissions;

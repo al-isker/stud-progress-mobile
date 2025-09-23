@@ -7,7 +7,7 @@ import {
 
 export const LoginContextProvider = ({ children }: { children: ReactNode }) => {
 	const formValuesRef = useRef<LoginContextFormValuesType>({});
-	const mutationErrorRef = useRef<LoginContextMutationErrorType>();
+	const mutationErrorRef = useRef<LoginContextMutationErrorType>(null);
 
 	const setFormValues = (values: LoginContextFormValuesType) => {
 		formValuesRef.current = Object.assign(formValuesRef.current, values);

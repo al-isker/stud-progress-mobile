@@ -1,21 +1,18 @@
-import { forwardRef } from 'react';
+import { Ref } from 'react';
 import { ActivityIndicator, ActivityIndicatorProps } from 'react-native';
 import { useStyles } from 'react-native-unistyles';
 
-export type CircularLoaderProps = ActivityIndicatorProps;
+export type CircularLoaderProps = ActivityIndicatorProps & {
+	ref?: Ref<ActivityIndicator>;
+};
 
-export const CircularLoader = forwardRef<
-	ActivityIndicator,
-	CircularLoaderProps
->(function Loader({ size = 'large', ...props }, forwardedRef) {
+export const CircularLoader = ({
+	size = 'large',
+	...props
+}: CircularLoaderProps) => {
 	const { theme } = useStyles();
 
 	return (
-		<ActivityIndicator
-			ref={forwardedRef}
-			size={size}
-			color={theme.colors.primary}
-			{...props}
-		/>
+		<ActivityIndicator size={size} color={theme.colors.primary} {...props} />
 	);
-});
+};

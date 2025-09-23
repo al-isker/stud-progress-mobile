@@ -1,16 +1,19 @@
-import { forwardRef, useEffect, useState } from 'react';
+import { Ref, useEffect, useState } from 'react';
 import {
 	RefreshControl as NativeRefreshControl,
 	RefreshControlProps as NativeRefreshControlProps
 } from 'react-native';
 import { useStyles } from 'react-native-unistyles';
 
-export type RefreshControlProps = NativeRefreshControlProps;
+export type RefreshControlProps = NativeRefreshControlProps & {
+	ref?: Ref<NativeRefreshControl>;
+};
 
-export const RefreshControl = forwardRef<
-	NativeRefreshControl,
-	RefreshControlProps
->(function RefreshControl({ refreshing, onRefresh, ...props }, forwardedRef) {
+export const RefreshControl = ({
+	refreshing,
+	onRefresh,
+	...props
+}: RefreshControlProps) => {
 	const { theme } = useStyles();
 
 	const [localRefreshing, setLocalRefreshing] = useState(refreshing);
@@ -28,7 +31,6 @@ export const RefreshControl = forwardRef<
 
 	return (
 		<NativeRefreshControl
-			ref={forwardedRef}
 			colors={[theme.colors.primary]}
 			tintColor={theme.colors.primary}
 			refreshing={localRefreshing}
@@ -36,4 +38,4 @@ export const RefreshControl = forwardRef<
 			{...props}
 		/>
 	);
-});
+};

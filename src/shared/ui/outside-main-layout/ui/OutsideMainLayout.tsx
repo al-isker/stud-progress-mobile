@@ -1,9 +1,11 @@
+import { Ref } from 'react';
 import { Image, StyleProp, View, ViewProps, ViewStyle } from 'react-native';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
 import { AppIcon } from '@/shared/assets/images';
 import { Paper } from '../../paper/ui/Paper';
 
 export type OutsideMainLayoutProps = ViewProps & {
+	ref?: Ref<View>;
 	contentContainerStyle?: StyleProp<ViewStyle>;
 };
 
@@ -13,7 +15,7 @@ export const OutsideMainLayout = ({
 	contentContainerStyle,
 	...props
 }: OutsideMainLayoutProps) => {
-	const { styles, theme } = useStyles(stylesheet);
+	const { styles } = useStyles(stylesheet);
 
 	return (
 		<View style={[styles.layout, style]} {...props}>
@@ -21,7 +23,7 @@ export const OutsideMainLayout = ({
 				<Image style={styles.appIcon} source={AppIcon} />
 			</View>
 
-			<Paper disableAndroidBorder style={[styles.paper, contentContainerStyle]}>
+			<Paper style={[styles.paper, contentContainerStyle]} disableAndroidBorder>
 				{children}
 			</Paper>
 		</View>

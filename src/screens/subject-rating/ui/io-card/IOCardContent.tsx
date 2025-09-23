@@ -1,4 +1,4 @@
-import { forwardRef, useImperativeHandle } from 'react';
+import { Ref, useImperativeHandle } from 'react';
 import { router } from 'expo-router';
 import { Text, View } from 'react-native';
 import { useSharedValue, withTiming } from 'react-native-reanimated';
@@ -23,87 +23,86 @@ export type IOCardContentRef = {
 };
 
 type IOCardContentProps = {
+	ref: Ref<IOCardContentRef>;
 	subjectRating: SubjectRatingListItemType;
 };
 
-export const IOCardContent = forwardRef<IOCardContentRef, IOCardContentProps>(
-	function IOCardContent({ subjectRating }, forwardedRef) {
-		const {
-			id,
-			name,
-			controlType,
-			ratingByCurrentSemester: { averageMark, eventList }
-		} = subjectRating;
+export const IOCardContent = ({ ref, subjectRating }: IOCardContentProps) => {
+	const {
+		id,
+		name,
+		controlType,
+		ratingByCurrentSemester: { averageMark, eventList }
+	} = subjectRating;
 
-		const { styles, theme } = useStyles(stylesheet);
+	const { styles, theme } = useStyles(stylesheet);
 
-		const sharedAverageMark = useSharedValue(averageMark === null ? null : 0);
+	const sharedAverageMark = useSharedValue(averageMark === null ? null : 0);
 
-		const handleInView = () => {
-			if (averageMark === null) {
-				sharedAverageMark.value = null;
-			} else {
-				sharedAverageMark.value = withTiming(
+	const handleInView = () => {
+		if (averageMark === null) {
+			sharedAverageMark.value = null;
+		} else {
+			sharedAverageMark.value = withTiming(
+				averageMark,
+				createProgressAnimationConfig(
+					sharedAverageMark.value,
 					averageMark,
-					createProgressAnimationConfig(
-						sharedAverageMark.value,
-						averageMark,
-						MAX_MARK
-					)
-				);
-			}
-		};
+					MAX_MARK
+				)
+			);
+		}
+	};
 
-		const handlePress = () => {
-			router.push(routes.subjectByIdRating(id));
-		};
+	const handlePress = () => {
+		router.push(routes.subjectByIdRating(id));
+	};
 
-		useImperativeHandle(forwardedRef, () => ({ inView: handleInView }), [
-			averageMark,
-			eventList
-		]);
+	useImperativeHandle(ref, () => ({ inView: handleInView }), [
+		averageMark,
+		eventList
+	]);
 
-		return (
-			<Paper style={styles.paper}>
-				<Pressable
-					feedbackColor={theme.colors.primaryAlpha(0.05)}
-					style={styles.pressable}
-					onPress={handlePress}
-				>
-					<ProgressChart
-						diameter={90}
-						strokeWidth={12}
-						fontSize={22}
-						style={styles.chart}
-						sharedValue={sharedAverageMark}
-						maxValue={MAX_MARK}
-						showOnZero
-						formatValue={formatAverageMark}
+	return (
+		<Paper style={styles.paper}>
+			<Pressable
+				feedbackColor={theme.colors.primaryAlpha(0.05)}
+				style={styles.pressable}
+				onPress={handlePress}
+			>
+				<ProgressChart
+					diameter={90}
+					strokeWidth={12}
+					fontSize={22}
+					style={styles.chart}
+					sharedValue={sharedAverageMark}
+					maxValue={MAX_MARK}
+					showOnZero
+					formatValue={formatAverageMark}
+				/>
+
+				<View style={styles.data}>
+					<Text style={styles.name} numberOfLines={1}>
+						{name}
+					</Text>
+
+					<ControlType
+						variant='primary'
+						size='small'
+						style={styles.controlType}
+						controlType={controlType}
 					/>
 
-					<View style={styles.data}>
-						<Text style={styles.name} numberOfLines={1}>
-							{name}
-						</Text>
-
-						<ControlType
-							variant='primary'
-							size='small'
-							style={styles.controlType}
-							controlType={controlType}
-						/>
-
-						{eventList && (
-							<View style={styles.eventListContainer}>
-								<EventList style={styles.eventList} eventList={eventList} />
-							</View>
-						)}
-					</View>
-				</Pressable>
-			</Paper>
-		);
-	}
-);
+					{eventList && (
+						<View style={styles.eventListContainer}>
+							<EventList style={styles.eventList} eventList={eventList} />
+						</View>
+					)}
+				</View>
+			</Pressable>
+		</Paper>
+	);
+};
 
 const stylesheet = createStyleSheet(theme => ({
 	paper: {
