@@ -17,7 +17,7 @@ export const SubjectGradeScreen = () => {
 
 	if (isLoading) {
 		return (
-			<View style={[styles.centringContainer, styles.container]}>
+			<View style={styles.loaderContainer}>
 				<CircularLoader />
 			</View>
 		);
@@ -26,7 +26,7 @@ export const SubjectGradeScreen = () => {
 	if (isSuccess) {
 		return (
 			<List
-				contentContainerStyle={styles.container}
+				contentContainerStyle={styles.contentContainer}
 				subjectGradeList={data!}
 				refreshing={isRefetching}
 				onRefresh={refetch}
@@ -36,7 +36,7 @@ export const SubjectGradeScreen = () => {
 
 	return (
 		<StatusScreen
-			style={styles.container}
+			style={styles.status}
 			iconSlot={<HeartBrokenIcon color={theme.colors.red} />}
 			title='Ошибка'
 			description='сессия не найдена, попробуй позже или обратись в поддержку'
@@ -54,12 +54,15 @@ export const SubjectGradeScreen = () => {
 };
 
 const stylesheet = createStyleSheet(theme => ({
-	container: {
-		padding: theme.spacing
-	},
-	centringContainer: {
+	loaderContainer: {
 		flex: 1,
 		justifyContent: 'center',
 		alignItems: 'center'
+	},
+	contentContainer: {
+		padding: theme.spacing
+	},
+	status: {
+		padding: theme.spacing
 	}
 }));

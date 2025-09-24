@@ -1,5 +1,6 @@
 import { Ref } from 'react';
 import { Image, StyleProp, View, ViewProps, ViewStyle } from 'react-native';
+import { EdgeInsets } from 'react-native-safe-area-context';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
 import { AppIcon } from '@/shared/assets/images';
 import { Paper } from '../../paper/ui/Paper';
@@ -7,25 +8,31 @@ import { Paper } from '../../paper/ui/Paper';
 export type OutsideMainLayoutProps = ViewProps & {
 	ref?: Ref<View>;
 	contentContainerStyle?: StyleProp<ViewStyle>;
+	safeAreaInsets?: Partial<EdgeInsets>;
 };
 
 export const OutsideMainLayout = ({
 	children,
 	style,
 	contentContainerStyle,
+	safeAreaInsets,
 	...props
 }: OutsideMainLayoutProps) => {
 	const { styles } = useStyles(stylesheet);
 
 	return (
 		<View style={[styles.layout, style]} {...props}>
-			<View style={styles.header}>
-				<Image style={styles.appIcon} source={AppIcon} />
-			</View>
+			<View style={styles.safeAreaContainer(safeAreaInsets)}>
+				<View style={styles.header}>
+					<Image style={styles.appIcon} source={AppIcon} />
+				</View>
 
-			<Paper style={[styles.paper, contentContainerStyle]} disableAndroidBorder>
-				{children}
-			</Paper>
+				<Paper style={styles.paper(safeAreaInsets)} disableAndroidBorder>
+					<View style={[styles.contentContainer, contentContainerStyle]}>
+						{children}
+					</View>
+				</Paper>
+			</View>
 		</View>
 	);
 };
@@ -35,6 +42,12 @@ const stylesheet = createStyleSheet(theme => ({
 		flex: 1,
 		backgroundColor: theme.colors.primary
 	},
+	safeAreaContainer: (safeAreaInsets?: Partial<EdgeInsets>) => ({
+		flex: 1,
+		paddingTop: safeAreaInsets?.top,
+		paddingRight: safeAreaInsets?.right,
+		paddingLeft: safeAreaInsets?.left
+	}),
 	header: {
 		flex: 0.3,
 		flexShrink: 1,
@@ -49,10 +62,13 @@ const stylesheet = createStyleSheet(theme => ({
 	title: {
 		fontSize: 28
 	},
-	paper: {
+	paper: (safeAreaInsets?: Partial<EdgeInsets>) => ({
 		flex: 0.7,
-		paddingTop: theme.spacing,
+		paddingBottom: safeAreaInsets?.bottom,
 		borderBottomLeftRadius: 0,
 		borderBottomRightRadius: 0
+	}),
+	contentContainer: {
+		flex: 1
 	}
 }));

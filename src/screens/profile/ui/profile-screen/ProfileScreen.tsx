@@ -16,7 +16,7 @@ export const ProfileScreen = () => {
 
 	if (isLoading) {
 		return (
-			<View style={[styles.centringContainer, styles.container]}>
+			<View style={styles.loaderContainer}>
 				<CircularLoader />
 			</View>
 		);
@@ -25,7 +25,7 @@ export const ProfileScreen = () => {
 	if (isSuccess) {
 		return (
 			<Content
-				contentContainerStyle={styles.container}
+				contentContainerStyle={styles.contentContainer}
 				profile={data!}
 				refreshing={isRefetching}
 				onRefresh={refetch}
@@ -35,7 +35,7 @@ export const ProfileScreen = () => {
 
 	return (
 		<StatusScreen
-			style={styles.container}
+			style={styles.status}
 			iconSlot={<HeartBrokenIcon color={theme.colors.red} />}
 			title='Ошибка'
 			description='профиль не найден, попробуй позже или обратись в поддержку'
@@ -53,12 +53,15 @@ export const ProfileScreen = () => {
 };
 
 const stylesheet = createStyleSheet(theme => ({
-	container: {
-		padding: theme.spacing
-	},
-	centringContainer: {
+	loaderContainer: {
 		flex: 1,
 		justifyContent: 'center',
 		alignItems: 'center'
+	},
+	contentContainer: {
+		padding: theme.spacing
+	},
+	status: {
+		padding: theme.spacing
 	}
 }));

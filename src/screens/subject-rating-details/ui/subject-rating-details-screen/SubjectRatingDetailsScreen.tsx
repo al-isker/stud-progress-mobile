@@ -1,5 +1,6 @@
 import { Link } from 'expo-router';
 import { View } from 'react-native';
+import { EdgeInsets, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
 import { HeartBrokenIcon } from '@/shared/assets/icons';
 import { links } from '@/shared/config/navigation';
@@ -12,12 +13,14 @@ import { Content } from '../content/Content';
 export const SubjectRatingDetailsScreen = () => {
 	const { styles, theme } = useStyles(stylesheet);
 
+	const safeAreaInsets = useSafeAreaInsets();
+
 	const { data, refetch, isLoading, isSuccess, isRefetching } =
 		useSubjectRatingDetails();
 
 	if (isLoading) {
 		return (
-			<View style={[styles.centringContainer, styles.container]}>
+			<View style={styles.loaderContainer(safeAreaInsets)}>
 				<CircularLoader />
 			</View>
 		);
@@ -26,7 +29,7 @@ export const SubjectRatingDetailsScreen = () => {
 	if (isSuccess) {
 		return (
 			<Content
-				contentContainerStyle={styles.container}
+				contentContainerStyle={styles.contentContainer(safeAreaInsets)}
 				subjectRatingDetails={data!}
 				refreshing={isRefetching}
 				onRefresh={refetch}
@@ -36,7 +39,8 @@ export const SubjectRatingDetailsScreen = () => {
 
 	return (
 		<StatusScreen
-			style={styles.container}
+			style={styles.status}
+			safeAreaInsets={{ bottom: safeAreaInsets.bottom }}
 			iconSlot={<HeartBrokenIcon color={theme.colors.red} />}
 			title='Ошибка'
 			description='баллы не найдены, попробуй позже или обратись в поддержку'
@@ -54,12 +58,17 @@ export const SubjectRatingDetailsScreen = () => {
 };
 
 const stylesheet = createStyleSheet(theme => ({
-	container: {
-		padding: theme.spacing
-	},
-	centringContainer: {
+	loaderContainer: (safeAreaInsets: EdgeInsets) => ({
 		flex: 1,
 		justifyContent: 'center',
-		alignItems: 'center'
+		alignItems: 'center',
+		paddingBottom: safeAreaInsets.bottom
+	}),
+	contentContainer: (safeAreaInsets: EdgeInsets) => ({
+		padding: theme.spacing,
+		paddingBottom: theme.spacing + safeAreaInsets.bottom
+	}),
+	status: {
+		padding: theme.spacing
 	}
 }));

@@ -61,7 +61,7 @@ export const Content = ({
 			<EventListSection
 				eventList={subjectRatingDetails.ratingByCurrentSemester.eventList}
 			/>
-			<View style={{ marginBottom: theme.dimensions.window.height / 3 }} />
+			<View style={{ marginBottom: theme.dimensions.window.height / 2.5 }} />
 		</ScrollView>
 	);
 };

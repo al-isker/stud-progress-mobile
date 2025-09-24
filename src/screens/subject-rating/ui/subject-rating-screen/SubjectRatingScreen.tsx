@@ -17,7 +17,7 @@ export const SubjectRatingScreen = () => {
 
 	if (isLoading) {
 		return (
-			<View style={[styles.centringContainer, styles.container]}>
+			<View style={styles.loaderContainer}>
 				<CircularLoader />
 			</View>
 		);
@@ -26,7 +26,7 @@ export const SubjectRatingScreen = () => {
 	if (isEmptyList) {
 		return (
 			<StatusScreen
-				style={styles.container}
+				style={styles.status}
 				iconSlot={<FolderOpenIcon color={theme.colors.primary} />}
 				title='Здесь пусто'
 				description='в выбранном семестре ты не получил ни одного балла'
@@ -42,7 +42,7 @@ export const SubjectRatingScreen = () => {
 	if (isSuccess) {
 		return (
 			<IOList
-				contentContainerStyle={styles.container}
+				contentContainerStyle={styles.contentContainer}
 				subjectRatingList={data!}
 				refreshing={isRefetching}
 				onRefresh={refetch}
@@ -52,7 +52,7 @@ export const SubjectRatingScreen = () => {
 
 	return (
 		<StatusScreen
-			style={styles.container}
+			style={styles.status}
 			iconSlot={<HeartBrokenIcon color={theme.colors.red} />}
 			title='Ошибка'
 			description='баллы не найдены, попробуй позже или обратись в поддержку'
@@ -70,12 +70,15 @@ export const SubjectRatingScreen = () => {
 };
 
 const stylesheet = createStyleSheet(theme => ({
-	container: {
-		padding: theme.spacing
-	},
-	centringContainer: {
+	loaderContainer: {
 		flex: 1,
 		justifyContent: 'center',
 		alignItems: 'center'
+	},
+	contentContainer: {
+		padding: theme.spacing
+	},
+	status: {
+		padding: theme.spacing
 	}
 }));

@@ -1,4 +1,5 @@
 import { Tabs as NativeTabs } from 'expo-router';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useStyles } from 'react-native-unistyles';
 import {
 	GradeIcon,
@@ -12,8 +13,11 @@ import { Pressable } from '@/shared/ui/pressable';
 export const Tabs = () => {
 	const { theme } = useStyles();
 
+	const safeAreaInsets = useSafeAreaInsets();
+
 	return (
 		<NativeTabs
+			safeAreaInsets={{ bottom: safeAreaInsets.bottom }}
 			screenOptions={{
 				animation: 'shift',
 				transitionSpec: {
@@ -28,12 +32,12 @@ export const Tabs = () => {
 					backgroundColor: theme.colors.bgBase
 				},
 				tabBarStyle: {
-					height: 60,
+					height: 60 + safeAreaInsets.bottom,
 					backgroundColor: theme.colors.bgPaper
 				},
 				tabBarButton: ({ ref, android_ripple, style, ...props }) => (
 					<Pressable
-						style={[{ paddingVertical: 9 }, style]}
+						style={[{ paddingVertical: 10 }, style]}
 						feedbackColor={theme.colors.primaryAlpha(0.1)}
 						{...props}
 					/>

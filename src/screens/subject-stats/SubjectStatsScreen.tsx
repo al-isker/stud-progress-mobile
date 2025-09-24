@@ -16,7 +16,6 @@ export const SubjectStatsScreen = () => {
 
 const stylesheet = createStyleSheet(theme => ({
 	container: {
-		padding: theme.spacing,
 		flex: 1,
 		justifyContent: 'center',
 		alignItems: 'center',

@@ -10,7 +10,7 @@ export const RootSafeArea = ({ children }: { children: ReactNode }) => {
 			edges={['left', 'right']}
 			style={{
 				flex: 1,
-				backgroundColor: theme.colors.white
+				backgroundColor: theme.colors.bgBase
 			}}
 		>
 			{children}

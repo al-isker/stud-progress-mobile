@@ -1,17 +1,20 @@
 import { Ref } from 'react';
 import { Text, View, ViewProps } from 'react-native';
 import { SharedValue } from 'react-native-reanimated';
+import { EdgeInsets } from 'react-native-safe-area-context';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
 import { ProgressLoader } from '../../progress-loader';
 
 export type LoadingScreenProps = ViewProps & {
 	ref?: Ref<View>;
+	safeAreaInsets?: Partial<EdgeInsets>;
 	progress: SharedValue<number>;
 	description?: string;
 };
 
 export const LoadingScreen = ({
 	style,
+	safeAreaInsets,
 	progress,
 	description,
 	...props
@@ -20,13 +23,15 @@ export const LoadingScreen = ({
 
 	return (
 		<View style={[styles.container, style]} {...props}>
-			<View style={styles.appBanner}>
-				<Text style={styles.title}>Stud Progress</Text>
+			<View style={styles.safeAreaContainer(safeAreaInsets)}>
+				<View style={styles.appBanner}>
+					<Text style={styles.title}>Stud Progress</Text>
+				</View>
+
+				{description && <Text style={styles.description}>{description}</Text>}
+
+				<ProgressLoader colorOnPrimary sharedValue={progress} />
 			</View>
-
-			{description && <Text style={styles.description}>{description}</Text>}
-
-			<ProgressLoader colorOnPrimary sharedValue={progress} />
 		</View>
 	);
 };
@@ -37,6 +42,13 @@ const stylesheet = createStyleSheet(theme => ({
 		padding: theme.spacing * 2,
 		backgroundColor: theme.colors.primary
 	},
+	safeAreaContainer: (safeAreaInsets?: Partial<EdgeInsets>) => ({
+		flex: 1,
+		paddingTop: safeAreaInsets?.top,
+		paddingRight: safeAreaInsets?.right,
+		paddingBottom: safeAreaInsets?.bottom,
+		paddingLeft: safeAreaInsets?.left
+	}),
 	appBanner: {
 		width: '100%',
 		margin: 'auto',

@@ -1,5 +1,6 @@
 import { Link, router } from 'expo-router';
-import { View } from 'react-native';
+import { ScrollView, View } from 'react-native';
+import { EdgeInsets, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
 import { routes } from '@/shared/config/navigation';
 import { Button } from '@/shared/ui/button';
@@ -9,6 +10,8 @@ import { MutationError } from './MutationError';
 
 export const LoginMainForm = () => {
 	const { styles } = useStyles(stylesheet);
+
+	const safeAreaInsets = useSafeAreaInsets();
 
 	const {
 		defaultFullName,
@@ -23,44 +26,48 @@ export const LoginMainForm = () => {
 
 	return (
 		<View style={styles.container}>
-			<TextField
-				size='large'
-				style={styles.formItem}
-				label='ФИО'
-				defaultValue={defaultFullName}
-				onChangeText={handleFullNameChange}
-			/>
-
-			<TextField
-				size='large'
-				style={styles.formItem}
-				label='Пароль'
-				defaultValue={defaultPassword}
-				onChangeText={handlePasswordChange}
-			/>
-
-			<MutationError style={[styles.formItem, styles.mutationError]} />
-
-			<View style={styles.actions}>
-				<Link href={routes.loginLoading} asChild>
-					<Button size='large' style={styles.button} title='Начать' />
-				</Link>
-
-				<Button
-					variant='text'
-					style={styles.button}
-					title='назад'
-					onPress={onBackPress}
+			<ScrollView
+				contentContainerStyle={styles.contentContainer(safeAreaInsets)}
+				showsVerticalScrollIndicator={false}
+			>
+				<TextField
+					size='large'
+					style={styles.formItem}
+					label='ФИО'
+					defaultValue={defaultFullName}
+					onChangeText={handleFullNameChange}
 				/>
-			</View>
+
+				<TextField
+					size='large'
+					style={styles.formItem}
+					label='Пароль'
+					defaultValue={defaultPassword}
+					onChangeText={handlePasswordChange}
+				/>
+
+				<MutationError style={[styles.formItem, styles.mutationError]} />
+
+				<View style={styles.actions}>
+					<Link href={routes.loginLoading} asChild>
+						<Button size='large' title='Начать' />
+					</Link>
+
+					<Button variant='text' title='назад' onPress={onBackPress} />
+				</View>
+			</ScrollView>
 		</View>
 	);
 };
 
-const stylesheet = createStyleSheet({
+const stylesheet = createStyleSheet(theme => ({
 	container: {
 		flex: 1
 	},
+	contentContainer: (safeAreaInsets: EdgeInsets) => ({
+		minHeight: '100%',
+		paddingBottom: theme.spacing + safeAreaInsets.bottom
+	}),
 	formItem: {
 		marginBottom: 16
 	},
@@ -68,9 +75,7 @@ const stylesheet = createStyleSheet({
 		textAlign: 'center'
 	},
 	actions: {
-		marginTop: 'auto'
-	},
-	button: {
-		marginBottom: 8
+		marginTop: 'auto',
+		rowGap: 8
 	}
-});
+}));
