@@ -2,9 +2,8 @@ import { useEffect } from 'react';
 import {
 	addNotificationReceivedListener,
 	addNotificationResponseReceivedListener,
-	getLastNotificationResponseAsync
+	getLastNotificationResponse
 } from 'expo-notifications';
-import { useAsyncEffect } from '@/shared/lib/react-sugar';
 import { useInvalidateQueriesOnNotification } from './use-invalidate-queries-on-notification';
 import { useRedirectOnNotification } from './use-redirect-on-notification';
 
@@ -12,8 +11,8 @@ export const useNotificationResponseHandler = () => {
 	const redirectOnNotification = useRedirectOnNotification();
 	const invalidateQueriesOnNotification = useInvalidateQueriesOnNotification();
 
-	useAsyncEffect(async () => {
-		const response = await getLastNotificationResponseAsync();
+	useEffect(() => {
+		const response = getLastNotificationResponse();
 
 		if (response) {
 			redirectOnNotification(response.notification);
