@@ -1,27 +1,65 @@
 import { useEffect } from 'react';
 import {
+	Notification,
 	addNotificationReceivedListener,
 	addNotificationResponseReceivedListener,
 	getLastNotificationResponse
 } from 'expo-notifications';
-import { useInvalidateQueriesOnNotification } from './use-invalidate-queries-on-notification';
-import { useRedirectOnNotification } from './use-redirect-on-notification';
+import { router } from 'expo-router';
+import { useQueryClient } from '@tanstack/react-query';
+import { SUBJECT_GRADE_KEY, SUBJECT_RATING_KEY } from '@/shared/api';
+import { routes } from '@/shared/config/navigation';
+import { PushNotificationDataType } from '../types/push-notification-data';
+import { PushNotificationTypeEnum } from '../types/push-notification-type';
 
 export const useNotificationResponseHandler = () => {
-	const redirectOnNotification = useRedirectOnNotification();
-	const invalidateQueriesOnNotification = useInvalidateQueriesOnNotification();
+	const queryClient = useQueryClient();
+
+	const redirectByNotification = (notification: Notification) => {
+		const data = notification.request.content.data as PushNotificationDataType;
+
+		switch (data.type) {
+			case PushNotificationTypeEnum.GRADE_UPDATED:
+				router.push(routes.subjectGrade);
+				break;
+
+			case PushNotificationTypeEnum.EVENT_CREATED:
+			case PushNotificationTypeEnum.EVENT_UPDATED:
+				router.push(routes.subjectByIdRating(parseInt(data.subjectId)));
+				break;
+		}
+	};
+
+	const invalidateQueriesByNotification = (notification: Notification) => {
+		const data = notification.request.content.data as PushNotificationDataType;
+
+		switch (data.type) {
+			case PushNotificationTypeEnum.GRADE_UPDATED:
+				queryClient.invalidateQueries({
+					queryKey: [SUBJECT_GRADE_KEY]
+				});
+				break;
+
+			case PushNotificationTypeEnum.EVENT_CREATED:
+			case PushNotificationTypeEnum.EVENT_UPDATED:
+				queryClient.invalidateQueries({
+					queryKey: [SUBJECT_RATING_KEY]
+				});
+				break;
+		}
+	};
 
 	useEffect(() => {
 		const response = getLastNotificationResponse();
 
 		if (response) {
-			redirectOnNotification(response.notification);
+			redirectByNotification(response.notification);
 		}
 	}, []);
 
 	useEffect(() => {
 		const subscription = addNotificationResponseReceivedListener(response => {
-			redirectOnNotification(response.notification);
+			redirectByNotification(response.notification);
 		});
 
 		return subscription.remove;
@@ -29,7 +67,7 @@ export const useNotificationResponseHandler = () => {
 
 	useEffect(() => {
 		const subscription = addNotificationReceivedListener(notification => {
-			invalidateQueriesOnNotification(notification);
+			invalidateQueriesByNotification(notification);
 		});
 
 		return subscription.remove;

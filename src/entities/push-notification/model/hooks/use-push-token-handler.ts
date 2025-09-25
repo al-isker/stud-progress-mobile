@@ -4,46 +4,28 @@ import {
 	getDevicePushTokenAsync
 } from 'expo-notifications';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { WAS_SENT_PUSH_TOKEN_STORAGE_KEY } from '@/shared/config/storage';
+import { SHOULD_SENT_PUSH_TOKEN_STORAGE_KEY } from '@/shared/config/storage';
 import { useAsyncEffect } from '@/shared/lib/react-sugar';
-import { useUpdateFcmTokenMutation } from '../../api/use-update-fcm-token-mutation';
+import { useUpdateFcmToken } from './use-update-fcm-token';
 
 export const usePushTokenHandler = () => {
-	const updateFcmTokenMutation = useUpdateFcmTokenMutation();
-
-	const handleUpdateFcmTokenSuccess = () => {
-		AsyncStorage.setItem(WAS_SENT_PUSH_TOKEN_STORAGE_KEY, String(true));
-	};
-
-	const handleUpdateFcmTokenError = () => {
-		AsyncStorage.setItem(WAS_SENT_PUSH_TOKEN_STORAGE_KEY, String(false));
-	};
+	const { updateFcmToken } = useUpdateFcmToken();
 
 	useAsyncEffect(async () => {
-		const wasSentPushToken = JSON.parse(
-			String(await AsyncStorage.getItem(WAS_SENT_PUSH_TOKEN_STORAGE_KEY))
+		const shouldSentPushToken = JSON.parse(
+			String(await AsyncStorage.getItem(SHOULD_SENT_PUSH_TOKEN_STORAGE_KEY))
 		);
 
-		if (!wasSentPushToken) {
+		if (shouldSentPushToken) {
 			const pushToken = await getDevicePushTokenAsync();
 
-			const bodyMutation = { fcmToken: pushToken.data };
-
-			updateFcmTokenMutation.mutate(bodyMutation, {
-				onSuccess: handleUpdateFcmTokenSuccess,
-				onError: handleUpdateFcmTokenError
-			});
+			updateFcmToken({ fcmToken: pushToken.data });
 		}
 	}, []);
 
 	useEffect(() => {
 		const subscription = addPushTokenListener(pushToken => {
-			const bodyMutation = { fcmToken: pushToken.data };
-
-			updateFcmTokenMutation.mutate(bodyMutation, {
-				onSuccess: handleUpdateFcmTokenSuccess,
-				onError: handleUpdateFcmTokenError
-			});
+			updateFcmToken({ fcmToken: pushToken.data });
 		});
 
 		return subscription.remove;
