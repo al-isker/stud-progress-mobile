@@ -1,5 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { SHOULD_SENT_PUSH_TOKEN_STORAGE_KEY } from '@/shared/config/storage';
+import { AsyncJSONStorage } from '@/shared/lib/async-json-storage';
 import { useUpdateFcmTokenMutation } from '../../api/use-update-fcm-token-mutation';
 import { UpdateFcmTokenBodyType } from '../types/update-device-info-body';
 
@@ -11,7 +12,7 @@ export const useUpdateFcmToken = () => {
 	};
 
 	const handleError = () => {
-		AsyncStorage.setItem(SHOULD_SENT_PUSH_TOKEN_STORAGE_KEY, String(true));
+		AsyncJSONStorage.setItem(SHOULD_SENT_PUSH_TOKEN_STORAGE_KEY, true);
 	};
 
 	const updateFcmToken = (body: UpdateFcmTokenBodyType) => {
