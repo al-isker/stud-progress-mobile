@@ -53,7 +53,9 @@ export const useNotificationResponseHandler = () => {
 		const response = getLastNotificationResponse();
 
 		if (response) {
-			redirectByNotification(response.notification);
+			setTimeout(() => {
+				redirectByNotification(response.notification);
+			}, 0);
 		}
 	}, []);
 
