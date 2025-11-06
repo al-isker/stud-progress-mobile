@@ -18,15 +18,11 @@ export const MainAppLayout = () => {
 				<Stack screenOptions={{ headerShown: false }}>
 					<Stack.Screen
 						name={ScreenNames.TABS}
-						options={{
-							animation: 'none'
-						}}
+						options={{ animation: 'none' }}
 					/>
 					<Stack.Screen
 						name={ScreenNames.SUBJECT_BY_ID_RATING}
-						options={{
-							animation: 'fade_from_bottom'
-						}}
+						options={{ animation: 'simple_push' }}
 					/>
 				</Stack>
 			</View>

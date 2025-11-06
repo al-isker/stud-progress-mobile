@@ -15,7 +15,12 @@ export const RootAppLayout = () => (
 			<UnistylesProvider>
 				<PushNotificationProvider>
 					<RootSafeArea>
-						<Stack screenOptions={{ headerShown: false }}>
+						<Stack
+							screenOptions={{
+								animation: 'simple_push',
+								headerShown: false
+							}}
+						>
 							<Stack.Screen name={ScreenNames.MAIN} />
 							<Stack.Screen name={ScreenNames.LOGIN} />
 							<Stack.Screen name={ScreenNames.UPDATE_SEMESTER} />

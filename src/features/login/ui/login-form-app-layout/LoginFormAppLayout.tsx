@@ -20,6 +20,7 @@ export const LoginFormAppLayout = () => {
 
 				<Stack
 					screenOptions={{
+						animation: 'simple_push',
 						headerShown: false,
 						contentStyle: { backgroundColor: theme.colors.bgPaper }
 					}}

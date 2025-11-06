@@ -4,7 +4,12 @@ import { UpdateSemesterContextProvider } from './UpdateSemesterContextProvider';
 
 export const UpdateSemesterAppLayout = () => (
 	<UpdateSemesterContextProvider>
-		<Stack screenOptions={{ headerShown: false }}>
+		<Stack
+			screenOptions={{
+				animation: 'simple_push',
+				headerShown: false
+			}}
+		>
 			<Stack.Screen name={ScreenNames.UPDATE_SEMESTER_FORM} />
 			<Stack.Screen name={ScreenNames.UPDATE_SEMESTER_LOADING} />
 		</Stack>
