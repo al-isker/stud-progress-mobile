@@ -11,12 +11,9 @@ import {
 	REFRESH_TOKEN_STORAGE_KEY
 } from '@/shared/config/storage';
 import { useProgressAnimation } from '@/shared/lib/animation';
-import { useLockNavigation } from '@/shared/lib/navigation';
 import { useLoginContext } from './use-login-context';
 
 export const useLogin = () => {
-	const lockNavigation = useLockNavigation();
-
 	const loginContext = useLoginContext();
 
 	const loginMutation = useLoginMutation();
@@ -36,14 +33,12 @@ export const useLogin = () => {
 
 		updateFcmToken({ fcmToken: pushToken.data });
 
-		lockNavigation.remove();
 		router.replace(routes.subjectRating);
 	};
 
 	const handleError = (error: ApiErrorType) => {
 		loginContext.setMutationError(error);
 
-		lockNavigation.remove();
 		router.back();
 	};
 
