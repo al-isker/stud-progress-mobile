@@ -1,31 +1,21 @@
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
-import { View } from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { UnistylesRuntime } from 'react-native-unistyles';
 import { Header } from '@/widgets/header';
 import { ScreenNames } from '@/shared/config/navigation';
 
-export const MainAppLayout = () => {
-	const safeAreaInsets = useSafeAreaInsets();
+export const MainAppLayout = () => (
+	<>
+		<StatusBar style='light' />
 
-	return (
-		<>
-			<StatusBar style='light' />
+		<Header safeAreaInsetTop={UnistylesRuntime.insets.top} />
 
-			<View style={{ flex: 1 }}>
-				<Header safeAreaInsetTop={safeAreaInsets.top} />
-
-				<Stack screenOptions={{ headerShown: false }}>
-					<Stack.Screen
-						name={ScreenNames.TABS}
-						options={{ animation: 'none' }}
-					/>
-					<Stack.Screen
-						name={ScreenNames.SUBJECT_BY_ID_RATING}
-						options={{ animation: 'simple_push' }}
-					/>
-				</Stack>
-			</View>
-		</>
-	);
-};
+		<Stack screenOptions={{ headerShown: false }}>
+			<Stack.Screen name={ScreenNames.TABS} options={{ animation: 'none' }} />
+			<Stack.Screen
+				name={ScreenNames.SUBJECT_BY_ID_RATING}
+				options={{ animation: 'simple_push' }}
+			/>
+		</Stack>
+	</>
+);

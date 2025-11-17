@@ -1,7 +1,10 @@
 import { Link, router } from 'expo-router';
 import { ScrollView, View } from 'react-native';
-import { EdgeInsets, useSafeAreaInsets } from 'react-native-safe-area-context';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import {
+	UnistylesRuntime,
+	createStyleSheet,
+	useStyles
+} from 'react-native-unistyles';
 import { routes } from '@/shared/config/navigation';
 import { Button } from '@/shared/ui/button';
 import { TextField } from '@/shared/ui/text-field';
@@ -10,8 +13,6 @@ import { MutationError } from './MutationError';
 
 export const LoginMainForm = () => {
 	const { styles } = useStyles(stylesheet);
-
-	const safeAreaInsets = useSafeAreaInsets();
 
 	const {
 		defaultFullName,
@@ -27,7 +28,7 @@ export const LoginMainForm = () => {
 	return (
 		<View style={styles.container}>
 			<ScrollView
-				contentContainerStyle={styles.contentContainer(safeAreaInsets)}
+				contentContainerStyle={styles.contentContainer}
 				showsVerticalScrollIndicator={false}
 			>
 				<TextField
@@ -64,10 +65,10 @@ const stylesheet = createStyleSheet(theme => ({
 	container: {
 		flex: 1
 	},
-	contentContainer: (safeAreaInsets: EdgeInsets) => ({
+	contentContainer: {
 		minHeight: '100%',
-		paddingBottom: theme.spacing + safeAreaInsets.bottom
-	}),
+		paddingBottom: theme.spacing + UnistylesRuntime.insets.bottom
+	},
 	formItem: {
 		marginBottom: 16
 	},

@@ -1,7 +1,10 @@
 import { Link } from 'expo-router';
 import { View } from 'react-native';
-import { EdgeInsets, useSafeAreaInsets } from 'react-native-safe-area-context';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import {
+	UnistylesRuntime,
+	createStyleSheet,
+	useStyles
+} from 'react-native-unistyles';
 import { HeartBrokenIcon } from '@/shared/assets/icons';
 import { links } from '@/shared/config/navigation';
 import { Button } from '@/shared/ui/button';
@@ -13,14 +16,12 @@ import { Content } from '../content/Content';
 export const SubjectRatingDetailsScreen = () => {
 	const { styles, theme } = useStyles(stylesheet);
 
-	const safeAreaInsets = useSafeAreaInsets();
-
 	const { data, refetch, isLoading, isSuccess, isRefetching } =
 		useSubjectRatingDetails();
 
 	if (isLoading) {
 		return (
-			<View style={styles.loaderContainer(safeAreaInsets)}>
+			<View style={styles.loaderContainer}>
 				<CircularLoader />
 			</View>
 		);
@@ -29,7 +30,7 @@ export const SubjectRatingDetailsScreen = () => {
 	if (isSuccess) {
 		return (
 			<Content
-				contentContainerStyle={styles.contentContainer(safeAreaInsets)}
+				contentContainerStyle={styles.contentContainer}
 				subjectRatingDetails={data!}
 				refreshing={isRefetching}
 				onRefresh={refetch}
@@ -40,7 +41,7 @@ export const SubjectRatingDetailsScreen = () => {
 	return (
 		<StatusScreen
 			style={styles.status}
-			safeAreaInsets={{ bottom: safeAreaInsets.bottom }}
+			safeAreaInsets={{ bottom: UnistylesRuntime.insets.bottom }}
 			iconSlot={<HeartBrokenIcon color={theme.colors.red} />}
 			title='Ошибка'
 			description='баллы не найдены, попробуй позже или обратись в поддержку'
@@ -58,16 +59,16 @@ export const SubjectRatingDetailsScreen = () => {
 };
 
 const stylesheet = createStyleSheet(theme => ({
-	loaderContainer: (safeAreaInsets: EdgeInsets) => ({
+	loaderContainer: {
 		flex: 1,
 		justifyContent: 'center',
 		alignItems: 'center',
-		paddingBottom: safeAreaInsets.bottom
-	}),
-	contentContainer: (safeAreaInsets: EdgeInsets) => ({
+		paddingBottom: UnistylesRuntime.insets.bottom
+	},
+	contentContainer: {
 		padding: theme.spacing,
-		paddingBottom: theme.spacing + safeAreaInsets.bottom
-	}),
+		paddingBottom: theme.spacing + UnistylesRuntime.insets.bottom
+	},
 	status: {
 		padding: theme.spacing
 	}

@@ -1,6 +1,9 @@
 import { ScrollView, StyleProp, View, ViewStyle } from 'react-native';
-import { EdgeInsets, useSafeAreaInsets } from 'react-native-safe-area-context';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import {
+	UnistylesRuntime,
+	createStyleSheet,
+	useStyles
+} from 'react-native-unistyles';
 import { semesterOptions } from '@/entities/semester';
 import { ArrowRightIcon } from '@/shared/assets/icons';
 import { Command } from '@/shared/ui/command';
@@ -14,8 +17,6 @@ type LoginSemesterFormProps = {
 export const LoginSemesterForm = ({ style }: LoginSemesterFormProps) => {
 	const { styles } = useStyles(stylesheet);
 
-	const safeAreaInsets = useSafeAreaInsets();
-
 	const { selectSemester } = useLoginSemesterForm();
 
 	return (
@@ -23,7 +24,7 @@ export const LoginSemesterForm = ({ style }: LoginSemesterFormProps) => {
 			<Divider style={styles.divider} />
 
 			<ScrollView
-				contentContainerStyle={styles.contentContainer(safeAreaInsets)}
+				contentContainerStyle={styles.contentContainer}
 				showsVerticalScrollIndicator={false}
 			>
 				{semesterOptions.map((option, index) => (
@@ -47,11 +48,11 @@ const stylesheet = createStyleSheet(theme => ({
 	divider: {
 		marginBottom: 2
 	},
-	contentContainer: (safeAreaInsets: EdgeInsets) => ({
+	contentContainer: {
 		flexDirection: 'column',
-		paddingBottom: theme.spacing + safeAreaInsets.bottom,
+		paddingBottom: theme.spacing + UnistylesRuntime.insets.bottom,
 		rowGap: 2
-	}),
+	},
 	command: {
 		borderRadius: 2
 	},

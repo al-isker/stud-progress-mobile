@@ -1,21 +1,22 @@
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { Text } from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import {
+	UnistylesRuntime,
+	createStyleSheet,
+	useStyles
+} from 'react-native-unistyles';
 import { ScreenNames } from '@/shared/config/navigation';
 import { OutsideMainLayout } from '@/shared/ui/outside-main-layout';
 
 export const LoginFormAppLayout = () => {
 	const { styles, theme } = useStyles(stylesheet);
 
-	const safeAreaInsets = useSafeAreaInsets();
-
 	return (
 		<>
 			<StatusBar style='light' />
 
-			<OutsideMainLayout safeAreaInsets={{ top: safeAreaInsets.top }}>
+			<OutsideMainLayout safeAreaInsets={{ top: UnistylesRuntime.insets.top }}>
 				<Text style={styles.title}>Вход</Text>
 
 				<Stack
