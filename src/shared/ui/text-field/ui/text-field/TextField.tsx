@@ -48,7 +48,7 @@ export const TextField = ({
 	const sharedIsFocus = useSharedValue(false);
 	const sharedIsThereValue = useSharedValue(!!(value ?? defaultValue)?.length);
 
-	const textInputContainerStyles = useAnimatedStyle(() => ({
+	const textInputContainerAnimatedStyle = useAnimatedStyle(() => ({
 		borderColor: withTiming(
 			sharedIsFocus.value
 				? theme.colors.primary
@@ -57,7 +57,7 @@ export const TextField = ({
 		)
 	}));
 
-	const labelAnimatedStyles = useAnimatedStyle(() => ({
+	const labelAnimatedStyle = useAnimatedStyle(() => ({
 		color: withTiming(
 			sharedIsFocus.value ? theme.colors.primary : styles.label.color,
 			animationConfig
@@ -99,9 +99,9 @@ export const TextField = ({
 		<View ref={ref} style={style}>
 			<TouchableWithoutFeedback onPress={handleTouchablePress}>
 				<Animated.View
-					style={[styles.textInputContainer, textInputContainerStyles]}
+					style={[styles.textInputContainer, textInputContainerAnimatedStyle]}
 				>
-					<Animated.Text style={[styles.label, labelAnimatedStyles]}>
+					<Animated.Text style={[styles.label, labelAnimatedStyle]}>
 						{label}
 					</Animated.Text>
 
