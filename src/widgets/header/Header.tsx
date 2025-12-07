@@ -1,21 +1,17 @@
 import { Text, View } from 'react-native';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import { StyleSheet } from 'react-native-unistyles';
 
 type HeaderProps = {
 	safeAreaInsetTop?: number;
 };
 
-export const Header = ({ safeAreaInsetTop }: HeaderProps) => {
-	const { styles } = useStyles(stylesheet);
+export const Header = ({ safeAreaInsetTop }: HeaderProps) => (
+	<View style={styles.header(safeAreaInsetTop)}>
+		<Text style={styles.title}>Stud Progress</Text>
+	</View>
+);
 
-	return (
-		<View style={styles.header(safeAreaInsetTop)}>
-			<Text style={styles.title}>Stud Progress</Text>
-		</View>
-	);
-};
-
-const stylesheet = createStyleSheet(theme => ({
+const styles = StyleSheet.create(theme => ({
 	header: (safeAreaInsetTop?: number) => ({
 		zIndex: theme.zIndex.header,
 		elevation: 8,

@@ -6,7 +6,7 @@ import {
 	onlineManager
 } from '@tanstack/react-query';
 import { AppState } from 'react-native';
-import { queryClient } from './query-client';
+import { queryClient } from '@/shared/lib/query-client';
 
 export const QueryProvider = ({ children }: { children: ReactNode }) => {
 	useEffect(() => {

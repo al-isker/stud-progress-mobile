@@ -1,5 +1,5 @@
 import { Tabs as NativeTabs } from 'expo-router';
-import { UnistylesRuntime, useStyles } from 'react-native-unistyles';
+import { useUnistyles } from 'react-native-unistyles';
 import {
 	GradeIcon,
 	HomeIcon,
@@ -10,11 +10,11 @@ import { ScreenNames } from '@/shared/config/navigation';
 import { Pressable } from '@/shared/ui/pressable';
 
 export const Tabs = () => {
-	const { theme } = useStyles();
+	const { theme, rt } = useUnistyles();
 
 	return (
 		<NativeTabs
-			safeAreaInsets={{ bottom: UnistylesRuntime.insets.bottom }}
+			safeAreaInsets={{ bottom: rt.insets.bottom }}
 			screenOptions={{
 				animation: 'shift',
 				transitionSpec: {
@@ -29,7 +29,7 @@ export const Tabs = () => {
 					backgroundColor: theme.colors.bgBase
 				},
 				tabBarStyle: {
-					height: 60 + UnistylesRuntime.insets.bottom,
+					height: 60 + rt.insets.bottom,
 					backgroundColor: theme.colors.bgPaper
 				},
 				tabBarButton: ({ ref, android_ripple, style, ...props }) => (

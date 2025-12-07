@@ -1,10 +1,6 @@
 import { Link, router } from 'expo-router';
 import { ScrollView, View } from 'react-native';
-import {
-	UnistylesRuntime,
-	createStyleSheet,
-	useStyles
-} from 'react-native-unistyles';
+import { StyleSheet } from 'react-native-unistyles';
 import { routes } from '@/shared/config/navigation';
 import { Button } from '@/shared/ui/button';
 import { TextField } from '@/shared/ui/text-field';
@@ -12,8 +8,6 @@ import { useLoginMainForm } from '../../model/hooks/use-login-main-form';
 import { MutationError } from './MutationError';
 
 export const LoginMainForm = () => {
-	const { styles } = useStyles(stylesheet);
-
 	const {
 		defaultFullName,
 		defaultPassword,
@@ -61,13 +55,13 @@ export const LoginMainForm = () => {
 	);
 };
 
-const stylesheet = createStyleSheet(theme => ({
+const styles = StyleSheet.create((theme, rt) => ({
 	container: {
 		flex: 1
 	},
 	contentContainer: {
 		minHeight: '100%',
-		paddingBottom: theme.spacing + UnistylesRuntime.insets.bottom
+		paddingBottom: theme.spacing + rt.insets.bottom
 	},
 	formItem: {
 		marginBottom: 16

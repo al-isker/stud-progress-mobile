@@ -1,6 +1,6 @@
 import { Link } from 'expo-router';
 import { View } from 'react-native';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import { StyleSheet, useUnistyles } from 'react-native-unistyles';
 import { FolderOpenIcon, HeartBrokenIcon } from '@/shared/assets/icons';
 import { links, routes } from '@/shared/config/navigation';
 import { Button } from '@/shared/ui/button';
@@ -10,7 +10,7 @@ import { useSubjectRatingList } from '../../model/hooks/use-subject-rating-list'
 import { IOList } from '../io-list/IOList';
 
 export const SubjectRatingScreen = () => {
-	const { styles, theme } = useStyles(stylesheet);
+	const { theme } = useUnistyles();
 
 	const { data, refetch, isLoading, isEmptyList, isSuccess, isRefetching } =
 		useSubjectRatingList();
@@ -69,7 +69,7 @@ export const SubjectRatingScreen = () => {
 	);
 };
 
-const stylesheet = createStyleSheet(theme => ({
+const styles = StyleSheet.create(theme => ({
 	loaderContainer: {
 		flex: 1,
 		justifyContent: 'center',

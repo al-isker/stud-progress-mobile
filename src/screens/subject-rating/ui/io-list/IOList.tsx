@@ -1,6 +1,6 @@
 import { StyleProp, ViewStyle } from 'react-native';
 import { IOScrollView } from 'react-native-intersection-observer';
-import { useStyles } from 'react-native-unistyles';
+import { useUnistyles } from 'react-native-unistyles';
 import { useRequestNotificationPermissions } from '@/entities/push-notification';
 import { SubjectRatingListType } from '@/entities/subject';
 import { RefreshControl } from '@/shared/ui/refresh-control';
@@ -21,7 +21,7 @@ export const IOList = ({
 	refreshing,
 	onRefresh
 }: IOListProps) => {
-	const { theme } = useStyles();
+	const { theme } = useUnistyles();
 
 	useRequestNotificationPermissions();
 

@@ -1,52 +1,53 @@
 {
-	"expo": {
-		"name": "Stud Progress",
-		"slug": "stud-progress",
-		"scheme": "stud-progress",
-		"version": "1.0.0",
-		"orientation": "portrait",
-		"icon": "./assets/app-icon.png",
-		"userInterfaceStyle": "light",
-		"newArchEnabled": true,
-		"splash": {
-			"image": "./assets/app-splash-icon.png",
-			"imageWidth": 300,
-			"resizeMode": "contain",
-			"backgroundColor": "#4b0aff"
-		},
-		"android": {
-			"package": "com.alisker.studprogress",
-			"adaptiveIcon": {
-				"foregroundImage": "./assets/app-adaptive-icon.png",
-				"backgroundColor": "#4b0aff"
-			},
-			"googleServicesFile": "./google-services.json"
-		},
-		"ios": {
-			"bundleIdentifier": "com.alisker.studprogress",
-			"supportsTablet": true,
-			"googleServicesFile": "./GoogleService-Info.plist",
-			"infoPlist": {
-				"ITSAppUsesNonExemptEncryption": false
-			}
-		},
-		"plugins": [
-			[
-				"expo-router",
-				{
-					"root": "./app"
-				}
-			]
-		],
-		"extra": {
-			"router": {
-				"origin": false,
-				"root": "./app"
-			},
-			"eas": {
-				"projectId": "013a1449-dd23-47b2-9b90-2bcf54eec682"
-			}
-		},
-		"owner": "al-isker"
-	}
+  "expo": {
+    "name": "Stud Progress",
+    "slug": "stud-progress",
+    "scheme": "stud-progress",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/app-icon.png",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/app-splash-icon.png",
+      "imageWidth": 300,
+      "resizeMode": "contain",
+      "backgroundColor": "#4b0aff"
+    },
+    "android": {
+      "package": "com.alisker.studprogress",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/app-adaptive-icon.png",
+        "backgroundColor": "#4b0aff"
+      },
+      "googleServicesFile": "./google-services.json"
+    },
+    "ios": {
+      "bundleIdentifier": "com.alisker.studprogress",
+      "supportsTablet": true,
+      "googleServicesFile": "./GoogleService-Info.plist",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
+    },
+    "plugins": [
+      [
+        "expo-router",
+        {
+          "root": "./app"
+        }
+      ],
+      "react-native-edge-to-edge"
+    ],
+    "extra": {
+      "router": {
+        "origin": false,
+        "root": "./app"
+      },
+      "eas": {
+        "projectId": "013a1449-dd23-47b2-9b90-2bcf54eec682"
+      }
+    },
+    "owner": "al-isker"
+  }
 }

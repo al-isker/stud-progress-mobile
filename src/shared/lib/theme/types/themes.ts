@@ -1,4 +1,4 @@
-import { LIGHT_THEME } from '@/shared/lib/theme';
+import { LIGHT_THEME } from '../const/themes';
 
 type AppThemes = {
 	light: typeof LIGHT_THEME;

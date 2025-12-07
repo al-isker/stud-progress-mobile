@@ -2,7 +2,7 @@ import { Ref } from 'react';
 import { Canvas, Group, Path, Skia } from '@shopify/react-native-skia';
 import { View, ViewProps } from 'react-native';
 import { SharedValue, useDerivedValue } from 'react-native-reanimated';
-import { useStyles } from 'react-native-unistyles';
+import { StyleSheet, useUnistyles } from 'react-native-unistyles';
 import { ProgressValue } from './ProgressValue';
 
 export type ProgressChartProps = ViewProps & {
@@ -30,7 +30,7 @@ export const ProgressChart = ({
 	formatValue,
 	...props
 }: ProgressChartProps) => {
-	const { theme } = useStyles();
+	const { theme } = useUnistyles();
 
 	const radius = diameter / 2;
 	const innerRadius = radius - strokeWidth / 2;
@@ -50,8 +50,8 @@ export const ProgressChart = ({
 	}, []);
 
 	return (
-		<View style={[{ width: diameter, height: diameter }, style]} {...props}>
-			<Canvas style={{ flex: 1 }}>
+		<View style={[styles.container(diameter), style]} {...props}>
+			<Canvas style={styles.canvas}>
 				<Group
 					transform={[{ rotate: -Math.PI / 2 }]}
 					origin={{ x: radius, y: radius }}
@@ -86,3 +86,13 @@ export const ProgressChart = ({
 		</View>
 	);
 };
+
+const styles = StyleSheet.create({
+	container: (diameter: number) => ({
+		width: diameter,
+		height: diameter
+	}),
+	canvas: {
+		flex: 1
+	}
+});

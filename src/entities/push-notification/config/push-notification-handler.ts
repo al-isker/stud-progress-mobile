@@ -1,6 +1,6 @@
 import { setNotificationHandler } from 'expo-notifications';
 
-export const runPushNotificationHandler = () => {
+export const pushNotificationHandler = () => {
 	setNotificationHandler({
 		handleNotification: async () => ({
 			shouldShowAlert: true,

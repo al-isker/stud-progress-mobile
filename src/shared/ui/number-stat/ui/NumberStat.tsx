@@ -1,6 +1,6 @@
 import { ReactElement, ReactNode, Ref } from 'react';
 import { Text, View } from 'react-native';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import { StyleSheet, useUnistyles } from 'react-native-unistyles';
 import { SlotProps, renderSlot } from '@/shared/lib/slot';
 import { Paper, PaperProps } from '../../paper';
 
@@ -22,7 +22,7 @@ export const NumberStat = ({
 	mainStartSlot,
 	...props
 }: NumberStatProps) => {
-	const { styles, theme } = useStyles(stylesheet);
+	const { theme } = useUnistyles();
 
 	return (
 		<Paper style={[styles.paper, style]} {...props}>
@@ -46,7 +46,7 @@ export const NumberStat = ({
 	);
 };
 
-const stylesheet = createStyleSheet(theme => ({
+const styles = StyleSheet.create(theme => ({
 	paper: {
 		flex: 1,
 		rowGap: theme.spacing * 1.2,

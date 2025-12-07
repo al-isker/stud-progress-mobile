@@ -1,11 +1,9 @@
 import { Text, TextProps } from 'react-native';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import { StyleSheet } from 'react-native-unistyles';
 
 export type ErrorTextProps = TextProps;
 
 export const ErrorText = ({ children, style, ...props }: ErrorTextProps) => {
-	const { styles } = useStyles(stylesheet);
-
 	if (children) {
 		return (
 			<Text style={[styles.text, style]} {...props}>
@@ -15,7 +13,7 @@ export const ErrorText = ({ children, style, ...props }: ErrorTextProps) => {
 	}
 };
 
-const stylesheet = createStyleSheet(theme => ({
+const styles = StyleSheet.create(theme => ({
 	text: {
 		color: theme.colors.red,
 		fontSize: 12,

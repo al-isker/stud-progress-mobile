@@ -1,7 +1,7 @@
 import { Ref } from 'react';
 import { Image, StyleProp, View, ViewProps, ViewStyle } from 'react-native';
 import { EdgeInsets } from 'react-native-safe-area-context';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import { StyleSheet } from 'react-native-unistyles';
 import { AppIcon } from '@/shared/assets/images';
 import { Paper } from '../../paper/ui/Paper';
 
@@ -17,27 +17,23 @@ export const OutsideMainLayout = ({
 	contentContainerStyle,
 	safeAreaInsets,
 	...props
-}: OutsideMainLayoutProps) => {
-	const { styles } = useStyles(stylesheet);
-
-	return (
-		<View style={[styles.layout, style]} {...props}>
-			<View style={styles.safeAreaContainer(safeAreaInsets)}>
-				<View style={styles.header}>
-					<Image style={styles.appIcon} source={AppIcon} />
-				</View>
-
-				<Paper style={styles.paper(safeAreaInsets)} disableAndroidBorder>
-					<View style={[styles.contentContainer, contentContainerStyle]}>
-						{children}
-					</View>
-				</Paper>
+}: OutsideMainLayoutProps) => (
+	<View style={[styles.layout, style]} {...props}>
+		<View style={styles.safeAreaContainer(safeAreaInsets)}>
+			<View style={styles.header}>
+				<Image style={styles.appIcon} source={AppIcon} />
 			</View>
-		</View>
-	);
-};
 
-const stylesheet = createStyleSheet(theme => ({
+			<Paper style={styles.paper(safeAreaInsets)} disableAndroidBorder>
+				<View style={[styles.contentContainer, contentContainerStyle]}>
+					{children}
+				</View>
+			</Paper>
+		</View>
+	</View>
+);
+
+const styles = StyleSheet.create(theme => ({
 	layout: {
 		flex: 1,
 		backgroundColor: theme.colors.primary

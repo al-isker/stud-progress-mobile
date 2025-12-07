@@ -1,10 +1,12 @@
 import { useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { UnistylesRuntime } from 'react-native-unistyles';
+import { useUnistyles } from 'react-native-unistyles';
 import { useUpdateSemester } from '@/features/update-semester';
 import { LoadingScreen } from '@/shared/ui/loading-screen';
 
 export const UpdateSemesterLoadingScreen = () => {
+	const { rt } = useUnistyles();
+
 	const { progress, updateSemester } = useUpdateSemester();
 
 	useEffect(() => {
@@ -17,8 +19,8 @@ export const UpdateSemesterLoadingScreen = () => {
 
 			<LoadingScreen
 				safeAreaInsets={{
-					top: UnistylesRuntime.insets.top,
-					bottom: UnistylesRuntime.insets.bottom
+					top: rt.insets.top,
+					bottom: rt.insets.bottom
 				}}
 				description='не выходи с приложения, это займёт около минуты...'
 				progress={progress}

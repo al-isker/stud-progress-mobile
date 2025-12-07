@@ -1,7 +1,7 @@
 import { ReactElement, ReactNode, Ref } from 'react';
 import { Text, View, ViewProps } from 'react-native';
 import { EdgeInsets } from 'react-native-safe-area-context';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import { StyleSheet } from 'react-native-unistyles';
 import { SlotProps, renderSlot } from '@/shared/lib/slot';
 
 export type StatusScreenProps = ViewProps & {
@@ -21,27 +21,23 @@ export const StatusScreen = ({
 	description,
 	actions,
 	...props
-}: StatusScreenProps) => {
-	const { styles } = useStyles(stylesheet);
+}: StatusScreenProps) => (
+	<View style={[styles.container, style]} {...props}>
+		<View style={styles.safeAreaContainer(safeAreaInsets)}>
+			{renderSlot(iconSlot, { style: styles.icon })}
 
-	return (
-		<View style={[styles.container, style]} {...props}>
-			<View style={styles.safeAreaContainer(safeAreaInsets)}>
-				{renderSlot(iconSlot, { style: styles.icon })}
+			<View style={styles.contentContainer}>
+				{title && <Text style={styles.title}>{title}</Text>}
 
-				<View style={styles.contentContainer}>
-					{title && <Text style={styles.title}>{title}</Text>}
-
-					{description && <Text style={styles.description}>{description}</Text>}
-				</View>
-
-				{actions && <View style={styles.actions}>{actions}</View>}
+				{description && <Text style={styles.description}>{description}</Text>}
 			</View>
-		</View>
-	);
-};
 
-const stylesheet = createStyleSheet(theme => ({
+			{actions && <View style={styles.actions}>{actions}</View>}
+		</View>
+	</View>
+);
+
+const styles = StyleSheet.create(theme => ({
 	container: {
 		flex: 1
 	},

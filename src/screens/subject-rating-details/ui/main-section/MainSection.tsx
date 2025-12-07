@@ -1,5 +1,5 @@
 import { Text } from 'react-native';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import { StyleSheet } from 'react-native-unistyles';
 import { ControlType, ControlTypeEnum } from '@/entities/subject';
 import { Paper } from '@/shared/ui/paper';
 
@@ -8,19 +8,15 @@ type MainSectionProps = {
 	controlType: ControlTypeEnum;
 };
 
-export const MainSection = ({ name, controlType }: MainSectionProps) => {
-	const { styles } = useStyles(stylesheet);
+export const MainSection = ({ name, controlType }: MainSectionProps) => (
+	<Paper style={styles.paper}>
+		<Text style={styles.name}>{name}</Text>
 
-	return (
-		<Paper style={styles.paper}>
-			<Text style={styles.name}>{name}</Text>
+		<ControlType variant='primary' controlType={controlType} />
+	</Paper>
+);
 
-			<ControlType variant='primary' controlType={controlType} />
-		</Paper>
-	);
-};
-
-const stylesheet = createStyleSheet(theme => ({
+const styles = StyleSheet.create(theme => ({
 	paper: {
 		alignItems: 'flex-start',
 		padding: theme.spacing * 1.5,

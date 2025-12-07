@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 import { useFocusEffect } from 'expo-router';
 import { StyleProp, Text, TextStyle } from 'react-native';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import { StyleSheet } from 'react-native-unistyles';
 import { apiMessage } from '@/shared/lib/api-message';
 import { useRerender } from '@/shared/lib/react-sugar';
 import { useUpdateSemesterContext } from '../../model/hooks/use-update-semester-context';
@@ -12,8 +12,6 @@ type MutationErrorProps = {
 
 export const MutationError = ({ style }: MutationErrorProps) => {
 	const rerender = useRerender();
-
-	const { styles } = useStyles(stylesheet);
 
 	const { mutationErrorRef } = useUpdateSemesterContext();
 
@@ -42,7 +40,7 @@ export const MutationError = ({ style }: MutationErrorProps) => {
 	}
 };
 
-const stylesheet = createStyleSheet(theme => ({
+const styles = StyleSheet.create(theme => ({
 	text: {
 		color: theme.colors.red,
 		fontSize: 14,

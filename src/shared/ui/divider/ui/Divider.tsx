@@ -1,13 +1,9 @@
 import { Ref } from 'react';
 import { View, ViewProps } from 'react-native';
-import {
-	UnistylesVariants,
-	createStyleSheet,
-	useStyles
-} from 'react-native-unistyles';
+import { StyleSheet, UnistylesVariants } from 'react-native-unistyles';
 
 export type DividerProps = ViewProps &
-	UnistylesVariants<typeof stylesheet> & {
+	UnistylesVariants<typeof styles> & {
 		ref?: Ref<View>;
 	};
 
@@ -17,12 +13,12 @@ export const Divider = ({
 	style,
 	...props
 }: DividerProps) => {
-	const { styles } = useStyles(stylesheet, { orientation, size });
+	styles.useVariants({ orientation, size });
 
 	return <View style={[styles.divider, style]} {...props} />;
 };
 
-const stylesheet = createStyleSheet(theme => ({
+const styles = StyleSheet.create(theme => ({
 	divider: {
 		borderWidth: 0,
 		borderStyle: 'solid',

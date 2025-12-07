@@ -1,5 +1,5 @@
 import { Text, View } from 'react-native';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import { StyleSheet } from 'react-native-unistyles';
 import {
 	ControlType,
 	Grade,
@@ -15,8 +15,6 @@ type CardProps = {
 
 export const Card = ({ subjectGrade }: CardProps) => {
 	const { name, controlType, ratingBySemesterList, grade } = subjectGrade;
-
-	const { styles } = useStyles(stylesheet);
 
 	return (
 		<Paper style={styles.paper}>
@@ -59,7 +57,7 @@ export const Card = ({ subjectGrade }: CardProps) => {
 	);
 };
 
-const stylesheet = createStyleSheet(theme => ({
+const styles = StyleSheet.create(theme => ({
 	paper: {
 		rowGap: theme.spacing,
 		padding: theme.spacing * 1.25

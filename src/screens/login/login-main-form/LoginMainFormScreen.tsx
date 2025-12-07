@@ -1,22 +1,18 @@
 import { Text, View } from 'react-native';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import { StyleSheet } from 'react-native-unistyles';
 import { LoginMainForm } from '@/features/login';
 
-export const LoginMainFormScreen = () => {
-	const { styles } = useStyles(stylesheet);
+export const LoginMainFormScreen = () => (
+	<View style={styles.container}>
+		<Text style={styles.description}>
+			Введи свои учётные данные для личного кабинета
+		</Text>
 
-	return (
-		<View style={styles.container}>
-			<Text style={styles.description}>
-				Введи свои учётные данные для личного кабинета
-			</Text>
+		<LoginMainForm />
+	</View>
+);
 
-			<LoginMainForm />
-		</View>
-	);
-};
-
-const stylesheet = createStyleSheet(theme => ({
+const styles = StyleSheet.create(theme => ({
 	container: {
 		flex: 1,
 		paddingHorizontal: theme.spacing * 1.5

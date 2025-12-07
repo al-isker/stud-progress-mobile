@@ -1,5 +1,5 @@
 import { ScrollView, StyleProp, Text, ViewStyle } from 'react-native';
-import { useStyles } from 'react-native-unistyles';
+import { useUnistyles } from 'react-native-unistyles';
 import { ProfileType } from '@/entities/profile';
 import { ProfileIcon } from '@/shared/assets/icons';
 import { Paper } from '@/shared/ui/paper';
@@ -22,7 +22,7 @@ export const Content = ({
 	refreshing,
 	onRefresh
 }: ContentProps) => {
-	const { theme } = useStyles();
+	const { theme } = useUnistyles();
 
 	return (
 		<ScrollView

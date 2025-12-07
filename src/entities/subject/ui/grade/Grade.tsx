@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
 import { StyleProp, Text, View, ViewStyle } from 'react-native';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import { StyleSheet } from 'react-native-unistyles';
 import { PulseIndicator } from '@/shared/ui/pulse-indicator';
 import { TEST_STATUS_DISPLAY } from '../../lib/const/test-status-display';
 import { ControlTypeEnum } from '../../model/types/control-type';
@@ -23,7 +23,7 @@ export const Grade = ({
 	mark,
 	isNew
 }: GradeProps) => {
-	const { styles } = useStyles(stylesheet, { status });
+	styles.useVariants({ status });
 
 	return (
 		<View style={[styles.container, style]}>
@@ -54,7 +54,7 @@ export const Grade = ({
 	);
 };
 
-const stylesheet = createStyleSheet(theme => ({
+const styles = StyleSheet.create(theme => ({
 	container: {
 		position: 'relative'
 	},

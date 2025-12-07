@@ -2,7 +2,7 @@ import { Ref } from 'react';
 import { Text, View, ViewProps } from 'react-native';
 import { SharedValue } from 'react-native-reanimated';
 import { EdgeInsets } from 'react-native-safe-area-context';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import { StyleSheet } from 'react-native-unistyles';
 import { ProgressLoader } from '../../progress-loader';
 
 export type LoadingScreenProps = ViewProps & {
@@ -18,25 +18,21 @@ export const LoadingScreen = ({
 	progress,
 	description,
 	...props
-}: LoadingScreenProps) => {
-	const { styles } = useStyles(stylesheet);
-
-	return (
-		<View style={[styles.container, style]} {...props}>
-			<View style={styles.safeAreaContainer(safeAreaInsets)}>
-				<View style={styles.appBanner}>
-					<Text style={styles.title}>Stud Progress</Text>
-				</View>
-
-				{description && <Text style={styles.description}>{description}</Text>}
-
-				<ProgressLoader colorOnPrimary sharedValue={progress} />
+}: LoadingScreenProps) => (
+	<View style={[styles.container, style]} {...props}>
+		<View style={styles.safeAreaContainer(safeAreaInsets)}>
+			<View style={styles.appBanner}>
+				<Text style={styles.title}>Stud Progress</Text>
 			</View>
-		</View>
-	);
-};
 
-const stylesheet = createStyleSheet(theme => ({
+			{description && <Text style={styles.description}>{description}</Text>}
+
+			<ProgressLoader colorOnPrimary sharedValue={progress} />
+		</View>
+	</View>
+);
+
+const styles = StyleSheet.create(theme => ({
 	container: {
 		flex: 1,
 		padding: theme.spacing * 2,

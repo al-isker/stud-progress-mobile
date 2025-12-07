@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useSharedValue, withTiming } from 'react-native-reanimated';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import { StyleSheet } from 'react-native-unistyles';
 import { MAX_MARK, formatAverageMark } from '@/entities/subject';
 import { Paper } from '@/shared/ui/paper';
 import {
@@ -15,8 +15,6 @@ type AverageMarkSectionProps = {
 export const AverageMarkSection = ({
 	averageMark
 }: AverageMarkSectionProps) => {
-	const { styles, theme } = useStyles(stylesheet);
-
 	const sharedAverageMark = useSharedValue(averageMark);
 
 	useEffect(() => {
@@ -51,9 +49,9 @@ export const AverageMarkSection = ({
 	);
 };
 
-const stylesheet = createStyleSheet(theme => ({
+const styles = StyleSheet.create({
 	paper: {
 		padding: 28,
 		alignItems: 'center'
 	}
-}));
+});

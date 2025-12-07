@@ -1,6 +1,6 @@
 import { Link } from 'expo-router';
 import { View } from 'react-native';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import { StyleSheet, useUnistyles } from 'react-native-unistyles';
 import { HeartBrokenIcon } from '@/shared/assets/icons';
 import { links } from '@/shared/config/navigation';
 import { Button } from '@/shared/ui/button';
@@ -10,7 +10,7 @@ import { useProfile } from '../../model/hooks/use-profile';
 import { Content } from '../content/Content';
 
 export const ProfileScreen = () => {
-	const { styles, theme } = useStyles(stylesheet);
+	const { theme } = useUnistyles();
 
 	const { data, refetch, isLoading, isSuccess, isRefetching } = useProfile();
 
@@ -52,7 +52,7 @@ export const ProfileScreen = () => {
 	);
 };
 
-const stylesheet = createStyleSheet(theme => ({
+const styles = StyleSheet.create(theme => ({
 	loaderContainer: {
 		flex: 1,
 		justifyContent: 'center',

@@ -3,7 +3,7 @@ import {
 	RefreshControl as NativeRefreshControl,
 	RefreshControlProps as NativeRefreshControlProps
 } from 'react-native';
-import { useStyles } from 'react-native-unistyles';
+import { useUnistyles } from 'react-native-unistyles';
 
 export type RefreshControlProps = NativeRefreshControlProps & {
 	ref?: Ref<NativeRefreshControl>;
@@ -14,7 +14,7 @@ export const RefreshControl = ({
 	onRefresh,
 	...props
 }: RefreshControlProps) => {
-	const { theme } = useStyles();
+	const { theme } = useUnistyles();
 
 	const [localRefreshing, setLocalRefreshing] = useState(refreshing);
 

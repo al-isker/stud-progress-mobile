@@ -1,5 +1,5 @@
 import { View } from 'react-native';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import { StyleSheet } from 'react-native-unistyles';
 import { ChatSquireIcon, HashtagSquireIcon } from '@/shared/assets/icons';
 import { NumberStat } from '@/shared/ui/number-stat';
 
@@ -8,28 +8,24 @@ type StatsSectionProps = {
 	semester: number;
 };
 
-export const StatsSection = ({ course, semester }: StatsSectionProps) => {
-	const { styles } = useStyles(stylesheet);
+export const StatsSection = ({ course, semester }: StatsSectionProps) => (
+	<View style={styles.container}>
+		<NumberStat
+			style={styles.leftStat}
+			title='Курс'
+			value={course}
+			headerStartSlot={<ChatSquireIcon />}
+		/>
+		<NumberStat
+			style={styles.rightStat}
+			title='Семестр'
+			value={semester}
+			headerStartSlot={<HashtagSquireIcon />}
+		/>
+	</View>
+);
 
-	return (
-		<View style={styles.container}>
-			<NumberStat
-				style={styles.leftStat}
-				title='Курс'
-				value={course}
-				headerStartSlot={<ChatSquireIcon />}
-			/>
-			<NumberStat
-				style={styles.rightStat}
-				title='Семестр'
-				value={semester}
-				headerStartSlot={<HashtagSquireIcon />}
-			/>
-		</View>
-	);
-};
-
-const stylesheet = createStyleSheet(theme => ({
+const styles = StyleSheet.create(theme => ({
 	container: {
 		flexDirection: 'row',
 		columnGap: theme.spacing / 2

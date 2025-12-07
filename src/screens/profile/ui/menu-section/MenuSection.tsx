@@ -7,20 +7,18 @@ import { MenuPrivacyPolicy } from './MenuPrivacyPolicy';
 import { MenuSupport } from './MenuSupport';
 import { MenuUpdateSemester } from './MenuUpdateSemester';
 
-export const MenuSection = () => {
-	return (
-		<Paper style={{ overflow: 'hidden' }}>
-			<MenuNotificationPermissions />
-			<Divider />
-			<MenuUpdateSemester />
-			<Divider />
-			<MenuNews />
-			<Divider />
-			<MenuPrivacyPolicy />
-			<Divider />
-			<MenuSupport />
-			<Divider />
-			<MenuLogout />
-		</Paper>
-	);
-};
+export const MenuSection = () => (
+	<Paper style={{ overflow: 'hidden' }}>
+		<MenuNotificationPermissions />
+		<Divider />
+		<MenuUpdateSemester />
+		<Divider />
+		<MenuNews />
+		<Divider />
+		<MenuPrivacyPolicy />
+		<Divider />
+		<MenuSupport />
+		<Divider />
+		<MenuLogout />
+	</Paper>
+);

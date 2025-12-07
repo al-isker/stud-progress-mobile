@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { LayoutChangeEvent, StyleProp, View, ViewStyle } from 'react-native';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import { StyleSheet } from 'react-native-unistyles';
 import { Event, EventStatusEnum } from '@/entities/subject';
 
 type EventListProps = {
@@ -14,8 +14,6 @@ type EventListProps = {
 };
 
 export const EventList = ({ style, eventList }: EventListProps) => {
-	const { styles } = useStyles(stylesheet);
-
 	const [fitsItemsCount, setFitsItemsCount] = useState(0);
 
 	const handleLayout = (e: LayoutChangeEvent) => {
@@ -51,7 +49,7 @@ export const EventList = ({ style, eventList }: EventListProps) => {
 	);
 };
 
-const stylesheet = createStyleSheet({
+const styles = StyleSheet.create({
 	container: {
 		width: '100%',
 		flexDirection: 'row',

@@ -4,14 +4,10 @@ import Animated, {
 	SharedValue,
 	useAnimatedStyle
 } from 'react-native-reanimated';
-import {
-	UnistylesVariants,
-	createStyleSheet,
-	useStyles
-} from 'react-native-unistyles';
+import { StyleSheet, UnistylesVariants } from 'react-native-unistyles';
 
 export type ProgressLoaderProps = ViewProps &
-	UnistylesVariants<typeof stylesheet> & {
+	UnistylesVariants<typeof styles> & {
 		ref?: Ref<View>;
 		sharedValue: SharedValue<number>;
 	};
@@ -22,7 +18,7 @@ export const ProgressLoader = ({
 	sharedValue,
 	...props
 }: ProgressLoaderProps) => {
-	const { styles } = useStyles(stylesheet, { colorOnPrimary });
+	styles.useVariants({ colorOnPrimary });
 
 	const progressAnimatedStyle = useAnimatedStyle(() => ({
 		width: `${sharedValue.value}%`
@@ -35,7 +31,7 @@ export const ProgressLoader = ({
 	);
 };
 
-const stylesheet = createStyleSheet(theme => ({
+const styles = StyleSheet.create(theme => ({
 	loader: {
 		height: 10,
 		overflow: 'hidden',

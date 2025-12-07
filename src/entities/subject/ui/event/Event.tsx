@@ -1,5 +1,5 @@
 import { StyleProp, Text, View, ViewStyle } from 'react-native';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import { StyleSheet } from 'react-native-unistyles';
 import { PulseIndicator } from '@/shared/ui/pulse-indicator';
 import { EventStatusEnum } from '../../model/types/event-status';
 
@@ -11,7 +11,7 @@ type EventProps = {
 };
 
 export const Event = ({ style, status, mark, isNew }: EventProps) => {
-	const { styles } = useStyles(stylesheet, { status });
+	styles.useVariants({ status });
 
 	const statusDisplay = {
 		[EventStatusEnum.MARK]: mark,
@@ -29,7 +29,7 @@ export const Event = ({ style, status, mark, isNew }: EventProps) => {
 	);
 };
 
-const stylesheet = createStyleSheet(theme => ({
+const styles = StyleSheet.create(theme => ({
 	container: {
 		width: 30,
 		height: 30,

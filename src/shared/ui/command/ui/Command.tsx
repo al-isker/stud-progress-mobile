@@ -1,10 +1,6 @@
 import { ReactElement, Ref } from 'react';
 import { Text, View } from 'react-native';
-import {
-	UnistylesVariants,
-	createStyleSheet,
-	useStyles
-} from 'react-native-unistyles';
+import { StyleSheet, UnistylesVariants } from 'react-native-unistyles';
 import { SlotProps, renderSlot } from '@/shared/lib/slot';
 import { Pressable, PressableProps } from '@/shared/ui/pressable';
 
@@ -12,7 +8,7 @@ export type CommandProps = Omit<
 	PressableProps,
 	'children' | 'feedbackColor' | 'contentContainerStyle'
 > &
-	UnistylesVariants<typeof stylesheet> & {
+	UnistylesVariants<typeof styles> & {
 		ref?: Ref<View>;
 		title?: string;
 		startSlot?: ReactElement<SlotProps>;
@@ -28,7 +24,7 @@ export const Command = ({
 	endSlot,
 	...props
 }: CommandProps) => {
-	const { styles } = useStyles(stylesheet, { variant, size });
+	styles.useVariants({ variant, size });
 
 	return (
 		<Pressable
@@ -53,7 +49,7 @@ export const Command = ({
 	);
 };
 
-const stylesheet = createStyleSheet(theme => ({
+const styles = StyleSheet.create(theme => ({
 	pressable: {
 		flexDirection: 'row',
 		alignItems: 'center',

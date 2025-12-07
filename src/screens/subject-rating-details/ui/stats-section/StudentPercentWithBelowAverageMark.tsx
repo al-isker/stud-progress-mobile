@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { StyleProp, Text, View, ViewStyle } from 'react-native';
 import { useSharedValue, withTiming } from 'react-native-reanimated';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import { StyleSheet, useUnistyles } from 'react-native-unistyles';
 import { MedalStarIcon } from '@/shared/assets/icons';
 import { formatPercent } from '@/shared/lib/animation';
 import { Paper } from '@/shared/ui/paper';
@@ -19,7 +19,7 @@ export const StudentPercentWithBelowAverageMark = ({
 	style,
 	value
 }: StudentPercentWithBelowAverageMarkProps) => {
-	const { styles, theme } = useStyles(stylesheet);
+	const { theme } = useUnistyles();
 
 	const sharedValue = useSharedValue(value);
 
@@ -66,7 +66,7 @@ export const StudentPercentWithBelowAverageMark = ({
 	);
 };
 
-const stylesheet = createStyleSheet(theme => ({
+const styles = StyleSheet.create(theme => ({
 	container: {
 		flexDirection: 'row',
 		justifyContent: 'space-between'

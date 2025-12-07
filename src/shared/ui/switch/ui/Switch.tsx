@@ -4,14 +4,14 @@ import {
 	SwitchProps as NativeSwitchProps,
 	Platform
 } from 'react-native';
-import { useStyles } from 'react-native-unistyles';
+import { useUnistyles } from 'react-native-unistyles';
 
 export type SwitchProps = NativeSwitchProps & {
 	ref?: Ref<NativeSwitch>;
 };
 
 export const Switch = (props: SwitchProps) => {
-	const { theme } = useStyles();
+	const { theme } = useUnistyles();
 
 	const platformProps = Platform.select<NativeSwitchProps>({
 		android: {

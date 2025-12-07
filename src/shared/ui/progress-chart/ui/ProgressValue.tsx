@@ -1,6 +1,6 @@
 import { SkFont, Text, useFont } from '@shopify/react-native-skia';
 import { SharedValue, useDerivedValue } from 'react-native-reanimated';
-import { useStyles } from 'react-native-unistyles';
+import { useUnistyles } from 'react-native-unistyles';
 import { GolosTextSemiBold } from '@/shared/assets/fonts';
 
 type ProgressValueProps = {
@@ -31,7 +31,7 @@ const ProgressValueWithFont = ({
 	sharedValue,
 	formatValue
 }: ProgressValueWithFontProps) => {
-	const { theme } = useStyles();
+	const { theme } = useUnistyles();
 
 	const text = useDerivedValue(() => {
 		return (formatValue ?? String)(sharedValue.value);

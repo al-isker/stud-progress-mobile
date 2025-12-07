@@ -7,7 +7,7 @@ import Animated, {
 	withSequence,
 	withTiming
 } from 'react-native-reanimated';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import { StyleSheet } from 'react-native-unistyles';
 import {
 	animationConfig,
 	animationDelay
@@ -18,8 +18,6 @@ export type PulseIndicatorProps = ViewProps & {
 };
 
 export const PulseIndicator = ({ style, ...props }: PulseIndicatorProps) => {
-	const { styles } = useStyles(stylesheet);
-
 	const opacity = useSharedValue(1);
 	const scale = useSharedValue(1);
 
@@ -56,7 +54,7 @@ export const PulseIndicator = ({ style, ...props }: PulseIndicatorProps) => {
 	);
 };
 
-const stylesheet = createStyleSheet(theme => ({
+const styles = StyleSheet.create(theme => ({
 	indicator: {
 		width: 14,
 		height: 14,

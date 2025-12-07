@@ -1,1 +1,1 @@
-export { LIGHT_THEME } from './themes';
+export { unistylesConfigure } from './config/unistyles-configure';

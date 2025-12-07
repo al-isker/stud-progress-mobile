@@ -1,5 +1,5 @@
 import { ScrollView, StyleProp, View, ViewStyle } from 'react-native';
-import { UnistylesRuntime, useStyles } from 'react-native-unistyles';
+import { useUnistyles } from 'react-native-unistyles';
 import { SubjectRatingDetailsType } from '@/entities/subject';
 import { RefreshControl } from '@/shared/ui/refresh-control';
 import { AverageMarkSection } from '../average-mark-section/AverageMarkSection';
@@ -23,7 +23,7 @@ export const Content = ({
 	refreshing,
 	onRefresh
 }: ContentProps) => {
-	const { theme } = useStyles();
+	const { theme, rt } = useUnistyles();
 
 	return (
 		<ScrollView
@@ -61,7 +61,7 @@ export const Content = ({
 			<EventListSection
 				eventList={subjectRatingDetails.ratingByCurrentSemester.eventList}
 			/>
-			<View style={{ marginBottom: UnistylesRuntime.screen.height / 2.5 }} />
+			<View style={{ marginBottom: rt.screen.height / 2.5 }} />
 		</ScrollView>
 	);
 };

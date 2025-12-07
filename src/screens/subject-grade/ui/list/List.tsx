@@ -1,5 +1,5 @@
 import { ScrollView, StyleProp, ViewStyle } from 'react-native';
-import { useStyles } from 'react-native-unistyles';
+import { useUnistyles } from 'react-native-unistyles';
 import { SubjectGradeListType } from '@/entities/subject';
 import { RefreshControl } from '@/shared/ui/refresh-control';
 import { Card } from '../card/Card';
@@ -19,7 +19,7 @@ export const List = ({
 	refreshing,
 	onRefresh
 }: ListProps) => {
-	const { theme } = useStyles();
+	const { theme } = useUnistyles();
 
 	return (
 		<ScrollView

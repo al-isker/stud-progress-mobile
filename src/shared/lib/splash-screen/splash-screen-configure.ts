@@ -1,5 +1,5 @@
 import { SplashScreen } from 'expo-router';
 
-export const runSplashScreen = () => {
+export const splashScreenConfigure = () => {
 	SplashScreen.preventAutoHideAsync();
 };

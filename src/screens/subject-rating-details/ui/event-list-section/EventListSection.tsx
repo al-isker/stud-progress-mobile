@@ -1,6 +1,6 @@
+import { Fragment } from 'react';
 import { Text, View } from 'react-native';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
-import { Fragment } from 'react/jsx-runtime';
+import { StyleSheet } from 'react-native-unistyles';
 import { EventStatusEnum } from '@/entities/subject';
 import { Divider } from '@/shared/ui/divider';
 import { Paper } from '@/shared/ui/paper';
@@ -16,34 +16,28 @@ type EventListSectionProps = {
 	}>;
 };
 
-export const EventListSection = ({ eventList }: EventListSectionProps) => {
-	const { styles } = useStyles(stylesheet);
+export const EventListSection = ({ eventList }: EventListSectionProps) => (
+	<Paper style={styles.container}>
+		<Text style={styles.title}>Баллы</Text>
 
-	return (
-		<View>
-			<Paper style={styles.container}>
-				<Text style={styles.title}>Баллы</Text>
+		<View style={styles.list}>
+			{eventList.map((event, index) => (
+				<Fragment key={event.id}>
+					<EventWithDate
+						status={event.status}
+						date={event.date}
+						mark={event.mark}
+						isNew={event.isNew}
+					/>
 
-				<View style={styles.list}>
-					{eventList.map((event, index) => (
-						<Fragment key={event.id}>
-							<EventWithDate
-								status={event.status}
-								date={event.date}
-								mark={event.mark}
-								isNew={event.isNew}
-							/>
-
-							{index !== eventList.length - 1 && <Divider size='small' />}
-						</Fragment>
-					))}
-				</View>
-			</Paper>
+					{index !== eventList.length - 1 && <Divider size='small' />}
+				</Fragment>
+			))}
 		</View>
-	);
-};
+	</Paper>
+);
 
-const stylesheet = createStyleSheet(theme => ({
+const styles = StyleSheet.create(theme => ({
 	container: {
 		padding: theme.spacing * 1.5
 	},

@@ -1,14 +1,10 @@
 import { ReactElement, Ref } from 'react';
 import { Text, View, ViewProps } from 'react-native';
-import {
-	UnistylesVariants,
-	createStyleSheet,
-	useStyles
-} from 'react-native-unistyles';
+import { StyleSheet, UnistylesVariants } from 'react-native-unistyles';
 import { SlotProps, renderSlot } from '@/shared/lib/slot';
 
 export type TagProps = Omit<ViewProps, 'children'> &
-	UnistylesVariants<typeof stylesheet> & {
+	UnistylesVariants<typeof styles> & {
 		ref?: Ref<View>;
 		title?: string;
 		startSlot?: ReactElement<SlotProps>;
@@ -24,7 +20,7 @@ export const Tag = ({
 	endSlot,
 	...props
 }: TagProps) => {
-	const { styles } = useStyles(stylesheet, { variant, size });
+	styles.useVariants({ variant, size });
 
 	return (
 		<View style={[styles.tag, style]} {...props}>
@@ -43,7 +39,7 @@ export const Tag = ({
 	);
 };
 
-const stylesheet = createStyleSheet(theme => ({
+const styles = StyleSheet.create(theme => ({
 	tag: {
 		flexDirection: 'row',
 		alignItems: 'center',

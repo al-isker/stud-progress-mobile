@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { Text, View } from 'react-native';
 import { useSharedValue, withTiming } from 'react-native-reanimated';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import { StyleSheet } from 'react-native-unistyles';
 import { MAX_MARK, formatAverageMark } from '@/entities/subject';
 import {
 	ProgressChart,
@@ -17,8 +17,6 @@ export const RatingBySemester = ({
 	semester,
 	averageMark
 }: RatingBySemesterProps) => {
-	const { styles } = useStyles(stylesheet);
-
 	const sharedAverageMark = useSharedValue(averageMark);
 
 	useEffect(() => {
@@ -55,7 +53,7 @@ export const RatingBySemester = ({
 	);
 };
 
-const stylesheet = createStyleSheet(theme => ({
+const styles = StyleSheet.create(theme => ({
 	container: {
 		alignItems: 'center',
 		rowGap: 4

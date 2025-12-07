@@ -5,15 +5,13 @@ export const PressableAndroid = ({
 	feedbackColor,
 	style,
 	...props
-}: PressableProps) => {
-	return (
-		<NativePressable
-			style={[{ overflow: 'hidden' }, style]}
-			android_ripple={{
-				color: feedbackColor,
-				foreground: true
-			}}
-			{...props}
-		/>
-	);
-};
+}: PressableProps) => (
+	<NativePressable
+		style={[{ overflow: 'hidden' }, style]}
+		android_ripple={{
+			color: feedbackColor,
+			foreground: true
+		}}
+		{...props}
+	/>
+);

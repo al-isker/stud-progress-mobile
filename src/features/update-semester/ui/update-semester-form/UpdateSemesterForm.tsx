@@ -1,9 +1,5 @@
 import { ScrollView, StyleProp, View, ViewStyle } from 'react-native';
-import {
-	UnistylesRuntime,
-	createStyleSheet,
-	useStyles
-} from 'react-native-unistyles';
+import { StyleSheet } from 'react-native-unistyles';
 import { semesterOptions } from '@/entities/semester';
 import { ArrowRightIcon } from '@/shared/assets/icons';
 import { Command } from '@/shared/ui/command';
@@ -16,8 +12,6 @@ type UpdateSemesterFormProps = {
 };
 
 export const UpdateSemesterForm = ({ style }: UpdateSemesterFormProps) => {
-	const { styles } = useStyles(stylesheet);
-
 	const { currentSemester, selectSemester } = useUpdateSemesterForm();
 
 	return (
@@ -48,7 +42,7 @@ export const UpdateSemesterForm = ({ style }: UpdateSemesterFormProps) => {
 	);
 };
 
-const stylesheet = createStyleSheet(theme => ({
+const styles = StyleSheet.create((theme, rt) => ({
 	mutationError: {
 		marginBottom: 4,
 		textAlign: 'center'
@@ -58,7 +52,7 @@ const stylesheet = createStyleSheet(theme => ({
 	},
 	contentContainer: {
 		flexDirection: 'column',
-		paddingBottom: theme.spacing + UnistylesRuntime.insets.bottom,
+		paddingBottom: theme.spacing + rt.insets.bottom,
 		rowGap: 2
 	},
 	command: {

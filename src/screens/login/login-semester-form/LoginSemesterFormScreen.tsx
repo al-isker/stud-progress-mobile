@@ -1,22 +1,18 @@
 import { Text, View } from 'react-native';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import { StyleSheet } from 'react-native-unistyles';
 import { LoginSemesterForm } from '@/features/login';
 
-export const LoginSemesterFormScreen = () => {
-	const { styles } = useStyles(stylesheet);
+export const LoginSemesterFormScreen = () => (
+	<View style={styles.container}>
+		<Text style={styles.description}>
+			Выбери семестр, на котором ты учишься
+		</Text>
 
-	return (
-		<View style={styles.container}>
-			<Text style={styles.description}>
-				Выбери семестр, на котором ты учишься
-			</Text>
+		<LoginSemesterForm style={styles.form} />
+	</View>
+);
 
-			<LoginSemesterForm style={styles.form} />
-		</View>
-	);
-};
-
-const stylesheet = createStyleSheet(theme => ({
+const styles = StyleSheet.create(theme => ({
 	container: {
 		flex: 1,
 		paddingHorizontal: theme.spacing

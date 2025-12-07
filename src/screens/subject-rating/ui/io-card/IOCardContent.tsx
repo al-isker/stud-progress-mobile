@@ -2,7 +2,7 @@ import { Ref, useImperativeHandle } from 'react';
 import { router } from 'expo-router';
 import { Text, View } from 'react-native';
 import { useSharedValue, withTiming } from 'react-native-reanimated';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import { StyleSheet, useUnistyles } from 'react-native-unistyles';
 import {
 	ControlType,
 	MAX_MARK,
@@ -35,7 +35,7 @@ export const IOCardContent = ({ ref, subjectRating }: IOCardContentProps) => {
 		ratingByCurrentSemester: { averageMark, eventList }
 	} = subjectRating;
 
-	const { styles, theme } = useStyles(stylesheet);
+	const { theme } = useUnistyles();
 
 	const sharedAverageMark = useSharedValue(averageMark === null ? null : 0);
 
@@ -104,7 +104,7 @@ export const IOCardContent = ({ ref, subjectRating }: IOCardContentProps) => {
 	);
 };
 
-const stylesheet = createStyleSheet(theme => ({
+const styles = StyleSheet.create(theme => ({
 	paper: {
 		overflow: 'hidden'
 	},

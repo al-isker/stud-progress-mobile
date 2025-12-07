@@ -1,9 +1,9 @@
 import { Text, View } from 'react-native';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import { StyleSheet, useUnistyles } from 'react-native-unistyles';
 import { TeaCupIcon } from '@/shared/assets/icons';
 
 export const SubjectStatsScreen = () => {
-	const { styles, theme } = useStyles(stylesheet);
+	const { theme } = useUnistyles();
 
 	return (
 		<View style={styles.container}>
@@ -14,7 +14,7 @@ export const SubjectStatsScreen = () => {
 	);
 };
 
-const stylesheet = createStyleSheet(theme => ({
+const styles = StyleSheet.create(theme => ({
 	container: {
 		flex: 1,
 		justifyContent: 'center',

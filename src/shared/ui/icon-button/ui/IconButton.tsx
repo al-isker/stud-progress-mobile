@@ -1,10 +1,6 @@
 import { ReactElement, Ref } from 'react';
 import { View } from 'react-native';
-import {
-	UnistylesVariants,
-	createStyleSheet,
-	useStyles
-} from 'react-native-unistyles';
+import { StyleSheet, UnistylesVariants } from 'react-native-unistyles';
 import { SlotProps, renderSlot } from '@/shared/lib/slot';
 import { Pressable, PressableProps } from '@/shared/ui/pressable';
 
@@ -12,7 +8,7 @@ export type IconButtonProps = Omit<
 	PressableProps,
 	'children' | 'feedbackColor' | 'contentContainerStyle'
 > &
-	UnistylesVariants<typeof stylesheet> & {
+	UnistylesVariants<typeof styles> & {
 		children: ReactElement<SlotProps>;
 		ref?: Ref<View>;
 	};
@@ -24,7 +20,7 @@ export const IconButton = ({
 	style,
 	...props
 }: IconButtonProps) => {
-	const { styles } = useStyles(stylesheet, { variant, size });
+	styles.useVariants({ variant, size });
 
 	return (
 		<Pressable
@@ -40,7 +36,7 @@ export const IconButton = ({
 	);
 };
 
-export const stylesheet = createStyleSheet(theme => ({
+export const styles = StyleSheet.create(theme => ({
 	pressable: {
 		aspectRatio: 1,
 		justifyContent: 'center',

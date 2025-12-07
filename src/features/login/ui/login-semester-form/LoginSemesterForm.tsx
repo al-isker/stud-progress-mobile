@@ -1,9 +1,5 @@
 import { ScrollView, StyleProp, View, ViewStyle } from 'react-native';
-import {
-	UnistylesRuntime,
-	createStyleSheet,
-	useStyles
-} from 'react-native-unistyles';
+import { StyleSheet } from 'react-native-unistyles';
 import { semesterOptions } from '@/entities/semester';
 import { ArrowRightIcon } from '@/shared/assets/icons';
 import { Command } from '@/shared/ui/command';
@@ -15,8 +11,6 @@ type LoginSemesterFormProps = {
 };
 
 export const LoginSemesterForm = ({ style }: LoginSemesterFormProps) => {
-	const { styles } = useStyles(stylesheet);
-
 	const { selectSemester } = useLoginSemesterForm();
 
 	return (
@@ -44,13 +38,13 @@ export const LoginSemesterForm = ({ style }: LoginSemesterFormProps) => {
 	);
 };
 
-const stylesheet = createStyleSheet(theme => ({
+const styles = StyleSheet.create((theme, rt) => ({
 	divider: {
 		marginBottom: 2
 	},
 	contentContainer: {
 		flexDirection: 'column',
-		paddingBottom: theme.spacing + UnistylesRuntime.insets.bottom,
+		paddingBottom: theme.spacing + rt.insets.bottom,
 		rowGap: 2
 	},
 	command: {

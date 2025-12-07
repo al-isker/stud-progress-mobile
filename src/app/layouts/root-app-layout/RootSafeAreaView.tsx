@@ -1,20 +1,16 @@
 import { ReactNode } from 'react';
 import { View } from 'react-native';
-import { UnistylesRuntime, useStyles } from 'react-native-unistyles';
+import { StyleSheet } from 'react-native-unistyles';
 
-export const RootSafeAreaView = ({ children }: { children: ReactNode }) => {
-	const { theme } = useStyles();
+export const RootSafeAreaView = ({ children }: { children: ReactNode }) => (
+	<View style={styles.area}>{children}</View>
+);
 
-	return (
-		<View
-			style={{
-				flex: 1,
-				paddingLeft: UnistylesRuntime.insets.left,
-				paddingRight: UnistylesRuntime.insets.right,
-				backgroundColor: theme.colors.bgBase
-			}}
-		>
-			{children}
-		</View>
-	);
-};
+const styles = StyleSheet.create((theme, rt) => ({
+	area: {
+		flex: 1,
+		paddingLeft: rt.insets.left,
+		paddingRight: rt.insets.right,
+		backgroundColor: theme.colors.bgBase
+	}
+}));

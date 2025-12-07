@@ -13,7 +13,7 @@ import Animated, {
 	useSharedValue,
 	withTiming
 } from 'react-native-reanimated';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import { StyleSheet, useUnistyles } from 'react-native-unistyles';
 import { multiple } from '@/shared/lib/function';
 import { animationConfig } from '../../lib/animation/animation-config';
 import { ErrorText } from '../error-text/ErrorText';
@@ -41,33 +41,38 @@ export const TextField = ({
 	onChangeText,
 	...props
 }: TextFieldProps) => {
-	const { styles, theme } = useStyles(stylesheet, { size });
+	styles.useVariants({ size });
+
+	const { theme } = useUnistyles();
 
 	const inputRef = useRef<TextInput>(null);
 
 	const sharedIsFocus = useSharedValue(false);
 	const sharedIsThereValue = useSharedValue(!!(value ?? defaultValue)?.length);
 
-	const textInputContainerAnimatedStyle = useAnimatedStyle(() => ({
+	const initialContainerBorderColor = styles.container.borderColor;
+	const initialLabelColor = styles.label.color;
+	const initialLabelTop = styles.label.top;
+
+	const containerAnimatedStyle = useAnimatedStyle(() => ({
 		borderColor: withTiming(
-			sharedIsFocus.value
-				? theme.colors.primary
-				: styles.textInputContainer.borderColor,
+			sharedIsFocus.value ? theme.colors.primary : initialContainerBorderColor,
 			animationConfig
 		)
 	}));
 
 	const labelAnimatedStyle = useAnimatedStyle(() => ({
 		color: withTiming(
-			sharedIsFocus.value ? theme.colors.primary : styles.label.color,
+			sharedIsFocus.value ? theme.colors.primary : initialLabelColor,
 			animationConfig
 		),
 		top: withTiming(
 			sharedIsFocus.value || sharedIsThereValue.value
-				? styles.label.top / 2
-				: styles.label.top,
+				? initialLabelTop / 2
+				: initialLabelTop,
 			animationConfig
 		),
+		transformOrigin: 'top left',
 		transform: [
 			{
 				scale: withTiming(
@@ -98,9 +103,7 @@ export const TextField = ({
 	return (
 		<View ref={ref} style={style}>
 			<TouchableWithoutFeedback onPress={handleTouchablePress}>
-				<Animated.View
-					style={[styles.textInputContainer, textInputContainerAnimatedStyle]}
-				>
+				<Animated.View style={[styles.container, containerAnimatedStyle]}>
 					<Animated.Text style={[styles.label, labelAnimatedStyle]}>
 						{label}
 					</Animated.Text>
@@ -124,8 +127,8 @@ export const TextField = ({
 	);
 };
 
-const stylesheet = createStyleSheet(theme => ({
-	textInputContainer: {
+const styles = StyleSheet.create(theme => ({
+	container: {
 		position: 'relative',
 		borderWidth: 1,
 		borderColor: theme.colors.blackAlpha(0.1),
@@ -142,7 +145,6 @@ const stylesheet = createStyleSheet(theme => ({
 	},
 	label: {
 		position: 'absolute',
-		transformOrigin: 'top left',
 		color: theme.colors.blackAlpha(0.3),
 		fontFamily: theme.typography.fontFamily.GolosTextRegular,
 

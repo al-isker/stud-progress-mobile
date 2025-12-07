@@ -1,6 +1,6 @@
 import { Link } from 'expo-router';
 import { View } from 'react-native';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import { StyleSheet, useUnistyles } from 'react-native-unistyles';
 import { HeartBrokenIcon } from '@/shared/assets/icons';
 import { links } from '@/shared/config/navigation';
 import { Button } from '@/shared/ui/button';
@@ -10,7 +10,7 @@ import { useSubjectGradeList } from '../../model/hooks/use-subject-grade-list';
 import { List } from '../list/List';
 
 export const SubjectGradeScreen = () => {
-	const { styles, theme } = useStyles(stylesheet);
+	const { theme } = useUnistyles();
 
 	const { data, refetch, isLoading, isSuccess, isRefetching } =
 		useSubjectGradeList();
@@ -53,7 +53,7 @@ export const SubjectGradeScreen = () => {
 	);
 };
 
-const stylesheet = createStyleSheet(theme => ({
+const styles = StyleSheet.create(theme => ({
 	loaderContainer: {
 		flex: 1,
 		justifyContent: 'center',

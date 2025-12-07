@@ -1,13 +1,9 @@
 import { Ref } from 'react';
 import { Platform, View, ViewProps } from 'react-native';
-import {
-	UnistylesVariants,
-	createStyleSheet,
-	useStyles
-} from 'react-native-unistyles';
+import { StyleSheet, UnistylesVariants } from 'react-native-unistyles';
 
 export type PaperProps = ViewProps &
-	UnistylesVariants<typeof stylesheet> & {
+	UnistylesVariants<typeof styles> & {
 		ref?: Ref<View>;
 	};
 
@@ -16,12 +12,12 @@ export const Paper = ({
 	disableAndroidBorder = false,
 	...props
 }: PaperProps) => {
-	const { styles } = useStyles(stylesheet, { disableAndroidBorder });
+	styles.useVariants({ disableAndroidBorder });
 
 	return <View style={[styles.paper, style]} {...props} />;
 };
 
-const stylesheet = createStyleSheet(theme => ({
+const styles = StyleSheet.create(theme => ({
 	paper: {
 		borderRadius: theme.borderRadius * 2,
 		backgroundColor: theme.colors.bgPaper,

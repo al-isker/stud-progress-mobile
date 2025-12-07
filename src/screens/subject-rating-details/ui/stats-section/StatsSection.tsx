@@ -1,5 +1,5 @@
 import { View } from 'react-native';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import { StyleSheet } from 'react-native-unistyles';
 import { DaysWithoutMark } from './DaysWithoutMark';
 import { ImpactLastMark } from './ImpactLastMark';
 import { StudentPercentWithBelowAverageMark } from './StudentPercentWithBelowAverageMark';
@@ -14,25 +14,21 @@ export const StatsSection = ({
 	impactLastMark,
 	daysWithoutMark,
 	studentPercentWithBelowAverageMark
-}: StatsSectionProps) => {
-	const { styles } = useStyles(stylesheet);
-
-	return (
-		<View style={styles.container}>
-			<View style={styles.topStats}>
-				<ImpactLastMark style={styles.topLeftStat} value={impactLastMark} />
-				<DaysWithoutMark style={styles.topRightStat} value={daysWithoutMark} />
-			</View>
-
-			<StudentPercentWithBelowAverageMark
-				style={styles.bottomStat}
-				value={studentPercentWithBelowAverageMark}
-			/>
+}: StatsSectionProps) => (
+	<View style={styles.container}>
+		<View style={styles.topStats}>
+			<ImpactLastMark style={styles.topLeftStat} value={impactLastMark} />
+			<DaysWithoutMark style={styles.topRightStat} value={daysWithoutMark} />
 		</View>
-	);
-};
 
-const stylesheet = createStyleSheet(theme => ({
+		<StudentPercentWithBelowAverageMark
+			style={styles.bottomStat}
+			value={studentPercentWithBelowAverageMark}
+		/>
+	</View>
+);
+
+const styles = StyleSheet.create(theme => ({
 	container: {
 		rowGap: theme.spacing / 2
 	},

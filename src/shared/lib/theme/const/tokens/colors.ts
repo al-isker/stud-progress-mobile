@@ -1,5 +1,5 @@
-import { makeRGB } from '../utils/make-rgb';
-import { makeRGBWithAlpha } from '../utils/make-rgb-with-alpha';
+import { makeRGB } from '../../utils/make-rgb';
+import { makeRGBWithAlpha } from '../../utils/make-rgb-with-alpha';
 
 const primaryChannel = '75, 10, 255';
 const blackChannel = '0, 0, 0';

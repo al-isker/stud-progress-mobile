@@ -1,15 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import { Text } from 'react-native';
-import {
-	UnistylesRuntime,
-	createStyleSheet,
-	useStyles
-} from 'react-native-unistyles';
+import { StyleSheet, useUnistyles } from 'react-native-unistyles';
 import { UpdateSemesterForm } from '@/features/update-semester';
 import { OutsideMainLayout } from '@/shared/ui/outside-main-layout';
 
 export const UpdateSemesterFormScreen = () => {
-	const { styles } = useStyles(stylesheet);
+	const { rt } = useUnistyles();
 
 	return (
 		<>
@@ -17,7 +13,7 @@ export const UpdateSemesterFormScreen = () => {
 
 			<OutsideMainLayout
 				contentContainerStyle={styles.layoutContentContainer}
-				safeAreaInsets={{ top: UnistylesRuntime.insets.top }}
+				safeAreaInsets={{ top: rt.insets.top }}
 			>
 				<Text style={styles.title}>Изменение семестра</Text>
 
@@ -31,7 +27,7 @@ export const UpdateSemesterFormScreen = () => {
 	);
 };
 
-const stylesheet = createStyleSheet(theme => ({
+const styles = StyleSheet.create(theme => ({
 	layoutContentContainer: {
 		paddingTop: theme.spacing,
 		paddingHorizontal: theme.spacing
