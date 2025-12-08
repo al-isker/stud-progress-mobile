@@ -15,6 +15,7 @@ export const Tabs = () => {
 	return (
 		<NativeTabs
 			safeAreaInsets={{ bottom: rt.insets.bottom }}
+			detachInactiveScreens={false}
 			screenOptions={{
 				animation: 'shift',
 				transitionSpec: {
