@@ -54,11 +54,16 @@ export const useNotificationPermissions = () => {
 	}, []);
 
 	useEffect(() => {
-		const subscription = AppState.addEventListener('focus', async () => {
-			const currentPermissions = await getPermissionsAsync();
+		const subscription = AppState.addEventListener(
+			'change',
+			async appStateStatus => {
+				if (appStateStatus === 'active') {
+					const currentPermissions = await getPermissionsAsync();
 
-			updatePermissions(currentPermissions);
-		});
+					updatePermissions(currentPermissions);
+				}
+			}
+		);
 
 		return subscription.remove;
 	}, []);
