@@ -5,7 +5,11 @@ import {
 	LoginContextMutationErrorType
 } from '../../model/types/login-context';
 
-export const LoginContextProvider = ({ children }: { children: ReactNode }) => {
+type Props = {
+	children: ReactNode;
+};
+
+export const LoginContextProvider = ({ children }: Props) => {
 	const formValuesRef = useRef<LoginContextFormValuesType>({});
 	const mutationErrorRef = useRef<LoginContextMutationErrorType>(null);
 

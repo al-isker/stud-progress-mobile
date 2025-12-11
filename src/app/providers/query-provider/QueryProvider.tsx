@@ -8,7 +8,11 @@ import {
 import { AppState } from 'react-native';
 import { queryClient } from '@/shared/lib/query-client';
 
-export const QueryProvider = ({ children }: { children: ReactNode }) => {
+type Props = {
+	children: ReactNode;
+};
+
+export const QueryProvider = ({ children }: Props) => {
 	useEffect(() => {
 		const subscription = AppState.addEventListener('change', status => {
 			focusManager.setFocused(status === 'active');
