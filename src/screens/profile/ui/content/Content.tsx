@@ -1,10 +1,11 @@
-import { ScrollView, StyleProp, Text, ViewStyle } from 'react-native';
+import { ScrollView, StyleProp, ViewStyle } from 'react-native';
 import { useUnistyles } from 'react-native-unistyles';
 import { ProfileType } from '@/entities/profile';
 import { ProfileIcon } from '@/shared/assets/icons';
 import { Paper } from '@/shared/ui/paper';
 import { RefreshControl } from '@/shared/ui/refresh-control';
 import { MenuSection } from '../menu-section/MenuSection';
+import { NameSection } from '../name-section/NameSection';
 import { StatsSection } from '../stats-section/StatsSection';
 
 type ContentProps = {
@@ -37,17 +38,7 @@ export const Content = ({
 				<ProfileIcon height={220} color={theme.colors.primary} />
 			</Paper>
 
-			<Paper style={{ padding: theme.spacing * 1.5 }}>
-				<Text
-					style={{
-						color: theme.colors.blackAlpha(0.9),
-						fontSize: 24,
-						fontFamily: theme.typography.fontFamily.GolosTextSemiBold
-					}}
-				>
-					{profile.fullName}
-				</Text>
-			</Paper>
+			<NameSection fullName={profile.fullName} />
 
 			<StatsSection course={profile.course} semester={profile.semester} />
 
