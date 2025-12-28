@@ -48,7 +48,9 @@ export const TextField = ({
 	const inputRef = useRef<TextInput>(null);
 
 	const sharedIsFocus = useSharedValue(false);
-	const sharedIsThereValue = useSharedValue(!!(value ?? defaultValue)?.length);
+	const sharedIsThereValue = useSharedValue(
+		Boolean((value ?? defaultValue)?.length)
+	);
 
 	const initialContainerBorderColor = styles.container.borderColor;
 	const initialLabelColor = styles.label.color;
@@ -91,12 +93,12 @@ export const TextField = ({
 	const handleBlur = () => sharedIsFocus.set(false);
 
 	const handleChangeText = (value: string) => {
-		sharedIsThereValue.set(!!value.length);
+		sharedIsThereValue.set(Boolean(value.length));
 	};
 
 	useEffect(() => {
 		if (typeof value === 'string') {
-			sharedIsThereValue.set(!!value.length);
+			sharedIsThereValue.set(Boolean(value.length));
 		}
 	}, [value]);
 
