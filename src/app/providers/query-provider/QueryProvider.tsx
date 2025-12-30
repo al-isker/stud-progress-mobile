@@ -1,12 +1,9 @@
 import { ReactNode, useEffect } from 'react';
 import NetInfo from '@react-native-community/netinfo';
-import {
-	QueryClientProvider,
-	focusManager,
-	onlineManager
-} from '@tanstack/react-query';
+import { focusManager, onlineManager } from '@tanstack/react-query';
+import { PersistQueryClientProvider } from '@tanstack/react-query-persist-client';
 import { AppState } from 'react-native';
-import { queryClient } from '@/shared/lib/query-client';
+import { persistOptions, queryClient } from '@/shared/api';
 
 type Props = {
 	children: ReactNode;
@@ -24,7 +21,7 @@ export const QueryProvider = ({ children }: Props) => {
 	useEffect(() => {
 		const unsubscribe = NetInfo.addEventListener(state => {
 			onlineManager.setOnline(
-				!!state.isConnected && !!state.isInternetReachable
+				Boolean(state.isConnected && state.isInternetReachable)
 			);
 		});
 
@@ -32,6 +29,11 @@ export const QueryProvider = ({ children }: Props) => {
 	}, []);
 
 	return (
-		<QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+		<PersistQueryClientProvider
+			client={queryClient}
+			persistOptions={persistOptions}
+		>
+			{children}
+		</PersistQueryClientProvider>
 	);
 };
