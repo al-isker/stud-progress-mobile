@@ -1,13 +1,12 @@
 import { Ref } from 'react';
-import { Text, View, ViewProps } from 'react-native';
+import { Insets, Text, View, ViewProps } from 'react-native';
 import { SharedValue } from 'react-native-reanimated';
-import { EdgeInsets } from 'react-native-safe-area-context';
 import { StyleSheet } from 'react-native-unistyles';
 import { ProgressLoader } from '../../progress-loader';
 
 export type LoadingScreenProps = ViewProps & {
 	ref?: Ref<View>;
-	safeAreaInsets?: Partial<EdgeInsets>;
+	safeAreaInsets?: Insets;
 	progress: SharedValue<number>;
 	description?: string;
 };
@@ -38,7 +37,7 @@ const styles = StyleSheet.create(theme => ({
 		padding: theme.spacing * 2,
 		backgroundColor: theme.colors.primary
 	},
-	safeAreaContainer: (safeAreaInsets?: Partial<EdgeInsets>) => ({
+	safeAreaContainer: (safeAreaInsets?: Insets) => ({
 		flex: 1,
 		paddingTop: safeAreaInsets?.top,
 		paddingRight: safeAreaInsets?.right,

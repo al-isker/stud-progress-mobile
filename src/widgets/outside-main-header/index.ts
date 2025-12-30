@@ -1,0 +1,1 @@
+export { OutsideMainHeader } from './OutsideMainHeader';

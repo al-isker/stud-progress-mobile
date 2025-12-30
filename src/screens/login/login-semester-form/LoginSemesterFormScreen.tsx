@@ -18,8 +18,8 @@ const styles = StyleSheet.create(theme => ({
 		paddingHorizontal: theme.spacing
 	},
 	description: {
-		maxWidth: 280,
-		marginBottom: theme.spacing * 1.75,
+		maxWidth: 210,
+		marginBottom: theme.spacing * 1.5,
 		alignSelf: 'center',
 		textAlign: 'center',
 		color: theme.colors.blackAlpha(0.5),

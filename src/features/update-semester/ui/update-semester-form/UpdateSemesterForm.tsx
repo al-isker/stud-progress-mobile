@@ -3,7 +3,6 @@ import { StyleSheet } from 'react-native-unistyles';
 import { semesterOptions } from '@/entities/semester';
 import { ArrowRightIcon } from '@/shared/assets/icons';
 import { Command } from '@/shared/ui/command';
-import { Divider } from '@/shared/ui/divider';
 import { useUpdateSemesterForm } from '../../model/hooks/use-update-semester-form';
 import { MutationError } from './MutationError';
 
@@ -15,54 +14,54 @@ export const UpdateSemesterForm = ({ style }: UpdateSemesterFormProps) => {
 	const { currentSemester, selectSemester } = useUpdateSemesterForm();
 
 	return (
-		<View style={style}>
+		<View style={[styles.container, style]}>
 			<MutationError style={styles.mutationError} />
-
-			<Divider style={styles.divider} />
 
 			<ScrollView
 				contentContainerStyle={styles.contentContainer}
 				showsVerticalScrollIndicator={false}
 			>
-				{semesterOptions.map((option, index) => (
-					<Command
-						key={index}
-						style={[
-							styles.command,
-							option.value === currentSemester && styles.activeCommand,
-							index === semesterOptions.length - 1 && styles.lastCommand
-						]}
-						title={option.label}
-						endSlot={<ArrowRightIcon />}
-						onPress={() => selectSemester(option.value)}
-					/>
-				))}
+				<View style={styles.commandList}>
+					{semesterOptions.map((option, index) => (
+						<View
+							key={index}
+							style={styles.commandContainer(option.value === currentSemester)}
+						>
+							<Command
+								style={styles.command}
+								title={option.label}
+								endSlot={<ArrowRightIcon />}
+								onPress={() => selectSemester(option.value)}
+							/>
+						</View>
+					))}
+				</View>
 			</ScrollView>
 		</View>
 	);
 };
 
 const styles = StyleSheet.create((theme, rt) => ({
+	container: {
+		overflow: 'hidden',
+		borderRadius: theme.borderRadius
+	},
 	mutationError: {
 		marginBottom: 4,
 		textAlign: 'center'
 	},
-	divider: {
-		marginBottom: 2
-	},
 	contentContainer: {
-		flexDirection: 'column',
-		paddingBottom: theme.spacing + rt.insets.bottom,
-		rowGap: 2
+		paddingBottom: theme.spacing + rt.insets.bottom
 	},
+	commandList: {
+		overflow: 'hidden',
+		rowGap: 2,
+		borderRadius: theme.borderRadius
+	},
+	commandContainer: (active: boolean) => ({
+		backgroundColor: active ? theme.colors.primaryAlpha(0.05) : undefined
+	}),
 	command: {
 		borderRadius: 2
-	},
-	activeCommand: {
-		backgroundColor: theme.colors.primaryAlpha(0.05)
-	},
-	lastCommand: {
-		borderBottomStartRadius: theme.borderRadius,
-		borderBottomEndRadius: theme.borderRadius
 	}
 }));

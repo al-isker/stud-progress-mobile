@@ -1,19 +1,23 @@
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
-import { Text } from 'react-native';
+import { View } from 'react-native';
 import { StyleSheet, useUnistyles } from 'react-native-unistyles';
+import { OutsideMainHeader } from '@/widgets/outside-main-header';
 import { ScreenNames } from '@/shared/config/navigation';
-import { OutsideMainLayout } from '@/shared/ui/outside-main-layout';
 
 export const LoginFormAppLayout = () => {
 	const { rt } = useUnistyles();
 
 	return (
 		<>
-			<StatusBar style='light' />
+			<StatusBar style='dark' />
 
-			<OutsideMainLayout safeAreaInsets={{ top: rt.insets.top }}>
-				<Text style={styles.title}>Вход</Text>
+			<View style={styles.container}>
+				<OutsideMainHeader
+					style={styles.header}
+					safeAreaInsetTop={rt.insets.top}
+					title='Вход'
+				/>
 
 				<Stack
 					screenOptions={{
@@ -25,18 +29,17 @@ export const LoginFormAppLayout = () => {
 					<Stack.Screen name={ScreenNames.LOGIN_SEMESTER_FORM} />
 					<Stack.Screen name={ScreenNames.LOGIN_MAIN_FORM} />
 				</Stack>
-			</OutsideMainLayout>
+			</View>
 		</>
 	);
 };
 
 const styles = StyleSheet.create(theme => ({
-	title: {
-		marginVertical: theme.spacing,
-		textAlign: 'center',
-		color: theme.colors.blackAlpha(0.9),
-		fontSize: 24,
-		fontFamily: theme.typography.fontFamily.GolosTextSemiBold
+	container: {
+		flex: 1
+	},
+	header: {
+		paddingHorizontal: theme.spacing
 	},
 	stackScreenContent: {
 		backgroundColor: theme.colors.bgPaper

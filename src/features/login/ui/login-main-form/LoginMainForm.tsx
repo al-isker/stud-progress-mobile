@@ -1,13 +1,21 @@
 import { Link, router } from 'expo-router';
-import { ScrollView, View } from 'react-native';
-import { StyleSheet } from 'react-native-unistyles';
+import { StyleProp, View, ViewStyle } from 'react-native';
+import 'react-native-keyboard-controller';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-controller';
+import { StyleSheet, useUnistyles } from 'react-native-unistyles';
 import { routes } from '@/shared/config/navigation';
 import { Button } from '@/shared/ui/button';
 import { TextField } from '@/shared/ui/text-field';
 import { useLoginMainForm } from '../../model/hooks/use-login-main-form';
 import { MutationError } from './MutationError';
 
-export const LoginMainForm = () => {
+type LoginMainFormProps = {
+	style?: StyleProp<ViewStyle>;
+};
+
+export const LoginMainForm = ({ style }: LoginMainFormProps) => {
+	const { theme, rt } = useUnistyles();
+
 	const {
 		defaultFullName,
 		defaultPassword,
@@ -15,42 +23,49 @@ export const LoginMainForm = () => {
 		handlePasswordChange
 	} = useLoginMainForm();
 
-	const onBackPress = () => {
+	const handleBackButtonPress = () => {
 		router.back();
 	};
 
 	return (
-		<View style={styles.container}>
-			<ScrollView
+		<View style={style}>
+			<KeyboardAwareScrollView
+				style={styles.container}
 				contentContainerStyle={styles.contentContainer}
 				showsVerticalScrollIndicator={false}
+				keyboardShouldPersistTaps='handled'
+				bottomOffset={theme.dimensions.outsideMainHeader.height}
+				extraKeyboardSpace={-rt.insets.bottom}
 			>
-				<TextField
-					size='large'
-					style={styles.formItem}
-					label='ФИО'
-					defaultValue={defaultFullName}
-					onChangeText={handleFullNameChange}
-				/>
+				<View style={styles.formContainer}>
+					<TextField
+						size='large'
+						label='ФИО'
+						defaultValue={defaultFullName}
+						onChangeText={handleFullNameChange}
+					/>
+					<TextField
+						size='large'
+						label='Пароль'
+						defaultValue={defaultPassword}
+						onChangeText={handlePasswordChange}
+					/>
 
-				<TextField
-					size='large'
-					style={styles.formItem}
-					label='Пароль'
-					defaultValue={defaultPassword}
-					onChangeText={handlePasswordChange}
-				/>
+					<MutationError style={styles.mutationError} />
 
-				<MutationError style={[styles.formItem, styles.mutationError]} />
+					<View style={styles.actions}>
+						<Link href={routes.loginLoading} asChild>
+							<Button size='large' title='Начать' />
+						</Link>
 
-				<View style={styles.actions}>
-					<Link href={routes.loginLoading} asChild>
-						<Button size='large' title='Начать' />
-					</Link>
-
-					<Button variant='text' title='назад' onPress={onBackPress} />
+						<Button
+							variant='text'
+							title='назад'
+							onPress={handleBackButtonPress}
+						/>
+					</View>
 				</View>
-			</ScrollView>
+			</KeyboardAwareScrollView>
 		</View>
 	);
 };
@@ -63,8 +78,9 @@ const styles = StyleSheet.create((theme, rt) => ({
 		minHeight: '100%',
 		paddingBottom: theme.spacing + rt.insets.bottom
 	},
-	formItem: {
-		marginBottom: 16
+	formContainer: {
+		flex: 1,
+		rowGap: 16
 	},
 	mutationError: {
 		textAlign: 'center'

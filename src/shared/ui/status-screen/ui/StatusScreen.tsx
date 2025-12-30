@@ -1,12 +1,11 @@
 import { ReactElement, ReactNode, Ref } from 'react';
-import { Text, View, ViewProps } from 'react-native';
-import { EdgeInsets } from 'react-native-safe-area-context';
+import { Insets, Text, View, ViewProps } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
 import { SlotProps, renderSlot } from '@/shared/lib/slot';
 
 export type StatusScreenProps = ViewProps & {
 	ref?: Ref<View>;
-	safeAreaInsets?: Partial<EdgeInsets>;
+	safeAreaInsets?: Insets;
 	iconSlot?: ReactElement<SlotProps>;
 	title?: string;
 	description?: string;
@@ -41,7 +40,7 @@ const styles = StyleSheet.create(theme => ({
 	container: {
 		flex: 1
 	},
-	safeAreaContainer: (safeAreaInsets?: Partial<EdgeInsets>) => ({
+	safeAreaContainer: (safeAreaInsets?: Insets) => ({
 		flex: 1,
 		justifyContent: 'center',
 		alignItems: 'center',

@@ -8,7 +8,7 @@ export const LoginMainFormScreen = () => (
 			Введи свои учётные данные для личного кабинета
 		</Text>
 
-		<LoginMainForm />
+		<LoginMainForm style={styles.form} />
 	</View>
 );
 
@@ -19,11 +19,14 @@ const styles = StyleSheet.create(theme => ({
 	},
 	description: {
 		maxWidth: 280,
-		marginBottom: theme.spacing * 1.75,
+		marginBottom: theme.spacing * 1.5,
 		alignSelf: 'center',
 		textAlign: 'center',
 		color: theme.colors.blackAlpha(0.5),
 		fontSize: 14,
 		fontFamily: theme.typography.fontFamily.GolosTextRegular
+	},
+	form: {
+		flex: 1
 	}
 }));

@@ -1,47 +1,50 @@
 import { StatusBar } from 'expo-status-bar';
-import { Text } from 'react-native';
+import { Text, View } from 'react-native';
 import { StyleSheet, useUnistyles } from 'react-native-unistyles';
+import { OutsideMainHeader } from '@/widgets/outside-main-header';
 import { UpdateSemesterForm } from '@/features/update-semester';
-import { OutsideMainLayout } from '@/shared/ui/outside-main-layout';
 
 export const UpdateSemesterFormScreen = () => {
 	const { rt } = useUnistyles();
 
 	return (
 		<>
-			<StatusBar style='light' />
+			<StatusBar style='dark' />
 
-			<OutsideMainLayout
-				contentContainerStyle={styles.layoutContentContainer}
-				safeAreaInsets={{ top: rt.insets.top }}
-			>
-				<Text style={styles.title}>Изменение семестра</Text>
+			<View style={styles.container}>
+				<OutsideMainHeader
+					style={styles.header}
+					safeAreaInsetTop={rt.insets.top}
+					title='Изменение семестра'
+				/>
 
-				<Text style={styles.description}>
-					Выбери семестр, на который хочешь переключится
-				</Text>
+				<View style={styles.contentContainer}>
+					<Text style={styles.description}>
+						Выбери семестр, на который хочешь переключиться
+					</Text>
 
-				<UpdateSemesterForm style={styles.form} />
-			</OutsideMainLayout>
+					<UpdateSemesterForm style={styles.form} />
+				</View>
+			</View>
 		</>
 	);
 };
 
 const styles = StyleSheet.create(theme => ({
-	layoutContentContainer: {
-		paddingTop: theme.spacing,
+	container: {
+		flex: 1
+	},
+	header: {
 		paddingHorizontal: theme.spacing
 	},
-	title: {
-		marginVertical: theme.spacing,
-		textAlign: 'center',
-		color: theme.colors.blackAlpha(0.9),
-		fontSize: 24,
-		fontFamily: theme.typography.fontFamily.GolosTextSemiBold
+	contentContainer: {
+		flex: 1,
+		paddingHorizontal: theme.spacing,
+		backgroundColor: theme.colors.bgPaper
 	},
 	description: {
-		maxWidth: 280,
-		marginBottom: theme.spacing * 1.75,
+		maxWidth: 210,
+		marginBottom: theme.spacing * 1.5,
 		alignSelf: 'center',
 		textAlign: 'center',
 		color: theme.colors.blackAlpha(0.5),

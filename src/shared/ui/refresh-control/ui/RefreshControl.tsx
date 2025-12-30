@@ -10,30 +10,30 @@ export type RefreshControlProps = NativeRefreshControlProps & {
 };
 
 export const RefreshControl = ({
-	refreshing,
+	refreshing: refreshingProp,
 	onRefresh,
 	...props
 }: RefreshControlProps) => {
 	const { theme } = useUnistyles();
 
-	const [localRefreshing, setLocalRefreshing] = useState(refreshing);
+	const [refreshing, setRefreshing] = useState(refreshingProp);
 
 	const handleRefresh = () => {
 		if (onRefresh) {
-			setLocalRefreshing(true);
+			setRefreshing(true);
 			onRefresh();
 		}
 	};
 
 	useEffect(() => {
-		setLocalRefreshing(refreshing);
-	}, [refreshing]);
+		setRefreshing(refreshingProp);
+	}, [refreshingProp]);
 
 	return (
 		<NativeRefreshControl
 			colors={[theme.colors.primary]}
 			tintColor={theme.colors.primary}
-			refreshing={localRefreshing}
+			refreshing={refreshing}
 			onRefresh={handleRefresh}
 			{...props}
 		/>

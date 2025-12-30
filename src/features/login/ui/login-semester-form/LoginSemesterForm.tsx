@@ -3,7 +3,6 @@ import { StyleSheet } from 'react-native-unistyles';
 import { semesterOptions } from '@/entities/semester';
 import { ArrowRightIcon } from '@/shared/assets/icons';
 import { Command } from '@/shared/ui/command';
-import { Divider } from '@/shared/ui/divider';
 import { useLoginSemesterForm } from '../../model/hooks/use-login-semester-form';
 
 type LoginSemesterFormProps = {
@@ -14,44 +13,41 @@ export const LoginSemesterForm = ({ style }: LoginSemesterFormProps) => {
 	const { selectSemester } = useLoginSemesterForm();
 
 	return (
-		<View style={style}>
-			<Divider style={styles.divider} />
-
+		<View style={[styles.container, style]}>
 			<ScrollView
 				contentContainerStyle={styles.contentContainer}
 				showsVerticalScrollIndicator={false}
 			>
-				{semesterOptions.map((option, index) => (
-					<Command
-						key={index}
-						style={[
-							styles.command,
-							index === semesterOptions.length - 1 && styles.lastCommand
-						]}
-						title={option.label}
-						endSlot={<ArrowRightIcon />}
-						onPress={() => selectSemester(option.value)}
-					/>
-				))}
+				<View style={styles.commandList}>
+					{semesterOptions.map((option, index) => (
+						<Command
+							key={index}
+							style={styles.command}
+							title={option.label}
+							endSlot={<ArrowRightIcon />}
+							onPress={() => selectSemester(option.value)}
+						/>
+					))}
+				</View>
 			</ScrollView>
 		</View>
 	);
 };
 
 const styles = StyleSheet.create((theme, rt) => ({
-	divider: {
-		marginBottom: 2
+	container: {
+		overflow: 'hidden',
+		borderRadius: theme.borderRadius
 	},
 	contentContainer: {
-		flexDirection: 'column',
-		paddingBottom: theme.spacing + rt.insets.bottom,
-		rowGap: 2
+		paddingBottom: theme.spacing + rt.insets.bottom
+	},
+	commandList: {
+		overflow: 'hidden',
+		rowGap: 2,
+		borderRadius: theme.borderRadius
 	},
 	command: {
 		borderRadius: 2
-	},
-	lastCommand: {
-		borderBottomStartRadius: theme.borderRadius,
-		borderBottomEndRadius: theme.borderRadius
 	}
 }));

@@ -91,12 +91,12 @@ export const TextField = ({
 	const handleBlur = () => sharedIsFocus.set(false);
 
 	const handleChangeText = (value: string) => {
-		sharedIsThereValue.set(!!value.length);
+		sharedIsThereValue.set(!!value.trim().length);
 	};
 
 	useEffect(() => {
 		if (typeof value === 'string') {
-			sharedIsThereValue.set(!!value.length);
+			sharedIsThereValue.set(!!value.trim().length);
 		}
 	}, [value]);
 
@@ -110,7 +110,7 @@ export const TextField = ({
 
 					<TextInput
 						ref={composeRefs(inputRef, inputRefProp)}
-						style={[styles.textInput, style]}
+						style={styles.textInput}
 						placeholderTextColor={theme.colors.blackAlpha(0.2)}
 						defaultValue={defaultValue}
 						value={value}

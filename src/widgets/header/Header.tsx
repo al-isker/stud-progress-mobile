@@ -12,11 +12,14 @@ export const Header = ({ safeAreaInsetTop }: HeaderProps) => (
 );
 
 const styles = StyleSheet.create(theme => ({
-	header: (safeAreaInsetTop?: number) => ({
+	header: (safeAreaInsetTop = 0) => ({
 		zIndex: theme.zIndex.header,
+		height: theme.dimensions.header.height + safeAreaInsetTop,
+		paddingTop: theme.spacing + safeAreaInsetTop,
+		paddingBottom: theme.spacing,
+		paddingHorizontal: theme.spacing,
+		justifyContent: 'center',
 		elevation: 8,
-		padding: theme.spacing,
-		paddingTop: theme.spacing * 1.5 + (safeAreaInsetTop ?? 0),
 		backgroundColor: theme.colors.primary
 	}),
 	title: {
