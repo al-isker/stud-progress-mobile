@@ -5,10 +5,15 @@ import { NumberStat } from '@/shared/ui/number-stat';
 
 type DaysWithoutMarkProps = {
 	style?: StyleProp<ViewStyle>;
+	contentContainerStyle?: StyleProp<ViewStyle>;
 	value: number | null;
 };
 
-export const DaysWithoutMark = ({ style, value }: DaysWithoutMarkProps) => {
+export const DaysWithoutMark = ({
+	style,
+	contentContainerStyle,
+	value
+}: DaysWithoutMarkProps) => {
 	let formattedValue: string;
 	let hint: string | undefined;
 
@@ -27,6 +32,7 @@ export const DaysWithoutMark = ({ style, value }: DaysWithoutMarkProps) => {
 	return (
 		<NumberStat
 			style={style}
+			contentContainerStyle={contentContainerStyle}
 			title='Нет баллов'
 			value={formattedValue}
 			valueHint={hint}

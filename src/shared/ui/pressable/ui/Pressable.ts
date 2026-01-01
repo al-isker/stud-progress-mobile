@@ -1,6 +1,6 @@
 import { Platform } from 'react-native';
-import { PressableAndroid } from '../pressable-android/PressableAndroid';
-import { PressableIOS } from '../pressable-ios/PressableIOS';
+import { PressableAndroid } from './PressableAndroid';
+import { PressableIOS } from './PressableIOS';
 
 export const Pressable = Platform.select({
 	android: PressableAndroid,

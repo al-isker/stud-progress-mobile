@@ -14,7 +14,7 @@ export type NumberStatProps = PaperProps & {
 };
 
 export const NumberStat = ({
-	style,
+	contentContainerStyle,
 	title,
 	value,
 	valueHint,
@@ -25,7 +25,10 @@ export const NumberStat = ({
 	const { theme } = useUnistyles();
 
 	return (
-		<Paper style={[styles.paper, style]} {...props}>
+		<Paper
+			contentContainerStyle={[styles.container, contentContainerStyle]}
+			{...props}
+		>
 			<View style={styles.header}>
 				{renderSlot(headerStartSlot, {
 					style: styles.headerStartSlot,
@@ -47,8 +50,7 @@ export const NumberStat = ({
 };
 
 const styles = StyleSheet.create(theme => ({
-	paper: {
-		flex: 1,
+	container: {
 		rowGap: theme.spacing * 1.2,
 		padding: theme.spacing * 1.5
 	},

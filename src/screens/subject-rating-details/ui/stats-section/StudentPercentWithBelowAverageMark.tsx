@@ -11,12 +11,12 @@ import {
 } from '@/shared/ui/progress-chart';
 
 type StudentPercentWithBelowAverageMarkProps = {
-	style?: StyleProp<ViewStyle>;
+	contentContainerStyle?: StyleProp<ViewStyle>;
 	value: number | null;
 };
 
 export const StudentPercentWithBelowAverageMark = ({
-	style,
+	contentContainerStyle,
 	value
 }: StudentPercentWithBelowAverageMarkProps) => {
 	const { theme } = useUnistyles();
@@ -37,7 +37,7 @@ export const StudentPercentWithBelowAverageMark = ({
 	}, [value]);
 
 	return (
-		<Paper style={[styles.container, style]}>
+		<Paper contentContainerStyle={[styles.container, contentContainerStyle]}>
 			<View style={styles.leftContent}>
 				<View style={styles.header}>
 					<MedalStarIcon style={styles.icon} color={theme.colors.primary} />

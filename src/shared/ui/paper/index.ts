@@ -1,1 +1,2 @@
-export { Paper, PaperProps } from './ui/Paper';
+export { PaperProps } from './lib/types/paper-props';
+export { Paper } from './ui/Paper';

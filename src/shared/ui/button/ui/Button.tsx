@@ -49,7 +49,7 @@ export const Button = ({
 	);
 };
 
-export const styles = StyleSheet.create(theme => ({
+const styles = StyleSheet.create(theme => ({
 	pressable: {
 		flexDirection: 'row',
 		justifyContent: 'center',

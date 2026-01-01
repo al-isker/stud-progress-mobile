@@ -9,7 +9,7 @@ type MainSectionProps = {
 };
 
 export const MainSection = ({ name, controlType }: MainSectionProps) => (
-	<Paper style={styles.paper}>
+	<Paper contentContainerStyle={styles.paper}>
 		<Text style={styles.name}>{name}</Text>
 
 		<ControlType variant='primary' controlType={controlType} />

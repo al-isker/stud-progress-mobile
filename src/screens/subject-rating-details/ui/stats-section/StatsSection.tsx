@@ -16,13 +16,21 @@ export const StatsSection = ({
 	studentPercentWithBelowAverageMark
 }: StatsSectionProps) => (
 	<View style={styles.container}>
-		<View style={styles.topStats}>
-			<ImpactLastMark style={styles.topLeftStat} value={impactLastMark} />
-			<DaysWithoutMark style={styles.topRightStat} value={daysWithoutMark} />
+		<View style={styles.topContainer}>
+			<ImpactLastMark
+				style={styles.topLeftStat}
+				contentContainerStyle={styles.topLeftStatContentContainer}
+				value={impactLastMark}
+			/>
+			<DaysWithoutMark
+				style={styles.topRightStat}
+				contentContainerStyle={styles.topRightStatContentContainer}
+				value={daysWithoutMark}
+			/>
 		</View>
 
 		<StudentPercentWithBelowAverageMark
-			style={styles.bottomStat}
+			contentContainerStyle={styles.bottomStatContentContainer}
 			value={studentPercentWithBelowAverageMark}
 		/>
 	</View>
@@ -32,21 +40,27 @@ const styles = StyleSheet.create(theme => ({
 	container: {
 		rowGap: theme.spacing / 2
 	},
-	topStats: {
+	topContainer: {
 		flexDirection: 'row',
 		columnGap: theme.spacing / 2
 	},
 	topLeftStat: {
+		flex: 1
+	},
+	topLeftStatContentContainer: {
 		borderTopRightRadius: 4,
 		borderBottomRightRadius: 4,
 		borderBottomLeftRadius: 4
 	},
 	topRightStat: {
+		flex: 1
+	},
+	topRightStatContentContainer: {
 		borderTopLeftRadius: 4,
 		borderBottomRightRadius: 4,
 		borderBottomLeftRadius: 4
 	},
-	bottomStat: {
+	bottomStatContentContainer: {
 		borderTopLeftRadius: 4,
 		borderTopRightRadius: 4
 	}

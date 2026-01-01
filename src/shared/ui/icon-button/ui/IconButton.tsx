@@ -36,7 +36,7 @@ export const IconButton = ({
 	);
 };
 
-export const styles = StyleSheet.create(theme => ({
+const styles = StyleSheet.create(theme => ({
 	pressable: {
 		aspectRatio: 1,
 		justifyContent: 'center',

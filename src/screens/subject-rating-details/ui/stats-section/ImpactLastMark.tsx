@@ -11,10 +11,15 @@ import { NumberStat } from '@/shared/ui/number-stat';
 
 type ImpactLastMarkProps = {
 	style?: StyleProp<ViewStyle>;
+	contentContainerStyle?: StyleProp<ViewStyle>;
 	value: number | null;
 };
 
-export const ImpactLastMark = ({ style, value }: ImpactLastMarkProps) => {
+export const ImpactLastMark = ({
+	style,
+	contentContainerStyle,
+	value
+}: ImpactLastMarkProps) => {
 	let formattedValue: string;
 	let hint: string | undefined;
 	let MainStartIcon: FC | undefined;
@@ -40,6 +45,7 @@ export const ImpactLastMark = ({ style, value }: ImpactLastMarkProps) => {
 	return (
 		<NumberStat
 			style={style}
+			contentContainerStyle={contentContainerStyle}
 			title='Тенденция'
 			value={formattedValue}
 			valueHint={hint}

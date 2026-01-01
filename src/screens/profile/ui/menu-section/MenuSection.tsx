@@ -8,7 +8,7 @@ import { MenuSupport } from './MenuSupport';
 import { MenuUpdateSemester } from './MenuUpdateSemester';
 
 export const MenuSection = () => (
-	<Paper style={{ overflow: 'hidden' }}>
+	<Paper contentContainerStyle={{ overflow: 'hidden' }}>
 		<MenuNotificationPermissions />
 		<Divider />
 		<MenuUpdateSemester />

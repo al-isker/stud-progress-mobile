@@ -64,7 +64,7 @@ export const IOCardContent = ({ ref, subjectRating }: IOCardContentProps) => {
 	]);
 
 	return (
-		<Paper style={styles.paper}>
+		<Paper contentContainerStyle={styles.paper}>
 			<Pressable
 				feedbackColor={theme.colors.primaryAlpha(0.05)}
 				style={styles.pressable}
