@@ -14,7 +14,7 @@ import { Paper } from '@/shared/ui/paper';
 import { Pressable } from '@/shared/ui/pressable';
 import {
 	ProgressChart,
-	createProgressAnimationConfig
+	getProgressAnimationConfig
 } from '@/shared/ui/progress-chart';
 import { EventList } from './EventList';
 
@@ -45,7 +45,7 @@ export const IOCardContent = ({ ref, subjectRating }: IOCardContentProps) => {
 		} else {
 			sharedAverageMark.value = withTiming(
 				averageMark,
-				createProgressAnimationConfig(
+				getProgressAnimationConfig(
 					sharedAverageMark.value,
 					averageMark,
 					MAX_MARK

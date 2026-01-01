@@ -1,4 +1,4 @@
-export const createAnimationDuration = (
+export const getAnimationDurationByValues = (
 	maxDuration: number,
 	currentValue: number,
 	newValue: number,

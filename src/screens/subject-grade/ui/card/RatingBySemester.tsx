@@ -5,7 +5,7 @@ import { StyleSheet } from 'react-native-unistyles';
 import { MAX_MARK, formatAverageMark } from '@/entities/subject';
 import {
 	ProgressChart,
-	createProgressAnimationConfig
+	getProgressAnimationConfig
 } from '@/shared/ui/progress-chart';
 
 type RatingBySemesterProps = {
@@ -26,7 +26,7 @@ export const RatingBySemester = ({
 			} else {
 				sharedAverageMark.value = withTiming(
 					averageMark,
-					createProgressAnimationConfig(
+					getProgressAnimationConfig(
 						sharedAverageMark.value,
 						averageMark,
 						MAX_MARK

@@ -7,7 +7,7 @@ import { formatPercent } from '@/shared/lib/animation';
 import { Paper } from '@/shared/ui/paper';
 import {
 	ProgressChart,
-	createProgressAnimationConfig
+	getProgressAnimationConfig
 } from '@/shared/ui/progress-chart';
 
 type StudentPercentWithBelowAverageMarkProps = {
@@ -30,7 +30,7 @@ export const StudentPercentWithBelowAverageMark = ({
 			} else {
 				sharedValue.value = withTiming(
 					value,
-					createProgressAnimationConfig(sharedValue.value, value, 100)
+					getProgressAnimationConfig(sharedValue.value, value, 100)
 				);
 			}
 		}

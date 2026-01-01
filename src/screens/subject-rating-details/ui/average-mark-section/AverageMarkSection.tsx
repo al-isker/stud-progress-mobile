@@ -5,7 +5,7 @@ import { MAX_MARK, formatAverageMark } from '@/entities/subject';
 import { Paper } from '@/shared/ui/paper';
 import {
 	ProgressChart,
-	createProgressAnimationConfig
+	getProgressAnimationConfig
 } from '@/shared/ui/progress-chart';
 
 type AverageMarkSectionProps = {
@@ -24,7 +24,7 @@ export const AverageMarkSection = ({
 			} else {
 				sharedAverageMark.value = withTiming(
 					averageMark,
-					createProgressAnimationConfig(
+					getProgressAnimationConfig(
 						sharedAverageMark.value,
 						averageMark,
 						MAX_MARK
