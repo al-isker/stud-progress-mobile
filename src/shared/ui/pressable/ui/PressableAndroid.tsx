@@ -1,5 +1,5 @@
 import { Pressable as NativePressable } from 'react-native';
-import { PressableProps } from '../../model/types/pressable-props';
+import { PressableProps } from '../model/types/pressable-props';
 
 export const PressableAndroid = ({
 	feedbackColor,
