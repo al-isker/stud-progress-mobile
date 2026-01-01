@@ -5,11 +5,13 @@ import {
 	UpdateSemesterContextMutationErrorType
 } from '../../model/types/update-semester-context';
 
-type Props = {
+type UpdateSemesterContextProviderProps = {
 	children: ReactNode;
 };
 
-export const UpdateSemesterContextProvider = ({ children }: Props) => {
+export const UpdateSemesterContextProvider = ({
+	children
+}: UpdateSemesterContextProviderProps) => {
 	const formValuesRef = useRef<UpdateSemesterContextFormValuesType>({});
 	const mutationErrorRef = useRef<UpdateSemesterContextMutationErrorType>(null);
 

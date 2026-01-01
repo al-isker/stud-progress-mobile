@@ -3,11 +3,11 @@ import { useFonts } from 'expo-font';
 import { SplashScreen } from 'expo-router';
 import * as Fonts from '@/shared/assets/fonts';
 
-type Props = {
+type FontsProviderProps = {
 	children: ReactNode;
 };
 
-export const FontsProvider = ({ children }: Props) => {
+export const FontsProvider = ({ children }: FontsProviderProps) => {
 	const [isFontsLoaded] = useFonts(Fonts);
 
 	useEffect(() => {

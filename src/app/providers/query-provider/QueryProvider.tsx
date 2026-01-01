@@ -5,11 +5,11 @@ import { PersistQueryClientProvider } from '@tanstack/react-query-persist-client
 import { AppState } from 'react-native';
 import { persistOptions, queryClient } from '@/shared/api';
 
-type Props = {
+type QueryProviderProps = {
 	children: ReactNode;
 };
 
-export const QueryProvider = ({ children }: Props) => {
+export const QueryProvider = ({ children }: QueryProviderProps) => {
 	useEffect(() => {
 		const subscription = AppState.addEventListener('change', status => {
 			focusManager.setFocused(status === 'active');

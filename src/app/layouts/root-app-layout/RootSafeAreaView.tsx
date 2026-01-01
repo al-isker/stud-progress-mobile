@@ -2,11 +2,11 @@ import { ReactNode } from 'react';
 import { View } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
 
-type Props = {
+type RootSafeAreaViewProps = {
 	children: ReactNode;
 };
 
-export const RootSafeAreaView = ({ children }: Props) => (
+export const RootSafeAreaView = ({ children }: RootSafeAreaViewProps) => (
 	<View style={styles.area}>{children}</View>
 );
 
