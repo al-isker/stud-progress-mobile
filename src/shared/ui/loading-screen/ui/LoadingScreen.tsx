@@ -51,11 +51,6 @@ const styles = StyleSheet.create(theme => ({
 		alignItems: 'center',
 		rowGap: 4
 	},
-	appIcon: {
-		width: '60%',
-		height: 'auto',
-		aspectRatio: 1
-	},
 	title: {
 		color: theme.colors.alwaysWhite,
 		fontSize: 30,

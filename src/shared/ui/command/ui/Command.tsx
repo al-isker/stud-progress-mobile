@@ -107,15 +107,15 @@ const styles = StyleSheet.create(theme => ({
 		}
 	},
 	slot: {
-		aspectRatio: 1,
-
 		variants: {
 			variant: {},
 			size: {
 				large: {
+					width: 20,
 					height: 20
 				},
 				medium: {
+					width: 16,
 					height: 16
 				}
 			}

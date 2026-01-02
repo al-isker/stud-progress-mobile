@@ -38,7 +38,6 @@ export const IconButton = ({
 
 const styles = StyleSheet.create(theme => ({
 	pressable: {
-		aspectRatio: 1,
 		justifyContent: 'center',
 		alignItems: 'center',
 
@@ -56,14 +55,17 @@ const styles = StyleSheet.create(theme => ({
 			},
 			size: {
 				large: {
+					width: 54,
 					height: 54,
 					borderRadius: theme.borderRadius * 1.35
 				},
 				medium: {
+					width: 40,
 					height: 40,
 					borderRadius: theme.borderRadius
 				},
 				small: {
+					width: 32,
 					height: 32,
 					borderRadius: theme.borderRadius * 0.8
 				}
@@ -71,18 +73,19 @@ const styles = StyleSheet.create(theme => ({
 		}
 	},
 	icon: {
-		aspectRatio: 1,
-
 		variants: {
 			variant: {},
 			size: {
 				large: {
+					width: 20,
 					height: 20
 				},
 				medium: {
+					width: 16,
 					height: 16
 				},
 				small: {
+					width: 13,
 					height: 13
 				}
 			}
