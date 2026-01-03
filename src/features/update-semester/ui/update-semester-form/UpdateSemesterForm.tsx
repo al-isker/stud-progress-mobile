@@ -1,8 +1,8 @@
 import { ScrollView, StyleProp, View, ViewStyle } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
 import { semesterOptions } from '@/entities/semester';
-import { ArrowRightIcon } from '@/shared/assets/icons';
 import { Command } from '@/shared/ui/command';
+import { ArrowRightIcon } from '@/shared/ui/icons';
 import { useUpdateSemesterForm } from '../../model/hooks/use-update-semester-form';
 import { MutationError } from './MutationError';
 

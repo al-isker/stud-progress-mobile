@@ -1,7 +1,7 @@
 import { Link } from 'expo-router';
-import { ArrowRightIcon, SettingsIcon } from '@/shared/assets/icons';
 import { links } from '@/shared/config/navigation';
 import { Command } from '@/shared/ui/command';
+import { ArrowRightIcon, SettingsIcon } from '@/shared/ui/icons';
 
 export const MenuSupport = () => (
 	<Link href={links.telegramSupport} asChild>

@@ -1,6 +1,6 @@
 import { useLogout } from '@/features/logout';
-import { ArrowRightIcon, ExitIcon } from '@/shared/assets/icons';
 import { Command } from '@/shared/ui/command';
+import { ArrowRightIcon, ExitIcon } from '@/shared/ui/icons';
 
 export const MenuLogout = () => {
 	const { logout } = useLogout();

@@ -1,6 +1,6 @@
 import { StyleProp, ViewStyle } from 'react-native';
-import { StopwatchIcon } from '@/shared/assets/icons';
 import { getWordByNumber } from '@/shared/lib/word-by-number';
+import { StopwatchIcon } from '@/shared/ui/icons';
 import { NumberStat } from '@/shared/ui/number-stat';
 
 type DaysWithoutMarkProps = {

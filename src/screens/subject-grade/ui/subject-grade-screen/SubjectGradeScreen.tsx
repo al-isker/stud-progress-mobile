@@ -1,10 +1,10 @@
 import { Link } from 'expo-router';
 import { View } from 'react-native';
 import { StyleSheet, useUnistyles } from 'react-native-unistyles';
-import { HeartBrokenIcon } from '@/shared/assets/icons';
 import { links } from '@/shared/config/navigation';
 import { Button } from '@/shared/ui/button';
 import { CircularLoader } from '@/shared/ui/circular-loader';
+import { HeartBrokenIcon } from '@/shared/ui/icons';
 import { StatusScreen } from '@/shared/ui/status-screen';
 import { useSubjectGradeList } from '../../model/hooks/use-subject-grade-list';
 import { List } from '../list/List';

@@ -1,12 +1,12 @@
 import { FC } from 'react';
 import { StyleProp, ViewStyle } from 'react-native';
+import { preciseRound } from '@/shared/lib/precise-round';
+import { getWordByNumber } from '@/shared/lib/word-by-number';
 import {
 	AltArrowDownIcon,
 	AltArrowUpIcon,
 	GraphUpIcon
-} from '@/shared/assets/icons';
-import { preciseRound } from '@/shared/lib/precise-round';
-import { getWordByNumber } from '@/shared/lib/word-by-number';
+} from '@/shared/ui/icons';
 import { NumberStat } from '@/shared/ui/number-stat';
 
 type ImpactLastMarkProps = {

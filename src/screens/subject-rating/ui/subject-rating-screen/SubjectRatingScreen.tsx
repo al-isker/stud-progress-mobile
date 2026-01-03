@@ -1,10 +1,10 @@
 import { Link } from 'expo-router';
 import { View } from 'react-native';
 import { StyleSheet, useUnistyles } from 'react-native-unistyles';
-import { FolderOpenIcon, HeartBrokenIcon } from '@/shared/assets/icons';
 import { links, routes } from '@/shared/config/navigation';
 import { Button } from '@/shared/ui/button';
 import { CircularLoader } from '@/shared/ui/circular-loader';
+import { FolderOpenIcon, HeartBrokenIcon } from '@/shared/ui/icons';
 import { StatusScreen } from '@/shared/ui/status-screen';
 import { useSubjectRatingList } from '../../model/hooks/use-subject-rating-list';
 import { IOList } from '../io-list/IOList';

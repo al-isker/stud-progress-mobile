@@ -1,6 +1,6 @@
 import { Text, View } from 'react-native';
 import { StyleSheet, useUnistyles } from 'react-native-unistyles';
-import { TeaCupIcon } from '@/shared/assets/icons';
+import { TeaCupIcon } from '@/shared/ui/icons';
 
 export const SubjectStatsScreen = () => {
 	const { theme } = useUnistyles();

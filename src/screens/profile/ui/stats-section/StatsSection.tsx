@@ -1,6 +1,6 @@
 import { View } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
-import { ChatSquireIcon, HashtagSquireIcon } from '@/shared/assets/icons';
+import { ChatSquireIcon, HashtagSquireIcon } from '@/shared/ui/icons';
 import { NumberStat } from '@/shared/ui/number-stat';
 
 type StatsSectionProps = {

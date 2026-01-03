@@ -2,8 +2,8 @@ import { useEffect } from 'react';
 import { StyleProp, Text, View, ViewStyle } from 'react-native';
 import { useSharedValue, withTiming } from 'react-native-reanimated';
 import { StyleSheet, useUnistyles } from 'react-native-unistyles';
-import { MedalStarIcon } from '@/shared/assets/icons';
 import { formatPercent } from '@/shared/lib/animation';
+import { MedalStarIcon } from '@/shared/ui/icons';
 import { Paper } from '@/shared/ui/paper';
 import {
 	ProgressChart,

@@ -1,12 +1,7 @@
 import { Tabs as NativeTabs } from 'expo-router';
 import { useUnistyles } from 'react-native-unistyles';
-import {
-	GradeIcon,
-	HomeIcon,
-	ProfileIcon,
-	StatsIcon
-} from '@/shared/assets/icons';
 import { ScreenNames } from '@/shared/config/navigation';
+import { GradeIcon, HomeIcon, ProfileIcon, StatsIcon } from '@/shared/ui/icons';
 import { Pressable } from '@/shared/ui/pressable';
 
 export const Tabs = () => {

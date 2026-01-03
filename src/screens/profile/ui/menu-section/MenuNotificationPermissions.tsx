@@ -1,8 +1,8 @@
 import { PermissionStatus } from 'expo-notifications';
 import { View } from 'react-native';
 import { useNotificationPermissions } from '@/entities/push-notification';
-import { BellIcon } from '@/shared/assets/icons';
 import { Command } from '@/shared/ui/command';
+import { BellIcon } from '@/shared/ui/icons';
 import { Switch } from '@/shared/ui/switch';
 
 export const MenuNotificationPermissions = () => {

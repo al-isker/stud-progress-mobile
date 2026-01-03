@@ -1,7 +1,7 @@
 import { ScrollView, StyleProp, ViewStyle } from 'react-native';
 import { useUnistyles } from 'react-native-unistyles';
 import { ProfileType } from '@/entities/profile';
-import { ProfileIcon } from '@/shared/assets/icons';
+import { ProfileIcon } from '@/shared/ui/icons';
 import { Paper } from '@/shared/ui/paper';
 import { RefreshControl } from '@/shared/ui/refresh-control';
 import { MenuSection } from '../menu-section/MenuSection';

@@ -1,6 +1,6 @@
 import { router } from 'expo-router';
-import { ArrowLeftIcon } from '@/shared/assets/icons';
 import { IconButton } from '@/shared/ui/icon-button';
+import { ArrowLeftIcon } from '@/shared/ui/icons';
 
 export const NavigationBar = () => {
 	const handleBackPress = () => {
