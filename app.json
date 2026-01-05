@@ -25,7 +25,6 @@
 		"ios": {
 			"bundleIdentifier": "com.alisker.studprogress",
 			"supportsTablet": true,
-			"googleServicesFile": "./GoogleService-Info.plist",
 			"infoPlist": {
 				"ITSAppUsesNonExemptEncryption": false
 			}

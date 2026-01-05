@@ -1,9 +1,7 @@
-import { getDevicePushTokenAsync } from 'expo-notifications';
 import { router } from 'expo-router';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { LoginResponseType } from '@/entities/auth';
-import { useLoginMutation } from '@/entities/auth/api/use-login-mutation';
-import { useUpdateFcmToken } from '@/entities/push-notification';
+import { LoginResponseType, useLoginMutation } from '@/entities/auth';
+import { useUpdateExpoPushToken } from '@/entities/push-notification';
 import { API_LONG_TIMEOUT, ApiErrorType } from '@/shared/api';
 import { routes } from '@/shared/config/navigation';
 import {
@@ -18,7 +16,7 @@ export const useLogin = () => {
 
 	const loginMutation = useLoginMutation();
 
-	const { updateFcmToken } = useUpdateFcmToken();
+	const { updateExpoPushToken } = useUpdateExpoPushToken();
 
 	const { progress, animationStart, animationComplete } =
 		useProgressAnimation(API_LONG_TIMEOUT);
@@ -29,9 +27,7 @@ export const useLogin = () => {
 		await AsyncStorage.setItem(ACCESS_TOKEN_STORAGE_KEY, data.accessToken);
 		await AsyncStorage.setItem(REFRESH_TOKEN_STORAGE_KEY, data.refreshToken);
 
-		const pushToken = await getDevicePushTokenAsync();
-
-		updateFcmToken({ fcmToken: pushToken.data });
+		updateExpoPushToken();
 
 		router.replace(routes.subjectRating);
 	};
@@ -47,13 +43,13 @@ export const useLogin = () => {
 
 		const formValues = loginContext.formValuesRef.current;
 
-		const bodyMutation = {
+		const mutationBody = {
 			fullName: formValues.fullName ?? '',
 			password: formValues.password ?? '',
 			semester: formValues.semester!
 		};
 
-		loginMutation.mutate(bodyMutation, {
+		loginMutation.mutate(mutationBody, {
 			onSuccess: handleSuccess,
 			onError: handleError
 		});

@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
+import { useExpoPushTokenHandler } from '../../model/hooks/use-expo-push-token-handler';
 import { useNotificationResponseHandler } from '../../model/hooks/use-notification-response-handler';
-import { usePushTokenHandler } from '../../model/hooks/use-push-token-handler';
 
 type PushNotificationProviderProps = {
 	children: ReactNode;
@@ -9,7 +9,7 @@ type PushNotificationProviderProps = {
 export const PushNotificationProvider = ({
 	children
 }: PushNotificationProviderProps) => {
-	usePushTokenHandler();
+	useExpoPushTokenHandler();
 	useNotificationResponseHandler();
 
 	return children;

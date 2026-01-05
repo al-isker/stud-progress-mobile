@@ -1,9 +1,9 @@
 import { baseApi } from '@/shared/api';
-import { UpdateFcmTokenBodyType } from '../model/types/update-device-info-body';
+import { UpdateExpoPushTokenBodyType } from '../model/types/update-expo-push-token-body';
 
 class DeviceInfoApi {
-	async updateFcmToken(body: UpdateFcmTokenBodyType) {
-		const response = await baseApi.post('device-info/fcm-token', body);
+	async updateExpoPushToken(body: UpdateExpoPushTokenBodyType) {
+		const response = await baseApi.post('device-info/expo-push-token', body);
 
 		return response.data;
 	}

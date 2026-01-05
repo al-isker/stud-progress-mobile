@@ -30,11 +30,11 @@ export const useUpdateSemester = () => {
 
 		const formValues = updateSemesterContext.formValuesRef.current;
 
-		const bodyMutation = {
+		const mutationBody = {
 			semester: formValues.semester!
 		};
 
-		updateSemesterMutation.mutate(bodyMutation, {
+		updateSemesterMutation.mutate(mutationBody, {
 			onSuccess: handleSuccess,
 			onError: handleError
 		});
