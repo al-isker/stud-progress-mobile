@@ -1,5 +1,5 @@
 import { ReactNode, useEffect } from 'react';
-import NetInfo from '@react-native-community/netinfo';
+import { addNetworkStateListener } from 'expo-network';
 import { focusManager, onlineManager } from '@tanstack/react-query';
 import { PersistQueryClientProvider } from '@tanstack/react-query-persist-client';
 import { AppState } from 'react-native';
@@ -19,13 +19,13 @@ export const QueryProvider = ({ children }: QueryProviderProps) => {
 	}, []);
 
 	useEffect(() => {
-		const unsubscribe = NetInfo.addEventListener(state => {
+		const subscription = addNetworkStateListener(state => {
 			onlineManager.setOnline(
 				Boolean(state.isConnected && state.isInternetReachable)
 			);
 		});
 
-		return unsubscribe;
+		return subscription.remove;
 	}, []);
 
 	return (
