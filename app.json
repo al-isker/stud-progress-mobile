@@ -35,8 +35,7 @@
 				{
 					"root": "./app"
 				}
-			],
-			"react-native-edge-to-edge"
+			]
 		],
 		"extra": {
 			"router": {

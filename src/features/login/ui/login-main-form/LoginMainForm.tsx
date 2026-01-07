@@ -1,6 +1,5 @@
 import { Link, router } from 'expo-router';
 import { StyleProp, View, ViewStyle } from 'react-native';
-import 'react-native-keyboard-controller';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-controller';
 import { StyleSheet, useUnistyles } from 'react-native-unistyles';
 import { routes } from '@/shared/config/navigation';
@@ -33,9 +32,10 @@ export const LoginMainForm = ({ style }: LoginMainFormProps) => {
 				style={styles.container}
 				contentContainerStyle={styles.contentContainer}
 				showsVerticalScrollIndicator={false}
-				keyboardShouldPersistTaps='handled'
 				bottomOffset={theme.dimensions.outsideMainHeader.height}
 				extraKeyboardSpace={-rt.insets.bottom}
+				keyboardShouldPersistTaps='always'
+				keyboardDismissMode='interactive'
 			>
 				<View style={styles.formContainer}>
 					<TextField
