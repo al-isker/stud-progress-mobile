@@ -1,6 +1,5 @@
 import { Link, router } from 'expo-router';
 import { StyleProp, View, ViewStyle } from 'react-native';
-import 'react-native-keyboard-controller';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-controller';
 import { StyleSheet, useUnistyles } from 'react-native-unistyles';
 import { routes } from '@/shared/config/navigation';
