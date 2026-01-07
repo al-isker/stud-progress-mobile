@@ -27,10 +27,10 @@ export const IOList = ({
 
 	return (
 		<IOScrollView
-			rootMargin={{ top: -50, bottom: -50 }}
 			style={style}
 			contentContainerStyle={[{ rowGap: theme.spacing }, contentContainerStyle]}
 			showsVerticalScrollIndicator={false}
+			rootMargin={{ top: -50, bottom: -50 }}
 			refreshControl={
 				<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
 			}

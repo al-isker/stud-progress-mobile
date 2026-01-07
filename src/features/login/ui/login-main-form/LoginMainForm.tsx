@@ -32,9 +32,10 @@ export const LoginMainForm = ({ style }: LoginMainFormProps) => {
 				style={styles.container}
 				contentContainerStyle={styles.contentContainer}
 				showsVerticalScrollIndicator={false}
-				keyboardShouldPersistTaps='handled'
 				bottomOffset={theme.dimensions.outsideMainHeader.height}
 				extraKeyboardSpace={-rt.insets.bottom}
+				keyboardShouldPersistTaps='always'
+				keyboardDismissMode='interactive'
 			>
 				<View style={styles.formContainer}>
 					<TextField
