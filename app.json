@@ -1,7 +1,8 @@
 {
 	"expo": {
 		"name": "Stud Progress",
-		"slug": "stud-progress",
+		"slug": "stud-progress-mobile",
+		"owner": "stud-progress",
 		"scheme": "stud-progress",
 		"version": "1.0.0",
 		"orientation": "portrait",
@@ -10,7 +11,6 @@
 		"newArchEnabled": true,
 		"splash": {
 			"image": "./assets/app-splash-icon.png",
-			"imageWidth": 200,
 			"resizeMode": "contain",
 			"backgroundColor": "#4b0aff"
 		},
@@ -43,9 +43,8 @@
 				"root": "./app"
 			},
 			"eas": {
-				"projectId": "013a1449-dd23-47b2-9b90-2bcf54eec682"
+				"projectId": "7c0396fc-ebd2-4d27-aa61-243879832b4a"
 			}
-		},
-		"owner": "al-isker"
+		}
 	}
 }
