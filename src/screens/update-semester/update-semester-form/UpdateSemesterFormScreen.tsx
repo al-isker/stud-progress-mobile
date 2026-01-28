@@ -12,11 +12,11 @@ export const UpdateSemesterFormScreen = () => {
 			<StatusBar style='dark' />
 
 			<View style={styles.container}>
-				<OutsideMainHeader
-					style={styles.header}
-					safeAreaInsetTop={rt.insets.top}
-					title='Изменение семестра'
-				/>
+				<View style={styles.headerContainer}>
+					<OutsideMainHeader safeAreaInsetTop={rt.insets.top} />
+
+					<Text style={styles.title}>Изменение семестра</Text>
+				</View>
 
 				<View style={styles.contentContainer}>
 					<Text style={styles.description}>
@@ -32,10 +32,18 @@ export const UpdateSemesterFormScreen = () => {
 
 const styles = StyleSheet.create(theme => ({
 	container: {
-		flex: 1
+		flex: 1,
+		backgroundColor: theme.colors.bgPaper
 	},
-	header: {
-		paddingHorizontal: theme.spacing
+	headerContainer: {
+		paddingHorizontal: theme.spacing,
+		paddingBottom: theme.spacing,
+		alignItems: 'center'
+	},
+	title: {
+		color: theme.colors.blackAlpha(0.9),
+		fontSize: 24,
+		fontFamily: theme.typography.fontFamily.GolosTextSemiBold
 	},
 	contentContainer: {
 		flex: 1,

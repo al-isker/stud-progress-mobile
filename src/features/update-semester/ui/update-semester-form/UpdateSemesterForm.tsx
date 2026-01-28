@@ -47,7 +47,7 @@ const styles = StyleSheet.create((theme, rt) => ({
 		borderRadius: theme.borderRadius
 	},
 	mutationError: {
-		marginBottom: 4,
+		marginBottom: 8,
 		textAlign: 'center'
 	},
 	contentContainer: {

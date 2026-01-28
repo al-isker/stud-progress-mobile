@@ -32,7 +32,7 @@ export const LoginMainForm = ({ style }: LoginMainFormProps) => {
 				style={styles.container}
 				contentContainerStyle={styles.contentContainer}
 				showsVerticalScrollIndicator={false}
-				bottomOffset={theme.dimensions.outsideMainHeader.height}
+				bottomOffset={theme.spacing * 2}
 				extraKeyboardSpace={-rt.insets.bottom}
 				keyboardShouldPersistTaps='always'
 				keyboardDismissMode='interactive'

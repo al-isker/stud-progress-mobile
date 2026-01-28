@@ -1,27 +1,26 @@
-import { Text, View } from 'react-native';
+import { Text, View, ViewProps } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
 
-type HeaderProps = {
+type HeaderProps = ViewProps & {
 	safeAreaInsetTop?: number;
 };
 
-export const Header = ({ safeAreaInsetTop }: HeaderProps) => (
-	<View style={styles.header(safeAreaInsetTop)}>
+export const Header = ({ style, safeAreaInsetTop, ...props }: HeaderProps) => (
+	<View style={[styles.container, style]} {...props}>
+		<View style={{ height: safeAreaInsetTop }} />
+
 		<Text style={styles.title}>Stud Progress</Text>
 	</View>
 );
 
 const styles = StyleSheet.create(theme => ({
-	header: (safeAreaInsetTop = 0) => ({
+	container: {
 		zIndex: theme.zIndex.header,
-		height: theme.dimensions.header.height + safeAreaInsetTop,
-		paddingTop: theme.spacing + safeAreaInsetTop,
-		paddingBottom: theme.spacing,
+		paddingVertical: theme.spacing * 1.25,
 		paddingHorizontal: theme.spacing,
-		justifyContent: 'center',
 		elevation: 8,
 		backgroundColor: theme.colors.primary
-	}),
+	},
 	title: {
 		color: theme.colors.alwaysWhite,
 		fontSize: 26,

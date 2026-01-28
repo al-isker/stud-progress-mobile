@@ -1,6 +1,6 @@
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
-import { View } from 'react-native';
+import { Text, View } from 'react-native';
 import { StyleSheet, useUnistyles } from 'react-native-unistyles';
 import { OutsideMainHeader } from '@/widgets/outside-main-header';
 import { ScreenNames } from '@/shared/config/navigation';
@@ -13,11 +13,11 @@ export const LoginFormAppLayout = () => {
 			<StatusBar style='dark' />
 
 			<View style={styles.container}>
-				<OutsideMainHeader
-					style={styles.header}
-					safeAreaInsetTop={rt.insets.top}
-					title='Вход'
-				/>
+				<View style={styles.headerContainer}>
+					<OutsideMainHeader safeAreaInsetTop={rt.insets.top} />
+
+					<Text style={styles.title}>Вход</Text>
+				</View>
 
 				<Stack
 					screenOptions={{
@@ -36,10 +36,18 @@ export const LoginFormAppLayout = () => {
 
 const styles = StyleSheet.create(theme => ({
 	container: {
-		flex: 1
+		flex: 1,
+		backgroundColor: theme.colors.bgPaper
 	},
-	header: {
-		paddingHorizontal: theme.spacing
+	headerContainer: {
+		paddingHorizontal: theme.spacing,
+		paddingBottom: theme.spacing,
+		alignItems: 'center'
+	},
+	title: {
+		color: theme.colors.blackAlpha(0.9),
+		fontSize: 24,
+		fontFamily: theme.typography.fontFamily.GolosTextSemiBold
 	},
 	stackScreenContent: {
 		backgroundColor: theme.colors.bgPaper
