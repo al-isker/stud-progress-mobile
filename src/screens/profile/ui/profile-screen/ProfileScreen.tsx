@@ -45,7 +45,7 @@ export const ProfileScreen = () => {
 						<Button variant='secondary' title='поддержка' />
 					</Link>
 
-					<Button title='обновить' onPress={() => refetch()} />
+					<Button title='попробовать снова' onPress={() => refetch()} />
 				</>
 			}
 		/>
