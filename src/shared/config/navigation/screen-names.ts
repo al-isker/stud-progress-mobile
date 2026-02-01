@@ -1,5 +1,7 @@
 export enum ScreenNames {
-	MAIN = '(main)',
+	PRELOAD_STATUS = 'preload-status',
+	PRELOAD_STATUS_ERROR = 'error/index',
+	PRELOAD_STATUS_UPDATE_APP = 'update-app/index',
 
 	LOGIN = 'login',
 	LOGIN_FORM = '(form)',
@@ -10,6 +12,8 @@ export enum ScreenNames {
 	UPDATE_SEMESTER = 'update-semester',
 	UPDATE_SEMESTER_FORM = 'form/index',
 	UPDATE_SEMESTER_LOADING = 'loading/index',
+
+	MAIN = '(main)',
 
 	TABS = '(tabs)',
 	TAB_SUBJECT_RATING = 'subject/rating/index',

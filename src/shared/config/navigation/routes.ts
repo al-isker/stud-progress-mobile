@@ -1,4 +1,7 @@
 class Routes {
+	preloadError = '/preload-status/error';
+	preloadUpdateApp = '/preload-status/update-app';
+
 	loginSemesterForm = '/login/semester-form';
 	loginMainForm = '/login/main-form';
 	loginLoading = '/login/loading';

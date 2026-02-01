@@ -5,3 +5,5 @@ export { baseApi } from './instances/base-api';
 export { persistOptions } from './persist/persist-options';
 export { queryClient } from './query-client/query-client';
 export { ApiErrorType } from './types/api-error';
+export { apiMessage } from './const/api-message';
+export { useLazyQuery } from './utils/use-lazy-query';

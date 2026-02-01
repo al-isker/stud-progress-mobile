@@ -18,9 +18,10 @@ export const RootAppLayout = () => (
 								headerShown: false
 							}}
 						>
-							<Stack.Screen name={ScreenNames.MAIN} />
+							<Stack.Screen name={ScreenNames.PRELOAD_STATUS} />
 							<Stack.Screen name={ScreenNames.LOGIN} />
 							<Stack.Screen name={ScreenNames.UPDATE_SEMESTER} />
+							<Stack.Screen name={ScreenNames.MAIN} />
 						</Stack>
 					</RootSafeAreaView>
 				</PushNotificationProvider>

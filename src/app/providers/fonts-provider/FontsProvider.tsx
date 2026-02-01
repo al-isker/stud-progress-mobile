@@ -1,6 +1,5 @@
-import { ReactNode, useEffect } from 'react';
+import { ReactNode } from 'react';
 import { useFonts } from 'expo-font';
-import { SplashScreen } from 'expo-router';
 import * as Fonts from '@/shared/assets/fonts';
 
 type FontsProviderProps = {
@@ -10,11 +9,7 @@ type FontsProviderProps = {
 export const FontsProvider = ({ children }: FontsProviderProps) => {
 	const [isFontsLoaded] = useFonts(Fonts);
 
-	useEffect(() => {
-		if (isFontsLoaded) {
-			SplashScreen.hideAsync();
-		}
-	}, [isFontsLoaded]);
-
-	return isFontsLoaded && children;
+	if (isFontsLoaded) {
+		return children;
+	}
 };
