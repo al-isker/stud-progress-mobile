@@ -28,7 +28,7 @@ export const RootScreen = () => {
 		}
 
 		if (mobileAppInfoQuery.isSuccess || mobileAppInfoQuery.isError) {
-			SplashScreen.hide();
+			SplashScreen.hideAsync();
 		}
 	}, [mobileAppInfoQuery.isSuccess, mobileAppInfoQuery.isError]);
 
