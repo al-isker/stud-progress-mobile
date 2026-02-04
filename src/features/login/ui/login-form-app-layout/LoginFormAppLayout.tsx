@@ -22,8 +22,7 @@ export const LoginFormAppLayout = () => {
 				<Stack
 					screenOptions={{
 						animation: 'simple_push',
-						headerShown: false,
-						contentStyle: styles.stackScreenContent
+						headerShown: false
 					}}
 				>
 					<Stack.Screen name={ScreenNames.LOGIN_SEMESTER_FORM} />
@@ -48,8 +47,5 @@ const styles = StyleSheet.create(theme => ({
 		color: theme.colors.blackAlpha(0.9),
 		fontSize: 24,
 		fontFamily: theme.typography.fontFamily.GolosTextSemiBold
-	},
-	stackScreenContent: {
-		backgroundColor: theme.colors.bgPaper
 	}
 }));

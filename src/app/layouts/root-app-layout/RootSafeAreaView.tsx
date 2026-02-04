@@ -15,6 +15,6 @@ const styles = StyleSheet.create((theme, rt) => ({
 		flex: 1,
 		paddingLeft: rt.insets.left,
 		paddingRight: rt.insets.right,
-		backgroundColor: theme.colors.bgBase
+		backgroundColor: theme.colors.black
 	}
 }));

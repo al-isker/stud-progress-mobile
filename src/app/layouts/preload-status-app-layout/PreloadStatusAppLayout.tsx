@@ -21,8 +21,7 @@ export const PreloadStatusAppLayout = () => {
 				<Stack
 					screenOptions={{
 						animation: 'simple_push',
-						headerShown: false,
-						contentStyle: styles.stackScreenContent
+						headerShown: false
 					}}
 				>
 					<Stack.Screen name={ScreenNames.PRELOAD_STATUS_ERROR} />
@@ -40,9 +39,6 @@ const styles = StyleSheet.create(theme => ({
 	},
 	header: {
 		paddingHorizontal: theme.spacing
-	},
-	stackScreenContent: {
-		backgroundColor: theme.colors.bgPaper
 	}
 }));
 

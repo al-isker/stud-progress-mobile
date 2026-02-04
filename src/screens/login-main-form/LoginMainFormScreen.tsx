@@ -15,7 +15,8 @@ export const LoginMainFormScreen = () => (
 const styles = StyleSheet.create(theme => ({
 	container: {
 		flex: 1,
-		paddingHorizontal: theme.spacing * 1.5
+		paddingHorizontal: theme.spacing * 1.5,
+		backgroundColor: theme.colors.bgPaper
 	},
 	description: {
 		maxWidth: 280,

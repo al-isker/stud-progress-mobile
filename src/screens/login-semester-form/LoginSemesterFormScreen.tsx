@@ -15,7 +15,8 @@ export const LoginSemesterFormScreen = () => (
 const styles = StyleSheet.create(theme => ({
 	container: {
 		flex: 1,
-		paddingHorizontal: theme.spacing
+		paddingHorizontal: theme.spacing,
+		backgroundColor: theme.colors.bgPaper
 	},
 	description: {
 		maxWidth: 210,

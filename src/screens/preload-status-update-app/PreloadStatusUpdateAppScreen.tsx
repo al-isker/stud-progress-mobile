@@ -32,6 +32,7 @@ const styles = StyleSheet.create((theme, rt) => ({
 	container: {
 		flex: 1,
 		paddingHorizontal: theme.spacing,
-		paddingBottom: rt.screen.height / 5 + rt.insets.bottom
+		paddingBottom: rt.screen.height / 5 + rt.insets.bottom,
+		backgroundColor: theme.colors.bgPaper
 	}
 }));
