@@ -1,11 +1,14 @@
 import { Text, View } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
 import { LoginMainForm } from '@/features/login';
+import { Br } from '@/shared/ui/br';
 
 export const LoginMainFormScreen = () => (
 	<View style={styles.container}>
 		<Text style={styles.description}>
-			Введи свои учётные данные для личного кабинета
+			Введи свои учётные данные для
+			<Br />
+			личного кабинета
 		</Text>
 
 		<LoginMainForm style={styles.form} />
@@ -18,7 +21,6 @@ const styles = StyleSheet.create(theme => ({
 		paddingHorizontal: theme.spacing * 1.5
 	},
 	description: {
-		maxWidth: 280,
 		marginBottom: theme.spacing * 1.5,
 		alignSelf: 'center',
 		textAlign: 'center',
