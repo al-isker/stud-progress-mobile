@@ -1,11 +1,14 @@
 import { Text, View } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
 import { LoginSemesterForm } from '@/features/login';
+import { Br } from '@/shared/ui/br';
 
 export const LoginSemesterFormScreen = () => (
 	<View style={styles.container}>
 		<Text style={styles.description}>
-			Выбери семестр, на котором ты учишься
+			Выбери семестр, на котором
+			<Br />
+			ты учишься
 		</Text>
 
 		<LoginSemesterForm style={styles.form} />
@@ -19,7 +22,6 @@ const styles = StyleSheet.create(theme => ({
 		backgroundColor: theme.colors.bgPaper
 	},
 	description: {
-		maxWidth: 210,
 		marginBottom: theme.spacing * 1.5,
 		alignSelf: 'center',
 		textAlign: 'center',

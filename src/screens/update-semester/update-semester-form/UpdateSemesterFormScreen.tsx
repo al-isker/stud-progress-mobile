@@ -3,6 +3,7 @@ import { Text, View } from 'react-native';
 import { StyleSheet, useUnistyles } from 'react-native-unistyles';
 import { OutsideMainHeader } from '@/widgets/outside-main-header';
 import { UpdateSemesterForm } from '@/features/update-semester';
+import { Br } from '@/shared/ui/br';
 
 export const UpdateSemesterFormScreen = () => {
 	const { rt } = useUnistyles();
@@ -20,7 +21,9 @@ export const UpdateSemesterFormScreen = () => {
 
 				<View style={styles.contentContainer}>
 					<Text style={styles.description}>
-						Выбери семестр, на который хочешь переключиться
+						Выбери семестр, на который
+						<Br />
+						хочешь переключиться
 					</Text>
 
 					<UpdateSemesterForm style={styles.form} />
@@ -51,7 +54,6 @@ const styles = StyleSheet.create(theme => ({
 		backgroundColor: theme.colors.bgPaper
 	},
 	description: {
-		maxWidth: 210,
 		marginBottom: theme.spacing * 1.5,
 		alignSelf: 'center',
 		textAlign: 'center',
