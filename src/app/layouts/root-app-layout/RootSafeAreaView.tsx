@@ -7,14 +7,20 @@ type RootSafeAreaViewProps = {
 };
 
 export const RootSafeAreaView = ({ children }: RootSafeAreaViewProps) => (
-	<View style={styles.area}>{children}</View>
+	<View style={styles.safeArea}>
+		<View style={styles.innerArea}>{children}</View>
+	</View>
 );
 
 const styles = StyleSheet.create((theme, rt) => ({
-	area: {
+	safeArea: {
 		flex: 1,
 		paddingLeft: rt.insets.left,
 		paddingRight: rt.insets.right,
 		backgroundColor: theme.colors.black
+	},
+	innerArea: {
+		flex: 1,
+		backgroundColor: theme.colors.bgBase
 	}
 }));
