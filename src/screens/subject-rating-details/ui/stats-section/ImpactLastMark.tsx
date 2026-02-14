@@ -23,10 +23,6 @@ export const ImpactLastMark = ({
 }: ImpactLastMarkProps) => {
 	const roundedValue = isExist(value) ? preciseRound(value, 1) : null;
 
-	console.log(value);
-	console.log(roundedValue);
-	console.log('----------');
-
 	let formattedValue: string;
 	let hint: string | undefined;
 	let MainStartIcon: FC | undefined;
