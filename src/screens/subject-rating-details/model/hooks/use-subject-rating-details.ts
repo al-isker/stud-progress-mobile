@@ -14,7 +14,7 @@ export const useSubjectRatingDetails = () => {
 
 	const refetch = () => {
 		queryClient.invalidateQueries({
-			predicate({ queryKey }) {
+			predicate: ({ queryKey }) => {
 				return queryKey[0] === SUBJECT_RATING_KEY && queryKey[1] !== subjectId;
 			}
 		});

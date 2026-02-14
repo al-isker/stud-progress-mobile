@@ -11,7 +11,7 @@ export const useUpdateSemesterMutation = () => {
 		queryClient.setQueryData([PROFILE_KEY], data);
 
 		queryClient.resetQueries({
-			predicate({ queryKey }) {
+			predicate: ({ queryKey }) => {
 				return queryKey[0] !== PROFILE_KEY;
 			}
 		});

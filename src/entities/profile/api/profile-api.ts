@@ -12,7 +12,7 @@ class ProfileApi {
 
 	async updateSemester(body: UpdateSemesterBodyType) {
 		const response = await api.patch<UpdateSemesterResponseType>(
-			'profile/update-semester',
+			'profile/semester',
 			body,
 			{ timeout: API_LONG_TIMEOUT }
 		);
