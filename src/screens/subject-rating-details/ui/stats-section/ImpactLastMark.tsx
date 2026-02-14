@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import { StyleProp, ViewStyle } from 'react-native';
+import { isExist } from '@/shared/lib/cheсks';
 import { preciseRound } from '@/shared/lib/precise-round';
 import { getWordByNumber } from '@/shared/lib/word-by-number';
 import {
@@ -20,24 +21,30 @@ export const ImpactLastMark = ({
 	contentContainerStyle,
 	value
 }: ImpactLastMarkProps) => {
+	const roundedValue = isExist(value) ? preciseRound(value, 1) : null;
+
+	console.log(value);
+	console.log(roundedValue);
+	console.log('----------');
+
 	let formattedValue: string;
 	let hint: string | undefined;
 	let MainStartIcon: FC | undefined;
 
-	if (!value) {
+	if (!roundedValue) {
 		formattedValue = '−';
 	} else {
-		formattedValue = preciseRound(Math.abs(value), 1).toString();
+		formattedValue = Math.abs(roundedValue).toString();
 
-		hint = getWordByNumber(value, {
+		hint = getWordByNumber(roundedValue, {
 			one: 'балл',
 			two: 'балла',
 			five: 'баллов'
 		});
 
-		if (value > 0) {
+		if (roundedValue > 0) {
 			MainStartIcon = AltArrowUpIcon;
-		} else if (value < 0) {
+		} else if (roundedValue < 0) {
 			MainStartIcon = AltArrowDownIcon;
 		}
 	}
