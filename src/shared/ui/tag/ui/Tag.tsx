@@ -58,13 +58,13 @@ const styles = StyleSheet.create(theme => ({
 					height: 20,
 					paddingHorizontal: 8,
 					columnGap: 6,
-					borderRadius: theme.borderRadius / 2
+					borderRadius: theme.borderRadius * 0.5
 				},
 				small: {
 					height: 18,
 					paddingHorizontal: 7,
 					columnGap: 5,
-					borderRadius: theme.borderRadius / 2.2
+					borderRadius: theme.borderRadius * 0.45
 				}
 			}
 		}

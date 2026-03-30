@@ -63,7 +63,7 @@ const styles = StyleSheet.create(theme => ({
 		overflow: 'hidden',
 		minWidth: 140,
 		rowGap: 1.2,
-		borderRadius: theme.borderRadius / 1.4
+		borderRadius: theme.borderRadius * 0.7
 	},
 	block: {
 		justifyContent: 'center',

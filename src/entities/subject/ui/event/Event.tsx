@@ -36,7 +36,7 @@ const styles = StyleSheet.create(theme => ({
 		position: 'relative',
 		justifyContent: 'center',
 		alignItems: 'center',
-		borderRadius: theme.borderRadius / 1.4,
+		borderRadius: theme.borderRadius * 0.7,
 
 		variants: {
 			status: {
