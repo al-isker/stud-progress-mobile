@@ -12,14 +12,12 @@ export const StatsSection = ({ course, semester }: StatsSectionProps) => (
 	<View style={styles.container}>
 		<NumberStat
 			style={styles.leftStat}
-			contentContainerStyle={styles.leftStatContentContainer}
 			title='Курс'
 			value={course}
 			headerStartSlot={<ChatSquireIcon />}
 		/>
 		<NumberStat
 			style={styles.rightStat}
-			contentContainerStyle={styles.rightStatContentContainer}
 			title='Семестр'
 			value={semester}
 			headerStartSlot={<HashtagSquireIcon />}
@@ -33,16 +31,12 @@ const styles = StyleSheet.create(theme => ({
 		columnGap: theme.spacing / 2
 	},
 	leftStat: {
-		flex: 1
-	},
-	leftStatContentContainer: {
+		flex: 1,
 		borderTopRightRadius: 4,
 		borderBottomRightRadius: 4
 	},
 	rightStat: {
-		flex: 1
-	},
-	rightStatContentContainer: {
+		flex: 1,
 		borderTopLeftRadius: 4,
 		borderBottomLeftRadius: 4
 	}

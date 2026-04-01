@@ -17,20 +17,12 @@ export const StatsSection = ({
 }: StatsSectionProps) => (
 	<View style={styles.container}>
 		<View style={styles.topContainer}>
-			<ImpactLastMark
-				style={styles.topLeftStat}
-				contentContainerStyle={styles.topLeftStatContentContainer}
-				value={impactLastMark}
-			/>
-			<DaysWithoutMark
-				style={styles.topRightStat}
-				contentContainerStyle={styles.topRightStatContentContainer}
-				value={daysWithoutMark}
-			/>
+			<ImpactLastMark style={styles.topLeftStat} value={impactLastMark} />
+			<DaysWithoutMark style={styles.topRightStat} value={daysWithoutMark} />
 		</View>
 
 		<StudentPercentWithBelowAverageMark
-			contentContainerStyle={styles.bottomStatContentContainer}
+			style={styles.bottomStat}
 			value={studentPercentWithBelowAverageMark}
 		/>
 	</View>
@@ -45,22 +37,18 @@ const styles = StyleSheet.create(theme => ({
 		columnGap: theme.spacing / 2
 	},
 	topLeftStat: {
-		flex: 1
-	},
-	topLeftStatContentContainer: {
+		flex: 1,
 		borderTopRightRadius: 4,
 		borderBottomRightRadius: 4,
 		borderBottomLeftRadius: 4
 	},
 	topRightStat: {
-		flex: 1
-	},
-	topRightStatContentContainer: {
+		flex: 1,
 		borderTopLeftRadius: 4,
 		borderBottomRightRadius: 4,
 		borderBottomLeftRadius: 4
 	},
-	bottomStatContentContainer: {
+	bottomStat: {
 		borderTopLeftRadius: 4,
 		borderTopRightRadius: 4
 	}

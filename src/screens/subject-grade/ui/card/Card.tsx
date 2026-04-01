@@ -17,7 +17,7 @@ export const Card = ({ subjectGrade }: CardProps) => {
 	const { name, controlType, ratingBySemesterList, grade } = subjectGrade;
 
 	return (
-		<Paper contentContainerStyle={styles.paper}>
+		<Paper style={styles.paper}>
 			<View style={styles.top}>
 				<Text style={styles.name} numberOfLines={1}>
 					{name}

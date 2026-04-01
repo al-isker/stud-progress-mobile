@@ -9,16 +9,16 @@ import { NavigationBar } from '../navigation-bar/NavigationBar';
 import { StatsSection } from '../stats-section/StatsSection';
 
 type ContentProps = {
-	contentContainerStyle?: StyleProp<ViewStyle>;
 	style?: StyleProp<ViewStyle>;
+	contentContainerStyle?: StyleProp<ViewStyle>;
 	subjectRatingDetails: SubjectRatingDetailsType;
 	refreshing: boolean;
 	onRefresh: () => void;
 };
 
 export const Content = ({
-	contentContainerStyle,
 	style,
+	contentContainerStyle,
 	subjectRatingDetails,
 	refreshing,
 	onRefresh

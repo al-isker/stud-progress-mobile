@@ -26,7 +26,9 @@ export const Tabs = () => {
 				},
 				tabBarStyle: {
 					height: 60 + rt.insets.bottom,
-					backgroundColor: theme.colors.bgPaper
+					backgroundColor: theme.colors.bgPaper,
+					elevation: 0,
+					boxShadow: `0 -2px 8px ${theme.colors.alwaysBlackAlpha(0.075)}`
 				},
 				tabBarButton: ({ ref, android_ripple, style, ...props }) => (
 					<Pressable

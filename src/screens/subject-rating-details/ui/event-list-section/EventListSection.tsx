@@ -17,7 +17,7 @@ type EventListSectionProps = {
 };
 
 export const EventListSection = ({ eventList }: EventListSectionProps) => (
-	<Paper contentContainerStyle={styles.container}>
+	<Paper style={styles.container}>
 		<Text style={styles.title}>Баллы</Text>
 
 		<View style={styles.list}>

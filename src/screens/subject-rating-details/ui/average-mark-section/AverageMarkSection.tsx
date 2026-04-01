@@ -35,7 +35,7 @@ export const AverageMarkSection = ({
 	}, [averageMark]);
 
 	return (
-		<Paper contentContainerStyle={styles.paper}>
+		<Paper style={styles.paper}>
 			<ProgressChart
 				diameter={200}
 				strokeWidth={22}

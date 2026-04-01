@@ -14,7 +14,7 @@ export type NumberStatProps = PaperProps & {
 };
 
 export const NumberStat = ({
-	contentContainerStyle,
+	style,
 	title,
 	value,
 	valueHint,
@@ -25,10 +25,7 @@ export const NumberStat = ({
 	const { theme } = useUnistyles();
 
 	return (
-		<Paper
-			contentContainerStyle={[styles.container, contentContainerStyle]}
-			{...props}
-		>
+		<Paper style={[styles.container, style]} {...props}>
 			<View style={styles.header}>
 				{renderSlot(headerStartSlot, {
 					style: styles.headerStartSlot,

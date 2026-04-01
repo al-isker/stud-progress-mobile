@@ -7,7 +7,7 @@ type NameSectionProps = {
 };
 
 export const NameSection = ({ fullName }: NameSectionProps) => (
-	<Paper contentContainerStyle={styles.container}>
+	<Paper style={styles.container}>
 		<Text style={styles.fullName}>{fullName}</Text>
 	</Paper>
 );

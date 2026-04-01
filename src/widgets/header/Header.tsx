@@ -18,8 +18,8 @@ const styles = StyleSheet.create(theme => ({
 		zIndex: theme.zIndex.header,
 		paddingVertical: theme.spacing * 1.25,
 		paddingHorizontal: theme.spacing,
-		elevation: 8,
-		backgroundColor: theme.colors.primary
+		backgroundColor: theme.colors.primary,
+		boxShadow: `0 2px 8px ${theme.colors.alwaysBlackAlpha(0.075)}`
 	},
 	title: {
 		color: theme.colors.alwaysWhite,
