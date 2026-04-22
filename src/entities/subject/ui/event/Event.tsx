@@ -1,7 +1,7 @@
 import { StyleProp, Text, View, ViewStyle } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
 import { PulseIndicator } from '@/shared/ui/pulse-indicator';
-import { EventStatusEnum } from '../../model/types/event-status';
+import { EventStatusEnum } from '../../model/subject-rating/event-status-enum';
 
 type EventProps = {
 	style?: StyleProp<ViewStyle>;

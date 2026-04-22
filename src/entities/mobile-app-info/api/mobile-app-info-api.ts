@@ -1,5 +1,5 @@
 import { baseApi } from '@/shared/api';
-import { MobileAppInfoType } from '../model/types/mobile-app-info';
+import { MobileAppInfoType } from '../model/mobile-app-info/mobile-app-info-type';
 
 class MobileAppInfoApi {
 	async get() {

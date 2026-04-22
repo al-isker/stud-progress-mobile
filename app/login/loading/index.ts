@@ -1,1 +1,1 @@
-export { LoginLoadingScreen as default } from '@/screens/login-loading';
+export { LoginLoadingScreen as default } from '@/screens/login/loading';

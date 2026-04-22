@@ -1,7 +1,7 @@
 import { api } from '@/shared/api';
-import { SubjectGradeListType } from '../model/types/subject-grade-list';
-import { SubjectRatingDetailsType } from '../model/types/subject-rating-details';
-import { SubjectRatingListType } from '../model/types/subject-rating-list';
+import { SubjectGradeListType } from '../model/subject-grade/subject-grade-list-type';
+import { SubjectRatingDetailType } from '../model/subject-rating/subject-rating-detail-type';
+import { SubjectRatingListType } from '../model/subject-rating/subject-rating-list-type';
 
 class SubjectApi {
 	async getGradeList() {
@@ -16,8 +16,8 @@ class SubjectApi {
 		return response.data;
 	}
 
-	async getRatingDetails(subjectId: number) {
-		const response = await api.get<SubjectRatingDetailsType>(
+	async getRatingDetail(subjectId: number) {
+		const response = await api.get<SubjectRatingDetailType>(
 			`subject/${subjectId}/rating`
 		);
 

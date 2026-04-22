@@ -6,7 +6,7 @@ import { Button } from '@/shared/ui/button';
 import { CircularLoader } from '@/shared/ui/circular-loader';
 import { HeartBrokenIcon } from '@/shared/ui/icons';
 import { StatusScreen } from '@/shared/ui/status-screen';
-import { useProfile } from '../../model/hooks/use-profile';
+import { useProfile } from '../../model/use-profile';
 import { Content } from '../content/Content';
 
 export const ProfileScreen = () => {

@@ -5,7 +5,7 @@ import {
 	animationInFeedbackOpacityConfig,
 	animationOutFeedbackOpacityConfig
 } from '../lib/animation/ios-animation-config';
-import { PressableProps } from '../model/types/pressable-props';
+import { PressableProps } from '../model/pressable-props';
 
 export const PressableIOS = ({
 	children,

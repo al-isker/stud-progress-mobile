@@ -2,9 +2,9 @@ import dayjs from 'dayjs';
 import { StyleProp, Text, View, ViewStyle } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
 import { PulseIndicator } from '@/shared/ui/pulse-indicator';
-import { TEST_STATUS_DISPLAY } from '../../lib/const/test-status-display';
-import { ControlTypeEnum } from '../../model/types/control-type';
-import { GradeStatusEnum } from '../../model/types/grade-status';
+import { TEST_STATUS_DISPLAY } from '../../lib/control-type/test-status-display';
+import { ControlTypeEnum } from '../../model/control-type/control-type-enum';
+import { GradeStatusEnum } from '../../model/subject-grade/grade-status-enum';
 
 type GradeProps = {
 	style?: StyleProp<ViewStyle>;

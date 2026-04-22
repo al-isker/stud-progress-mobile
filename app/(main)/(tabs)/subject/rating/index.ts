@@ -1,1 +1,1 @@
-export { SubjectRatingScreen as default } from '@/screens/subject-rating';
+export { SubjectRatingListScreen as default } from '@/screens/subject-rating/list';

@@ -6,7 +6,7 @@ import { Button } from '@/shared/ui/button';
 import { CircularLoader } from '@/shared/ui/circular-loader';
 import { HeartBrokenIcon } from '@/shared/ui/icons';
 import { StatusScreen } from '@/shared/ui/status-screen';
-import { useSubjectGradeList } from '../../model/hooks/use-subject-grade-list';
+import { useSubjectGradeList } from '../../model/use-subject-grade-list';
 import { List } from '../list/List';
 
 export const SubjectGradeScreen = () => {

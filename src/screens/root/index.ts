@@ -1,1 +1,1 @@
-export { RootScreen } from './RootScreen';
+export { RootScreen } from './ui/RootScreen';

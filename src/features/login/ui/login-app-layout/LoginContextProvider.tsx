@@ -1,9 +1,9 @@
 import { ReactNode, useMemo, useRef } from 'react';
-import { LoginContext } from '../../model/context/login-context';
+import { LoginContext } from '../../model/login-context/login-context';
 import {
 	LoginContextFormValuesType,
 	LoginContextMutationErrorType
-} from '../../model/types/login-context';
+} from '../../model/login-context/login-context-type';
 
 type LoginContextProviderProps = {
 	children: ReactNode;
@@ -23,7 +23,7 @@ export const LoginContextProvider = ({
 		mutationErrorRef.current = error;
 	};
 
-	const contextValue = useMemo(
+	const providedValue = useMemo(
 		() => ({
 			formValuesRef,
 			mutationErrorRef,
@@ -34,7 +34,7 @@ export const LoginContextProvider = ({
 	);
 
 	return (
-		<LoginContext.Provider value={contextValue}>
+		<LoginContext.Provider value={providedValue}>
 			{children}
 		</LoginContext.Provider>
 	);

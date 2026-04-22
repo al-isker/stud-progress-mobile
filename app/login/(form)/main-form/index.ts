@@ -1,1 +1,1 @@
-export { LoginMainFormScreen as default } from '@/screens/login-main-form';
+export { LoginMainFormScreen as default } from '@/screens/login/main-form';

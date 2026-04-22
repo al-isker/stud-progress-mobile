@@ -1,9 +1,9 @@
 import { ReactNode, useMemo, useRef } from 'react';
-import { UpdateSemesterContext } from '../../model/context/update-semester-context';
+import { UpdateSemesterContext } from '../../model/update-semester-context/update-semester-context';
 import {
 	UpdateSemesterContextFormValuesType,
 	UpdateSemesterContextMutationErrorType
-} from '../../model/types/update-semester-context';
+} from '../../model/update-semester-context/update-semester-context-type';
 
 type UpdateSemesterContextProviderProps = {
 	children: ReactNode;
@@ -23,7 +23,7 @@ export const UpdateSemesterContextProvider = ({
 		mutationErrorRef.current = error;
 	};
 
-	const contextValue = useMemo(
+	const providedValue = useMemo(
 		() => ({
 			formValuesRef,
 			mutationErrorRef,
@@ -34,7 +34,7 @@ export const UpdateSemesterContextProvider = ({
 	);
 
 	return (
-		<UpdateSemesterContext.Provider value={contextValue}>
+		<UpdateSemesterContext.Provider value={providedValue}>
 			{children}
 		</UpdateSemesterContext.Provider>
 	);

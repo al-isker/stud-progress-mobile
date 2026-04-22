@@ -1,12 +1,11 @@
 import { API_LONG_TIMEOUT, baseApi } from '@/shared/api';
-import { LoginBodyType } from '../model/types/login-body';
-import { LoginResponseType } from '../model/types/login-response';
-import { RefreshTokenBodyType } from '../model/types/refresh-token-body';
-import { RefreshTokenResponseType } from '../model/types/refresh-token-response';
+import { AuthType } from '../model/auth/auth-type';
+import { LoginBodyType } from '../model/login/login-body-type';
+import { RefreshTokenBodyType } from '../model/refresh-token/refresh-token-body-type';
 
 class AuthApi {
 	async login(body: LoginBodyType) {
-		const response = await baseApi.post<LoginResponseType>('auth/login', body, {
+		const response = await baseApi.post<AuthType>('auth/login', body, {
 			timeout: API_LONG_TIMEOUT
 		});
 
@@ -14,10 +13,7 @@ class AuthApi {
 	}
 
 	async refreshToken(body: RefreshTokenBodyType) {
-		const response = await baseApi.post<RefreshTokenResponseType>(
-			'auth/refresh-token',
-			body
-		);
+		const response = await baseApi.post<AuthType>('auth/refresh-token', body);
 
 		return response.data;
 	}

@@ -1,5 +1,5 @@
 import { useMutation } from '@tanstack/react-query';
-import { UpdateExpoPushTokenBodyType } from '../model/types/update-expo-push-token-body';
+import { UpdateExpoPushTokenBodyType } from '../model/expo-push-token/update-expo-push-token-body-type';
 import { deviceInfoApi } from './device-info-api';
 
 export const useUpdateExpoPushTokenMutation = () => {
