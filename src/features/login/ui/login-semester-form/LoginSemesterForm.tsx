@@ -3,14 +3,14 @@ import { StyleSheet } from 'react-native-unistyles';
 import { semesterOptions } from '@/entities/semester';
 import { Command } from '@/shared/ui/command';
 import { ArrowRightIcon } from '@/shared/ui/icons';
-import { useLoginSemesterForm } from '../../model/hooks/use-login-semester-form';
+import { useLoginSemesterForm } from '../../model/login-semester-form/use-login-semester-form';
 
 type LoginSemesterFormProps = {
 	style?: StyleProp<ViewStyle>;
 };
 
 export const LoginSemesterForm = ({ style }: LoginSemesterFormProps) => {
-	const { selectSemester } = useLoginSemesterForm();
+	const { createSemesterPressHandler } = useLoginSemesterForm();
 
 	return (
 		<View style={[styles.container, style]}>
@@ -19,13 +19,13 @@ export const LoginSemesterForm = ({ style }: LoginSemesterFormProps) => {
 				showsVerticalScrollIndicator={false}
 			>
 				<View style={styles.commandList}>
-					{semesterOptions.map((option, index) => (
+					{semesterOptions.map((semesterOption, index) => (
 						<Command
 							key={index}
 							style={styles.command}
-							title={option.label}
+							title={semesterOption.label}
 							endSlot={<ArrowRightIcon />}
-							onPress={() => selectSemester(option.value)}
+							onPress={createSemesterPressHandler(semesterOption.value)}
 						/>
 					))}
 				</View>

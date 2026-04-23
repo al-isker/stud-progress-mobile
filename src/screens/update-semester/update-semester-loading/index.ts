@@ -1,1 +1,0 @@
-export { UpdateSemesterLoadingScreen } from './UpdateSemesterLoadingScreen';

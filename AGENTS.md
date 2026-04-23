@@ -65,4 +65,3 @@ npx prettier . --write
 - Форматирование управляется через Prettier.
 - Для UI- и layout-изменений учитывайте, что проект работает через `expo-router`, а layout'ы и провайдеры заведены в `src/app` и `app/_layout.ts*`.
 - Для сетевого и кэш-слоя используется React Query, поэтому изменения в API-хуках и ключах запросов нужно проверять особенно внимательно.
-- When writing complex features or significant refactors, use an ExecPlan (as described in `.agents/PLANS.md`) from design to implementation.

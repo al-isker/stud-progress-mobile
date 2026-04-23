@@ -1,9 +1,12 @@
 import { baseApi } from '@/shared/api';
-import { UpdateExpoPushTokenBodyType } from '../model/types/update-expo-push-token-body';
+import { UpdateExpoPushTokenBodyType } from '../model/expo-push-token/update-expo-push-token-body-type';
 
 class DeviceInfoApi {
 	async updateExpoPushToken(body: UpdateExpoPushTokenBodyType) {
-		const response = await baseApi.post('device-info/expo-push-token', body);
+		const response = await baseApi.post<void>(
+			'device-info/expo-push-token',
+			body
+		);
 
 		return response.data;
 	}

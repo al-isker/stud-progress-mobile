@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native-unistyles';
 import { semesterOptions } from '@/entities/semester';
 import { Command } from '@/shared/ui/command';
 import { ArrowRightIcon } from '@/shared/ui/icons';
-import { useUpdateSemesterForm } from '../../model/hooks/use-update-semester-form';
+import { useUpdateSemesterForm } from '../../model/update-semester-form/use-update-semester-form';
 import { MutationError } from './MutationError';
 
 type UpdateSemesterFormProps = {
@@ -11,7 +11,8 @@ type UpdateSemesterFormProps = {
 };
 
 export const UpdateSemesterForm = ({ style }: UpdateSemesterFormProps) => {
-	const { currentSemester, selectSemester } = useUpdateSemesterForm();
+	const { currentSemester, createSemesterPressHandler } =
+		useUpdateSemesterForm();
 
 	return (
 		<View style={[styles.container, style]}>
@@ -22,16 +23,18 @@ export const UpdateSemesterForm = ({ style }: UpdateSemesterFormProps) => {
 				showsVerticalScrollIndicator={false}
 			>
 				<View style={styles.commandList}>
-					{semesterOptions.map((option, index) => (
+					{semesterOptions.map((semesterOption, index) => (
 						<View
 							key={index}
-							style={styles.commandContainer(option.value === currentSemester)}
+							style={styles.commandContainer(
+								semesterOption.value === currentSemester
+							)}
 						>
 							<Command
 								style={styles.command}
-								title={option.label}
+								title={semesterOption.label}
 								endSlot={<ArrowRightIcon />}
-								onPress={() => selectSemester(option.value)}
+								onPress={createSemesterPressHandler(semesterOption.value)}
 							/>
 						</View>
 					))}

@@ -4,7 +4,7 @@ import { StyleProp, Text, TextStyle } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
 import { apiMessage } from '@/shared/api';
 import { useRerender } from '@/shared/lib/react-sugar';
-import { useLoginContext } from '../../model/hooks/use-login-context';
+import { useLoginContext } from '../../model/login-context/use-login-context';
 
 type MutationErrorProps = {
 	style?: StyleProp<TextStyle>;

@@ -1,1 +1,1 @@
-export { UpdateSemesterFormScreen as default } from '@/screens/update-semester/update-semester-form';
+export { UpdateSemesterFormScreen as default } from '@/screens/update-semester/form';

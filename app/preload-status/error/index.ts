@@ -1,1 +1,1 @@
-export { PreloadStatusErrorScreen as default } from '@/screens/preload-status-error';
+export { PreloadStatusErrorScreen as default } from '@/screens/preload-status/error';

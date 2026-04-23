@@ -1,1 +1,1 @@
-export { semesterOptions } from './model/const/semester-options';
+export { semesterOptions } from './model/semester-options';

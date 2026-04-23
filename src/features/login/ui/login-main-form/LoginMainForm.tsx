@@ -5,7 +5,7 @@ import { StyleSheet, useUnistyles } from 'react-native-unistyles';
 import { routes } from '@/shared/config/navigation';
 import { Button } from '@/shared/ui/button';
 import { TextField } from '@/shared/ui/text-field';
-import { useLoginMainForm } from '../../model/hooks/use-login-main-form';
+import { useLoginMainForm } from '../../model/login-main-form/use-login-main-form';
 import { MutationError } from './MutationError';
 
 type LoginMainFormProps = {

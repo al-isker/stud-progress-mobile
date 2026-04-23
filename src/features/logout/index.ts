@@ -1,1 +1,1 @@
-export { useLogout } from './model/hooks/use-logout';
+export { useLogout } from './model/use-logout';

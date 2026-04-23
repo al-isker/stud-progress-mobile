@@ -4,7 +4,7 @@ import { StyleProp, Text, TextStyle } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
 import { apiMessage } from '@/shared/api';
 import { useRerender } from '@/shared/lib/react-sugar';
-import { useUpdateSemesterContext } from '../../model/hooks/use-update-semester-context';
+import { useUpdateSemesterContext } from '../../model/update-semester-context/use-update-semester-context';
 
 type MutationErrorProps = {
 	style?: StyleProp<TextStyle>;

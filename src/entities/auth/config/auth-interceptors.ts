@@ -1,6 +1,6 @@
 import { api, baseApi } from '@/shared/api';
-import { handleRequestFulfilled } from '../model/interceptors/handle-request-fulfilled';
-import { handleResponseRejected } from '../model/interceptors/handle-response-rejected';
+import { handleRequestFulfilled } from '../model/session/handle-request-fulfilled';
+import { handleResponseRejected } from '../model/session/handle-response-rejected';
 
 export const authInterceptors = () => {
 	baseApi.interceptors.request.use(handleRequestFulfilled);

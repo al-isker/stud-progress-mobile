@@ -1,7 +1,6 @@
 import { API_LONG_TIMEOUT, api } from '@/shared/api';
-import { ProfileType } from '../model/types/profile';
-import { UpdateSemesterBodyType } from '../model/types/update-semester-body';
-import { UpdateSemesterResponseType } from '../model/types/update-semester-response';
+import { ProfileType } from '../model/profile/profile-type';
+import { UpdateSemesterBodyType } from '../model/update-semester/update-semester-body-type';
 
 class ProfileApi {
 	async get() {
@@ -11,11 +10,9 @@ class ProfileApi {
 	}
 
 	async updateSemester(body: UpdateSemesterBodyType) {
-		const response = await api.patch<UpdateSemesterResponseType>(
-			'profile/semester',
-			body,
-			{ timeout: API_LONG_TIMEOUT }
-		);
+		const response = await api.patch<ProfileType>('profile/semester', body, {
+			timeout: API_LONG_TIMEOUT
+		});
 
 		return response.data;
 	}
