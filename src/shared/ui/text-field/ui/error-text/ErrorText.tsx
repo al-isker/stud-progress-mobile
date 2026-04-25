@@ -17,6 +17,7 @@ const styles = StyleSheet.create(theme => ({
 	text: {
 		color: theme.colors.red,
 		fontSize: 12,
-		fontFamily: theme.typography.fontFamily.GolosTextRegular
+		fontFamily: theme.typography.fontFamily.GolosText,
+		fontWeight: 400
 	}
 }));

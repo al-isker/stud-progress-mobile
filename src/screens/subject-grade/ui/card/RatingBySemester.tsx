@@ -63,6 +63,7 @@ const styles = StyleSheet.create(theme => ({
 		color: theme.colors.blackAlpha(0.7),
 		lineHeight: 10,
 		fontSize: 10,
-		fontFamily: theme.typography.fontFamily.GolosTextMedium
+		fontFamily: theme.typography.fontFamily.GolosText,
+		fontWeight: 500
 	}
 }));

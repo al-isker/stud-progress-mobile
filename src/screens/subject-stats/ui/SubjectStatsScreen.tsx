@@ -29,6 +29,7 @@ const styles = StyleSheet.create(theme => ({
 		textAlign: 'center',
 		color: theme.colors.primary,
 		fontSize: 15,
-		fontFamily: theme.typography.fontFamily.GolosTextMedium
+		fontFamily: theme.typography.fontFamily.GolosText,
+		fontWeight: 500
 	}
 }));

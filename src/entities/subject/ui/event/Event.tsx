@@ -61,22 +61,26 @@ const styles = StyleSheet.create(theme => ({
 				[EventStatusEnum.MARK]: {
 					color: theme.colors.black,
 					fontSize: 16,
-					fontFamily: theme.typography.fontFamily.GolosTextMedium
+					fontFamily: theme.typography.fontFamily.GolosText,
+					fontWeight: 500
 				},
 				[EventStatusEnum.EMPTY]: {
 					color: theme.colors.black,
 					fontSize: 14,
-					fontFamily: theme.typography.fontFamily.GolosTextRegular
+					fontFamily: theme.typography.fontFamily.GolosText,
+					fontWeight: 400
 				},
 				[EventStatusEnum.ABSENCE]: {
 					color: theme.colors.red,
 					fontSize: 11,
-					fontFamily: theme.typography.fontFamily.GolosTextSemiBold
+					fontFamily: theme.typography.fontFamily.GolosText,
+					fontWeight: 600
 				},
 				[EventStatusEnum.UPWORKED]: {
 					color: theme.colors.black,
 					fontSize: 11,
-					fontFamily: theme.typography.fontFamily.GolosTextSemiBold
+					fontFamily: theme.typography.fontFamily.GolosText,
+					fontWeight: 600
 				}
 			}
 		}

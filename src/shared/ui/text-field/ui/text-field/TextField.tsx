@@ -148,7 +148,8 @@ const styles = StyleSheet.create(theme => ({
 	label: {
 		position: 'absolute',
 		color: theme.colors.blackAlpha(0.3),
-		fontFamily: theme.typography.fontFamily.GolosTextRegular,
+		fontFamily: theme.typography.fontFamily.GolosText,
+		fontWeight: 400,
 
 		variants: {
 			size: {
@@ -164,7 +165,8 @@ const styles = StyleSheet.create(theme => ({
 		position: 'absolute',
 		padding: 0,
 		color: theme.colors.blackAlpha(0.8),
-		fontFamily: theme.typography.fontFamily.GolosTextRegular,
+		fontFamily: theme.typography.fontFamily.GolosText,
+		fontWeight: 400,
 
 		variants: {
 			size: {

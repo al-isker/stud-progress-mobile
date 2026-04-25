@@ -94,21 +94,25 @@ const styles = StyleSheet.create(theme => ({
 	topText: {
 		textAlign: 'center',
 		fontSize: 10,
-		fontFamily: theme.typography.fontFamily.GolosTextMedium
+		fontFamily: theme.typography.fontFamily.GolosText,
+		fontWeight: 500
 	},
 	emptyText: {
 		color: theme.colors.black,
 		fontSize: 13,
-		fontFamily: theme.typography.fontFamily.GolosTextMedium
+		fontFamily: theme.typography.fontFamily.GolosText,
+		fontWeight: 500
 	},
 	testText: {
 		marginBottom: 2,
 		fontSize: 13,
-		fontFamily: theme.typography.fontFamily.GolosTextSemiBold
+		fontFamily: theme.typography.fontFamily.GolosText,
+		fontWeight: 600
 	},
 	mark: {
 		fontSize: 20,
-		fontFamily: theme.typography.fontFamily.GolosTextSemiBold
+		fontFamily: theme.typography.fontFamily.GolosText,
+		fontWeight: 600
 	},
 	coloredText: {
 		variants: {

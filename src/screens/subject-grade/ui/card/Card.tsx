@@ -69,7 +69,8 @@ const styles = StyleSheet.create(theme => ({
 		lineHeight: 18,
 		color: theme.colors.blackAlpha(0.9),
 		fontSize: 18,
-		fontFamily: theme.typography.fontFamily.GolosTextSemiBold
+		fontFamily: theme.typography.fontFamily.GolosText,
+		fontWeight: 600
 	},
 	controlType: {
 		alignSelf: 'flex-start'
