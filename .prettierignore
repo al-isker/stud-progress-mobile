@@ -1,0 +1,8 @@
+# Agents
+.agents/
+AGENTS.md
+skills-lock.json
+
+# npm-managed files
+package.json
+package-lock.json
