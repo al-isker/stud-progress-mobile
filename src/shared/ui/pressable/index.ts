@@ -1,2 +1,2 @@
-export { PressableProps } from './model/pressable-props';
+export { PressableProps } from './types/pressable-props';
 export { Pressable } from './ui/Pressable';
