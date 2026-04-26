@@ -2,8 +2,8 @@ import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { Text, View } from 'react-native';
 import { StyleSheet, useUnistyles } from 'react-native-unistyles';
-import { OutsideMainHeader } from '@/widgets/outside-main-header';
 import { ScreenNames } from '@/shared/config/navigation';
+import { OutsideMainHeader } from '@/shared/ui/outside-main-header';
 
 export const LoginFormAppLayout = () => {
 	const { rt } = useUnistyles();

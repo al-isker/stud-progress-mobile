@@ -1,9 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
 import { Text, View } from 'react-native';
 import { StyleSheet, useUnistyles } from 'react-native-unistyles';
-import { OutsideMainHeader } from '@/widgets/outside-main-header';
 import { UpdateSemesterForm } from '@/features/update-semester';
 import { Br } from '@/shared/ui/br';
+import { OutsideMainHeader } from '@/shared/ui/outside-main-header';
 
 export const UpdateSemesterFormScreen = () => {
 	const { rt } = useUnistyles();

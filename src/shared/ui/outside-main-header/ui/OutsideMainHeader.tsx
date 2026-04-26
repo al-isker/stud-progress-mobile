@@ -1,7 +1,9 @@
+import { Ref } from 'react';
 import { Text, View, ViewProps } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
 
-type OutsideMainHeaderProps = ViewProps & {
+export type OutsideMainHeaderProps = ViewProps & {
+	ref?: Ref<View>;
 	safeAreaInsetTop?: number;
 };
 
