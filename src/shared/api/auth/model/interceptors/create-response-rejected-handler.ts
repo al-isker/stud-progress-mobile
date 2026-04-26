@@ -1,0 +1,41 @@
+import { HttpStatusCode } from 'axios';
+import { api } from '../../../instances/api';
+import { ApiErrorType } from '../../../types/api-error';
+import { authApi } from '../../api/auth-api';
+import { getRefreshToken } from '../tokens/get-refresh-token';
+import { setAuthTokens } from '../tokens/set-auth-tokens';
+
+type createResponseRejectedHandlerOptionsType = {
+	onUnauthorized?: () => void;
+};
+
+export const createResponseRejectedHandler = (
+	options: createResponseRejectedHandlerOptionsType
+) => {
+	const { onUnauthorized } = options;
+
+	return async (error: ApiErrorType) => {
+		const originalRequest = error.config;
+		const isUnauthorized = error.status === HttpStatusCode.Unauthorized;
+
+		if (originalRequest && isUnauthorized) {
+			const refreshToken = await getRefreshToken();
+
+			if (refreshToken) {
+				try {
+					const refreshTokenResponse = await authApi.refreshToken({
+						refreshToken
+					});
+
+					await setAuthTokens(refreshTokenResponse);
+
+					return await api.request(originalRequest);
+				} catch {}
+			}
+
+			onUnauthorized?.();
+		}
+
+		throw error;
+	};
+};

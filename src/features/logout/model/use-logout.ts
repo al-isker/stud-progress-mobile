@@ -1,11 +1,7 @@
 import { router } from 'expo-router';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useLogoutMutation } from '@/entities/auth';
+import { clearAuthTokens } from '@/shared/api';
 import { routes } from '@/shared/config/navigation';
-import {
-	ACCESS_TOKEN_STORAGE_KEY,
-	REFRESH_TOKEN_STORAGE_KEY
-} from '@/shared/config/storage';
 
 export const useLogout = () => {
 	const { mutate } = useLogoutMutation();
@@ -13,8 +9,7 @@ export const useLogout = () => {
 	const logout = () => {
 		mutate();
 
-		AsyncStorage.removeItem(ACCESS_TOKEN_STORAGE_KEY);
-		AsyncStorage.removeItem(REFRESH_TOKEN_STORAGE_KEY);
+		clearAuthTokens();
 
 		router.dismissTo(routes.loginSemesterForm);
 	};

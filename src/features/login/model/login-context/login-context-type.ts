@@ -1,6 +1,5 @@
 import { RefObject } from 'react';
-import { LoginBodyType } from '@/entities/auth';
-import { ApiErrorType } from '@/shared/api';
+import { ApiErrorType, LoginBodyType } from '@/shared/api';
 
 export type LoginContextFormValuesType = Partial<LoginBodyType>;
 export type LoginContextMutationErrorType = ApiErrorType | null;

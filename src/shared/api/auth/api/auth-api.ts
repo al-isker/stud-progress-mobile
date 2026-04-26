@@ -1,4 +1,5 @@
-import { API_LONG_TIMEOUT, baseApi } from '@/shared/api';
+import { API_LONG_TIMEOUT } from '../../config/api-timeout';
+import { baseApi } from '../../instances/base-api';
 import { AuthType } from '../model/auth/auth-type';
 import { LoginBodyType } from '../model/login/login-body-type';
 import { RefreshTokenBodyType } from '../model/refresh-token/refresh-token-body-type';

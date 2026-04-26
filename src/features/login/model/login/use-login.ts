@@ -1,17 +1,20 @@
 import { router } from 'expo-router';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { AuthType, useLoginMutation } from '@/entities/auth';
+import { useQueryClient } from '@tanstack/react-query';
+import { useLoginMutation } from '@/entities/auth';
 import { useUpdateExpoPushToken } from '@/entities/push-notification';
-import { API_LONG_TIMEOUT, ApiErrorType } from '@/shared/api';
-import { routes } from '@/shared/config/navigation';
 import {
-	ACCESS_TOKEN_STORAGE_KEY,
-	REFRESH_TOKEN_STORAGE_KEY
-} from '@/shared/config/storage';
+	API_LONG_TIMEOUT,
+	ApiErrorType,
+	AuthType,
+	setAuthTokens
+} from '@/shared/api';
+import { routes } from '@/shared/config/navigation';
 import { useProgressAnimation } from '@/shared/lib/animation';
 import { useLoginContext } from '../login-context/use-login-context';
 
 export const useLogin = () => {
+	const queryClient = useQueryClient();
+
 	const loginContext = useLoginContext();
 
 	const loginMutation = useLoginMutation();
@@ -24,8 +27,9 @@ export const useLogin = () => {
 	const handleSuccess = async (data: AuthType) => {
 		animationComplete();
 
-		await AsyncStorage.setItem(ACCESS_TOKEN_STORAGE_KEY, data.accessToken);
-		await AsyncStorage.setItem(REFRESH_TOKEN_STORAGE_KEY, data.refreshToken);
+		await setAuthTokens(data);
+
+		queryClient.clear();
 
 		updateExpoPushToken();
 
