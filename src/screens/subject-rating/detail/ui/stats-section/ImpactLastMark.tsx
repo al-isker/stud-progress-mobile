@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { StyleProp, ViewStyle } from 'react-native';
-import { isExist } from '@/shared/lib/cheсks';
+import { isExist } from '@/shared/lib/checks';
 import { preciseRound } from '@/shared/lib/precise-round';
 import { getWordByNumber } from '@/shared/lib/word-by-number';
 import {

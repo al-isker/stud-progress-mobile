@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { SUBJECT_RATING_KEY } from '@/shared/api';
-import { isExist } from '@/shared/lib/cheсks';
+import { isExist } from '@/shared/lib/checks';
 import { subjectApi } from './subject-api';
 
 export const useSubjectRatingDetailQuery = (subjectId: number) => {
