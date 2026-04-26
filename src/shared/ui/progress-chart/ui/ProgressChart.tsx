@@ -3,6 +3,7 @@ import { Canvas, Group, Path, Skia } from '@shopify/react-native-skia';
 import { View, ViewProps } from 'react-native';
 import { SharedValue, useDerivedValue } from 'react-native-reanimated';
 import { StyleSheet, useUnistyles } from 'react-native-unistyles';
+import { useSkiaFont } from '@/shared/lib/skia-fonts';
 import { ProgressValue } from './ProgressValue';
 
 export type ProgressChartProps = ViewProps & {
@@ -31,6 +32,12 @@ export const ProgressChart = ({
 	...props
 }: ProgressChartProps) => {
 	const { theme } = useUnistyles();
+
+	const valueFont = useSkiaFont({
+		fontFamily: 'GolosText',
+		fontWeight: '600',
+		fontSize
+	});
 
 	const radius = diameter / 2;
 	const innerRadius = radius - strokeWidth / 2;
@@ -78,7 +85,8 @@ export const ProgressChart = ({
 
 				<ProgressValue
 					radius={radius}
-					fontSize={fontSize}
+					font={valueFont}
+					color={theme.colors.blackAlpha(0.9)}
 					sharedValue={sharedValue}
 					formatValue={formatValue}
 				/>
