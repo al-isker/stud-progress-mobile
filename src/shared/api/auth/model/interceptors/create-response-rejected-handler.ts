@@ -1,7 +1,7 @@
 import { HttpStatusCode } from 'axios';
 import { api } from '../../../instances/api';
 import { ApiErrorType } from '../../../types/api-error';
-import { authApi } from '../../api/auth-api';
+import { refreshAccessToken } from '../../api/refresh-access-token';
 import { getRefreshToken } from '../tokens/get-refresh-token';
 import { setAuthTokens } from '../tokens/set-auth-tokens';
 
@@ -23,11 +23,11 @@ export const createResponseRejectedHandler = (
 
 			if (refreshToken) {
 				try {
-					const refreshTokenResponse = await authApi.refreshToken({
+					const auth = await refreshAccessToken({
 						refreshToken
 					});
 
-					await setAuthTokens(refreshTokenResponse);
+					await setAuthTokens(auth);
 
 					return await api.request(originalRequest);
 				} catch {}

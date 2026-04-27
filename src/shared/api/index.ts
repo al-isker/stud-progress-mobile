@@ -1,8 +1,6 @@
-export { authApi } from './auth/api/auth-api';
 export { authInterceptorsConfigure } from './auth/config/auth-interceptors-configure';
 export { AuthType } from './auth/model/auth/auth-type';
-export { LoginBodyType } from './auth/model/login/login-body-type';
-export { RefreshTokenBodyType } from './auth/model/refresh-token/refresh-token-body-type';
+export { RefreshAccessTokenBodyType } from './auth/model/refresh-access-token/refresh-access-token-body-type';
 export { clearAuthTokens } from './auth/model/tokens/clear-auth-tokens';
 export { getAccessToken } from './auth/model/tokens/get-access-token';
 export { getRefreshToken } from './auth/model/tokens/get-refresh-token';

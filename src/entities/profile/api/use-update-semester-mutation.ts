@@ -7,8 +7,8 @@ import { profileApi } from './profile-api';
 export const useUpdateSemesterMutation = () => {
 	const queryClient = useQueryClient();
 
-	const handleSuccess = (data: ProfileType) => {
-		queryClient.setQueryData([PROFILE_KEY], data);
+	const handleSuccess = (profile: ProfileType) => {
+		queryClient.setQueryData([PROFILE_KEY], profile);
 
 		queryClient.resetQueries({
 			predicate: ({ queryKey }) => {

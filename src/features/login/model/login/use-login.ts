@@ -24,10 +24,10 @@ export const useLogin = () => {
 	const { progress, animationStart, animationComplete } =
 		useProgressAnimation(API_LONG_TIMEOUT);
 
-	const handleSuccess = async (data: AuthType) => {
+	const handleSuccess = async (auth: AuthType) => {
 		animationComplete();
 
-		await setAuthTokens(data);
+		await setAuthTokens(auth);
 
 		queryClient.clear();
 
