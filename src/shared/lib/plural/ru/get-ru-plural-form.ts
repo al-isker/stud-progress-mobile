@@ -1,30 +1,30 @@
-type WordsType = {
+type RuPluralForms = {
 	one: string;
-	two: string;
-	five: string;
+	few: string;
+	many: string;
 };
 
-export const getWordByNumber = (number: number, words: WordsType) => {
+export const getRuPluralForm = (number: number, forms: RuPluralForms) => {
 	const fractionalPart = number - Math.trunc(number);
 
 	if (fractionalPart !== 0) {
-		return words.two;
+		return forms.few;
 	}
 
 	const lastDigit = Math.abs(number) % 100;
 
 	if (lastDigit >= 5 && lastDigit <= 20) {
-		return words.five;
+		return forms.many;
 	} else {
 		switch (lastDigit % 10) {
 			case 1:
-				return words.one;
+				return forms.one;
 			case 2:
 			case 3:
 			case 4:
-				return words.two;
+				return forms.few;
 			default:
-				return words.five;
+				return forms.many;
 		}
 	}
 };

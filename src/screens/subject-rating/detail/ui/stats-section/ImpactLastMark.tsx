@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import { StyleProp, ViewStyle } from 'react-native';
 import { isExist } from '@/shared/lib/checks';
+import { getRuPluralForm } from '@/shared/lib/plural';
 import { preciseRound } from '@/shared/lib/precise-round';
-import { getWordByNumber } from '@/shared/lib/word-by-number';
 import {
 	AltArrowDownIcon,
 	AltArrowUpIcon,
@@ -27,10 +27,10 @@ export const ImpactLastMark = ({ style, value }: ImpactLastMarkProps) => {
 	} else {
 		formattedValue = Math.abs(roundedValue).toString();
 
-		hint = getWordByNumber(roundedValue, {
+		hint = getRuPluralForm(roundedValue, {
 			one: 'балл',
-			two: 'балла',
-			five: 'баллов'
+			few: 'балла',
+			many: 'баллов'
 		});
 
 		if (roundedValue > 0) {

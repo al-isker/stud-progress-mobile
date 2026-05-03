@@ -1,5 +1,5 @@
 import { StyleProp, ViewStyle } from 'react-native';
-import { getWordByNumber } from '@/shared/lib/word-by-number';
+import { getRuPluralForm } from '@/shared/lib/plural';
 import { StopwatchIcon } from '@/shared/ui/icons';
 import { NumberStat } from '@/shared/ui/number-stat';
 
@@ -17,10 +17,10 @@ export const DaysWithoutMark = ({ style, value }: DaysWithoutMarkProps) => {
 	} else {
 		formattedValue = value.toString();
 
-		hint = getWordByNumber(value, {
+		hint = getRuPluralForm(value, {
 			one: 'день',
-			two: 'дня',
-			five: 'дней'
+			few: 'дня',
+			many: 'дней'
 		});
 	}
 
