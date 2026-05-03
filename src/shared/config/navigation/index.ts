@@ -1,3 +1,3 @@
-export { links } from './links';
-export { routes } from './routes';
-export { ScreenNames } from './screen-names';
+export { links } from './const/links';
+export { routes } from './const/routes';
+export { ScreenNames } from './const/screen-names';

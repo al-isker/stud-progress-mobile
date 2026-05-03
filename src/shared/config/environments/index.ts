@@ -1,1 +1,1 @@
-export { API_URL } from './environments';
+export { API_URL } from './const/environments';
