@@ -6,7 +6,7 @@ import { StyleSheet } from 'react-native-unistyles';
 import { getTargetRouteByPushNotification } from '@/features/open-push-notification';
 import { useMobileAppInfoLazyQuery } from '@/shared/api';
 import { links, routes } from '@/shared/config/navigation';
-import { checkIsSupportedAppVersion } from '@/shared/lib/mobile-app-info';
+import { checkIsSupportedAppVersion } from '@/shared/lib/app-version';
 import { Button } from '@/shared/ui/button';
 import { CircularLoader } from '@/shared/ui/circular-loader';
 import { StatusScreen } from '@/shared/ui/status-screen';

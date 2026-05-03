@@ -5,7 +5,7 @@ import * as SplashScreen from 'expo-splash-screen';
 import { getTargetRouteByPushNotification } from '@/features/open-push-notification';
 import { useMobileAppInfoQuery } from '@/shared/api';
 import { routes } from '@/shared/config/navigation';
-import { checkIsSupportedAppVersion } from '@/shared/lib/mobile-app-info';
+import { checkIsSupportedAppVersion } from '@/shared/lib/app-version';
 
 export const RootScreen = () => {
 	const mobileAppInfoQuery = useMobileAppInfoQuery();

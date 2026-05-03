@@ -1,6 +1,6 @@
 import { nativeApplicationVersion } from 'expo-application';
 import { compareVersions } from 'compare-versions';
-import { AppVersionType } from './app-version-type';
+import { AppVersionType } from '@/shared/api';
 
 export const checkIsSupportedAppVersion = (
 	minSupportedAppVersion: AppVersionType

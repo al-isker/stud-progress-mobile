@@ -1,13 +1,14 @@
-export { AppVersionType } from '../lib/mobile-app-info/app-version/app-version-type';
 export { AuthType } from './common/auth/types/auth-type';
 export { LoginBodyType } from './common/auth/types/login-body-type';
 export { useLoginMutation } from './common/auth/use-login-mutation';
 export { useLogoutMutation } from './common/auth/use-logout-mutation';
 export { UpdateExpoPushTokenBodyType } from './common/device-info/types/update-expo-push-token-body-type';
 export { useUpdateExpoPushTokenMutation } from './common/device-info/use-update-expo-push-token-mutation';
+export { AppVersionType } from './common/mobile-app-info/types/app-version-type';
 export { MobileAppInfoType } from './common/mobile-app-info/types/mobile-app-info-type';
 export { useMobileAppInfoLazyQuery } from './common/mobile-app-info/use-mobile-app-info-lazy-query';
 export { useMobileAppInfoQuery } from './common/mobile-app-info/use-mobile-app-info-query';
+export { useMobileAppInfoQueryData } from './common/mobile-app-info/use-mobile-app-info-query-data';
 export { PushNotificationDataType } from './common/push-notifications/types/push-notification-data-type';
 export { PushNotificationTypeEnum } from './common/push-notifications/types/push-notification-type-enum';
 export { authInterceptorsConfigure } from './core/auth/config/auth-interceptors-configure';

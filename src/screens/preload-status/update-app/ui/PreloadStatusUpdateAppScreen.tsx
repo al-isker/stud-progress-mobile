@@ -1,7 +1,7 @@
 import { Link } from 'expo-router';
 import { Platform, View } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
-import { useMobileAppInfoQueryData } from '@/shared/lib/mobile-app-info';
+import { useMobileAppInfoQueryData } from '@/shared/api';
 import { Button } from '@/shared/ui/button';
 import { StatusScreen } from '@/shared/ui/status-screen';
 

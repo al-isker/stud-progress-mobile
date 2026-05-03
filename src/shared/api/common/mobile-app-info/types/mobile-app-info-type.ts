@@ -1,4 +1,4 @@
-import { AppVersionType } from '@/shared/lib/mobile-app-info';
+import { AppVersionType } from './app-version-type';
 
 export type MobileAppInfoType = {
 	minSupportedVersion: AppVersionType;
