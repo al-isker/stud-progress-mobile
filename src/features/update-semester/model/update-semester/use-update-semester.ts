@@ -2,7 +2,7 @@ import { router } from 'expo-router';
 import { useUpdateSemesterMutation } from '@/entities/profile';
 import { API_LONG_TIMEOUT, ApiErrorType } from '@/shared/api';
 import { routes } from '@/shared/config/navigation';
-import { useProgressAnimation } from '@/shared/lib/animation';
+import { useFakeProgressAnimation } from '@/shared/lib/animation';
 import { useUpdateSemesterContext } from '../update-semester-context/use-update-semester-context';
 
 export const useUpdateSemester = () => {
@@ -11,7 +11,7 @@ export const useUpdateSemester = () => {
 	const updateSemesterMutation = useUpdateSemesterMutation();
 
 	const { progress, animationStart, animationComplete } =
-		useProgressAnimation(API_LONG_TIMEOUT);
+		useFakeProgressAnimation(API_LONG_TIMEOUT);
 
 	const handleSuccess = () => {
 		animationComplete();

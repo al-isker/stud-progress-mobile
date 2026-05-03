@@ -8,7 +8,7 @@ import {
 	useLoginMutation
 } from '@/shared/api';
 import { routes } from '@/shared/config/navigation';
-import { useProgressAnimation } from '@/shared/lib/animation';
+import { useFakeProgressAnimation } from '@/shared/lib/animation';
 import { useUpdateExpoPushToken } from '@/shared/lib/expo-push-token';
 import { useLoginContext } from '../login-context/use-login-context';
 
@@ -22,7 +22,7 @@ export const useLogin = () => {
 	const { updateExpoPushToken } = useUpdateExpoPushToken();
 
 	const { progress, animationStart, animationComplete } =
-		useProgressAnimation(API_LONG_TIMEOUT);
+		useFakeProgressAnimation(API_LONG_TIMEOUT);
 
 	const handleSuccess = async (auth: AuthType) => {
 		animationComplete();
