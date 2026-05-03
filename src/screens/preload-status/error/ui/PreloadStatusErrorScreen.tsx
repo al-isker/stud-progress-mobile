@@ -21,8 +21,6 @@ export const PreloadStatusErrorScreen = () => {
 			);
 
 			if (isSupportedAppVersion) {
-				router.replace(routes.preloadUpdateApp);
-			} else {
 				const notificationResponse = getLastNotificationResponse();
 
 				const targetRoute = notificationResponse
@@ -30,6 +28,8 @@ export const PreloadStatusErrorScreen = () => {
 					: undefined;
 
 				router.replace(targetRoute ?? routes.subjectRating);
+			} else {
+				router.replace(routes.preloadUpdateApp);
 			}
 		}
 	}, [mobileAppInfoLazyQuery.isSuccess]);

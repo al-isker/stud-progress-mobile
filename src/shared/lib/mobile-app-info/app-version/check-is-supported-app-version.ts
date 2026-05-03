@@ -10,7 +10,7 @@ export const checkIsSupportedAppVersion = (
 		minSupportedAppVersion
 	);
 
-	const isSupportedVersion = resultCompareVersions === -1;
+	const isSupportedVersion = resultCompareVersions !== -1;
 
 	return isSupportedVersion;
 };
