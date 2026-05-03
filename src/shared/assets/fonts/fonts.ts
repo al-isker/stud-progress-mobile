@@ -1,4 +1,6 @@
-export const GolosTextRegular = require('../../../../assets/fonts/GolosText-Regular.ttf');
-export const GolosTextMedium = require('../../../../assets/fonts/GolosText-Medium.ttf');
-export const GolosTextSemiBold = require('../../../../assets/fonts/GolosText-SemiBold.ttf');
-export const GolosTextBold = require('../../../../assets/fonts/GolosText-Bold.ttf');
+export {
+	GolosText_700Bold as GolosTextBold,
+	GolosText_500Medium as GolosTextMedium,
+	GolosText_400Regular as GolosTextRegular,
+	GolosText_600SemiBold as GolosTextSemiBold
+} from '@expo-google-fonts/golos-text';
