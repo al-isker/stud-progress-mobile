@@ -7,7 +7,7 @@ import {
 	requestPermissionsAsync
 } from 'expo-notifications';
 import { AppState } from 'react-native';
-import { useAsyncEffect } from '@/shared/lib/react-hooks';
+import { asyncEffect, useMountEffect } from '@/shared/lib/react-hooks';
 
 export const useManageNotificationPermissions = () => {
 	const [status, setStatus] = useState<PermissionStatus>();
@@ -47,11 +47,13 @@ export const useManageNotificationPermissions = () => {
 		}
 	};
 
-	useAsyncEffect(async () => {
-		const currentPermissions = await getPermissionsAsync();
+	useMountEffect(
+		asyncEffect(async () => {
+			const currentPermissions = await getPermissionsAsync();
 
-		updatePermissions(currentPermissions);
-	}, []);
+			updatePermissions(currentPermissions);
+		})
+	);
 
 	useEffect(() => {
 		const subscription = AppState.addEventListener(

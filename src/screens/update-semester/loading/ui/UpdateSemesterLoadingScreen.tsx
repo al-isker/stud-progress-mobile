@@ -1,7 +1,7 @@
-import { useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { useUnistyles } from 'react-native-unistyles';
 import { useUpdateSemester } from '@/features/update-semester';
+import { useMountEffect } from '@/shared/lib/react-hooks';
 import { LoadingScreen } from '@/shared/ui/loading-screen';
 
 export const UpdateSemesterLoadingScreen = () => {
@@ -9,9 +9,9 @@ export const UpdateSemesterLoadingScreen = () => {
 
 	const { progress, updateSemester } = useUpdateSemester();
 
-	useEffect(() => {
+	useMountEffect(() => {
 		updateSemester();
-	}, []);
+	});
 
 	return (
 		<>

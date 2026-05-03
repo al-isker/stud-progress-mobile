@@ -1,4 +1,4 @@
-import { Ref, useEffect } from 'react';
+import { Ref } from 'react';
 import { View, ViewProps } from 'react-native';
 import Animated, {
 	useSharedValue,
@@ -8,6 +8,7 @@ import Animated, {
 	withTiming
 } from 'react-native-reanimated';
 import { StyleSheet } from 'react-native-unistyles';
+import { useMountEffect } from '@/shared/lib/react-hooks';
 import {
 	animationConfig,
 	animationDelay
@@ -21,7 +22,7 @@ export const PulseIndicator = ({ style, ...props }: PulseIndicatorProps) => {
 	const opacity = useSharedValue(1);
 	const scale = useSharedValue(1);
 
-	useEffect(() => {
+	useMountEffect(() => {
 		opacity.value = withRepeat(
 			withDelay(
 				animationDelay,
@@ -43,7 +44,7 @@ export const PulseIndicator = ({ style, ...props }: PulseIndicatorProps) => {
 			),
 			-1
 		);
-	}, []);
+	});
 
 	return (
 		<View style={[styles.indicator, style]} {...props}>

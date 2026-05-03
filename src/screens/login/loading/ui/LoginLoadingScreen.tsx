@@ -1,7 +1,7 @@
-import { useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { useUnistyles } from 'react-native-unistyles';
 import { useLogin } from '@/features/login';
+import { useMountEffect } from '@/shared/lib/react-hooks';
 import { LoadingScreen } from '@/shared/ui/loading-screen';
 
 export const LoginLoadingScreen = () => {
@@ -9,9 +9,9 @@ export const LoginLoadingScreen = () => {
 
 	const { progress, login } = useLogin();
 
-	useEffect(() => {
+	useMountEffect(() => {
 		login();
-	}, []);
+	});
 
 	return (
 		<>
