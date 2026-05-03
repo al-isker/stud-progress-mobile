@@ -1,8 +1,9 @@
+import { useEffect } from 'react';
 import { StyleProp, ViewStyle } from 'react-native';
 import { IOScrollView } from 'react-native-intersection-observer';
 import { useUnistyles } from 'react-native-unistyles';
-import { useRequestNotificationPermissions } from '@/entities/push-notification';
 import { SubjectRatingListType } from '@/entities/subject';
+import { requestNotificationPermissionsOnce } from '@/shared/lib/push-notifications';
 import { RefreshControl } from '@/shared/ui/refresh-control';
 import { IOCard } from '../io-card/IOCard';
 
@@ -23,7 +24,9 @@ export const IOList = ({
 }: IOListProps) => {
 	const { theme } = useUnistyles();
 
-	useRequestNotificationPermissions();
+	useEffect(() => {
+		requestNotificationPermissionsOnce();
+	}, []);
 
 	return (
 		<IOScrollView

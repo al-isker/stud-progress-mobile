@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
+import { getLastNotificationResponse } from 'expo-notifications';
 import { Link, router } from 'expo-router';
 import { View } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
-import {
-	checkIsSupportedAppVersion,
-	useMobileAppInfoLazyQuery
-} from '@/entities/mobile-app-info';
+import { getTargetRouteByPushNotification } from '@/features/open-push-notification';
+import { useMobileAppInfoLazyQuery } from '@/shared/api';
 import { links, routes } from '@/shared/config/navigation';
+import { checkIsSupportedAppVersion } from '@/shared/lib/mobile-app-info';
 import { Button } from '@/shared/ui/button';
 import { CircularLoader } from '@/shared/ui/circular-loader';
 import { StatusScreen } from '@/shared/ui/status-screen';
@@ -23,7 +23,13 @@ export const PreloadStatusErrorScreen = () => {
 			if (isSupportedAppVersion) {
 				router.replace(routes.preloadUpdateApp);
 			} else {
-				router.replace(routes.subjectRating);
+				const notificationResponse = getLastNotificationResponse();
+
+				const targetRoute = notificationResponse
+					? getTargetRouteByPushNotification(notificationResponse.notification)
+					: undefined;
+
+				router.replace(targetRoute ?? routes.subjectRating);
 			}
 		}
 	}, [mobileAppInfoLazyQuery.isSuccess]);

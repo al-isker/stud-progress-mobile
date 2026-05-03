@@ -1,6 +1,6 @@
 import { PermissionStatus } from 'expo-notifications';
 import { View } from 'react-native';
-import { useNotificationPermissions } from '@/entities/push-notification';
+import { useNotificationPermissions } from '@/features/manage-notification-permissions';
 import { Command } from '@/shared/ui/command';
 import { BellIcon } from '@/shared/ui/icons';
 import { Switch } from '@/shared/ui/switch';

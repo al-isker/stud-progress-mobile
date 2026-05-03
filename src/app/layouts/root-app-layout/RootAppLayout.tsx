@@ -1,5 +1,5 @@
-import { PushNotificationProvider } from '@/entities/push-notification';
 import { KeyboardProvider } from '../../providers/keyboard-provider/KeyboardProvider';
+import { PushNotificationProvider } from '../../providers/push-notification-provider/PushNotificationProvider';
 import { QueryProvider } from '../../providers/query-provider/QueryProvider';
 import { SkiaFontsProvider } from '../../providers/skia-fonts-provider/SkiaFontsProvider';
 import { RootNavigation } from './RootNavigation';

@@ -1,6 +1,5 @@
 import { router } from 'expo-router';
-import { useLogoutMutation } from '@/entities/auth';
-import { clearAuthTokens } from '@/shared/api';
+import { clearAuthTokens, useLogoutMutation } from '@/shared/api';
 import { routes } from '@/shared/config/navigation';
 
 export const useLogout = () => {

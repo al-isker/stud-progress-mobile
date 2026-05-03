@@ -1,15 +1,15 @@
 import { router } from 'expo-router';
 import { useQueryClient } from '@tanstack/react-query';
-import { useLoginMutation } from '@/entities/auth';
-import { useUpdateExpoPushToken } from '@/entities/push-notification';
 import {
 	API_LONG_TIMEOUT,
 	ApiErrorType,
 	AuthType,
-	setAuthTokens
+	setAuthTokens,
+	useLoginMutation
 } from '@/shared/api';
 import { routes } from '@/shared/config/navigation';
 import { useProgressAnimation } from '@/shared/lib/animation';
+import { useUpdateExpoPushToken } from '@/shared/lib/push-notifications';
 import { useLoginContext } from '../login-context/use-login-context';
 
 export const useLogin = () => {
