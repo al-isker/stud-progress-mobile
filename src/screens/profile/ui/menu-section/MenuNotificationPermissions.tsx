@@ -15,12 +15,14 @@ export const MenuNotificationPermissions = () => {
 			title='Уведомления'
 			startSlot={<BellIcon />}
 			endSlot={
-				<View style={{ width: 'auto', height: 'auto' }}>
-					<Switch
-						value={status === PermissionStatus.GRANTED}
-						onChange={toggle}
-					/>
-				</View>
+				status && (
+					<View style={{ width: 'auto', height: 'auto' }}>
+						<Switch
+							value={status === PermissionStatus.GRANTED}
+							onChange={toggle}
+						/>
+					</View>
+				)
 			}
 			onPress={toggle}
 		/>
