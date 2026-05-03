@@ -3,7 +3,7 @@ import {
 	addNotificationReceivedListener,
 	addNotificationResponseReceivedListener
 } from 'expo-notifications';
-import { multiple } from '@/shared/lib/function';
+import { callAll } from '@/shared/lib/toolkit';
 import { useConditionalUpdateExpoPushToken } from './model/expo-push-token/use-conditional-update-expo-push-token';
 import { useInvalidateQueriesByPushNotification } from './model/invalidate-queries/use-invalidate-queries-by-push-notification';
 import { useRedirectByPushNotificationResponse } from './model/redirect/use-redirect-by-push-notification-response';
@@ -34,7 +34,7 @@ export const PushNotificationProvider = ({
 			}
 		);
 
-		return multiple(subscriptionOne.remove, subscriptionTwo.remove);
+		return callAll(subscriptionOne.remove, subscriptionTwo.remove);
 	}, []);
 
 	return children;

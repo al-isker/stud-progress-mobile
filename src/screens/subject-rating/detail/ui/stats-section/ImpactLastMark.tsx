@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import { StyleProp, ViewStyle } from 'react-native';
-import { isExist } from '@/shared/lib/checks';
 import { getRuPluralForm } from '@/shared/lib/plural';
 import { preciseRound } from '@/shared/lib/precise-round';
+import { isDefined } from '@/shared/lib/toolkit';
 import {
 	AltArrowDownIcon,
 	AltArrowUpIcon,
@@ -16,7 +16,7 @@ type ImpactLastMarkProps = {
 };
 
 export const ImpactLastMark = ({ style, value }: ImpactLastMarkProps) => {
-	const roundedValue = isExist(value) ? preciseRound(value, 1) : null;
+	const roundedValue = isDefined(value) ? preciseRound(value, 1) : null;
 
 	let formattedValue: string;
 	let hint: string | undefined;

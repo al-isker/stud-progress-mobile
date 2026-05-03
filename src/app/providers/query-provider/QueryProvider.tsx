@@ -4,7 +4,7 @@ import { focusManager, onlineManager } from '@tanstack/react-query';
 import { PersistQueryClientProvider } from '@tanstack/react-query-persist-client';
 import { AppState } from 'react-native';
 import { queryClient, queryPersistOptions } from '@/shared/api';
-import { multiple } from '@/shared/lib/function';
+import { callAll } from '@/shared/lib/toolkit';
 
 type QueryProviderProps = {
 	children: ReactNode;
@@ -22,7 +22,7 @@ export const QueryProvider = ({ children }: QueryProviderProps) => {
 			);
 		});
 
-		return multiple(subscriptionOne.remove, subscriptionTwo.remove);
+		return callAll(subscriptionOne.remove, subscriptionTwo.remove);
 	}, []);
 
 	return (

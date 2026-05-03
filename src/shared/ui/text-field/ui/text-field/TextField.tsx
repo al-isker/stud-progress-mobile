@@ -14,7 +14,7 @@ import Animated, {
 	withTiming
 } from 'react-native-reanimated';
 import { StyleSheet, useUnistyles } from 'react-native-unistyles';
-import { multiple } from '@/shared/lib/function';
+import { callAll } from '@/shared/lib/toolkit';
 import { animationConfig } from '../../lib/animation/animation-config';
 import { ErrorText } from '../error-text/ErrorText';
 
@@ -116,9 +116,9 @@ export const TextField = ({
 						placeholderTextColor={theme.colors.blackAlpha(0.2)}
 						defaultValue={defaultValue}
 						value={value}
-						onFocus={multiple(handleFocus, onFocus)}
-						onBlur={multiple(handleBlur, onBlur)}
-						onChangeText={multiple(handleChangeText, onChangeText)}
+						onFocus={callAll(handleFocus, onFocus)}
+						onBlur={callAll(handleBlur, onBlur)}
+						onChangeText={callAll(handleChangeText, onChangeText)}
 						{...props}
 					/>
 				</Animated.View>

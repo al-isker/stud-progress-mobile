@@ -1,5 +1,5 @@
 import { Animated, Pressable, useAnimatedValue } from 'react-native';
-import { multiple } from '@/shared/lib/function';
+import { callAll } from '@/shared/lib/toolkit';
 import {
 	INITIAL_FEEDBACK_OPACITY,
 	animationInFeedbackOpacityConfig,
@@ -34,8 +34,8 @@ export const PressableIOS = ({
 	return (
 		<Pressable
 			style={[{ overflow: 'hidden' }, style]}
-			onPressIn={multiple(handlePressIn, onPressIn)}
-			onPressOut={multiple(handlePressOut, onPressOut)}
+			onPressIn={callAll(handlePressIn, onPressIn)}
+			onPressOut={callAll(handlePressOut, onPressOut)}
 			{...props}
 		>
 			{children}
