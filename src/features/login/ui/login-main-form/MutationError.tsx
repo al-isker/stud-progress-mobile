@@ -3,7 +3,7 @@ import { useFocusEffect } from 'expo-router';
 import { StyleProp, Text, TextStyle } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
 import { apiMessage } from '@/shared/api';
-import { useRerender } from '@/shared/lib/react-sugar';
+import { useRerender } from '@/shared/lib/react-hooks';
 import { useLoginContext } from '../../model/login-context/use-login-context';
 
 type MutationErrorProps = {

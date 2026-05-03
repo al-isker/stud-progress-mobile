@@ -7,7 +7,7 @@ import {
 	requestPermissionsAsync
 } from 'expo-notifications';
 import { AppState } from 'react-native';
-import { useAsyncEffect } from '@/shared/lib/react-sugar';
+import { useAsyncEffect } from '@/shared/lib/react-hooks';
 
 export const useManageNotificationPermissions = () => {
 	const [status, setStatus] = useState<PermissionStatus>();

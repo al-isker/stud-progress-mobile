@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { InView } from 'react-native-intersection-observer';
 import { SubjectRatingListItemType } from '@/entities/subject';
-import { useUnmountEffect } from '@/shared/lib/react-sugar';
+import { useUnmountEffect } from '@/shared/lib/react-hooks';
 import { IOCardContent, IOCardContentRef } from './IOCardContent';
 
 type IOCardProps = {

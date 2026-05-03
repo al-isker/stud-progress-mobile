@@ -3,7 +3,7 @@ import { useFocusEffect } from 'expo-router';
 import { StyleProp, Text, TextStyle } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
 import { apiMessage } from '@/shared/api';
-import { useRerender } from '@/shared/lib/react-sugar';
+import { useRerender } from '@/shared/lib/react-hooks';
 import { useUpdateSemesterContext } from '../../model/update-semester-context/use-update-semester-context';
 
 type MutationErrorProps = {
