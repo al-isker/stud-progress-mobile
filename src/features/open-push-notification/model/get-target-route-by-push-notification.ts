@@ -1,9 +1,9 @@
 import { Notification } from 'expo-notifications';
-import { routes } from '@/shared/config/navigation';
 import {
 	PushNotificationDataType,
 	PushNotificationTypeEnum
-} from '@/shared/lib/push-notifications';
+} from '@/shared/api';
+import { routes } from '@/shared/config/navigation';
 
 export const getTargetRouteByPushNotification = (
 	notification: Notification

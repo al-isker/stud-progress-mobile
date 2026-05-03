@@ -1,10 +1,11 @@
 import { Notification } from 'expo-notifications';
 import { useQueryClient } from '@tanstack/react-query';
-import { SUBJECT_GRADE_KEY, SUBJECT_RATING_KEY } from '@/shared/api';
 import {
 	PushNotificationDataType,
-	PushNotificationTypeEnum
-} from '@/shared/lib/push-notifications';
+	PushNotificationTypeEnum,
+	SUBJECT_GRADE_KEY,
+	SUBJECT_RATING_KEY
+} from '@/shared/api';
 
 export const useInvalidateQueriesByPushNotification = () => {
 	const queryClient = useQueryClient();

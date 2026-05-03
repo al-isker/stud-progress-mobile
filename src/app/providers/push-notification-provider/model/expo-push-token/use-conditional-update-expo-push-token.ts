@@ -1,6 +1,6 @@
 import { SHOULD_SEND_EXPO_PUSH_TOKEN_STORAGE_KEY } from '@/shared/config/storage';
 import { AsyncJSONStorage } from '@/shared/lib/async-json-storage';
-import { useUpdateExpoPushToken } from '@/shared/lib/push-notifications';
+import { useUpdateExpoPushToken } from '@/shared/lib/expo-push-token';
 
 export const useConditionalUpdateExpoPushToken = () => {
 	const { updateExpoPushToken } = useUpdateExpoPushToken();

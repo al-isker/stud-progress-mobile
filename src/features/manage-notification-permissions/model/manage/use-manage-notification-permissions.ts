@@ -9,7 +9,7 @@ import {
 import { AppState } from 'react-native';
 import { useAsyncEffect } from '@/shared/lib/react-sugar';
 
-export const useNotificationPermissions = () => {
+export const useManageNotificationPermissions = () => {
 	const [status, setStatus] = useState<PermissionStatus>();
 
 	const permissionsRef = useRef<NotificationPermissionsStatus | null>(null);

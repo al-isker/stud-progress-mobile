@@ -1,6 +1,6 @@
 import { requestPermissionsAsync } from 'expo-notifications';
 import { WAS_REQUESTED_NOTIFICATION_PERMISSIONS_STORAGE_KEY } from '@/shared/config/storage';
-import { AsyncJSONStorage } from '../../async-json-storage';
+import { AsyncJSONStorage } from '@/shared/lib/async-json-storage';
 
 export const requestNotificationPermissionsOnce = async () => {
 	const wasRequestedNotificationPermissions =

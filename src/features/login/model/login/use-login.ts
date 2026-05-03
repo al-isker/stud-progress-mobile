@@ -9,7 +9,7 @@ import {
 } from '@/shared/api';
 import { routes } from '@/shared/config/navigation';
 import { useProgressAnimation } from '@/shared/lib/animation';
-import { useUpdateExpoPushToken } from '@/shared/lib/push-notifications';
+import { useUpdateExpoPushToken } from '@/shared/lib/expo-push-token';
 import { useLoginContext } from '../login-context/use-login-context';
 
 export const useLogin = () => {

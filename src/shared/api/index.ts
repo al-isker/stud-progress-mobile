@@ -8,6 +8,8 @@ export { useUpdateExpoPushTokenMutation } from './common/device-info/use-update-
 export { MobileAppInfoType } from './common/mobile-app-info/types/mobile-app-info-type';
 export { useMobileAppInfoLazyQuery } from './common/mobile-app-info/use-mobile-app-info-lazy-query';
 export { useMobileAppInfoQuery } from './common/mobile-app-info/use-mobile-app-info-query';
+export { PushNotificationDataType } from './common/push-notifications/types/push-notification-data-type';
+export { PushNotificationTypeEnum } from './common/push-notifications/types/push-notification-type-enum';
 export { authInterceptorsConfigure } from './core/auth/config/auth-interceptors-configure';
 export { clearAuthTokens } from './core/auth/tokens/clear-auth-tokens';
 export { getAccessToken } from './core/auth/tokens/get-access-token';
