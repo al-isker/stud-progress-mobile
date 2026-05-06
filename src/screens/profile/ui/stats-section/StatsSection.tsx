@@ -1,6 +1,6 @@
 import { View } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
-import { ChatSquireIcon, HashtagSquireIcon } from '@/shared/ui/icons';
+import { ChatSquareIcon, HashtagSquareIcon } from '@/shared/ui/icons';
 import { NumberStat } from '@/shared/ui/number-stat';
 
 type StatsSectionProps = {
@@ -14,13 +14,13 @@ export const StatsSection = ({ course, semester }: StatsSectionProps) => (
 			style={styles.leftStat}
 			title='Курс'
 			value={course}
-			headerStartSlot={<ChatSquireIcon />}
+			headerStartSlot={<ChatSquareIcon />}
 		/>
 		<NumberStat
 			style={styles.rightStat}
 			title='Семестр'
 			value={semester}
-			headerStartSlot={<HashtagSquireIcon />}
+			headerStartSlot={<HashtagSquareIcon />}
 		/>
 	</View>
 );

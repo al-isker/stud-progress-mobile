@@ -1,6 +1,6 @@
 import Svg, { G, Path, SvgProps } from 'react-native-svg';
 
-export const HashtagSquireIcon = (props: SvgProps) => (
+export const HashtagSquareIcon = (props: SvgProps) => (
 	<Svg viewBox='0 0 24 24' fill='currentColor' {...props}>
 		<G>
 			<Path d='m14.092 10.75-.75 2.5H9.908l.75-2.5h3.434Z' />

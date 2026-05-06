@@ -1,6 +1,6 @@
 import Svg, { Path, SvgProps } from 'react-native-svg';
 
-export const ChatSquireIcon = (props: SvgProps) => (
+export const ChatSquareIcon = (props: SvgProps) => (
 	<Svg viewBox='0 0 24 24' fill='currentColor' {...props}>
 		<Path
 			fillRule='evenodd'
