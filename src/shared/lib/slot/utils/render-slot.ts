@@ -1,5 +1,5 @@
 import { Attributes, ReactElement, cloneElement } from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native-unistyles';
 import { SlotProps } from '../types/slot-props';
 
 export const renderSlot = <P extends SlotProps>(
