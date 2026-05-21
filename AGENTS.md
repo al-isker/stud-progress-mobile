@@ -59,4 +59,4 @@ npx prettier . --write
 
 1. Убедиться, что новый код соответствует архитектуре FSD.
 2. Запустить `npx tsc --noEmit`.
-3. Запустить `npx prettier . --check`.
+3. Запустить `npx prettier . --write`.
