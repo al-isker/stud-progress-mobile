@@ -1,6 +1,7 @@
-export { useSubjectGradeListQuery } from './api/use-subject-grade-list-query';
-export { useSubjectRatingDetailQuery } from './api/use-subject-rating-detail-query';
-export { useSubjectRatingListQuery } from './api/use-subject-rating-list-query';
+export { subjectQueryKeys } from './api/query-keys/subject-query-keys';
+export { getSubjectGradeListQueryOptions } from './api/query-options/get-subject-grade-list-query-options';
+export { getSubjectRatingDetailQueryOptions } from './api/query-options/get-subject-rating-detail-query-options';
+export { getSubjectRatingListQueryOptions } from './api/query-options/get-subject-rating-list-query-options';
 export { formatAverageMark } from './lib/average-mark/format-average-mark';
 export { ControlTypeEnum } from './model/control-type/control-type-enum';
 export { MAX_MARK } from './model/subject-grade/max-mark';

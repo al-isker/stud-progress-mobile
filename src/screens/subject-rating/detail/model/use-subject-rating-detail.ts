@@ -1,7 +1,9 @@
 import { useLocalSearchParams } from 'expo-router';
-import { useQueryClient } from '@tanstack/react-query';
-import { useSubjectRatingDetailQuery } from '@/entities/subject';
-import { SUBJECT_RATING_KEY } from '@/shared/api';
+import { hashKey, useQuery, useQueryClient } from '@tanstack/react-query';
+import {
+	getSubjectRatingDetailQueryOptions,
+	subjectQueryKeys
+} from '@/entities/subject';
 
 export const useSubjectRatingDetail = () => {
 	const localSearchParams = useLocalSearchParams();
@@ -9,13 +11,18 @@ export const useSubjectRatingDetail = () => {
 
 	const subjectId = Number(localSearchParams.id);
 
-	const { data, isLoading, isSuccess, isRefetching, ...query } =
-		useSubjectRatingDetailQuery(subjectId);
+	const { data, isLoading, isSuccess, isRefetching, ...query } = useQuery(
+		getSubjectRatingDetailQueryOptions(subjectId)
+	);
 
 	const refetch = () => {
 		queryClient.invalidateQueries({
 			predicate: ({ queryKey }) => {
-				return queryKey[0] === SUBJECT_RATING_KEY && queryKey[1] !== subjectId;
+				return (
+					hashKey(queryKey.slice(0, 1)) === hashKey(subjectQueryKeys.all) &&
+					hashKey(queryKey) !==
+						hashKey(subjectQueryKeys.ratingDetail(subjectId))
+				);
 			}
 		});
 

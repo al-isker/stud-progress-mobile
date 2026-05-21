@@ -1,18 +1,21 @@
-import { useQueryClient } from '@tanstack/react-query';
-import { useSubjectRatingListQuery } from '@/entities/subject';
-import { SUBJECT_RATING_KEY } from '@/shared/api';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
+import {
+	getSubjectRatingListQueryOptions,
+	subjectQueryKeys
+} from '@/entities/subject';
 
 export const useSubjectRatingList = () => {
 	const queryClient = useQueryClient();
 
-	const { data, isLoading, isSuccess, isRefetching, ...query } =
-		useSubjectRatingListQuery();
+	const { data, isLoading, isSuccess, isRefetching, ...query } = useQuery(
+		getSubjectRatingListQueryOptions()
+	);
 
 	const isEmptyList = isSuccess && data.length === 0;
 
 	const refetch = () => {
 		queryClient.invalidateQueries({
-			queryKey: [SUBJECT_RATING_KEY],
+			queryKey: subjectQueryKeys.all,
 			type: 'inactive',
 			refetchType: 'none'
 		});

@@ -1,12 +1,13 @@
 import { router } from 'expo-router';
-import { useProfileQuery } from '@/entities/profile';
+import { useQuery } from '@tanstack/react-query';
+import { getProfileQueryOptions } from '@/entities/profile';
 import { routes } from '@/shared/config/navigation';
 import { useUpdateSemesterContext } from '../update-semester-context/use-update-semester-context';
 
 export const useUpdateSemesterForm = () => {
 	const updateSemesterContext = useUpdateSemesterContext();
 
-	const profileQuery = useProfileQuery();
+	const profileQuery = useQuery(getProfileQueryOptions());
 
 	const currentSemester = profileQuery.data?.semester;
 

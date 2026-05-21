@@ -4,7 +4,7 @@ import { Link, router } from 'expo-router';
 import { View } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
 import { getTargetRouteByPushNotification } from '@/features/open-push-notification';
-import { useMobileAppInfoLazyQuery } from '@/shared/api';
+import { getMobileAppInfoQueryOptions, useLazyQuery } from '@/shared/api';
 import { links, routes } from '@/shared/config/navigation';
 import { checkIsSupportedAppVersion } from '@/shared/lib/app-version';
 import { Button } from '@/shared/ui/button';
@@ -12,7 +12,7 @@ import { CircularLoader } from '@/shared/ui/circular-loader';
 import { StatusScreen } from '@/shared/ui/status-screen';
 
 export const PreloadStatusErrorScreen = () => {
-	const mobileAppInfoLazyQuery = useMobileAppInfoLazyQuery();
+	const mobileAppInfoLazyQuery = useLazyQuery(getMobileAppInfoQueryOptions());
 
 	useEffect(() => {
 		if (mobileAppInfoLazyQuery.isSuccess) {

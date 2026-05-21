@@ -1,12 +1,15 @@
 import { Link } from 'expo-router';
+import { useQuery } from '@tanstack/react-query';
 import { Platform, View } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
-import { useMobileAppInfoQueryData } from '@/shared/api';
+import { getMobileAppInfoQueryOptions } from '@/shared/api';
 import { Button } from '@/shared/ui/button';
 import { StatusScreen } from '@/shared/ui/status-screen';
 
 export const PreloadStatusUpdateAppScreen = () => {
-	const mobileAppInfoQueryData = useMobileAppInfoQueryData()!;
+	const mobileAppInfoQuery = useQuery(getMobileAppInfoQueryOptions());
+
+	const mobileAppInfoQueryData = mobileAppInfoQuery.data!;
 
 	const updateLink = Platform.select({
 		android: mobileAppInfoQueryData.linkToGooglePlay,

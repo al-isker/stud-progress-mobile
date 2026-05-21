@@ -2,13 +2,14 @@ import { useEffect } from 'react';
 import { getLastNotificationResponse } from 'expo-notifications';
 import { router } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
+import { useQuery } from '@tanstack/react-query';
 import { getTargetRouteByPushNotification } from '@/features/open-push-notification';
-import { useMobileAppInfoQuery } from '@/shared/api';
+import { getMobileAppInfoQueryOptions } from '@/shared/api';
 import { routes } from '@/shared/config/navigation';
 import { checkIsSupportedAppVersion } from '@/shared/lib/app-version';
 
 export const RootScreen = () => {
-	const mobileAppInfoQuery = useMobileAppInfoQuery();
+	const mobileAppInfoQuery = useQuery(getMobileAppInfoQueryOptions());
 
 	useEffect(() => {
 		if (mobileAppInfoQuery.isSuccess) {
