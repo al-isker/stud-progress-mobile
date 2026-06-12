@@ -1,12 +1,13 @@
-import { ReactElement, ReactNode, Ref } from 'react';
+import { ReactNode, Ref } from 'react';
 import { Insets, Text, View, ViewProps } from 'react-native';
+import { SvgProps } from 'react-native-svg';
 import { StyleSheet } from 'react-native-unistyles';
-import { SlotProps, renderSlot } from '@/shared/lib/slot';
+import { RenderSlotType, createSlot } from '@/shared/lib/slot';
 
 export type StatusScreenProps = ViewProps & {
 	ref?: Ref<View>;
 	safeAreaInsets?: Insets;
-	iconSlot?: ReactElement<SlotProps>;
+	renderIcon?: RenderSlotType<SvgProps>;
 	title?: string;
 	description?: string;
 	actions?: ReactNode;
@@ -15,7 +16,7 @@ export type StatusScreenProps = ViewProps & {
 export const StatusScreen = ({
 	style,
 	safeAreaInsets,
-	iconSlot,
+	renderIcon,
 	title,
 	description,
 	actions,
@@ -23,7 +24,9 @@ export const StatusScreen = ({
 }: StatusScreenProps) => (
 	<View style={[styles.container, style]} {...props}>
 		<View style={styles.safeAreaContainer(safeAreaInsets)}>
-			{renderSlot(iconSlot, { style: styles.icon })}
+			{createSlot(renderIcon, {
+				style: styles.icon
+			})}
 
 			<View style={styles.contentContainer}>
 				{title && <Text style={styles.title}>{title}</Text>}

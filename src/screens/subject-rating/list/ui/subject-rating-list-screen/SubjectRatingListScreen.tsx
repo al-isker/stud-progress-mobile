@@ -27,7 +27,7 @@ export const SubjectRatingListScreen = () => {
 		return (
 			<StatusScreen
 				style={styles.status}
-				iconSlot={<FolderOpenIcon color={theme.colors.primary} />}
+				renderIcon={FolderOpenIcon}
 				title='Здесь пусто'
 				description='в выбранном семестре ты не получил ни одного балла'
 				actions={
@@ -53,7 +53,9 @@ export const SubjectRatingListScreen = () => {
 	return (
 		<StatusScreen
 			style={styles.status}
-			iconSlot={<HeartBrokenIcon color={theme.colors.red} />}
+			renderIcon={props => (
+				<HeartBrokenIcon {...props} color={theme.colors.red} />
+			)}
 			title='Ошибка'
 			description='баллы не найдены, попробуй позже или обратись в поддержку'
 			actions={

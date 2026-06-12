@@ -1,7 +1,8 @@
-import { FC } from 'react';
 import { StyleProp, ViewStyle } from 'react-native';
+import { SvgProps } from 'react-native-svg';
 import { getRuPluralForm } from '@/shared/lib/plural';
 import { preciseRound } from '@/shared/lib/precise-round';
+import { RenderSlotType } from '@/shared/lib/slot';
 import { isDefined } from '@/shared/lib/toolkit';
 import {
 	AltArrowDownIcon,
@@ -20,7 +21,7 @@ export const ImpactLastMark = ({ style, value }: ImpactLastMarkProps) => {
 
 	let formattedValue: string;
 	let hint: string | undefined;
-	let MainStartIcon: FC | undefined;
+	let renderMainLeftIcon: RenderSlotType<SvgProps> | undefined;
 
 	if (!roundedValue) {
 		formattedValue = '−';
@@ -34,9 +35,9 @@ export const ImpactLastMark = ({ style, value }: ImpactLastMarkProps) => {
 		});
 
 		if (roundedValue > 0) {
-			MainStartIcon = AltArrowUpIcon;
+			renderMainLeftIcon = AltArrowUpIcon;
 		} else if (roundedValue < 0) {
-			MainStartIcon = AltArrowDownIcon;
+			renderMainLeftIcon = AltArrowDownIcon;
 		}
 	}
 
@@ -46,8 +47,8 @@ export const ImpactLastMark = ({ style, value }: ImpactLastMarkProps) => {
 			title='Тенденция'
 			value={formattedValue}
 			valueHint={hint}
-			headerStartSlot={<GraphUpIcon />}
-			mainStartSlot={MainStartIcon && <MainStartIcon />}
+			renderHeaderLeftIcon={GraphUpIcon}
+			renderMainLeftIcon={renderMainLeftIcon}
 		/>
 	);
 };

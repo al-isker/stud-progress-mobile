@@ -1,7 +1,8 @@
-import { ReactElement, Ref } from 'react';
+import { Ref } from 'react';
 import { Text, View } from 'react-native';
+import { SvgProps } from 'react-native-svg';
 import { StyleSheet, UnistylesVariants } from 'react-native-unistyles';
-import { SlotProps, renderSlot } from '@/shared/lib/slot';
+import { RenderSlotType, createSlot } from '@/shared/lib/slot';
 import { Pressable, PressableProps } from '@/shared/ui/pressable';
 
 export type CommandProps = Omit<
@@ -11,8 +12,9 @@ export type CommandProps = Omit<
 	UnistylesVariants<typeof styles> & {
 		ref?: Ref<View>;
 		title?: string;
-		startSlot?: ReactElement<SlotProps>;
-		endSlot?: ReactElement<SlotProps>;
+		renderLeftIcon?: RenderSlotType<SvgProps>;
+		renderRightIcon?: RenderSlotType<SvgProps>;
+		renderRightSlot?: RenderSlotType;
 	};
 
 export const Command = ({
@@ -20,8 +22,9 @@ export const Command = ({
 	size = 'medium',
 	style,
 	title,
-	startSlot,
-	endSlot,
+	renderLeftIcon,
+	renderRightIcon,
+	renderRightSlot,
 	...props
 }: CommandProps) => {
 	styles.useVariants({ variant, size });
@@ -32,19 +35,27 @@ export const Command = ({
 			style={[styles.pressable, style]}
 			{...props}
 		>
-			{renderSlot(startSlot, {
-				style: styles.slot,
-				color: styles.slotProps.color
+			{createSlot(renderLeftIcon, {
+				style: styles.icon,
+				color: styles.iconProps.color
 			})}
 
 			<Text style={styles.title} numberOfLines={1}>
 				{title}
 			</Text>
 
-			{renderSlot(endSlot, {
-				style: [styles.slot, styles.endSlot],
-				color: styles.slotProps.color
-			})}
+			{(renderRightIcon || renderRightSlot) && (
+				<View style={styles.rightSlotContainer}>
+					{createSlot(renderRightIcon, {
+						style: styles.icon,
+						color: styles.iconProps.color
+					})}
+
+					{createSlot(renderRightSlot, {
+						style: styles.icon
+					})}
+				</View>
+			)}
 		</Pressable>
 	);
 };
@@ -107,7 +118,10 @@ const styles = StyleSheet.create(theme => ({
 			}
 		}
 	},
-	slot: {
+	rightSlotContainer: {
+		marginLeft: 'auto'
+	},
+	icon: {
 		variants: {
 			variant: {},
 			size: {
@@ -122,10 +136,7 @@ const styles = StyleSheet.create(theme => ({
 			}
 		}
 	},
-	endSlot: {
-		marginLeft: 'auto'
-	},
-	slotProps: {
+	iconProps: {
 		color: '',
 
 		variants: {

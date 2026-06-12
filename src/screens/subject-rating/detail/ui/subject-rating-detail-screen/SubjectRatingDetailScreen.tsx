@@ -38,7 +38,9 @@ export const SubjectRatingDetailScreen = () => {
 		<StatusScreen
 			style={styles.status}
 			safeAreaInsets={{ bottom: rt.insets.bottom }}
-			iconSlot={<HeartBrokenIcon color={theme.colors.red} />}
+			renderIcon={props => (
+				<HeartBrokenIcon {...props} color={theme.colors.red} />
+			)}
 			title='Ошибка'
 			description='баллы не найдены, попробуй позже или обратись в поддержку'
 			actions={

@@ -1,2 +1,2 @@
-export { SlotProps } from './types/slot-props';
-export { renderSlot } from './utils/render-slot';
+export { RenderSlotType } from './types/render-slot-type';
+export { createSlot } from './utils/create-slot';

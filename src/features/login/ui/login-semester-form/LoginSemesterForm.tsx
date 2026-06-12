@@ -24,7 +24,7 @@ export const LoginSemesterForm = ({ style }: LoginSemesterFormProps) => {
 							key={index}
 							style={styles.command}
 							title={semesterOption.label}
-							endSlot={<ArrowRightIcon />}
+							renderRightIcon={ArrowRightIcon}
 							onPress={createSemesterPressHandler(semesterOption.value)}
 						/>
 					))}

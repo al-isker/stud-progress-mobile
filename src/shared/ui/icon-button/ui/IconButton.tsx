@@ -1,7 +1,8 @@
-import { ReactElement, Ref } from 'react';
+import { Ref } from 'react';
 import { View } from 'react-native';
+import { SvgProps } from 'react-native-svg';
 import { StyleSheet, UnistylesVariants } from 'react-native-unistyles';
-import { SlotProps, renderSlot } from '@/shared/lib/slot';
+import { RenderSlotType, createSlot } from '@/shared/lib/slot';
 import { Pressable, PressableProps } from '@/shared/ui/pressable';
 
 export type IconButtonProps = Omit<
@@ -9,12 +10,12 @@ export type IconButtonProps = Omit<
 	'children' | 'feedbackColor' | 'contentContainerStyle'
 > &
 	UnistylesVariants<typeof styles> & {
-		children: ReactElement<SlotProps>;
 		ref?: Ref<View>;
+		icon: RenderSlotType<SvgProps>;
 	};
 
 export const IconButton = ({
-	children,
+	icon,
 	variant = 'primary',
 	size = 'medium',
 	style,
@@ -28,9 +29,9 @@ export const IconButton = ({
 			style={[styles.pressable, style]}
 			{...props}
 		>
-			{renderSlot(children, {
+			{createSlot(icon, {
 				style: styles.icon,
-				color: styles.slotProps.color
+				color: styles.iconProps.color
 			})}
 		</Pressable>
 	);
@@ -91,7 +92,7 @@ const styles = StyleSheet.create(theme => ({
 			}
 		}
 	},
-	slotProps: {
+	iconProps: {
 		color: '',
 
 		variants: {

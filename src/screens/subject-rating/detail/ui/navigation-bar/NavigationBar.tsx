@@ -8,8 +8,11 @@ export const NavigationBar = () => {
 	};
 
 	return (
-		<IconButton variant='secondary' size='small' onPress={handleBackPress}>
-			<ArrowLeftIcon />
-		</IconButton>
+		<IconButton
+			variant='secondary'
+			size='small'
+			icon={ArrowLeftIcon}
+			onPress={handleBackPress}
+		/>
 	);
 };

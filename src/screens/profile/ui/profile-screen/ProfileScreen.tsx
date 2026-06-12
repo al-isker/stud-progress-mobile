@@ -36,7 +36,9 @@ export const ProfileScreen = () => {
 	return (
 		<StatusScreen
 			style={styles.status}
-			iconSlot={<HeartBrokenIcon color={theme.colors.red} />}
+			renderIcon={props => (
+				<HeartBrokenIcon {...props} color={theme.colors.red} />
+			)}
 			title='Ошибка'
 			description='профиль не найден, попробуй позже или обратись в поддержку'
 			actions={

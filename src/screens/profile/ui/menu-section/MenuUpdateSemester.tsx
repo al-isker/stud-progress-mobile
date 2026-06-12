@@ -9,8 +9,8 @@ export const MenuUpdateSemester = () => (
 			variant='text'
 			size='large'
 			title='Изменить семестр'
-			startSlot={<SmartphoneUpdateIcon />}
-			endSlot={<ArrowRightIcon />}
+			renderLeftIcon={SmartphoneUpdateIcon}
+			renderRightIcon={ArrowRightIcon}
 		/>
 	</Link>
 );

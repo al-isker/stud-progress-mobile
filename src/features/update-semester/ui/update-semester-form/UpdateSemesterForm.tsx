@@ -33,7 +33,7 @@ export const UpdateSemesterForm = ({ style }: UpdateSemesterFormProps) => {
 							<Command
 								style={styles.command}
 								title={semesterOption.label}
-								endSlot={<ArrowRightIcon />}
+								renderRightIcon={ArrowRightIcon}
 								onPress={createSemesterPressHandler(semesterOption.value)}
 							/>
 						</View>

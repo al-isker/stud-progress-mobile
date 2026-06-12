@@ -9,8 +9,8 @@ export const MenuNews = () => (
 			variant='text'
 			size='large'
 			title='Новости'
-			startSlot={<ChatLineIcon />}
-			endSlot={<ArrowRightIcon />}
+			renderLeftIcon={ChatLineIcon}
+			renderRightIcon={ArrowRightIcon}
 		/>
 	</Link>
 );

@@ -1,14 +1,15 @@
-import { ReactElement, Ref } from 'react';
+import { Ref } from 'react';
 import { Text, View, ViewProps } from 'react-native';
+import { SvgProps } from 'react-native-svg';
 import { StyleSheet, UnistylesVariants } from 'react-native-unistyles';
-import { SlotProps, renderSlot } from '@/shared/lib/slot';
+import { RenderSlotType, createSlot } from '@/shared/lib/slot';
 
 export type TagProps = Omit<ViewProps, 'children'> &
 	UnistylesVariants<typeof styles> & {
 		ref?: Ref<View>;
 		title?: string;
-		startSlot?: ReactElement<SlotProps>;
-		endSlot?: ReactElement<SlotProps>;
+		renderLeftIcon?: RenderSlotType<SvgProps>;
+		renderRightIcon?: RenderSlotType<SvgProps>;
 	};
 
 export const Tag = ({
@@ -16,24 +17,24 @@ export const Tag = ({
 	size = 'medium',
 	style,
 	title,
-	startSlot,
-	endSlot,
+	renderLeftIcon,
+	renderRightIcon,
 	...props
 }: TagProps) => {
 	styles.useVariants({ variant, size });
 
 	return (
 		<View style={[styles.tag, style]} {...props}>
-			{renderSlot(startSlot, {
-				style: styles.slot,
-				color: styles.slotProps.color
+			{createSlot(renderLeftIcon, {
+				style: styles.icon,
+				color: styles.iconProps.color
 			})}
 
 			<Text style={styles.title}>{title}</Text>
 
-			{renderSlot(endSlot, {
-				style: styles.slot,
-				color: styles.slotProps.color
+			{createSlot(renderRightIcon, {
+				style: styles.icon,
+				color: styles.iconProps.color
 			})}
 		</View>
 	);
@@ -93,7 +94,7 @@ const styles = StyleSheet.create(theme => ({
 			}
 		}
 	},
-	slot: {
+	icon: {
 		variants: {
 			variant: {},
 			size: {
@@ -108,7 +109,7 @@ const styles = StyleSheet.create(theme => ({
 			}
 		}
 	},
-	slotProps: {
+	iconProps: {
 		color: '',
 
 		variants: {

@@ -1,5 +1,4 @@
 import { PermissionStatus } from 'expo-notifications';
-import { View } from 'react-native';
 import { useManageNotificationPermissions } from '@/features/manage-notification-permissions';
 import { Command } from '@/shared/ui/command';
 import { BellIcon } from '@/shared/ui/icons';
@@ -13,15 +12,13 @@ export const MenuNotificationPermissions = () => {
 			variant='text'
 			size='large'
 			title='Уведомления'
-			startSlot={<BellIcon />}
-			endSlot={
+			renderLeftIcon={BellIcon}
+			renderRightSlot={() =>
 				status && (
-					<View style={{ width: 'auto', height: 'auto' }}>
-						<Switch
-							value={status === PermissionStatus.GRANTED}
-							onChange={toggle}
-						/>
-					</View>
+					<Switch
+						value={status === PermissionStatus.GRANTED}
+						onChange={toggle}
+					/>
 				)
 			}
 			onPress={toggle}

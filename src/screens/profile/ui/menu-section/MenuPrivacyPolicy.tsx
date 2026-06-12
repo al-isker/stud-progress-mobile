@@ -9,8 +9,8 @@ export const MenuPrivacyPolicy = () => (
 			variant='text'
 			size='large'
 			title='Политика конфиденциальности'
-			startSlot={<FileTextIcon />}
-			endSlot={<ArrowRightIcon />}
+			renderLeftIcon={FileTextIcon}
+			renderRightIcon={ArrowRightIcon}
 		/>
 	</Link>
 );

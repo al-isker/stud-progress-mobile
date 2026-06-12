@@ -10,8 +10,8 @@ export const MenuLogout = () => {
 			variant='danger'
 			size='large'
 			title='Выйти'
-			startSlot={<ExitIcon />}
-			endSlot={<ArrowRightIcon />}
+			renderLeftIcon={ExitIcon}
+			renderRightIcon={ArrowRightIcon}
 			onPress={logout}
 		/>
 	);

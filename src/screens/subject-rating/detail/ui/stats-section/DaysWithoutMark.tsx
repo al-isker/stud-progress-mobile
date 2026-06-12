@@ -30,7 +30,7 @@ export const DaysWithoutMark = ({ style, value }: DaysWithoutMarkProps) => {
 			title='Нет баллов'
 			value={formattedValue}
 			valueHint={hint}
-			headerStartSlot={<StopwatchIcon />}
+			renderHeaderLeftIcon={StopwatchIcon}
 		/>
 	);
 };

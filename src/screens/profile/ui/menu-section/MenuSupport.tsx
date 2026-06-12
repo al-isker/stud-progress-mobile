@@ -9,8 +9,8 @@ export const MenuSupport = () => (
 			variant='text'
 			size='large'
 			title='Поддержка'
-			startSlot={<SettingsIcon />}
-			endSlot={<ArrowRightIcon />}
+			renderLeftIcon={SettingsIcon}
+			renderRightIcon={ArrowRightIcon}
 		/>
 	</Link>
 );

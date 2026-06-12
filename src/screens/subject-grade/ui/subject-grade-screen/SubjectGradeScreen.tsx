@@ -37,7 +37,9 @@ export const SubjectGradeScreen = () => {
 	return (
 		<StatusScreen
 			style={styles.status}
-			iconSlot={<HeartBrokenIcon color={theme.colors.red} />}
+			renderIcon={props => (
+				<HeartBrokenIcon {...props} color={theme.colors.red} />
+			)}
 			title='Ошибка'
 			description='сессия не найдена, попробуй позже или обратись в поддержку'
 			actions={

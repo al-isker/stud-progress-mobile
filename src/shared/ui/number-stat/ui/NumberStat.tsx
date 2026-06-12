@@ -1,7 +1,8 @@
-import { ReactElement, ReactNode, Ref } from 'react';
+import { ReactNode, Ref } from 'react';
 import { Text, View } from 'react-native';
+import { SvgProps } from 'react-native-svg';
 import { StyleSheet, useUnistyles } from 'react-native-unistyles';
-import { SlotProps, renderSlot } from '@/shared/lib/slot';
+import { RenderSlotType, createSlot } from '@/shared/lib/slot';
 import { Paper, PaperProps } from '../../paper';
 
 export type NumberStatProps = PaperProps & {
@@ -9,8 +10,8 @@ export type NumberStatProps = PaperProps & {
 	title?: string;
 	value?: ReactNode;
 	valueHint?: string;
-	headerStartSlot?: ReactElement<SlotProps>;
-	mainStartSlot?: ReactElement<SlotProps>;
+	renderHeaderLeftIcon?: RenderSlotType<SvgProps>;
+	renderMainLeftIcon?: RenderSlotType<SvgProps>;
 };
 
 export const NumberStat = ({
@@ -18,8 +19,8 @@ export const NumberStat = ({
 	title,
 	value,
 	valueHint,
-	headerStartSlot,
-	mainStartSlot,
+	renderHeaderLeftIcon,
+	renderMainLeftIcon,
 	...props
 }: NumberStatProps) => {
 	const { theme } = useUnistyles();
@@ -27,16 +28,16 @@ export const NumberStat = ({
 	return (
 		<Paper style={[styles.container, style]} {...props}>
 			<View style={styles.header}>
-				{renderSlot(headerStartSlot, {
-					style: styles.headerStartSlot,
+				{createSlot(renderHeaderLeftIcon, {
+					style: styles.headerIcon,
 					color: theme.colors.primary
 				})}
 				<Text style={styles.title}>{title}</Text>
 			</View>
 
 			<View style={styles.main}>
-				{renderSlot(mainStartSlot, {
-					style: styles.mainStartSlot,
+				{createSlot(renderMainLeftIcon, {
+					style: styles.mainIcon,
 					color: theme.colors.blackAlpha(0.8)
 				})}
 				<Text style={styles.value}>{value}</Text>
@@ -62,7 +63,7 @@ const styles = StyleSheet.create(theme => ({
 		fontSize: 14,
 		color: theme.colors.blackAlpha(0.85)
 	},
-	headerStartSlot: {
+	headerIcon: {
 		width: 20,
 		height: 20
 	},
@@ -71,7 +72,7 @@ const styles = StyleSheet.create(theme => ({
 		columnGap: 4,
 		alignItems: 'center'
 	},
-	mainStartSlot: {
+	mainIcon: {
 		marginTop: 3,
 		width: 18,
 		height: 18

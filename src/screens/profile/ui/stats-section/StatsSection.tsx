@@ -14,13 +14,13 @@ export const StatsSection = ({ course, semester }: StatsSectionProps) => (
 			style={styles.leftStat}
 			title='Курс'
 			value={course}
-			headerStartSlot={<ChatSquareIcon />}
+			renderHeaderLeftIcon={ChatSquareIcon}
 		/>
 		<NumberStat
 			style={styles.rightStat}
 			title='Семестр'
 			value={semester}
-			headerStartSlot={<HashtagSquareIcon />}
+			renderHeaderLeftIcon={HashtagSquareIcon}
 		/>
 	</View>
 );
