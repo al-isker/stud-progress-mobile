@@ -1,10 +1,8 @@
-import { ReactNode, Ref, useEffect, useRef } from 'react';
-import { composeRefs } from '@radix-ui/react-compose-refs';
+import { ReactNode, Ref, useEffect } from 'react';
 import {
 	StyleProp,
 	TextInput,
 	TextInputProps,
-	TouchableWithoutFeedback,
 	View,
 	ViewStyle
 } from 'react-native';
@@ -45,8 +43,6 @@ export const TextField = ({
 
 	const { theme } = useUnistyles();
 
-	const inputRef = useRef<TextInput>(null);
-
 	const sharedIsFocus = useSharedValue(false);
 	const sharedIsThereValue = useSharedValue(
 		Boolean((value ?? defaultValue)?.length)
@@ -85,10 +81,6 @@ export const TextField = ({
 		]
 	}));
 
-	const handleTouchablePress = () => {
-		inputRef.current!.focus();
-	};
-
 	const handleFocus = () => sharedIsFocus.set(true);
 	const handleBlur = () => sharedIsFocus.set(false);
 
@@ -104,25 +96,23 @@ export const TextField = ({
 
 	return (
 		<View ref={ref} style={style}>
-			<TouchableWithoutFeedback onPress={handleTouchablePress}>
-				<Animated.View style={[styles.container, containerAnimatedStyle]}>
-					<Animated.Text style={[styles.label, labelAnimatedStyle]}>
-						{label}
-					</Animated.Text>
+			<Animated.View style={[styles.container, containerAnimatedStyle]}>
+				<Animated.Text style={[styles.label, labelAnimatedStyle]}>
+					{label}
+				</Animated.Text>
 
-					<TextInput
-						ref={composeRefs(inputRef, inputRefProp)}
-						style={styles.textInput}
-						placeholderTextColor={theme.colors.blackAlpha(0.2)}
-						defaultValue={defaultValue}
-						value={value}
-						onFocus={callAll(handleFocus, onFocus)}
-						onBlur={callAll(handleBlur, onBlur)}
-						onChangeText={callAll(handleChangeText, onChangeText)}
-						{...props}
-					/>
-				</Animated.View>
-			</TouchableWithoutFeedback>
+				<TextInput
+					ref={inputRefProp}
+					style={styles.textInput}
+					placeholderTextColor={theme.colors.blackAlpha(0.2)}
+					defaultValue={defaultValue}
+					value={value}
+					onFocus={callAll(handleFocus, onFocus)}
+					onBlur={callAll(handleBlur, onBlur)}
+					onChangeText={callAll(handleChangeText, onChangeText)}
+					{...props}
+				/>
+			</Animated.View>
 
 			<ErrorText style={styles.errorText}>{errorText}</ErrorText>
 		</View>
@@ -163,7 +153,10 @@ const styles = StyleSheet.create(theme => ({
 	},
 	textInput: {
 		position: 'absolute',
-		padding: 0,
+		top: 0,
+		right: 0,
+		bottom: 0,
+		left: 0,
 		color: theme.colors.blackAlpha(0.8),
 		fontFamily: theme.typography.fontFamily.GolosText,
 		fontWeight: 400,
@@ -171,9 +164,8 @@ const styles = StyleSheet.create(theme => ({
 		variants: {
 			size: {
 				large: {
-					top: 24,
-					left: 17,
-					right: 17,
+					paddingTop: 24,
+					paddingHorizontal: 17,
 					fontSize: 15
 				}
 			}
