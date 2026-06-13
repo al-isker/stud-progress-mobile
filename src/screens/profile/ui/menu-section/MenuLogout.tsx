@@ -7,7 +7,8 @@ export const MenuLogout = () => {
 
 	return (
 		<Command
-			variant='danger'
+			variant='text'
+			color='danger'
 			size='large'
 			title='Выйти'
 			renderLeftIcon={ExitIcon}

@@ -13,7 +13,7 @@ export type TagProps = Omit<ViewProps, 'children'> &
 	};
 
 export const Tag = ({
-	variant = 'black',
+	color = 'primary',
 	size = 'medium',
 	style,
 	title,
@@ -21,7 +21,7 @@ export const Tag = ({
 	renderRightIcon,
 	...props
 }: TagProps) => {
-	styles.useVariants({ variant, size });
+	styles.useVariants({ color, size });
 
 	return (
 		<View style={[styles.tag, style]} {...props}>
@@ -46,12 +46,12 @@ const styles = StyleSheet.create(theme => ({
 		alignItems: 'center',
 
 		variants: {
-			variant: {
-				black: {
-					backgroundColor: theme.colors.blackAlpha(0.06)
-				},
+			color: {
 				primary: {
 					backgroundColor: theme.colors.primaryAlpha(0.08)
+				},
+				black: {
+					backgroundColor: theme.colors.blackAlpha(0.06)
 				}
 			},
 			size: {
@@ -76,12 +76,12 @@ const styles = StyleSheet.create(theme => ({
 		fontWeight: 500,
 
 		variants: {
-			variant: {
-				black: {
-					color: theme.colors.blackAlpha(0.7)
-				},
+			color: {
 				primary: {
 					color: theme.colors.primary
+				},
+				black: {
+					color: theme.colors.blackAlpha(0.7)
 				}
 			},
 			size: {
@@ -96,7 +96,7 @@ const styles = StyleSheet.create(theme => ({
 	},
 	icon: {
 		variants: {
-			variant: {},
+			color: {},
 			size: {
 				medium: {
 					width: 13,
@@ -113,12 +113,12 @@ const styles = StyleSheet.create(theme => ({
 		color: '',
 
 		variants: {
-			variant: {
-				black: {
-					color: theme.colors.blackAlpha(0.7)
-				},
+			color: {
 				primary: {
 					color: theme.colors.primary
+				},
+				black: {
+					color: theme.colors.blackAlpha(0.7)
 				}
 			},
 			size: {}

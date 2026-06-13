@@ -19,6 +19,7 @@ export type CommandProps = Omit<
 
 export const Command = ({
 	variant = 'primary',
+	color = 'primary',
 	size = 'medium',
 	style,
 	title,
@@ -27,7 +28,7 @@ export const Command = ({
 	renderRightSlot,
 	...props
 }: CommandProps) => {
-	styles.useVariants({ variant, size });
+	styles.useVariants({ variant, color, size });
 
 	return (
 		<Pressable
@@ -64,19 +65,11 @@ const styles = StyleSheet.create(theme => ({
 	pressable: {
 		flexDirection: 'row',
 		alignItems: 'center',
+		backgroundColor: theme.colors.transparent,
 
 		variants: {
-			variant: {
-				primary: {
-					backgroundColor: theme.colors.primaryAlpha(0.05)
-				},
-				danger: {
-					backgroundColor: theme.colors.transparent
-				},
-				text: {
-					backgroundColor: theme.colors.transparent
-				}
-			},
+			variant: {},
+			color: {},
 			size: {
 				large: {
 					height: 54,
@@ -89,7 +82,23 @@ const styles = StyleSheet.create(theme => ({
 					columnGap: 12
 				}
 			}
-		}
+		},
+		compoundVariants: [
+			{
+				variant: 'primary',
+				color: 'primary',
+				styles: {
+					backgroundColor: theme.colors.primaryAlpha(0.05)
+				}
+			},
+			{
+				variant: 'primary',
+				color: 'danger',
+				styles: {
+					backgroundColor: theme.colors.redAlpha(0.05)
+				}
+			}
+		]
 	},
 	title: {
 		flex: 1,
@@ -97,15 +106,13 @@ const styles = StyleSheet.create(theme => ({
 		fontWeight: 400,
 
 		variants: {
-			variant: {
+			variant: {},
+			color: {
 				primary: {
 					color: theme.colors.blackAlpha(0.8)
 				},
 				danger: {
 					color: theme.colors.red
-				},
-				text: {
-					color: theme.colors.blackAlpha(0.8)
 				}
 			},
 			size: {
@@ -124,6 +131,7 @@ const styles = StyleSheet.create(theme => ({
 	icon: {
 		variants: {
 			variant: {},
+			color: {},
 			size: {
 				large: {
 					width: 20,
@@ -140,15 +148,13 @@ const styles = StyleSheet.create(theme => ({
 		color: '',
 
 		variants: {
-			variant: {
+			variant: {},
+			color: {
 				primary: {
 					color: theme.colors.blackAlpha(0.7)
 				},
 				danger: {
 					color: theme.colors.red
-				},
-				text: {
-					color: theme.colors.blackAlpha(0.7)
 				}
 			},
 			size: {}
@@ -158,15 +164,13 @@ const styles = StyleSheet.create(theme => ({
 		color: '',
 
 		variants: {
-			variant: {
+			variant: {},
+			color: {
 				primary: {
 					color: theme.colors.blackAlpha(0.1)
 				},
 				danger: {
 					color: theme.colors.redAlpha(0.1)
-				},
-				text: {
-					color: theme.colors.blackAlpha(0.1)
 				}
 			},
 			size: {}

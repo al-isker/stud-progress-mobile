@@ -87,7 +87,6 @@ export const IOCardContent = ({ ref, subjectRating }: IOCardContentProps) => {
 					</Text>
 
 					<ControlType
-						variant='primary'
 						size='small'
 						style={styles.controlType}
 						controlType={controlType}

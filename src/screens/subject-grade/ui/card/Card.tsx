@@ -25,7 +25,6 @@ export const Card = ({ subjectGrade }: CardProps) => {
 
 				<ControlType
 					style={styles.controlType}
-					variant='primary'
 					size='small'
 					controlType={controlType}
 				/>
