@@ -2,7 +2,7 @@ import dayjs from 'dayjs';
 import { StyleProp, Text, View, ViewStyle } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
 import { PulseIndicator } from '@/shared/ui/pulse-indicator';
-import { TEST_STATUS_DISPLAY } from '../../lib/control-type/test-status-display';
+import { getTestStatusDisplay } from '../../lib/control-type/get-test-status-display';
 import { ControlTypeEnum } from '../../model/control-type/control-type-enum';
 import { GradeStatusEnum } from '../../model/subject-grade/grade-status-enum';
 
@@ -41,7 +41,7 @@ export const Grade = ({
 						<Text style={styles.emptyText}>−</Text>
 					) : controlType === ControlTypeEnum.TEST ? (
 						<Text style={[styles.testText, styles.coloredText]}>
-							{TEST_STATUS_DISPLAY[status]}
+							{getTestStatusDisplay(status)}
 						</Text>
 					) : (
 						<Text style={[styles.mark, styles.coloredText]}>{mark}</Text>

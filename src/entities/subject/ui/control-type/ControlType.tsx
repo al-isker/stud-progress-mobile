@@ -1,5 +1,5 @@
 import { Tag, TagProps } from '@/shared/ui/tag';
-import { CONTROL_TYPE_DISPLAY } from '../../lib/control-type/control-type-display';
+import { getControlTypeDisplay } from '../../lib/control-type/get-control-type-display';
 import { ControlTypeEnum } from '../../model/control-type/control-type-enum';
 
 type ControlTypeProps = Omit<TagProps, 'title'> & {
@@ -7,5 +7,5 @@ type ControlTypeProps = Omit<TagProps, 'title'> & {
 };
 
 export const ControlType = ({ controlType, ...props }: ControlTypeProps) => (
-	<Tag title={CONTROL_TYPE_DISPLAY[controlType]} {...props} />
+	<Tag title={getControlTypeDisplay(controlType)} {...props} />
 );
