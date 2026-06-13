@@ -68,8 +68,14 @@ const styles = StyleSheet.create(theme => ({
 		backgroundColor: theme.colors.transparent,
 
 		variants: {
-			variant: {},
-			color: {},
+			variant: {
+				primary: {},
+				text: {}
+			},
+			color: {
+				primary: {},
+				danger: {}
+			},
 			size: {
 				large: {
 					height: 54,
