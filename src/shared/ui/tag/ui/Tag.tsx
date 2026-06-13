@@ -1,8 +1,8 @@
+import { RenderSlotType, createSlot } from '@/shared/lib/slot';
 import { Ref } from 'react';
 import { Text, View, ViewProps } from 'react-native';
 import { SvgProps } from 'react-native-svg';
 import { StyleSheet, UnistylesVariants } from 'react-native-unistyles';
-import { RenderSlotType, createSlot } from '@/shared/lib/slot';
 
 export type TagProps = Omit<ViewProps, 'children'> &
 	UnistylesVariants<typeof styles> & {
@@ -56,16 +56,16 @@ const styles = StyleSheet.create(theme => ({
 			},
 			size: {
 				medium: {
-					height: 20,
-					paddingHorizontal: 8,
+					height: 22,
+					paddingHorizontal: 9,
 					columnGap: 6,
-					borderRadius: theme.borderRadius * 0.5
+					borderRadius: theme.borderRadius * 0.55
 				},
 				small: {
-					height: 18,
-					paddingHorizontal: 7,
+					height: 20,
+					paddingHorizontal: 8,
 					columnGap: 5,
-					borderRadius: theme.borderRadius * 0.45
+					borderRadius: theme.borderRadius * 0.5
 				}
 			}
 		}
