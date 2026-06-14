@@ -19,7 +19,6 @@ const styles = StyleSheet.create(theme => ({
 	fullName: {
 		color: theme.colors.blackAlpha(0.9),
 		fontSize: 24,
-		fontFamily: theme.typography.fontFamily.GolosText,
-		fontWeight: 600
+		fontFamily: theme.typography.fontFamilies.GolosTextSemiBold
 	}
 }));

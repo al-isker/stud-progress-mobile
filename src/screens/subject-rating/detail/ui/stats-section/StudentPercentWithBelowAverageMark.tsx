@@ -83,8 +83,7 @@ const styles = StyleSheet.create(theme => ({
 		columnGap: 5
 	},
 	title: {
-		fontFamily: theme.typography.fontFamily.GolosText,
-		fontWeight: 400,
+		fontFamily: theme.typography.fontFamilies.GolosTextRegular,
 		fontSize: 14,
 		color: theme.colors.blackAlpha(0.85)
 	},
@@ -96,8 +95,7 @@ const styles = StyleSheet.create(theme => ({
 		marginRight: -14
 	},
 	description: {
-		fontFamily: theme.typography.fontFamily.GolosText,
-		fontWeight: 400,
+		fontFamily: theme.typography.fontFamilies.GolosTextRegular,
 		fontSize: 12,
 		color: theme.colors.blackAlpha(0.65)
 	},

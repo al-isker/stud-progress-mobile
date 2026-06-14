@@ -34,8 +34,7 @@ export const ProgressChart = ({
 	const { theme } = useUnistyles();
 
 	const valueFont = useSkiaFont({
-		fontFamily: 'GolosText',
-		fontWeight: '600',
+		fontFamily: 'GolosTextSemiBold',
 		fontSize
 	});
 

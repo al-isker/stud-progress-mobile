@@ -72,8 +72,7 @@ const styles = StyleSheet.create(theme => ({
 	},
 	title: {
 		letterSpacing: 0.15,
-		fontFamily: theme.typography.fontFamily.GolosText,
-		fontWeight: 500,
+		fontFamily: theme.typography.fontFamilies.GolosTextMedium,
 
 		variants: {
 			color: {

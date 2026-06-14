@@ -67,15 +67,13 @@ const styles = StyleSheet.create(theme => ({
 		textAlign: 'center',
 		color: theme.colors.blackAlpha(0.8),
 		fontSize: 20,
-		fontFamily: theme.typography.fontFamily.GolosText,
-		fontWeight: 600
+		fontFamily: theme.typography.fontFamilies.GolosTextSemiBold
 	},
 	description: {
 		textAlign: 'center',
 		color: theme.colors.blackAlpha(0.65),
 		fontSize: 14,
-		fontFamily: theme.typography.fontFamily.GolosText,
-		fontWeight: 400
+		fontFamily: theme.typography.fontFamilies.GolosTextRegular
 	},
 	actions: {
 		marginTop: 14,

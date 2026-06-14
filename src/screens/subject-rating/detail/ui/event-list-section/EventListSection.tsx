@@ -45,8 +45,7 @@ const styles = StyleSheet.create(theme => ({
 		marginBottom: 12,
 		color: theme.colors.blackAlpha(0.9),
 		fontSize: 18,
-		fontFamily: theme.typography.fontFamily.GolosText,
-		fontWeight: 600
+		fontFamily: theme.typography.fontFamilies.GolosTextSemiBold
 	},
 	list: {
 		rowGap: 6
