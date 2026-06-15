@@ -24,10 +24,13 @@ export const ProgressValue = ({
 	}, []);
 
 	const x = useDerivedValue(() => {
-		return radius - font.measureText(text.value).width / 2;
+		const bounds = font.measureText(text.value);
+
+		return radius - bounds.x - bounds.width / 2;
 	}, [radius]);
 
-	const y = radius + font.measureText('0').height / 2;
+	const { ascent, descent } = font.getMetrics();
+	const y = radius - (ascent + descent) / 2;
 
 	return <Text text={text} x={x} y={y} font={font} color={color} />;
 };
