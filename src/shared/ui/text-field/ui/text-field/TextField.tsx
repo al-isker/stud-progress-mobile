@@ -162,7 +162,7 @@ const styles = StyleSheet.create(theme => ({
 		variants: {
 			size: {
 				large: {
-					paddingTop: 24,
+					paddingTop: 15,
 					paddingHorizontal: 17,
 					fontSize: 15
 				}
