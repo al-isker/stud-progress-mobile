@@ -1,4 +1,5 @@
 class Routes {
+	preloadOffline = '/preload-status/offline';
 	preloadError = '/preload-status/error';
 	preloadUpdateApp = '/preload-status/update-app';
 

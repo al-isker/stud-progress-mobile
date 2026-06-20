@@ -7,9 +7,8 @@ import {
 export const useSubjectRatingList = () => {
 	const queryClient = useQueryClient();
 
-	const { data, isLoading, isSuccess, isRefetching, ...query } = useQuery(
-		getSubjectRatingListQueryOptions()
-	);
+	const { data, isPending, isPaused, isSuccess, isRefetching, ...query } =
+		useQuery(getSubjectRatingListQueryOptions());
 
 	const isEmptyList = isSuccess && data.length === 0;
 
@@ -23,5 +22,13 @@ export const useSubjectRatingList = () => {
 		return query.refetch();
 	};
 
-	return { data, refetch, isLoading, isEmptyList, isSuccess, isRefetching };
+	return {
+		data,
+		refetch,
+		isPending,
+		isPaused,
+		isEmptyList,
+		isSuccess,
+		isRefetching
+	};
 };

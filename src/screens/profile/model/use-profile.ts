@@ -2,9 +2,8 @@ import { useQuery } from '@tanstack/react-query';
 import { getProfileQueryOptions } from '@/entities/profile';
 
 export const useProfile = () => {
-	const { data, refetch, isLoading, isSuccess, isRefetching } = useQuery(
-		getProfileQueryOptions()
-	);
+	const { data, refetch, isPending, isPaused, isSuccess, isRefetching } =
+		useQuery(getProfileQueryOptions());
 
-	return { data, refetch, isLoading, isSuccess, isRefetching };
+	return { data, refetch, isPending, isPaused, isSuccess, isRefetching };
 };

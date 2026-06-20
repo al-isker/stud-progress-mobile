@@ -12,10 +12,21 @@ import { Content } from '../content/Content';
 export const SubjectRatingDetailScreen = () => {
 	const { theme, rt } = useUnistyles();
 
-	const { data, refetch, isLoading, isSuccess, isRefetching } =
+	const { data, refetch, isPending, isPaused, isSuccess, isRefetching } =
 		useSubjectRatingDetail();
 
-	if (isLoading) {
+	if (isPaused) {
+		return (
+			<StatusScreen
+				style={styles.status}
+				title='Нет интернета'
+				description='проверь подключение к сети'
+				actions={<Button title='попробовать снова' onPress={() => refetch()} />}
+			/>
+		);
+	}
+
+	if (isPending) {
 		return (
 			<View style={styles.loaderContainer}>
 				<CircularLoader />

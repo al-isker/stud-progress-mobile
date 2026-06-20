@@ -1,5 +1,6 @@
 export enum ScreenNames {
 	PRELOAD_STATUS = 'preload-status',
+	PRELOAD_STATUS_OFFLINE = 'offline/index',
 	PRELOAD_STATUS_ERROR = 'error/index',
 	PRELOAD_STATUS_UPDATE_APP = 'update-app/index',
 

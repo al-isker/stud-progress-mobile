@@ -33,7 +33,7 @@ export const ProgressChart = ({
 }: ProgressChartProps) => {
 	const { theme } = useUnistyles();
 
-	const valueFont = useSkiaFont({
+	const font = useSkiaFont({
 		fontFamily: 'GolosTextSemiBold',
 		fontSize
 	});
@@ -84,7 +84,7 @@ export const ProgressChart = ({
 
 				<ProgressValue
 					radius={radius}
-					font={valueFont}
+					font={font}
 					color={theme.colors.blackAlpha(0.9)}
 					sharedValue={sharedValue}
 					formatValue={formatValue}

@@ -12,6 +12,14 @@ export const RootScreen = () => {
 	const mobileAppInfoQuery = useQuery(getMobileAppInfoQueryOptions());
 
 	useEffect(() => {
+		if (mobileAppInfoQuery.isPaused) {
+			router.replace(routes.preloadOffline);
+
+			SplashScreen.hideAsync();
+		}
+	}, [mobileAppInfoQuery.isPaused]);
+
+	useEffect(() => {
 		if (mobileAppInfoQuery.isSuccess) {
 			const isSupportedAppVersion = checkIsSupportedAppVersion(
 				mobileAppInfoQuery.data.minSupportedVersion

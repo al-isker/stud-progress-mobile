@@ -18,7 +18,7 @@ export const QueryProvider = ({ children }: QueryProviderProps) => {
 
 		const subscriptionTwo = addNetworkStateListener(state => {
 			onlineManager.setOnline(
-				Boolean(state.isConnected && state.isInternetReachable)
+				state.isConnected !== false && state.isInternetReachable !== false
 			);
 		});
 

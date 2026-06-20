@@ -1,24 +1,18 @@
 import { useEffect } from 'react';
 import { getLastNotificationResponse } from 'expo-notifications';
-import { Link, router } from 'expo-router';
+import { router } from 'expo-router';
 import { View } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
 import { getTargetRouteByPushNotification } from '@/features/open-push-notification';
 import { getMobileAppInfoQueryOptions, useLazyQuery } from '@/shared/api';
-import { links, routes } from '@/shared/config/navigation';
+import { routes } from '@/shared/config/navigation';
 import { checkIsSupportedAppVersion } from '@/shared/lib/app-version';
 import { Button } from '@/shared/ui/button';
 import { CircularLoader } from '@/shared/ui/circular-loader';
 import { StatusScreen } from '@/shared/ui/status-screen';
 
-export const PreloadStatusErrorScreen = () => {
+export const PreloadStatusOfflineScreen = () => {
 	const mobileAppInfoLazyQuery = useLazyQuery(getMobileAppInfoQueryOptions());
-
-	useEffect(() => {
-		if (mobileAppInfoLazyQuery.isPaused) {
-			router.replace(routes.preloadOffline);
-		}
-	}, [mobileAppInfoLazyQuery.isPaused]);
 
 	useEffect(() => {
 		if (mobileAppInfoLazyQuery.isSuccess) {
@@ -42,27 +36,21 @@ export const PreloadStatusErrorScreen = () => {
 
 	return (
 		<View style={styles.container}>
-			{mobileAppInfoLazyQuery.isPending ? (
+			{mobileAppInfoLazyQuery.isPaused ? (
+				<StatusScreen
+					title='Нет интернета'
+					description='проверь подключение к сети'
+					actions={
+						<Button
+							title='попробовать снова'
+							onPress={() => mobileAppInfoLazyQuery.fetch()}
+						/>
+					}
+				/>
+			) : mobileAppInfoLazyQuery.isPending ? (
 				<View style={styles.loaderContainer}>
 					<CircularLoader />
 				</View>
-			) : mobileAppInfoLazyQuery.isError ? (
-				<StatusScreen
-					title='Ошибка загрузки'
-					description='попробуй позже или обратись в поддержку'
-					actions={
-						<>
-							<Link href={links.telegramSupport} asChild>
-								<Button variant='secondary' title='поддержка' />
-							</Link>
-
-							<Button
-								title='попробовать снова'
-								onPress={() => mobileAppInfoLazyQuery.fetch()}
-							/>
-						</>
-					}
-				/>
 			) : null}
 		</View>
 	);

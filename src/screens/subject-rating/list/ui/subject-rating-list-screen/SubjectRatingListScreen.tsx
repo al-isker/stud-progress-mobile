@@ -12,10 +12,28 @@ import { IOList } from '../io-list/IOList';
 export const SubjectRatingListScreen = () => {
 	const { theme } = useUnistyles();
 
-	const { data, refetch, isLoading, isEmptyList, isSuccess, isRefetching } =
-		useSubjectRatingList();
+	const {
+		data,
+		refetch,
+		isPending,
+		isPaused,
+		isEmptyList,
+		isSuccess,
+		isRefetching
+	} = useSubjectRatingList();
 
-	if (isLoading) {
+	if (isPaused) {
+		return (
+			<StatusScreen
+				style={styles.status}
+				title='Нет интернета'
+				description='проверь подключение к сети'
+				actions={<Button title='попробовать снова' onPress={() => refetch()} />}
+			/>
+		);
+	}
+
+	if (isPending) {
 		return (
 			<View style={styles.loaderContainer}>
 				<CircularLoader />

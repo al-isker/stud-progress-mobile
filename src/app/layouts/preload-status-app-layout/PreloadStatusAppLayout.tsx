@@ -24,6 +24,7 @@ export const PreloadStatusAppLayout = () => {
 						headerShown: false
 					}}
 				>
+					<Stack.Screen name={ScreenNames.PRELOAD_STATUS_OFFLINE} />
 					<Stack.Screen name={ScreenNames.PRELOAD_STATUS_ERROR} />
 					<Stack.Screen name={ScreenNames.PRELOAD_STATUS_UPDATE_APP} />
 				</Stack>

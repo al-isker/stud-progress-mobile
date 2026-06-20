@@ -11,9 +11,8 @@ export const useSubjectRatingDetail = () => {
 
 	const subjectId = Number(localSearchParams.id);
 
-	const { data, isLoading, isSuccess, isRefetching, ...query } = useQuery(
-		getSubjectRatingDetailQueryOptions(subjectId)
-	);
+	const { data, isPending, isPaused, isSuccess, isRefetching, ...query } =
+		useQuery(getSubjectRatingDetailQueryOptions(subjectId));
 
 	const refetch = () => {
 		queryClient.invalidateQueries({
@@ -29,5 +28,5 @@ export const useSubjectRatingDetail = () => {
 		return query.refetch();
 	};
 
-	return { data, refetch, isLoading, isSuccess, isRefetching };
+	return { data, refetch, isPending, isPaused, isSuccess, isRefetching };
 };
