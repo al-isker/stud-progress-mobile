@@ -24,7 +24,6 @@
 
 ## Технические соглашения
 
-- Пакетный менеджер: `npm` (`package-lock.json` в репозитории)
 - Нет `lint` и `test` скриптов в `package.json`, поэтому основной контроль — это TypeScript и Prettier
 - Основной роутинг задаётся в папке `app/`
 - Вся бизнес-логика и UI находятся в `src/`
@@ -42,7 +41,6 @@ npm run prebuild
 npm run start
 npm run android
 npm run ios
-npm run web
 ```
 
 Полезные команды для локальной проверки:
