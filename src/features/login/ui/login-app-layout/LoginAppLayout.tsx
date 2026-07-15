@@ -1,5 +1,5 @@
 import { Stack } from 'expo-router';
-import { ScreenNames } from '@/shared/config/navigation';
+import { SCREEN_NAMES } from '@/shared/config/navigation';
 import { LoginContextProvider } from './LoginContextProvider';
 
 export const LoginAppLayout = () => (
@@ -10,8 +10,8 @@ export const LoginAppLayout = () => (
 				headerShown: false
 			}}
 		>
-			<Stack.Screen name={ScreenNames.LOGIN_FORM} />
-			<Stack.Screen name={ScreenNames.LOGIN_LOADING} />
+			<Stack.Screen name={SCREEN_NAMES.LOGIN_FORM} />
+			<Stack.Screen name={SCREEN_NAMES.LOGIN_LOADING} />
 		</Stack>
 	</LoginContextProvider>
 );

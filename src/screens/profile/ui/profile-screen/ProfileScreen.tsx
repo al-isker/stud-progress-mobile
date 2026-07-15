@@ -1,7 +1,7 @@
 import { Link } from 'expo-router';
 import { View } from 'react-native';
 import { StyleSheet, useUnistyles } from 'react-native-unistyles';
-import { links } from '@/shared/config/navigation';
+import { LINKS } from '@/shared/config/navigation';
 import { Button } from '@/shared/ui/button';
 import { CircularLoader } from '@/shared/ui/circular-loader';
 import { HeartBrokenIcon } from '@/shared/ui/icons';
@@ -55,7 +55,7 @@ export const ProfileScreen = () => {
 			description='профиль не найден, попробуй позже или обратись в поддержку'
 			actions={
 				<>
-					<Link href={links.telegramSupport} asChild>
+					<Link href={LINKS.telegramSupport} asChild>
 						<Button variant='secondary' title='поддержка' />
 					</Link>
 

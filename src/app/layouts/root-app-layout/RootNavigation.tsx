@@ -1,5 +1,5 @@
 import { Stack } from 'expo-router';
-import { ScreenNames } from '@/shared/config/navigation';
+import { SCREEN_NAMES } from '@/shared/config/navigation';
 
 export const RootNavigation = () => (
 	<Stack
@@ -8,9 +8,9 @@ export const RootNavigation = () => (
 			headerShown: false
 		}}
 	>
-		<Stack.Screen name={ScreenNames.PRELOAD_STATUS} />
-		<Stack.Screen name={ScreenNames.LOGIN} />
-		<Stack.Screen name={ScreenNames.UPDATE_SEMESTER} />
-		<Stack.Screen name={ScreenNames.MAIN} />
+		<Stack.Screen name={SCREEN_NAMES.PRELOAD_STATUS} />
+		<Stack.Screen name={SCREEN_NAMES.LOGIN} />
+		<Stack.Screen name={SCREEN_NAMES.UPDATE_SEMESTER} />
+		<Stack.Screen name={SCREEN_NAMES.MAIN} />
 	</Stack>
 );

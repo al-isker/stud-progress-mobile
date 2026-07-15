@@ -2,7 +2,7 @@ import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { Text, View } from 'react-native';
 import { StyleSheet, useUnistyles } from 'react-native-unistyles';
-import { ScreenNames } from '@/shared/config/navigation';
+import { SCREEN_NAMES } from '@/shared/config/navigation';
 import { OutsideMainHeader } from '@/shared/ui/outside-main-header';
 
 export const LoginFormAppLayout = () => {
@@ -25,8 +25,8 @@ export const LoginFormAppLayout = () => {
 						headerShown: false
 					}}
 				>
-					<Stack.Screen name={ScreenNames.LOGIN_SEMESTER_FORM} />
-					<Stack.Screen name={ScreenNames.LOGIN_MAIN_FORM} />
+					<Stack.Screen name={SCREEN_NAMES.LOGIN_SEMESTER_FORM} />
+					<Stack.Screen name={SCREEN_NAMES.LOGIN_MAIN_FORM} />
 				</Stack>
 			</View>
 		</>

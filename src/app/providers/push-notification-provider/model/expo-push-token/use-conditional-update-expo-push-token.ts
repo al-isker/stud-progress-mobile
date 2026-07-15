@@ -1,4 +1,4 @@
-import { SHOULD_SEND_EXPO_PUSH_TOKEN_STORAGE_KEY } from '@/shared/config/storage';
+import { STORAGE_KEYS } from '@/shared/config/storage';
 import { AsyncJSONStorage } from '@/shared/lib/async-json-storage';
 import { useUpdateExpoPushToken } from '@/shared/lib/expo-push-token';
 
@@ -7,7 +7,7 @@ export const useConditionalUpdateExpoPushToken = () => {
 
 	const conditionalUpdateExpoPushToken = async () => {
 		const shouldSendExpoPushToken = await AsyncJSONStorage.getItem<boolean>(
-			SHOULD_SEND_EXPO_PUSH_TOKEN_STORAGE_KEY
+			STORAGE_KEYS.shouldSendExpoPushToken
 		);
 
 		if (shouldSendExpoPushToken) {

@@ -2,7 +2,7 @@ import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { View } from 'react-native';
 import { StyleSheet, useUnistyles } from 'react-native-unistyles';
-import { ScreenNames } from '@/shared/config/navigation';
+import { SCREEN_NAMES } from '@/shared/config/navigation';
 import { OutsideMainHeader } from '@/shared/ui/outside-main-header';
 
 export const PreloadStatusAppLayout = () => {
@@ -24,9 +24,9 @@ export const PreloadStatusAppLayout = () => {
 						headerShown: false
 					}}
 				>
-					<Stack.Screen name={ScreenNames.PRELOAD_STATUS_OFFLINE} />
-					<Stack.Screen name={ScreenNames.PRELOAD_STATUS_ERROR} />
-					<Stack.Screen name={ScreenNames.PRELOAD_STATUS_UPDATE_APP} />
+					<Stack.Screen name={SCREEN_NAMES.PRELOAD_STATUS_OFFLINE} />
+					<Stack.Screen name={SCREEN_NAMES.PRELOAD_STATUS_ERROR} />
+					<Stack.Screen name={SCREEN_NAMES.PRELOAD_STATUS_UPDATE_APP} />
 				</Stack>
 			</View>
 		</>

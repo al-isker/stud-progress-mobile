@@ -1,7 +1,7 @@
 import { Link } from 'expo-router';
 import { View } from 'react-native';
 import { StyleSheet, useUnistyles } from 'react-native-unistyles';
-import { links, routes } from '@/shared/config/navigation';
+import { LINKS, routes } from '@/shared/config/navigation';
 import { Button } from '@/shared/ui/button';
 import { CircularLoader } from '@/shared/ui/circular-loader';
 import { FolderOpenIcon, HeartBrokenIcon } from '@/shared/ui/icons';
@@ -78,7 +78,7 @@ export const SubjectRatingListScreen = () => {
 			description='баллы не найдены, попробуй позже или обратись в поддержку'
 			actions={
 				<>
-					<Link href={links.telegramSupport} asChild>
+					<Link href={LINKS.telegramSupport} asChild>
 						<Button variant='secondary' title='поддержка' />
 					</Link>
 

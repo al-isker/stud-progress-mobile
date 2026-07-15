@@ -5,7 +5,7 @@ import { View } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
 import { getTargetRouteByPushNotification } from '@/features/open-push-notification';
 import { getMobileAppInfoQueryOptions, useLazyQuery } from '@/shared/api';
-import { links, routes } from '@/shared/config/navigation';
+import { LINKS, routes } from '@/shared/config/navigation';
 import { checkIsSupportedAppVersion } from '@/shared/lib/app-version';
 import { Button } from '@/shared/ui/button';
 import { CircularLoader } from '@/shared/ui/circular-loader';
@@ -52,7 +52,7 @@ export const PreloadStatusErrorScreen = () => {
 					description='попробуй позже или обратись в поддержку'
 					actions={
 						<>
-							<Link href={links.telegramSupport} asChild>
+							<Link href={LINKS.telegramSupport} asChild>
 								<Button variant='secondary' title='поддержка' />
 							</Link>
 
