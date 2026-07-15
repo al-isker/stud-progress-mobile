@@ -18,16 +18,19 @@ import {
 } from '@/shared/ui/progress-chart';
 import { EventList } from './EventList';
 
-export type IOCardContentRef = {
+export type SubjectRatingCardContentRef = {
 	inView: () => void;
 };
 
-type IOCardContentProps = {
-	ref: Ref<IOCardContentRef>;
+type SubjectRatingCardContentProps = {
+	ref: Ref<SubjectRatingCardContentRef>;
 	subjectRating: SubjectRatingListItemType;
 };
 
-export const IOCardContent = ({ ref, subjectRating }: IOCardContentProps) => {
+export const SubjectRatingCardContent = ({
+	ref,
+	subjectRating
+}: SubjectRatingCardContentProps) => {
 	const {
 		id,
 		name,

@@ -19,7 +19,8 @@ const styles = StyleSheet.create(theme => ({
 		flex: 1,
 		justifyContent: 'center',
 		alignItems: 'center',
-		rowGap: 2
+		rowGap: 2,
+		backgroundColor: theme.colors.bgBase
 	},
 	icon: {
 		width: 60,

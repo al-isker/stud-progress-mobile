@@ -9,11 +9,11 @@ import { Divider } from '@/shared/ui/divider';
 import { Paper } from '@/shared/ui/paper';
 import { RatingBySemester } from './RatingBySemester';
 
-type CardProps = {
+type SubjectGradeCardProps = {
 	subjectGrade: SubjectGradeListItemType;
 };
 
-export const Card = ({ subjectGrade }: CardProps) => {
+export const SubjectGradeCard = ({ subjectGrade }: SubjectGradeCardProps) => {
 	const { name, controlType, ratingBySemesterList, grade } = subjectGrade;
 
 	return (

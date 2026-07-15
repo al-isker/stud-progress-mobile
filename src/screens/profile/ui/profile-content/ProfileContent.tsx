@@ -8,7 +8,7 @@ import { MenuSection } from '../menu-section/MenuSection';
 import { NameSection } from '../name-section/NameSection';
 import { StatsSection } from '../stats-section/StatsSection';
 
-type ContentProps = {
+type ProfileContentProps = {
 	contentContainerStyle?: StyleProp<ViewStyle>;
 	style?: StyleProp<ViewStyle>;
 	profile: ProfileType;
@@ -16,13 +16,13 @@ type ContentProps = {
 	onRefresh: () => void;
 };
 
-export const Content = ({
+export const ProfileContent = ({
 	contentContainerStyle,
 	style,
 	profile,
 	refreshing,
 	onRefresh
-}: ContentProps) => {
+}: ProfileContentProps) => {
 	const { theme } = useUnistyles();
 
 	return (

@@ -8,7 +8,7 @@ import { MainSection } from '../main-section/MainSection';
 import { NavigationBar } from '../navigation-bar/NavigationBar';
 import { StatsSection } from '../stats-section/StatsSection';
 
-type ContentProps = {
+type SubjectRatingDetailContentProps = {
 	style?: StyleProp<ViewStyle>;
 	contentContainerStyle?: StyleProp<ViewStyle>;
 	subjectRatingDetail: SubjectRatingDetailType;
@@ -16,13 +16,13 @@ type ContentProps = {
 	onRefresh: () => void;
 };
 
-export const Content = ({
+export const SubjectRatingDetailContent = ({
 	style,
 	contentContainerStyle,
 	subjectRatingDetail,
 	refreshing,
 	onRefresh
-}: ContentProps) => {
+}: SubjectRatingDetailContentProps) => {
 	const { theme, rt } = useUnistyles();
 
 	return (

@@ -2,9 +2,9 @@ import { ScrollView, StyleProp, ViewStyle } from 'react-native';
 import { useUnistyles } from 'react-native-unistyles';
 import { SubjectGradeListType } from '@/entities/subject';
 import { RefreshControl } from '@/shared/ui/refresh-control';
-import { Card } from '../card/Card';
+import { SubjectGradeCard } from '../subject-grade-card/SubjectGradeCard';
 
-type ListProps = {
+type SubjectGradeListProps = {
 	contentContainerStyle?: StyleProp<ViewStyle>;
 	style?: StyleProp<ViewStyle>;
 	subjectGradeList: SubjectGradeListType;
@@ -12,13 +12,13 @@ type ListProps = {
 	onRefresh: () => void;
 };
 
-export const List = ({
+export const SubjectGradeList = ({
 	contentContainerStyle,
 	style,
 	subjectGradeList,
 	refreshing,
 	onRefresh
-}: ListProps) => {
+}: SubjectGradeListProps) => {
 	const { theme } = useUnistyles();
 
 	return (
@@ -31,7 +31,7 @@ export const List = ({
 			}
 		>
 			{subjectGradeList.map(subjectGrade => (
-				<Card key={subjectGrade.id} subjectGrade={subjectGrade} />
+				<SubjectGradeCard key={subjectGrade.id} subjectGrade={subjectGrade} />
 			))}
 		</ScrollView>
 	);

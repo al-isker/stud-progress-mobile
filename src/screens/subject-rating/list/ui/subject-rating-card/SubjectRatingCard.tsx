@@ -2,14 +2,19 @@ import { useRef } from 'react';
 import { InView } from 'react-native-intersection-observer';
 import { SubjectRatingListItemType } from '@/entities/subject';
 import { useCleanupEffect } from '@/shared/lib/react-hooks';
-import { IOCardContent, IOCardContentRef } from './IOCardContent';
+import {
+	SubjectRatingCardContent,
+	SubjectRatingCardContentRef
+} from './SubjectRatingCardContent';
 
-type IOCardProps = {
+type SubjectRatingCardProps = {
 	subjectRating: SubjectRatingListItemType;
 };
 
-export const IOCard = ({ subjectRating }: IOCardProps) => {
-	const ref = useRef<IOCardContentRef>(null);
+export const SubjectRatingCard = ({
+	subjectRating
+}: SubjectRatingCardProps) => {
+	const ref = useRef<SubjectRatingCardContentRef>(null);
 	const isInViewRef = useRef(false);
 	const isWasInViewRef = useRef(false);
 
@@ -33,7 +38,7 @@ export const IOCard = ({ subjectRating }: IOCardProps) => {
 
 	return (
 		<InView onChange={handleInViewChange}>
-			<IOCardContent ref={ref} subjectRating={subjectRating} />
+			<SubjectRatingCardContent ref={ref} subjectRating={subjectRating} />
 		</InView>
 	);
 };

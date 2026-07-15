@@ -5,9 +5,9 @@ import { requestNotificationPermissionsOnce } from '@/features/manage-notificati
 import { SubjectRatingListType } from '@/entities/subject';
 import { useMountEffect } from '@/shared/lib/react-hooks';
 import { RefreshControl } from '@/shared/ui/refresh-control';
-import { IOCard } from '../io-card/IOCard';
+import { SubjectRatingCard } from '../subject-rating-card/SubjectRatingCard';
 
-type IOListProps = {
+type SubjectRatingListProps = {
 	contentContainerStyle?: StyleProp<ViewStyle>;
 	style?: StyleProp<ViewStyle>;
 	subjectRatingList: SubjectRatingListType;
@@ -15,13 +15,13 @@ type IOListProps = {
 	onRefresh: () => void;
 };
 
-export const IOList = ({
+export const SubjectRatingList = ({
 	contentContainerStyle,
 	style,
 	subjectRatingList,
 	refreshing,
 	onRefresh
-}: IOListProps) => {
+}: SubjectRatingListProps) => {
 	const { theme } = useUnistyles();
 
 	useMountEffect(() => {
@@ -39,7 +39,10 @@ export const IOList = ({
 			}
 		>
 			{subjectRatingList.map(subjectRating => (
-				<IOCard key={subjectRating.id} subjectRating={subjectRating} />
+				<SubjectRatingCard
+					key={subjectRating.id}
+					subjectRating={subjectRating}
+				/>
 			))}
 		</IOScrollView>
 	);

@@ -7,7 +7,7 @@ import { CircularLoader } from '@/shared/ui/circular-loader';
 import { HeartBrokenIcon } from '@/shared/ui/icons';
 import { StatusScreen } from '@/shared/ui/status-screen';
 import { useSubjectGradeList } from '../../model/use-subject-grade-list';
-import { List } from '../list/List';
+import { SubjectGradeList } from '../subject-grade-list/SubjectGradeList';
 
 export const SubjectGradeScreen = () => {
 	const { theme } = useUnistyles();
@@ -15,58 +15,56 @@ export const SubjectGradeScreen = () => {
 	const { data, refetch, isPending, isPaused, isSuccess, isRefetching } =
 		useSubjectGradeList();
 
-	if (isPaused) {
-		return (
-			<StatusScreen
-				style={styles.status}
-				title='Нет интернета'
-				description='проверь подключение к сети'
-				actions={<Button title='попробовать снова' onPress={() => refetch()} />}
-			/>
-		);
-	}
-
-	if (isPending) {
-		return (
-			<View style={styles.loaderContainer}>
-				<CircularLoader />
-			</View>
-		);
-	}
-
-	if (isSuccess) {
-		return (
-			<List
-				contentContainerStyle={styles.contentContainer}
-				subjectGradeList={data!}
-				refreshing={isRefetching}
-				onRefresh={refetch}
-			/>
-		);
-	}
-
 	return (
-		<StatusScreen
-			style={styles.status}
-			renderIcon={props => (
-				<HeartBrokenIcon {...props} color={theme.colors.red} />
-			)}
-			title='Ошибка'
-			description='сессия не найдена, попробуй позже или обратись в поддержку'
-			actions={
-				<>
-					<Link href={LINKS.telegramSupport} asChild>
-						<Button variant='secondary' title='поддержка' />
-					</Link>
+		<View style={styles.screen}>
+			{isPaused ? (
+				<StatusScreen
+					style={styles.status}
+					title='Нет интернета'
+					description='проверь подключение к сети'
+					actions={
+						<Button title='попробовать снова' onPress={() => refetch()} />
+					}
+				/>
+			) : isPending ? (
+				<View style={styles.loaderContainer}>
+					<CircularLoader />
+				</View>
+			) : isSuccess ? (
+				<SubjectGradeList
+					contentContainerStyle={styles.contentContainer}
+					subjectGradeList={data!}
+					refreshing={isRefetching}
+					onRefresh={refetch}
+				/>
+			) : (
+				<StatusScreen
+					style={styles.status}
+					renderIcon={props => (
+						<HeartBrokenIcon {...props} color={theme.colors.red} />
+					)}
+					title='Ошибка'
+					description='сессия не найдена, попробуй позже или обратись в поддержку'
+					actions={
+						<>
+							<Link href={LINKS.telegramSupport} asChild>
+								<Button variant='secondary' title='поддержка' />
+							</Link>
 
-					<Button title='попробовать снова' onPress={() => refetch()} />
-				</>
-			}
-		/>
+							<Button title='попробовать снова' onPress={() => refetch()} />
+						</>
+					}
+				/>
+			)}
+		</View>
 	);
 };
 
 const styles = StyleSheet.create(theme => ({
+	screen: {
+		flex: 1,
+		backgroundColor: theme.colors.bgBase
+	},
 	loaderContainer: {
 		flex: 1,
 		justifyContent: 'center',

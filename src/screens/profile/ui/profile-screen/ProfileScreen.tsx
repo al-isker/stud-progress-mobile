@@ -7,7 +7,7 @@ import { CircularLoader } from '@/shared/ui/circular-loader';
 import { HeartBrokenIcon } from '@/shared/ui/icons';
 import { StatusScreen } from '@/shared/ui/status-screen';
 import { useProfile } from '../../model/use-profile';
-import { Content } from '../content/Content';
+import { ProfileContent } from '../profile-content/ProfileContent';
 
 export const ProfileScreen = () => {
 	const { theme } = useUnistyles();
@@ -15,58 +15,56 @@ export const ProfileScreen = () => {
 	const { data, refetch, isPending, isPaused, isSuccess, isRefetching } =
 		useProfile();
 
-	if (isPaused) {
-		return (
-			<StatusScreen
-				style={styles.status}
-				title='Нет интернета'
-				description='проверь подключение к сети'
-				actions={<Button title='попробовать снова' onPress={() => refetch()} />}
-			/>
-		);
-	}
-
-	if (isPending) {
-		return (
-			<View style={styles.loaderContainer}>
-				<CircularLoader />
-			</View>
-		);
-	}
-
-	if (isSuccess) {
-		return (
-			<Content
-				contentContainerStyle={styles.contentContainer}
-				profile={data!}
-				refreshing={isRefetching}
-				onRefresh={refetch}
-			/>
-		);
-	}
-
 	return (
-		<StatusScreen
-			style={styles.status}
-			renderIcon={props => (
-				<HeartBrokenIcon {...props} color={theme.colors.red} />
-			)}
-			title='Ошибка'
-			description='профиль не найден, попробуй позже или обратись в поддержку'
-			actions={
-				<>
-					<Link href={LINKS.telegramSupport} asChild>
-						<Button variant='secondary' title='поддержка' />
-					</Link>
+		<View style={styles.screen}>
+			{isPaused ? (
+				<StatusScreen
+					style={styles.status}
+					title='Нет интернета'
+					description='проверь подключение к сети'
+					actions={
+						<Button title='попробовать снова' onPress={() => refetch()} />
+					}
+				/>
+			) : isPending ? (
+				<View style={styles.loaderContainer}>
+					<CircularLoader />
+				</View>
+			) : isSuccess ? (
+				<ProfileContent
+					contentContainerStyle={styles.contentContainer}
+					profile={data!}
+					refreshing={isRefetching}
+					onRefresh={refetch}
+				/>
+			) : (
+				<StatusScreen
+					style={styles.status}
+					renderIcon={props => (
+						<HeartBrokenIcon {...props} color={theme.colors.red} />
+					)}
+					title='Ошибка'
+					description='профиль не найден, попробуй позже или обратись в поддержку'
+					actions={
+						<>
+							<Link href={LINKS.telegramSupport} asChild>
+								<Button variant='secondary' title='поддержка' />
+							</Link>
 
-					<Button title='попробовать снова' onPress={() => refetch()} />
-				</>
-			}
-		/>
+							<Button title='попробовать снова' onPress={() => refetch()} />
+						</>
+					}
+				/>
+			)}
+		</View>
 	);
 };
 
 const styles = StyleSheet.create(theme => ({
+	screen: {
+		flex: 1,
+		backgroundColor: theme.colors.bgBase
+	},
 	loaderContainer: {
 		flex: 1,
 		justifyContent: 'center',

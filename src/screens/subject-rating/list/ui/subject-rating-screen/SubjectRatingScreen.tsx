@@ -1,19 +1,26 @@
 import { Link } from 'expo-router';
 import { View } from 'react-native';
 import { StyleSheet, useUnistyles } from 'react-native-unistyles';
-import { LINKS } from '@/shared/config/navigation';
+import { LINKS, routes } from '@/shared/config/navigation';
 import { Button } from '@/shared/ui/button';
 import { CircularLoader } from '@/shared/ui/circular-loader';
-import { HeartBrokenIcon } from '@/shared/ui/icons';
+import { FolderOpenIcon, HeartBrokenIcon } from '@/shared/ui/icons';
 import { StatusScreen } from '@/shared/ui/status-screen';
-import { useSubjectRatingDetail } from '../../model/use-subject-rating-detail';
-import { SubjectRatingDetailContent } from '../subject-rating-detail-content/SubjectRatingDetailContent';
+import { useSubjectRatingList } from '../../model/use-subject-rating-list';
+import { SubjectRatingList } from '../subject-rating-list/SubjectRatingList';
 
-export const SubjectRatingDetailScreen = () => {
-	const { theme, rt } = useUnistyles();
+export const SubjectRatingScreen = () => {
+	const { theme } = useUnistyles();
 
-	const { data, refetch, isPending, isPaused, isSuccess, isRefetching } =
-		useSubjectRatingDetail();
+	const {
+		data,
+		refetch,
+		isPending,
+		isPaused,
+		isEmptyList,
+		isSuccess,
+		isRefetching
+	} = useSubjectRatingList();
 
 	return (
 		<View style={styles.screen}>
@@ -30,17 +37,28 @@ export const SubjectRatingDetailScreen = () => {
 				<View style={styles.loaderContainer}>
 					<CircularLoader />
 				</View>
+			) : isEmptyList ? (
+				<StatusScreen
+					style={styles.status}
+					renderIcon={FolderOpenIcon}
+					title='Здесь пусто'
+					description='в выбранном семестре ты не получил ни одного балла'
+					actions={
+						<Link href={routes.updateSemesterForm} asChild>
+							<Button variant='secondary' title='изменить семестр' />
+						</Link>
+					}
+				/>
 			) : isSuccess ? (
-				<SubjectRatingDetailContent
+				<SubjectRatingList
 					contentContainerStyle={styles.contentContainer}
-					subjectRatingDetail={data!}
+					subjectRatingList={data!}
 					refreshing={isRefetching}
 					onRefresh={refetch}
 				/>
 			) : (
 				<StatusScreen
 					style={styles.status}
-					safeAreaInsets={{ bottom: rt.insets.bottom }}
 					renderIcon={props => (
 						<HeartBrokenIcon {...props} color={theme.colors.red} />
 					)}
@@ -61,7 +79,7 @@ export const SubjectRatingDetailScreen = () => {
 	);
 };
 
-const styles = StyleSheet.create((theme, rt) => ({
+const styles = StyleSheet.create(theme => ({
 	screen: {
 		flex: 1,
 		backgroundColor: theme.colors.bgBase
@@ -69,12 +87,10 @@ const styles = StyleSheet.create((theme, rt) => ({
 	loaderContainer: {
 		flex: 1,
 		justifyContent: 'center',
-		alignItems: 'center',
-		paddingBottom: rt.insets.bottom
+		alignItems: 'center'
 	},
 	contentContainer: {
-		padding: theme.spacing,
-		paddingBottom: theme.spacing + rt.insets.bottom
+		padding: theme.spacing
 	},
 	status: {
 		padding: theme.spacing
