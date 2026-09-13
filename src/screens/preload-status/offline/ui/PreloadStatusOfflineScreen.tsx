@@ -27,7 +27,7 @@ export const PreloadStatusOfflineScreen = () => {
 					? getTargetRouteByPushNotification(notificationResponse.notification)
 					: undefined;
 
-				router.replace(targetRoute ?? routes.subjectRating);
+				router.replace(targetRoute ?? routes.profile);
 			} else {
 				router.replace(routes.preloadUpdateApp);
 			}

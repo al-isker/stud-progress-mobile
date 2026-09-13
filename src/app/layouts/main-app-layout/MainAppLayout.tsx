@@ -18,10 +18,6 @@ export const MainAppLayout = () => {
 					name={SCREEN_NAMES.TABS}
 					options={{ animation: 'none' }}
 				/>
-				<Stack.Screen
-					name={SCREEN_NAMES.SUBJECT_BY_ID_RATING}
-					options={{ animation: 'simple_push' }}
-				/>
 			</Stack>
 		</>
 	);

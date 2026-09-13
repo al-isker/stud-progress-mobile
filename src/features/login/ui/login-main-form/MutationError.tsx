@@ -2,7 +2,6 @@ import { useCallback } from 'react';
 import { useFocusEffect } from 'expo-router';
 import { StyleProp, Text, TextStyle } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
-import { apiMessage } from '@/shared/api';
 import { useRerender } from '@/shared/lib/react-hooks';
 import { useLoginContext } from '../../model/login-context/use-login-context';
 
@@ -24,7 +23,7 @@ export const MutationError = ({ style }: MutationErrorProps) => {
 
 	const message =
 		status && status >= 500 && status < 600
-			? apiMessage.lkServerError
+			? 'Неизвестная ошибка сервера'
 			: strResponseMessage;
 
 	useFocusEffect(

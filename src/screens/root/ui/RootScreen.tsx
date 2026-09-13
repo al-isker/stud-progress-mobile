@@ -32,7 +32,7 @@ export const RootScreen = () => {
 					? getTargetRouteByPushNotification(notificationResponse.notification)
 					: undefined;
 
-				router.replace(targetRoute ?? routes.subjectRating);
+				router.replace(targetRoute ?? routes.profile);
 			} else {
 				router.replace(routes.preloadUpdateApp);
 			}

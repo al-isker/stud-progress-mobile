@@ -10,7 +10,6 @@ export const RootNavigation = () => (
 	>
 		<Stack.Screen name={SCREEN_NAMES.PRELOAD_STATUS} />
 		<Stack.Screen name={SCREEN_NAMES.LOGIN} />
-		<Stack.Screen name={SCREEN_NAMES.UPDATE_SEMESTER} />
 		<Stack.Screen name={SCREEN_NAMES.MAIN} />
 	</Stack>
 );

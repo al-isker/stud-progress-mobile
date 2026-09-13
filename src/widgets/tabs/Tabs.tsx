@@ -1,7 +1,7 @@
 import { Tabs as NativeTabs } from 'expo-router';
 import { useUnistyles } from 'react-native-unistyles';
 import { SCREEN_NAMES } from '@/shared/config/navigation';
-import { GradeIcon, HomeIcon, ProfileIcon, StatsIcon } from '@/shared/ui/icons';
+import { ProfileIcon } from '@/shared/ui/icons';
 import { Pressable } from '@/shared/ui/pressable';
 
 export const Tabs = () => {
@@ -45,27 +45,6 @@ export const Tabs = () => {
 				}
 			}}
 		>
-			<NativeTabs.Screen
-				name={SCREEN_NAMES.TAB_SUBJECT_RATING}
-				options={{
-					title: 'Главная',
-					tabBarIcon: HomeIcon
-				}}
-			/>
-			<NativeTabs.Screen
-				name={SCREEN_NAMES.TAB_SUBJECT_GRADE}
-				options={{
-					title: 'Сессия',
-					tabBarIcon: GradeIcon
-				}}
-			/>
-			<NativeTabs.Screen
-				name={SCREEN_NAMES.TAB_SUBJECT_STATS}
-				options={{
-					title: 'Статистика',
-					tabBarIcon: StatsIcon
-				}}
-			/>
 			<NativeTabs.Screen
 				name={SCREEN_NAMES.TAB_PROFILE}
 				options={{

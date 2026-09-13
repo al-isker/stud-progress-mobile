@@ -1,6 +1,5 @@
 import { Notification } from 'expo-notifications';
 import { useQueryClient } from '@tanstack/react-query';
-import { subjectQueryKeys } from '@/entities/subject';
 import {
 	PushNotificationDataType,
 	PushNotificationTypeEnum
@@ -13,12 +12,8 @@ export const useInvalidateQueriesByPushNotification = () => {
 		const data = notification.request.content.data as PushNotificationDataType;
 
 		switch (data.type) {
-			case PushNotificationTypeEnum.GRADE_UPDATED:
-			case PushNotificationTypeEnum.EVENT_CREATED:
-			case PushNotificationTypeEnum.EVENT_UPDATED:
-				queryClient.invalidateQueries({
-					queryKey: subjectQueryKeys.all
-				});
+			case PushNotificationTypeEnum.EXAMPLE:
+				queryClient.invalidateQueries();
 				break;
 		}
 	};

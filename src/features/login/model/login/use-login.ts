@@ -33,7 +33,7 @@ export const useLogin = () => {
 
 		updateExpoPushToken();
 
-		router.replace(routes.subjectRating);
+		router.replace(routes.profile);
 	};
 
 	const handleError = (error: ApiErrorType) => {
