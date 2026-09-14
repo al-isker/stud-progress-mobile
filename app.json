@@ -2,7 +2,7 @@
 	"expo": {
 		"name": "Stud Progress",
 		"slug": "stud-progress-mobile",
-		"owner": "stud-progress",
+		"owner": "alisker",
 		"scheme": "stud-progress",
 		"version": "2.0.0",
 		"orientation": "portrait",
