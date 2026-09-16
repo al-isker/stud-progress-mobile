@@ -94,6 +94,22 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
 					buildReactNativeFromSource: true
 				}
 			}
+		],
+		[
+			'app-icon-badge',
+			{
+				enabled: APP_VARIANT !== 'production',
+				badges: [
+					{
+						text: APP_VARIANT,
+						type: 'banner'
+					},
+					{
+						text: APP_VERSION,
+						type: 'ribbon'
+					}
+				]
+			}
 		]
 	],
 	extra: {
