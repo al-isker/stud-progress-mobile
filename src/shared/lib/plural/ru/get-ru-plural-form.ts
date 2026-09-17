@@ -1,10 +1,10 @@
-type RuPluralForms = {
+type RuPluralFormsType = {
 	one: string;
 	few: string;
 	many: string;
 };
 
-export const getRuPluralForm = (number: number, forms: RuPluralForms) => {
+export const getRuPluralForm = (number: number, forms: RuPluralFormsType) => {
 	const fractionalPart = number - Math.trunc(number);
 
 	if (fractionalPart !== 0) {

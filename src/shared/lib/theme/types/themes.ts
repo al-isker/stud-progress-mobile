@@ -1,9 +1,9 @@
 import { LIGHT_THEME } from '../const/themes';
 
-type AppThemes = {
+type AppThemesType = {
 	light: typeof LIGHT_THEME;
 };
 
 declare module 'react-native-unistyles' {
-	export interface UnistylesThemes extends AppThemes {}
+	export interface UnistylesThemes extends AppThemesType {}
 }

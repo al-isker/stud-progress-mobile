@@ -1,5 +1,5 @@
-import { Channel } from '../types/channel';
+import { ChannelType } from '../types/channel';
 
-export const createRGB = (channel: Channel) => {
+export const createRGB = (channel: ChannelType) => {
 	return `rgb(${channel})`;
 };

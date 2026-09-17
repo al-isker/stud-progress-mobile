@@ -1,8 +1,8 @@
 import { DehydrateOptions } from '@tanstack/react-query';
 
-type ShouldDehydrateQuery = DehydrateOptions['shouldDehydrateQuery'];
+type ShouldDehydrateQueryCallback = DehydrateOptions['shouldDehydrateQuery'];
 
-export const shouldDehydrateQuery: ShouldDehydrateQuery = query => {
+export const shouldDehydrateQuery: ShouldDehydrateQueryCallback = query => {
 	const isPersist = Boolean(query.meta?.persist);
 
 	const isSuccess = query.state.status === 'success';

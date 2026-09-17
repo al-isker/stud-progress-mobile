@@ -1,1 +1,1 @@
-export type Channel = `${number},${number},${number}`;
+export type ChannelType = `${number},${number},${number}`;

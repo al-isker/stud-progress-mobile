@@ -2,14 +2,14 @@ import { DependencyList, useEffect } from 'react';
 
 type CleanupEffectCallback = () => void;
 
-type CleanupDependencyList = readonly [
+type CleanupDependencyListType = readonly [
 	DependencyList[number],
 	...DependencyList
 ];
 
 export const useCleanupEffect = (
 	cleanupEffect: CleanupEffectCallback,
-	deps: CleanupDependencyList
+	deps: CleanupDependencyListType
 ) => {
 	useEffect(() => {
 		return cleanupEffect;
