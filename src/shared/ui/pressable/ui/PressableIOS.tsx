@@ -1,6 +1,8 @@
-import { Animated, Pressable, useAnimatedValue } from 'react-native';
+import { Pressable } from 'react-native';
+import Animated, { useSharedValue, withTiming } from 'react-native-reanimated';
 import { callAll } from '@/shared/lib/toolkit';
 import {
+	ACTIVE_FEEDBACK_OPACITY,
 	INITIAL_FEEDBACK_OPACITY,
 	animationInFeedbackOpacityConfig,
 	animationOutFeedbackOpacityConfig
@@ -15,20 +17,18 @@ export const PressableIOS = ({
 	onPressOut,
 	...props
 }: PressableProps) => {
-	const animatedFeedbackOpacity = useAnimatedValue(INITIAL_FEEDBACK_OPACITY);
+	const animatedFeedbackOpacity = useSharedValue(INITIAL_FEEDBACK_OPACITY);
 
 	const handlePressIn = () => {
-		Animated.timing(
-			animatedFeedbackOpacity,
-			animationInFeedbackOpacityConfig
-		).start();
+		animatedFeedbackOpacity.set(
+			withTiming(ACTIVE_FEEDBACK_OPACITY, animationInFeedbackOpacityConfig)
+		);
 	};
 
 	const handlePressOut = () => {
-		Animated.timing(
-			animatedFeedbackOpacity,
-			animationOutFeedbackOpacityConfig
-		).start();
+		animatedFeedbackOpacity.set(
+			withTiming(INITIAL_FEEDBACK_OPACITY, animationOutFeedbackOpacityConfig)
+		);
 	};
 
 	return (
