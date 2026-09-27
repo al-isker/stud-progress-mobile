@@ -41,9 +41,9 @@ export const PressableIOS = ({
 			{children}
 
 			<Animated.View
+				pointerEvents='none'
 				style={{
 					position: 'absolute',
-					zIndex: -1000,
 					left: 0,
 					right: 0,
 					top: 0,
