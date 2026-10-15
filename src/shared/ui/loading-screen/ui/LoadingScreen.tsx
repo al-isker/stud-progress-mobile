@@ -54,13 +54,15 @@ const styles = StyleSheet.create(theme => ({
 	title: {
 		color: theme.colors.alwaysWhite,
 		fontSize: 30,
-		fontFamily: theme.typography.fontFamilies.GolosTextBold
+		fontFamily: theme.typography.fontFamilies.GolosText,
+		fontWeight: theme.typography.fontWeights.Bold
 	},
 	description: {
 		marginBottom: 12,
 		textAlign: 'center',
 		color: theme.colors.alwaysWhite,
 		fontSize: 13,
-		fontFamily: theme.typography.fontFamilies.GolosTextRegular
+		fontFamily: theme.typography.fontFamilies.GolosText,
+		fontWeight: theme.typography.fontWeights.Regular
 	}
 }));

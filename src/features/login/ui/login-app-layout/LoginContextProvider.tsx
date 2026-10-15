@@ -3,7 +3,7 @@ import { LoginContext } from '../../model/login-context/login-context';
 import {
 	LoginContextFormValuesType,
 	LoginContextMutationErrorType
-} from '../../model/login-context/login-context-type';
+} from '../../model/login-context/login-context-value-type';
 
 type LoginContextProviderProps = {
 	children: ReactNode;

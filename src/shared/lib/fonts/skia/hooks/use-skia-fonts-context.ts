@@ -5,7 +5,7 @@ export const useSkiaFontsContext = () => {
 	const skiaFontsContext = useContext(SkiaFontsContext);
 
 	if (skiaFontsContext === null) {
-		throw new Error(`${SkiaFontsContext.name} not found`);
+		throw new Error('SkiaFontsContext not found');
 	}
 
 	return skiaFontsContext;

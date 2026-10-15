@@ -58,7 +58,8 @@ const styles = StyleSheet.create(theme => ({
 		columnGap: 5
 	},
 	title: {
-		fontFamily: theme.typography.fontFamilies.GolosTextRegular,
+		fontFamily: theme.typography.fontFamilies.GolosText,
+		fontWeight: theme.typography.fontWeights.Regular,
 		fontSize: 14,
 		color: theme.colors.blackAlpha(0.85)
 	},
@@ -77,14 +78,16 @@ const styles = StyleSheet.create(theme => ({
 		height: 18
 	},
 	value: {
-		fontFamily: theme.typography.fontFamilies.GolosTextBold,
+		fontFamily: theme.typography.fontFamilies.GolosText,
+		fontWeight: theme.typography.fontWeights.Bold,
 		fontSize: 26,
 		color: theme.colors.blackAlpha(0.85)
 	},
 	valueHint: {
 		alignSelf: 'flex-end',
 		marginBottom: 3,
-		fontFamily: theme.typography.fontFamilies.GolosTextRegular,
+		fontFamily: theme.typography.fontFamilies.GolosText,
+		fontWeight: theme.typography.fontWeights.Regular,
 		fontSize: 12,
 		color: theme.colors.blackAlpha(0.65)
 	}

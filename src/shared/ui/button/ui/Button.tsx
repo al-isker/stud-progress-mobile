@@ -93,7 +93,8 @@ const styles = StyleSheet.create(theme => ({
 	title: {
 		flex: 1,
 		textAlign: 'center',
-		fontFamily: theme.typography.fontFamilies.GolosTextRegular,
+		fontFamily: theme.typography.fontFamilies.GolosText,
+		fontWeight: theme.typography.fontWeights.Regular,
 
 		variants: {
 			variant: {

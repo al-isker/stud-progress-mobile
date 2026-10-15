@@ -1,21 +1,24 @@
 import { ReactNode } from 'react';
 import { useFonts } from '@shopify/react-native-skia';
-import { SkiaFontsContext, skiaFonts } from '@/shared/lib/skia-fonts';
+import {
+	SKIA_FONT_SOURCES,
+	SkiaFontsContextProvider
+} from '@/shared/lib/fonts';
 
 type SkiaFontsProviderProps = {
 	children: ReactNode;
 };
 
 export const SkiaFontsProvider = ({ children }: SkiaFontsProviderProps) => {
-	const fontMgr = useFonts(skiaFonts);
+	const fontMgr = useFonts(SKIA_FONT_SOURCES);
 
 	if (fontMgr === null) {
 		return null;
 	}
 
 	return (
-		<SkiaFontsContext.Provider value={{ fontMgr }}>
+		<SkiaFontsContextProvider value={{ fontMgr }}>
 			{children}
-		</SkiaFontsContext.Provider>
+		</SkiaFontsContextProvider>
 	);
 };

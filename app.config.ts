@@ -78,12 +78,39 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
 		[
 			'expo-font',
 			{
-				fonts: [
-					'node_modules/@expo-google-fonts/golos-text/400Regular/GolosText_400Regular.ttf',
-					'node_modules/@expo-google-fonts/golos-text/500Medium/GolosText_500Medium.ttf',
-					'node_modules/@expo-google-fonts/golos-text/600SemiBold/GolosText_600SemiBold.ttf',
-					'node_modules/@expo-google-fonts/golos-text/700Bold/GolosText_700Bold.ttf'
-				]
+				android: {
+					fonts: [
+						{
+							fontFamily: 'Golos Text',
+							fontDefinitions: [
+								{
+									path: 'node_modules/@expo-google-fonts/golos-text/400Regular/GolosText_400Regular.ttf',
+									weight: 400
+								},
+								{
+									path: 'node_modules/@expo-google-fonts/golos-text/500Medium/GolosText_500Medium.ttf',
+									weight: 500
+								},
+								{
+									path: 'node_modules/@expo-google-fonts/golos-text/600SemiBold/GolosText_600SemiBold.ttf',
+									weight: 600
+								},
+								{
+									path: 'node_modules/@expo-google-fonts/golos-text/700Bold/GolosText_700Bold.ttf',
+									weight: 700
+								}
+							]
+						}
+					]
+				},
+				ios: {
+					fonts: [
+						'node_modules/@expo-google-fonts/golos-text/400Regular/GolosText_400Regular.ttf',
+						'node_modules/@expo-google-fonts/golos-text/500Medium/GolosText_500Medium.ttf',
+						'node_modules/@expo-google-fonts/golos-text/600SemiBold/GolosText_600SemiBold.ttf',
+						'node_modules/@expo-google-fonts/golos-text/700Bold/GolosText_700Bold.ttf'
+					]
+				}
 			}
 		],
 		[

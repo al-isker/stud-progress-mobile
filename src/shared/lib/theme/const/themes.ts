@@ -1,6 +1,6 @@
+import { FONT_FAMILIES, FONT_WEIGHTS } from '@/shared/config/fonts';
 import { BORDER_RADIUS } from './tokens/border-radius';
 import { LIGHT_COLORS } from './tokens/colors';
-import { FONT_FAMILIES } from './tokens/font-family';
 import { SPACING } from './tokens/spacing';
 import { Z_INDEX } from './tokens/z-index';
 
@@ -8,7 +8,8 @@ const BASE_THEME = {
 	borderRadius: BORDER_RADIUS,
 	spacing: SPACING,
 	typography: {
-		fontFamilies: FONT_FAMILIES
+		fontFamilies: FONT_FAMILIES,
+		fontWeights: FONT_WEIGHTS
 	},
 	zIndex: Z_INDEX
 };

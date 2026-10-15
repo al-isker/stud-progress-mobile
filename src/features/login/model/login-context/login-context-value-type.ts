@@ -4,7 +4,7 @@ import { ApiErrorType, LoginBodyType } from '@/shared/api';
 export type LoginContextFormValuesType = Partial<LoginBodyType>;
 export type LoginContextMutationErrorType = ApiErrorType | null;
 
-export type LoginContextType = {
+export type LoginContextValueType = {
 	formValuesRef: RefObject<LoginContextFormValuesType>;
 	mutationErrorRef: RefObject<LoginContextMutationErrorType>;
 	setFormValues: (values: LoginContextFormValuesType) => void;
