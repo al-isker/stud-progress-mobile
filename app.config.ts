@@ -116,7 +116,11 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
 		[
 			'expo-build-properties',
 			{
+				android: {
+					minSdkVersion: 28
+				},
 				ios: {
+					deploymentTarget: undefined,
 					useFrameworks: 'static',
 					buildReactNativeFromSource: true
 				}
