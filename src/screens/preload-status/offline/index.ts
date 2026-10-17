@@ -1,1 +1,1 @@
-export { PreloadStatusOfflineScreen } from './ui/PreloadStatusOfflineScreen';
+export { PreloadStatusOfflineAppScreen } from './ui/PreloadStatusOfflineAppScreen';

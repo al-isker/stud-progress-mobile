@@ -11,7 +11,7 @@ import { Button } from '@/shared/ui/button';
 import { CircularLoader } from '@/shared/ui/circular-loader';
 import { StatusScreen } from '@/shared/ui/status-screen';
 
-export const PreloadStatusOfflineScreen = () => {
+export const PreloadStatusOfflineAppScreen = () => {
 	const mobileAppInfoLazyQuery = useLazyQuery(getMobileAppInfoQueryOptions());
 
 	useEffect(() => {

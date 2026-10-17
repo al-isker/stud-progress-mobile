@@ -8,7 +8,7 @@ import { getMobileAppInfoQueryOptions } from '@/shared/api';
 import { routes } from '@/shared/config/navigation';
 import { checkIsSupportedAppVersion } from '@/shared/lib/app-version';
 
-export const RootScreen = () => {
+export const RootAppScreen = () => {
 	const mobileAppInfoQuery = useQuery(getMobileAppInfoQueryOptions());
 
 	useEffect(() => {

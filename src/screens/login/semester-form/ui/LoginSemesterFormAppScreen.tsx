@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native-unistyles';
 import { LoginSemesterForm } from '@/features/login';
 import { Br } from '@/shared/ui/br';
 
-export const LoginSemesterFormScreen = () => (
+export const LoginSemesterFormAppScreen = () => (
 	<View style={styles.container}>
 		<Text style={styles.description}>
 			Выбери семестр, на котором

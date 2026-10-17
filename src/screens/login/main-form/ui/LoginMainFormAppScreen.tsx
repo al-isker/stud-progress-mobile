@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native-unistyles';
 import { LoginMainForm } from '@/features/login';
 import { Br } from '@/shared/ui/br';
 
-export const LoginMainFormScreen = () => (
+export const LoginMainFormAppScreen = () => (
 	<View style={styles.container}>
 		<Text style={styles.description}>
 			Введи свои учётные данные для

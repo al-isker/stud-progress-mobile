@@ -6,7 +6,7 @@ import { getMobileAppInfoQueryOptions } from '@/shared/api';
 import { Button } from '@/shared/ui/button';
 import { StatusScreen } from '@/shared/ui/status-screen';
 
-export const PreloadStatusUpdateAppScreen = () => {
+export const PreloadStatusUpdateAppAppScreen = () => {
 	const mobileAppInfoQuery = useQuery(getMobileAppInfoQueryOptions());
 
 	const mobileAppInfoQueryData = mobileAppInfoQuery.data!;

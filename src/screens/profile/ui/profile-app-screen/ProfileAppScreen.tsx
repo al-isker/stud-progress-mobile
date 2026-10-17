@@ -9,7 +9,7 @@ import { StatusScreen } from '@/shared/ui/status-screen';
 import { useProfile } from '../../model/use-profile';
 import { ProfileContent } from '../profile-content/ProfileContent';
 
-export const ProfileScreen = () => {
+export const ProfileAppScreen = () => {
 	const { theme } = useUnistyles();
 
 	const { data, refetch, isPending, isPaused, isSuccess, isRefetching } =

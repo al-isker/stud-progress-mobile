@@ -1,1 +1,1 @@
-export { PreloadStatusErrorScreen } from './ui/PreloadStatusErrorScreen';
+export { PreloadStatusErrorAppScreen } from './ui/PreloadStatusErrorAppScreen';

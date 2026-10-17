@@ -4,7 +4,7 @@ import { useLogin } from '@/features/login';
 import { useMountEffect } from '@/shared/lib/react-hooks';
 import { LoadingScreen } from '@/shared/ui/loading-screen';
 
-export const LoginLoadingScreen = () => {
+export const LoginLoadingAppScreen = () => {
 	const { rt } = useUnistyles();
 
 	const { progress, login } = useLogin();

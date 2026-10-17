@@ -1,1 +1,1 @@
-export { LoginSemesterFormScreen } from './ui/LoginSemesterFormScreen';
+export { LoginSemesterFormAppScreen } from './ui/LoginSemesterFormAppScreen';
