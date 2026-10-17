@@ -1,1 +1,1 @@
-export { Tabs as TabsAppLayout } from '@/widgets/tabs';
+export { MainTabs as TabsAppLayout } from '@/widgets/main-tabs';

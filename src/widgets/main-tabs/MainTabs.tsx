@@ -4,7 +4,7 @@ import { SCREEN_NAMES } from '@/shared/config/navigation';
 import { ProfileIcon } from '@/shared/ui/icons';
 import { Pressable } from '@/shared/ui/pressable';
 
-export const Tabs = () => {
+export const MainTabs = () => {
 	const { theme, rt } = useUnistyles();
 
 	return (
