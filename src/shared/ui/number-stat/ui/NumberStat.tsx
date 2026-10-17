@@ -2,7 +2,7 @@ import { ReactNode, Ref } from 'react';
 import { Text, View } from 'react-native';
 import { SvgProps } from 'react-native-svg';
 import { StyleSheet, useUnistyles } from 'react-native-unistyles';
-import { RenderSlotType, createSlot } from '@/shared/lib/slot';
+import { RenderSlotType, createSlot } from '@/shared/lib/react-toolkit';
 import { Paper, PaperProps } from '../../paper';
 
 export type NumberStatProps = PaperProps & {
@@ -58,8 +58,8 @@ const styles = StyleSheet.create(theme => ({
 		columnGap: 5
 	},
 	title: {
-		fontFamily: theme.typography.fontFamilies.GolosText,
-		fontWeight: theme.typography.fontWeights.Regular,
+		fontFamily: theme.typography.fontFamily.GolosText,
+		fontWeight: theme.typography.fontWeight.Regular,
 		fontSize: 14,
 		color: theme.colors.blackAlpha(0.85)
 	},
@@ -78,16 +78,16 @@ const styles = StyleSheet.create(theme => ({
 		height: 18
 	},
 	value: {
-		fontFamily: theme.typography.fontFamilies.GolosText,
-		fontWeight: theme.typography.fontWeights.Bold,
+		fontFamily: theme.typography.fontFamily.GolosText,
+		fontWeight: theme.typography.fontWeight.Bold,
 		fontSize: 26,
 		color: theme.colors.blackAlpha(0.85)
 	},
 	valueHint: {
 		alignSelf: 'flex-end',
 		marginBottom: 3,
-		fontFamily: theme.typography.fontFamilies.GolosText,
-		fontWeight: theme.typography.fontWeights.Regular,
+		fontFamily: theme.typography.fontFamily.GolosText,
+		fontWeight: theme.typography.fontWeight.Regular,
 		fontSize: 12,
 		color: theme.colors.blackAlpha(0.65)
 	}

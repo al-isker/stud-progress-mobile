@@ -4,7 +4,7 @@ import { focusManager, onlineManager } from '@tanstack/react-query';
 import { PersistQueryClientProvider } from '@tanstack/react-query-persist-client';
 import { AppState } from 'react-native';
 import { queryClient, queryPersistOptions } from '@/shared/api';
-import { callAll } from '@/shared/lib/toolkit';
+import { callAll } from '@/shared/lib/ts-toolkit';
 
 type QueryProviderProps = {
 	children: ReactNode;

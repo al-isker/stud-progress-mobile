@@ -1,1 +1,1 @@
-export { unistylesConfigure } from './config/unistyles-configure';
+export { unistylesConfigure } from './unistyles/config/unistyles-configure';

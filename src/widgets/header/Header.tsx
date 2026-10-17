@@ -24,7 +24,7 @@ const styles = StyleSheet.create(theme => ({
 	title: {
 		color: theme.colors.alwaysWhite,
 		fontSize: 26,
-		fontFamily: theme.typography.fontFamilies.GolosText,
-		fontWeight: theme.typography.fontWeights.Bold
+		fontFamily: theme.typography.fontFamily.GolosText,
+		fontWeight: theme.typography.fontWeight.Bold
 	}
 }));

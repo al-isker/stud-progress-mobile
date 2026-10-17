@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { useUnistyles } from 'react-native-unistyles';
 import { useLogin } from '@/features/login';
-import { useMountEffect } from '@/shared/lib/react-hooks';
+import { useMountEffect } from '@/shared/lib/react-toolkit';
 import { LoadingScreen } from '@/shared/ui/loading-screen';
 
 export const LoginLoadingAppScreen = () => {

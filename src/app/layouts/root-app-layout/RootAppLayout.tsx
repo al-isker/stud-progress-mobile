@@ -1,13 +1,13 @@
 import { KeyboardProvider } from '../../providers/keyboard-provider/KeyboardProvider';
 import { PushNotificationProvider } from '../../providers/push-notification-provider/PushNotificationProvider';
 import { QueryProvider } from '../../providers/query-provider/QueryProvider';
-import { SkiaFontsProvider } from '../../providers/skia-fonts-provider/SkiaFontsProvider';
+import { SkiaFontProvider } from '../../providers/skia-font-provider/SkiaFontProvider';
 import { RootNavigation } from './RootNavigation';
 import { RootSafeArea } from './RootSafeArea';
 
 export const RootAppLayout = () => (
 	<QueryProvider>
-		<SkiaFontsProvider>
+		<SkiaFontProvider>
 			<KeyboardProvider>
 				<PushNotificationProvider>
 					<RootSafeArea>
@@ -15,6 +15,6 @@ export const RootAppLayout = () => (
 					</RootSafeArea>
 				</PushNotificationProvider>
 			</KeyboardProvider>
-		</SkiaFontsProvider>
+		</SkiaFontProvider>
 	</QueryProvider>
 );

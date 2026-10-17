@@ -1,6 +1,6 @@
 import { Pressable } from 'react-native';
 import Animated, { useSharedValue, withTiming } from 'react-native-reanimated';
-import { callAll } from '@/shared/lib/toolkit';
+import { callAll } from '@/shared/lib/ts-toolkit';
 import {
 	ACTIVE_FEEDBACK_OPACITY,
 	INITIAL_FEEDBACK_OPACITY,

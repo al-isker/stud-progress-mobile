@@ -1,2 +1,3 @@
-export { FONT_FAMILIES } from './const/font-families';
-export { FONT_WEIGHTS } from './const/font-weights';
+export { FONT_FAMILY } from './const/font-family';
+export { FONT_STYLE } from './const/font-style';
+export { FONT_WEIGHT } from './const/font-weight';

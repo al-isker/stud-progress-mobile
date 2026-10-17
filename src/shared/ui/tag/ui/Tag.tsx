@@ -2,7 +2,7 @@ import { Ref } from 'react';
 import { Text, View, ViewProps } from 'react-native';
 import { SvgProps } from 'react-native-svg';
 import { StyleSheet, UnistylesVariants } from 'react-native-unistyles';
-import { RenderSlotType, createSlot } from '@/shared/lib/slot';
+import { RenderSlotType, createSlot } from '@/shared/lib/react-toolkit';
 
 export type TagProps = Omit<ViewProps, 'children'> &
 	UnistylesVariants<typeof styles> & {
@@ -72,8 +72,8 @@ const styles = StyleSheet.create(theme => ({
 	},
 	title: {
 		letterSpacing: 0.15,
-		fontFamily: theme.typography.fontFamilies.GolosText,
-		fontWeight: theme.typography.fontWeights.Medium,
+		fontFamily: theme.typography.fontFamily.GolosText,
+		fontWeight: theme.typography.fontWeight.Medium,
 
 		variants: {
 			color: {

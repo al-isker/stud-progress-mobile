@@ -1,1 +1,1 @@
-export { checkIsSupportedAppVersion } from './check/check-is-supported-app-version';
+export { checkIsSupportedAppVersion } from './compatibility/check-is-supported-app-version';

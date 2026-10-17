@@ -2,7 +2,7 @@ import { ReactNode, Ref } from 'react';
 import { Insets, Text, View, ViewProps } from 'react-native';
 import { SvgProps } from 'react-native-svg';
 import { StyleSheet } from 'react-native-unistyles';
-import { RenderSlotType, createSlot } from '@/shared/lib/slot';
+import { RenderSlotType, createSlot } from '@/shared/lib/react-toolkit';
 
 export type StatusScreenProps = ViewProps & {
 	ref?: Ref<View>;
@@ -67,15 +67,15 @@ const styles = StyleSheet.create(theme => ({
 		textAlign: 'center',
 		color: theme.colors.blackAlpha(0.8),
 		fontSize: 20,
-		fontFamily: theme.typography.fontFamilies.GolosText,
-		fontWeight: theme.typography.fontWeights.SemiBold
+		fontFamily: theme.typography.fontFamily.GolosText,
+		fontWeight: theme.typography.fontWeight.SemiBold
 	},
 	description: {
 		textAlign: 'center',
 		color: theme.colors.blackAlpha(0.65),
 		fontSize: 14,
-		fontFamily: theme.typography.fontFamilies.GolosText,
-		fontWeight: theme.typography.fontWeights.Regular
+		fontFamily: theme.typography.fontFamily.GolosText,
+		fontWeight: theme.typography.fontWeight.Regular
 	},
 	actions: {
 		marginTop: 14,

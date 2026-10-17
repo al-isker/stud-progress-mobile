@@ -1,7 +1,7 @@
 import { HttpStatusCode } from 'axios';
 import { authApi } from '@/shared/api/common/auth/auth-api';
+import { ApiErrorType } from '../../error/api-error-type';
 import { api } from '../../instances/api';
-import { ApiErrorType } from '../../query/register/api-error-type';
 import { getRefreshToken } from '../tokens/get-refresh-token';
 import { setAuthTokens } from '../tokens/set-auth-tokens';
 

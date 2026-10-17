@@ -32,7 +32,7 @@ const styles = StyleSheet.create((theme, rt) => ({
 	title: {
 		color: theme.colors.primary,
 		fontSize: 28,
-		fontFamily: theme.typography.fontFamilies.GolosText,
-		fontWeight: theme.typography.fontWeights.Bold
+		fontFamily: theme.typography.fontFamily.GolosText,
+		fontWeight: theme.typography.fontWeight.Bold
 	}
 }));

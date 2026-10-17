@@ -1,3 +1,3 @@
-export { SKIA_FONT_SOURCES } from './skia/const/skia-font-sources';
-export { SkiaFontsContextProvider } from './skia/context/SkiaFontsContextProvider';
-export { useSkiaFont } from './skia/hooks/use-skia-font';
+export { useSkiaFont } from './skia/font/use-skia-font';
+export { SKIA_FONT_SOURCES } from './skia/sources/skia-font-sources';
+export { SkiaFontContextProvider } from './skia/ui/SkiaFontContextProvider';

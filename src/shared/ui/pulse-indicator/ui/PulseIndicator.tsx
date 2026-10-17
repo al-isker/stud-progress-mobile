@@ -8,7 +8,7 @@ import Animated, {
 	withTiming
 } from 'react-native-reanimated';
 import { StyleSheet } from 'react-native-unistyles';
-import { useMountEffect } from '@/shared/lib/react-hooks';
+import { useMountEffect } from '@/shared/lib/react-toolkit';
 import {
 	animationConfig,
 	animationDelay

@@ -2,7 +2,7 @@ import { Ref } from 'react';
 import { Text, View } from 'react-native';
 import { SvgProps } from 'react-native-svg';
 import { StyleSheet, UnistylesVariants } from 'react-native-unistyles';
-import { RenderSlotType, createSlot } from '@/shared/lib/slot';
+import { RenderSlotType, createSlot } from '@/shared/lib/react-toolkit';
 import { Pressable, PressableProps } from '@/shared/ui/pressable';
 
 export type CommandProps = Omit<
@@ -108,8 +108,8 @@ const styles = StyleSheet.create(theme => ({
 	},
 	title: {
 		flex: 1,
-		fontFamily: theme.typography.fontFamilies.GolosText,
-		fontWeight: theme.typography.fontWeights.Regular,
+		fontFamily: theme.typography.fontFamily.GolosText,
+		fontWeight: theme.typography.fontWeight.Regular,
 
 		variants: {
 			variant: {},

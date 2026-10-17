@@ -15,6 +15,6 @@ export const getTargetRouteByPushNotification = (
 			return routes.profile;
 
 		default:
-			return;
+			return null;
 	}
 };

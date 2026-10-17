@@ -3,7 +3,7 @@ import {
 	addNotificationReceivedListener,
 	addNotificationResponseReceivedListener
 } from 'expo-notifications';
-import { callAll } from '@/shared/lib/toolkit';
+import { callAll } from '@/shared/lib/ts-toolkit';
 import { useConditionalUpdateExpoPushToken } from './model/expo-push-token/use-conditional-update-expo-push-token';
 import { useInvalidateQueriesByPushNotification } from './model/invalidate-queries/use-invalidate-queries-by-push-notification';
 import { useRedirectByPushNotificationResponse } from './model/redirect/use-redirect-by-push-notification-response';

@@ -2,7 +2,7 @@ import { useCallback } from 'react';
 import { useFocusEffect } from 'expo-router';
 import { StyleProp, Text, TextStyle } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
-import { useRerender } from '@/shared/lib/react-hooks';
+import { useRerender } from '@/shared/lib/react-toolkit';
 import { useLoginContext } from '../../model/login-context/use-login-context';
 
 type MutationErrorProps = {
@@ -43,7 +43,7 @@ const styles = StyleSheet.create(theme => ({
 	text: {
 		color: theme.colors.red,
 		fontSize: 14,
-		fontFamily: theme.typography.fontFamilies.GolosText,
-		fontWeight: theme.typography.fontWeights.Regular
+		fontFamily: theme.typography.fontFamily.GolosText,
+		fontWeight: theme.typography.fontWeight.Regular
 	}
 }));

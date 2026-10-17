@@ -1,7 +1,6 @@
 import { NotificationResponse } from 'expo-notifications';
 import { router } from 'expo-router';
 import { getTargetRouteByPushNotification } from '@/features/open-push-notification';
-import { isDefined } from '@/shared/lib/toolkit';
 
 export const useRedirectByPushNotificationResponse = () => {
 	const redirectByPushNotificationResponse = (
@@ -11,7 +10,7 @@ export const useRedirectByPushNotificationResponse = () => {
 			notificationResponse.notification
 		);
 
-		if (isDefined(targetRoute)) {
+		if (targetRoute !== null) {
 			router.push(targetRoute);
 		}
 	};

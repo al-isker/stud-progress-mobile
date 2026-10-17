@@ -27,8 +27,8 @@ const styles = StyleSheet.create(theme => ({
 		textAlign: 'center',
 		color: theme.colors.blackAlpha(0.5),
 		fontSize: 14,
-		fontFamily: theme.typography.fontFamilies.GolosText,
-		fontWeight: theme.typography.fontWeights.Regular
+		fontFamily: theme.typography.fontFamily.GolosText,
+		fontWeight: theme.typography.fontWeight.Regular
 	},
 	form: {
 		flex: 1

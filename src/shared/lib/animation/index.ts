@@ -1,2 +1,2 @@
-export { useFakeProgressAnimation } from './hooks/use-fake-progress-animation';
-export { getAnimationDurationByValues } from './utils/get-animation-duration-by-values';
+export { useFakeProgressAnimation } from './progress/use-fake-progress-animation';
+export { getAnimationDurationByValues } from './timing/get-animation-duration-by-values';

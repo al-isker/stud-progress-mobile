@@ -41,8 +41,8 @@ export const Tabs = () => {
 				tabBarInactiveTintColor: theme.colors.blackAlpha(0.4),
 				tabBarLabelStyle: {
 					fontSize: 11,
-					fontFamily: theme.typography.fontFamilies.GolosText,
-					fontWeight: theme.typography.fontWeights.Medium
+					fontFamily: theme.typography.fontFamily.GolosText,
+					fontWeight: theme.typography.fontWeight.Medium
 				}
 			}}
 		>
